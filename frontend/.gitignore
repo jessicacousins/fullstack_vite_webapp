@@ -24,4 +24,11 @@ dist-ssr
 *.sw?
 
 
+# Environment files
 .env
+
+# Firebase files
+.firebase
+
+# Ignore firebase.js file
+/firebase.js
