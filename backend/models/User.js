@@ -12,7 +12,9 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
+    required: function () {
+      return this.password != null; // Only required if password is provided
+    },
   },
 });
 
