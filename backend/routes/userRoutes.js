@@ -32,4 +32,34 @@ router.post("/register", async (req, res) => {
   }
 });
 
+// @route POST /api/users/login
+// @desc Authenticate user & track login
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    let user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(400).json({ msg: "Invalid Credentials" });
+    }
+
+    if (password && user.password) {
+      const isMatch = await bcrypt.compare(password, user.password);
+
+      if (!isMatch) {
+        return res.status(400).json({ msg: "Invalid Credentials" });
+      }
+    }
+
+    user.lastLogin = Date.now();
+    await user.save();
+
+    res.json({ user });
+  } catch (err) {
+    console.error("Server error during login:", err.message);
+    res.status(500).send("Server error");
+  }
+});
+
 module.exports = router;

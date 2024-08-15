@@ -13,9 +13,10 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: function () {
-      return this.password != null; // Only required if password is provided
+      return this.password != null;
     },
   },
+  lastLogin: { type: Date },
 });
 
 const User = mongoose.model("User", UserSchema);

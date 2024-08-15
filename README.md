@@ -12,3 +12,16 @@
 - Vite
 - Firebase
 - React Router
+
+## ToDo
+
+- adjust logic for google login
+- add styles
+- add chat
+- add admin dashboard
+- add users list
+- finish Home view
+- finish Profile view
+- finish welcome view
+- add direct messages feature
+- profile images
