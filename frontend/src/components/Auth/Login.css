@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #15202b;
+  color: #ffffff;
+}
+
+.container-login {
+  width: 100%;
+  max-width: 400px;
+  background-color: #192734;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  margin-top: 100px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  background-color: #22303c;
+  color: #ffffff;
+  border: 1px solid #38444d;
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #1da1f2;
+  color: #ffffff;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #0a84d8;
+}
+
+p.error {
+  color: #e0245e;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.google-button {
+  background-color: #ffffff;
+  color: #000000;
+  margin-top: 12px;
+}
+
+.google-button:hover {
+  background-color: #e0e0e0;
+}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, googleProvider } from "../../../firebase";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import "./SignUp.css";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -110,7 +111,7 @@ const SignUp = () => {
   };
 
   return (
-    <div>
+    <div className="container-signup">
       <form onSubmit={handleEmailSignup}>
         <input
           type="text"
@@ -130,10 +131,12 @@ const SignUp = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {error && <p className="error">{error}</p>}
         <button type="submit">Sign Up with Email</button>
       </form>
-      <button onClick={handleGoogleSignup}>Sign Up with Google</button>
+      <button className="google-button" onClick={handleGoogleSignup}>
+        Sign Up with Google
+      </button>
     </div>
   );
 };
