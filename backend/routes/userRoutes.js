@@ -6,7 +6,8 @@ const bcrypt = require("bcryptjs");
 // @route POST /api/users/register
 // @desc Register a new user (including Google users)
 router.post("/register", async (req, res) => {
-  const { name, email, password } = req.body;
+  const { firstName, lastName, email, password, phone, bio, photoURL } =
+    req.body;
 
   try {
     // Check if the user already exists
@@ -18,9 +19,13 @@ router.post("/register", async (req, res) => {
 
     // Create a new user object
     user = new User({
-      name,
+      firstName,
+      lastName,
       email,
       password: password ? await bcrypt.hash(password, 10) : null,
+      phone,
+      bio,
+      photoURL,
     });
 
     // Save the user to the database
@@ -32,32 +37,31 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// @route POST /api/users/login
-// @desc Authenticate user & track login
-router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
+// @route POST /api/users/update
+// @desc Update user profile
+router.post("/update", async (req, res) => {
+  const { email, firstName, lastName, phone, bio, photoURL } = req.body;
 
   try {
     let user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(400).json({ msg: "Invalid Credentials" });
+      return res.status(400).json({ msg: "User not found" });
     }
 
-    if (password && user.password) {
-      const isMatch = await bcrypt.compare(password, user.password);
+    // Update user fields
+    user.firstName = firstName;
+    user.lastName = lastName;
+    user.phone = phone;
+    user.bio = bio;
+    user.photoURL = photoURL;
 
-      if (!isMatch) {
-        return res.status(400).json({ msg: "Invalid Credentials" });
-      }
-    }
-
-    user.lastLogin = Date.now();
+    // Save the updated user to the database
     await user.save();
 
     res.json({ user });
   } catch (err) {
-    console.error("Server error during login:", err.message);
+    console.error("Error updating user profile:", err.message);
     res.status(500).send("Server error");
   }
 });

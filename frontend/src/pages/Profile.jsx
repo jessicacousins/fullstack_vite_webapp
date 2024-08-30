@@ -3,42 +3,63 @@ import { useAuth } from "../context/AuthContext";
 
 const Profile = () => {
   const { user } = useAuth();
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [bio, setBio] = useState("");
   const [photoURL, setPhotoURL] = useState("");
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
 
   useEffect(() => {
     if (user) {
-      setName(user.displayName || "");
+      const [userFirstName, userLastName] = user.displayName
+        ? user.displayName.split(" ")
+        : ["", ""];
+      setFirstName(userFirstName);
+      setLastName(userLastName);
       setEmail(user.email || "");
-      setPhotoURL(user.photoURL || "");
     }
   }, [user]);
+
+  const handlePhotoUpload = (e) => {
+    const file = e.target.files[0];
+    if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPhotoURL(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setError("Please upload a valid JPEG or PNG image.");
+    }
+  };
 
   const handleUpdate = async (e) => {
     e.preventDefault();
     setError("");
     setMessage("");
 
-    if (!name || !email) {
-      setError("Name and email are required.");
+    if (!firstName || !lastName || !email) {
+      setError("First name, last name, and email are required.");
       return;
     }
 
     try {
-      await user.updateProfile({
-        displayName: name,
-        photoURL,
-      });
-
       const response = await fetch("/api/users/update", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, photoURL }),
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          phone,
+          bio,
+          photoURL,
+        }),
       });
 
       if (response.ok) {
@@ -56,14 +77,18 @@ const Profile = () => {
     <div style={styles.containerProfile}>
       <form onSubmit={handleUpdate} style={styles.form}>
         <h1>Profile Page</h1>
-        {photoURL && (
-          <img src={photoURL} alt="Profile" style={styles.profilePic} />
-        )}
         <input
           type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          placeholder="First Name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          style={styles.input}
+        />
+        <input
+          type="text"
+          placeholder="Last Name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
           style={styles.input}
         />
         <input
@@ -71,16 +96,31 @@ const Profile = () => {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          disabled={true} // Disable email editing if user is logged in via Google
+          disabled={true}
           style={styles.input}
         />
         <input
-          type="text"
-          placeholder="Profile Picture URL"
-          value={photoURL}
-          onChange={(e) => setPhotoURL(e.target.value)}
+          type="tel"
+          placeholder="Phone Number"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
           style={styles.input}
         />
+        <textarea
+          placeholder="Bio"
+          value={bio}
+          onChange={(e) => setBio(e.target.value)}
+          style={{ ...styles.input, height: "80px" }}
+        />
+        <input
+          type="file"
+          accept="image/jpeg, image/png"
+          onChange={handlePhotoUpload}
+          style={styles.inputFile}
+        />
+        {photoURL && (
+          <img src={photoURL} alt="Profile" style={styles.profilePic} />
+        )}
         {error && <p style={styles.error}>{error}</p>}
         {message && <p style={styles.success}>{message}</p>}
         <button type="submit" style={styles.button}>
@@ -115,6 +155,12 @@ const styles = {
     marginBottom: "16px",
     borderRadius: "4px",
     fontSize: "16px",
+  },
+  inputFile: {
+    color: "#ffffff",
+    marginBottom: "16px",
+    border: "none",
+    backgroundColor: "transparent",
   },
   button: {
     backgroundColor: "#1da1f2",

@@ -5,14 +5,18 @@ import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import "./SignUp.css";
 
 const SignUp = () => {
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [bio, setBio] = useState("");
+  const [photoURL, setPhotoURL] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const validateInputs = () => {
-    if (!name || !email || !password) {
+    if (!firstName || !lastName || !email || !password) {
       setError("All fields are required.");
       return false;
     }
@@ -36,9 +40,13 @@ const SignUp = () => {
   };
 
   const resetFields = () => {
-    setName("");
+    setFirstName("");
+    setLastName("");
     setEmail("");
     setPassword("");
+    setPhone("");
+    setBio("");
+    setPhotoURL("");
   };
 
   const handleEmailSignup = async (e) => {
@@ -57,12 +65,21 @@ const SignUp = () => {
         password
       );
 
+      const displayName = `${firstName} ${lastName}`;
       const response = await fetch("/api/users/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          password,
+          phone,
+          bio,
+          photoURL,
+        }),
       });
 
       if (response.ok) {
@@ -115,9 +132,15 @@ const SignUp = () => {
       <form onSubmit={handleEmailSignup}>
         <input
           type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          placeholder="First Name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Last Name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
         />
         <input
           type="email"
@@ -130,6 +153,25 @@ const SignUp = () => {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+        />
+        <input
+          type="tel"
+          placeholder="Phone Number"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+        />
+        <textarea
+          placeholder="Bio"
+          value={bio}
+          onChange={(e) => setBio(e.target.value)}
+          style={{
+            marginBottom: "16px",
+            padding: "12px",
+            backgroundColor: "#22303c",
+            color: "#ffffff",
+            border: "1px solid #38444d",
+            borderRadius: "4px",
+          }}
         />
         {error && <p className="error">{error}</p>}
         <button type="submit">Sign Up with Email</button>
