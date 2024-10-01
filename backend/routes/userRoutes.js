@@ -4,7 +4,7 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 
 // @route POST /api/users/register
-// @desc Register a new user (including Google users)
+//  including Google users
 router.post("/register", async (req, res) => {
   const { firstName, lastName, email, password, phone, bio, photoURL } =
     req.body;
@@ -38,7 +38,6 @@ router.post("/register", async (req, res) => {
 });
 
 // @route POST /api/users/update
-// @desc Update user profile
 router.post("/update", async (req, res) => {
   const { email, firstName, lastName, phone, bio, photoURL } = req.body;
 
@@ -62,6 +61,19 @@ router.post("/update", async (req, res) => {
     res.json({ user });
   } catch (err) {
     console.error("Error updating user profile:", err.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// @route GET /api/users/:email
+router.get("/:email", async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.params.email });
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+    res.json(user);
+  } catch (err) {
     res.status(500).send("Server error");
   }
 });

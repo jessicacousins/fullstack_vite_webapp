@@ -12,6 +12,8 @@
 - Vite
 - Firebase
 - React Router
+- npm install axios
+
 
 ## ToDo
 

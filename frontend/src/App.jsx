@@ -7,6 +7,8 @@ import Profile from "./pages/Profile";
 import Login from "./components/Auth/Login";
 import SignUp from "./components/Auth/SignUp";
 import NavBar from "./components/Layout/NavBar";
+import Blog from "./components/Blog";
+import CreateBlog from "./components/CreateBlog";
 
 function App() {
   return (
@@ -16,10 +18,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} /> // Ensure this route is
-          included
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/create-blog" element={<CreateBlog />} />
         </Routes>
       </Router>
     </AuthProvider>
