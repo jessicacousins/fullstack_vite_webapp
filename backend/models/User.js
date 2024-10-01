@@ -16,9 +16,6 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: function () {
-      return this.password != null;
-    },
   },
   phone: {
     type: String,
@@ -29,11 +26,19 @@ const UserSchema = new mongoose.Schema({
   photoURL: {
     type: String,
   },
-  lastLogin: {
+  ip: {
+    type: String, // IP address
+  },
+  deviceInfo: {
+    browser: String, // Browser information
+    os: String, // Operating system information
+    device: String, // Device information (mobile, desktop, etc.)
+  },
+  createdAt: {
     type: Date,
+    default: Date.now,
   },
 });
 
 const User = mongoose.model("User", UserSchema);
-
 module.exports = User;
