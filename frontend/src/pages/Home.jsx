@@ -7,14 +7,21 @@ const Home = () => {
 
   return (
     <div style={styles.container}>
-      <h1 style={styles.heading}>Home Page</h1>
-      <p style={styles.text}>Welcome, {user?.email}</p>
-      <button onClick={logout} style={styles.button}>
-        Logout
-      </button>
-      <Link to="/profile" style={{ ...styles.button, ...styles.link }}>
-        Go to Profile
-      </Link>
+      <h1 style={styles.heading}>Welcome to Your Homepage</h1>
+      <p style={styles.text}>Hello, {user?.email}</p>
+      <p style={styles.description}>
+        This is your personalized dashboard. Here you can find the latest
+        updates, personalized recommendations, and quick access to your profile.
+        Stay tuned for more!
+      </p>
+      <div style={styles.buttonContainer}>
+        <button onClick={logout} style={styles.button}>
+          Logout
+        </button>
+        <Link to="/profile" style={{ ...styles.button, ...styles.link }}>
+          Go to Profile
+        </Link>
+      </div>
     </div>
   );
 };
@@ -28,18 +35,33 @@ const styles = {
     height: "100vh",
     backgroundColor: "#1a1a1a",
     color: "#ffffff",
+    fontFamily: "'Poppins', sans-serif",
+    padding: "0 20px",
   },
   heading: {
-    fontSize: "3rem",
-    marginBottom: "2rem",
-    fontWeight: "bold",
-    color: "#ffffff",
+    fontSize: "2.8rem",
+    fontWeight: "600",
+    marginBottom: "1.5rem",
+    letterSpacing: "1.5px",
     textTransform: "uppercase",
-    letterSpacing: "2px",
+    textAlign: "center",
+    color: "#ffffff",
   },
   text: {
     fontSize: "1.5rem",
-    marginBottom: "1.5rem",
+    marginBottom: "1rem",
+    color: "#ddd",
+  },
+  description: {
+    fontSize: "1.1rem",
+    marginBottom: "2.5rem",
+    textAlign: "center",
+    maxWidth: "600px",
+    color: "#bbb",
+  },
+  buttonContainer: {
+    display: "flex",
+    gap: "1rem",
   },
   button: {
     fontSize: "1.25rem",
@@ -50,15 +72,10 @@ const styles = {
     border: "none",
     cursor: "pointer",
     marginBottom: "1rem",
-    textDecoration: "none",
-    textAlign: "center",
     transition: "background-color 0.3s ease",
   },
   link: {
     backgroundColor: "#28a745",
-  },
-  buttonHover: {
-    backgroundColor: "#0056b3",
   },
 };
 
