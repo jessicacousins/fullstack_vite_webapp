@@ -29,10 +29,30 @@ const UserSchema = new mongoose.Schema({
   ip: {
     type: String, // IP address
   },
+  dob: {
+    type: Date,
+    required: true,
+  },
   deviceInfo: {
     browser: String, // Browser information
     os: String, // Operating system information
     device: String, // Device information (mobile, desktop, etc.)
+  },
+  deviceType: {
+    type: String,
+  },
+  os: {
+    type: String,
+  },
+  loginHistory: [
+    {
+      type: Date,
+    },
+  ],
+  policyAccepted: {
+    type: Boolean,
+    required: true,
+    default: false,
   },
   createdAt: {
     type: Date,

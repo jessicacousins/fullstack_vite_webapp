@@ -12,11 +12,14 @@ const SignUp = () => {
   const [phone, setPhone] = useState("");
   const [bio, setBio] = useState("");
   const [photoURL, setPhotoURL] = useState("");
+  const [dob, setDob] = useState("");
   const [error, setError] = useState("");
+  const [showPolicy, setShowPolicy] = useState(false);
+  const [policyAccepted, setPolicyAccepted] = useState(false);
   const navigate = useNavigate();
 
   const validateInputs = () => {
-    if (!firstName || !lastName || !email || !password) {
+    if (!firstName || !lastName || !email || !password || !dob) {
       setError("All fields are required.");
       return false;
     }
@@ -36,25 +39,39 @@ const SignUp = () => {
       return false;
     }
 
+    const age = calculateAge(dob);
+    if (age < 13) {
+      setError("You must be 13 or older to register.");
+      return false;
+    }
+
+    if (!policyAccepted) {
+      setError("You must accept the Privacy Policy to continue.");
+      return false;
+    }
+
     return true;
   };
 
-  const resetFields = () => {
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPassword("");
-    setPhone("");
-    setBio("");
-    setPhotoURL("");
+  const calculateAge = (dob) => {
+    const birthDate = new Date(dob);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+    if (
+      monthDifference < 0 ||
+      (monthDifference === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
+    }
+    return age;
   };
 
   const handleEmailSignup = async (e) => {
     e.preventDefault();
-    setError(""); // Clear any previous errors
+    setError("");
 
     if (!validateInputs()) {
-      resetFields(); // Reset fields if validation fails
       return;
     }
 
@@ -65,7 +82,6 @@ const SignUp = () => {
         password
       );
 
-      const displayName = `${firstName} ${lastName}`;
       const response = await fetch("/api/users/register", {
         method: "POST",
         headers: {
@@ -79,6 +95,8 @@ const SignUp = () => {
           phone,
           bio,
           photoURL,
+          dob,
+          policyAccepted: true,
         }),
       });
 
@@ -88,7 +106,6 @@ const SignUp = () => {
       } else {
         console.error("Failed to register user with backend");
         setError("Failed to register user with backend.");
-        resetFields();
       }
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
@@ -97,7 +114,6 @@ const SignUp = () => {
         setError("Failed to sign up. Please try again.");
       }
       console.error("Error signing up:", error);
-      resetFields();
     }
   };
 
@@ -111,7 +127,12 @@ const SignUp = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name: displayName, email, password: null }),
+        body: JSON.stringify({
+          name: displayName,
+          email,
+          password: null,
+          policyAccepted: true,
+        }),
       });
 
       if (response.ok) {
@@ -125,6 +146,11 @@ const SignUp = () => {
       console.error("Error signing up with Google:", error);
       setError("Failed to sign up with Google. Please try again.");
     }
+  };
+
+  const handlePolicyAcceptance = () => {
+    setPolicyAccepted(true);
+    setShowPolicy(false);
   };
 
   return (
@@ -164,21 +190,57 @@ const SignUp = () => {
           placeholder="Bio"
           value={bio}
           onChange={(e) => setBio(e.target.value)}
-          style={{
-            marginBottom: "16px",
-            padding: "12px",
-            backgroundColor: "#22303c",
-            color: "#ffffff",
-            border: "1px solid #38444d",
-            borderRadius: "4px",
-          }}
         />
+        <input
+          type="date"
+          placeholder="Date of Birth"
+          value={dob}
+          onChange={(e) => setDob(e.target.value)}
+          required
+        />
+
+        <div>
+          <input
+            type="checkbox"
+            checked={policyAccepted}
+            onChange={() => setShowPolicy(true)}
+          />
+          <label>
+            I have read and agree to the{" "}
+            <span
+              style={{ color: "blue", cursor: "pointer" }}
+              onClick={() => setShowPolicy(true)}
+            >
+              Privacy Policy
+            </span>
+          </label>
+        </div>
+
         {error && <p className="error">{error}</p>}
         <button type="submit">Sign Up with Email</button>
       </form>
-      <button className="google-button" onClick={handleGoogleSignup}>
-        Sign Up with Google
-      </button>
+
+      {showPolicy && (
+        <div className="policy-modal">
+          <h2>Privacy Policy</h2>
+          <p>
+            Your privacy is important to us. This website collects the following
+            data:
+          </p>
+          <ul>
+            <li>Basic information such as name, email, phone number, etc.</li>
+            <li>Google Analytics for traffic tracking</li>
+            <li>Google AdSense for displaying advertisements</li>
+            <li>Device information, IP address, browser type, etc.</li>
+          </ul>
+          <p>
+            By signing up, you agree to the collection of this data for the
+            purposes of providing our services, improving user experience, and
+            delivering targeted advertisements.
+          </p>
+          <button onClick={handlePolicyAcceptance}>I Agree</button>
+        </div>
+      )}
     </div>
   );
 };

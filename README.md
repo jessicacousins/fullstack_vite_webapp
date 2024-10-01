@@ -6,6 +6,8 @@
 - Express
 - NodeJS
 - bcryptjs
+- npm install request-ip
+- npm install useragent
 
 ## Frontend
 
@@ -13,7 +15,6 @@
 - Firebase
 - React Router
 - npm install axios
-
 
 ## ToDo
 
