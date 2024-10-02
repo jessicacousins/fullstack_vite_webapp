@@ -1,0 +1,119 @@
+/* Overall container */
+.welcome-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  background-color: #f0f8ff; /* Soft pastel blue */
+  animation: fadeIn 1s ease-in;
+  position: relative;
+}
+
+/* Left and Right ad placeholders */
+.image-container-left,
+.image-container-right {
+  width: 20%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container-left img,
+.image-container-right img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.image-container-left img:hover,
+.image-container-right img:hover {
+  transform: scale(1.05);
+}
+
+/* Center content */
+.welcome-content {
+  width: 50%;
+  text-align: center;
+}
+
+.welcome-heading {
+  font-size: 4rem;
+  color: #4682b4; /* Soft pastel blue */
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: bold;
+  animation: slideIn 1s ease-out;
+}
+
+.welcome-text {
+  font-size: 1.3rem;
+  color: #696969; /* Grey for easy readability */
+  margin-bottom: 3rem;
+}
+
+.cta-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.cta-button {
+  font-size: 1.5rem;
+  padding: 1rem 3rem;
+  border-radius: 30px;
+  background-color: #ffb6c1; /* Pastel pink */
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 182, 193, 0.6);
+}
+
+/* Pulse animation */
+.pulse {
+  animation: pulse-animation 1.5s infinite;
+}
+
+.cta-button:hover {
+  background-color: #ff69b4; /* Stronger pink on hover */
+  transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-60px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-animation {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 182, 193, 0.6);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 182, 193, 0.8);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 182, 193, 0.6);
+  }
+}

@@ -1,58 +1,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Welcome.css";
 
 const Welcome = () => {
   return (
-    <div style={styles.container}>
-      <h1 style={styles.heading}>Welcome to My App</h1>
-      <div style={styles.linkContainer}>
-        <Link to="/login" style={styles.link}>
-          Login
-        </Link>
-        <Link to="/signup" style={styles.link}>
-          Sign Up
-        </Link>
+    <div className="welcome-container">
+      <div className="welcome-content">
+        <h1 className="welcome-heading">Welcome to [NAME_HERE]</h1>
+        <p className="welcome-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
+          dolor sit amet consectetur adipisicing elit. Dolorem dolore magni
+          perferendis iste ab incidunt nobis excepturi. Debitis voluptatibus,
+          facilis numquam maxime ratione, reiciendis excepturi cum alias nisi
+          optio at.
+        </p>
+        <p className="welcome-text">
+          Explore the world of creativity, inspiration, and community. Sign up
+          to unlock exclusive features or log in if you're already part of the
+          journey.
+        </p>
+        <div className="cta-container">
+          <Link to="/login" className="cta-button pulse">
+            Login
+          </Link>
+          <Link to="/signup" className="cta-button pulse">
+            Sign Up
+          </Link>
+        </div>
+      </div>
+
+      {/* Image sections with placeholder images */}
+      <div className="image-container-left">
+        <img src="../../public/placeHolder.png" alt="Ad placeholder" />
+      </div>
+      <div className="image-container-right">
+        <img src="../../public/placeHolder.png" alt="Ad placeholder" />
       </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100vh",
-    backgroundColor: "#1a1a1a",
-    color: "#ffffff",
-  },
-  heading: {
-    fontSize: "3rem",
-    marginBottom: "2rem",
-    fontWeight: "bold",
-    color: "#ffffff",
-    textTransform: "uppercase",
-    letterSpacing: "2px",
-  },
-  linkContainer: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "1rem",
-  },
-  link: {
-    fontSize: "1.5rem",
-    padding: "0.75rem 2rem",
-    borderRadius: "5px",
-    backgroundColor: "#007bff",
-    color: "#ffffff",
-    textDecoration: "none",
-    textAlign: "center",
-    transition: "background-color 0.3s ease",
-  },
-  linkHover: {
-    backgroundColor: "#0056b3",
-  },
 };
 
 export default Welcome;

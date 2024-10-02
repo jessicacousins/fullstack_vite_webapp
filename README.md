@@ -16,7 +16,6 @@
 - React Router
 - Axios
 
-
 ## Project Overview
 
 This project is a full-stack web application built using **Vite**, **React**, and **Firebase** on the frontend, while leveraging **Node.js**, **Express**, and **MongoDB** for the backend. The primary objective of this project is to implement a user registration and authentication system with data collection features, enabling a comprehensive user experience that includes account creation, login, blog feature, and profile management.
