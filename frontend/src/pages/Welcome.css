@@ -1,4 +1,3 @@
-/* Overall container */
 .welcome-container {
   display: flex;
   justify-content: space-around;
@@ -42,7 +41,7 @@
 
 .welcome-heading {
   font-size: 4rem;
-  color: #4682b4; /* Soft pastel blue */
+  color: #4682b4; 
   margin-bottom: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -52,7 +51,7 @@
 
 .welcome-text {
   font-size: 1.3rem;
-  color: #696969; /* Grey for easy readability */
+  color: #696969; 
   margin-bottom: 3rem;
 }
 
@@ -66,7 +65,7 @@
   font-size: 1.5rem;
   padding: 1rem 3rem;
   border-radius: 30px;
-  background-color: #ffb6c1; /* Pastel pink */
+  background-color: #ffb6c1; 
   color: #fff;
   text-decoration: none;
   text-align: center;
@@ -80,7 +79,7 @@
 }
 
 .cta-button:hover {
-  background-color: #ff69b4; /* Stronger pink on hover */
+  background-color: #ff69b4; 
   transform: scale(1.1);
 }
 

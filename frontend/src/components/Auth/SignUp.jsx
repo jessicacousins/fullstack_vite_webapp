@@ -13,9 +13,8 @@ const SignUp = () => {
   const [bio, setBio] = useState("");
   const [photoURL, setPhotoURL] = useState("");
   const [dob, setDob] = useState("");
-  const [error, setError] = useState("");
-  const [showPolicy, setShowPolicy] = useState(false);
   const [policyAccepted, setPolicyAccepted] = useState(false);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const validateInputs = () => {
@@ -120,26 +119,41 @@ const SignUp = () => {
   const handleGoogleSignup = async () => {
     try {
       const userCredential = await signInWithPopup(auth, googleProvider);
-      const { displayName, email } = userCredential.user;
+      const { displayName, email, uid: googleUID } = userCredential.user;
 
+      // Check if additional data like DOB is needed
+      if (!dob || !policyAccepted) {
+        setError("Date of birth and privacy agreement are required.");
+        return;
+      }
+
+      // Prepare the user object for the backend
+      const userData = {
+        firstName: displayName ? displayName.split(" ")[0] : "",
+        lastName: displayName ? displayName.split(" ")[1] : "",
+        email,
+        password: null, // No password for Google signups
+        phone,
+        bio,
+        photoURL,
+        dob, // Collected from form or user input
+        googleUID,
+        policyAccepted,
+      };
+
+      // Send the user data to the backend
       const response = await fetch("/api/users/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name: displayName,
-          email,
-          password: null,
-          policyAccepted: true,
-        }),
+        body: JSON.stringify(userData),
       });
 
       if (response.ok) {
-        console.log("User registered with backend via Google and Firebase");
+        console.log("User registered with backend via Google");
         navigate("/home");
       } else {
-        console.error("Failed to register Google user with backend");
         setError("Failed to register Google user with backend.");
       }
     } catch (error) {
@@ -150,7 +164,6 @@ const SignUp = () => {
 
   const handlePolicyAcceptance = () => {
     setPolicyAccepted(true);
-    setShowPolicy(false);
   };
 
   return (
@@ -203,14 +216,11 @@ const SignUp = () => {
           <input
             type="checkbox"
             checked={policyAccepted}
-            onChange={() => setShowPolicy(true)}
+            onChange={handlePolicyAcceptance}
           />
           <label>
             I have read and agree to the{" "}
-            <span
-              style={{ color: "blue", cursor: "pointer" }}
-              onClick={() => setShowPolicy(true)}
-            >
+            <span style={{ color: "blue", cursor: "pointer" }}>
               Privacy Policy
             </span>
           </label>
@@ -220,27 +230,10 @@ const SignUp = () => {
         <button type="submit">Sign Up with Email</button>
       </form>
 
-      {showPolicy && (
-        <div className="policy-modal">
-          <h2>Privacy Policy</h2>
-          <p>
-            Your privacy is important to us. This website collects the following
-            data:
-          </p>
-          <ul>
-            <li>Basic information such as name, email, phone number, etc.</li>
-            <li>Google Analytics for traffic tracking</li>
-            <li>Google AdSense for displaying advertisements</li>
-            <li>Device information, IP address, browser type, etc.</li>
-          </ul>
-          <p>
-            By signing up, you agree to the collection of this data for the
-            purposes of providing our services, improving user experience, and
-            delivering targeted advertisements.
-          </p>
-          <button onClick={handlePolicyAcceptance}>I Agree</button>
-        </div>
-      )}
+      {/* Add Google Signup button */}
+      <button className="google-button" onClick={handleGoogleSignup}>
+        Sign Up with Google
+      </button>
     </div>
   );
 };

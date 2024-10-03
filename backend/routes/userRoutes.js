@@ -22,53 +22,52 @@ const calculateAge = (dob) => {
 // @route POST /api/users/register
 // @desc Register a new user (including capturing IP and User-Agent info)
 router.post("/register", async (req, res) => {
-  const { firstName, lastName, email, password, phone, bio, photoURL, dob } =
-    req.body;
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+    phone,
+    bio,
+    photoURL,
+    googleUID,
+    dob, // Date of birth might be missing from Google
+    policyAccepted,
+  } = req.body;
 
   try {
-    // Age check for users under 13 (COPPA compliance)
-    const age = calculateAge(dob);
-    if (age < 13) {
-      return res.status(400).json({ msg: "Users under 13 cannot register." });
-    }
-
-    // Check if the user already exists
+    // Check if the user already exists by email
     let user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({ msg: "User already exists" });
     }
 
-    // Hash password
-    const hashedPassword = password ? await bcrypt.hash(password, 10) : null;
+    // Check if DOB is missing (for Google sign-ups)
+    if (!dob) {
+      return res
+        .status(400)
+        .json({ msg: "Date of birth is required for Google sign-ups." });
+    }
 
-    // Capture IP address and User-Agent string
-    const ip = requestIp.getClientIp(req);
-    const agent = useragent.parse(req.headers["user-agent"]);
-    const deviceInfo = {
-      browser: agent.toAgent(),
-      os: agent.os.toString(),
-      device: agent.device.toString(),
-    };
-
-    // Create a new user object
+    // new user object for Google sign-ups
     user = new User({
       firstName,
       lastName,
       email,
-      password: hashedPassword,
+      password: password ? await bcrypt.hash(password, 10) : null,
       phone,
       bio,
       photoURL,
       dob,
-      ip,
-      deviceInfo,
+      googleUID, // Store Google UID for future reference
+      policyAccepted,
     });
 
-    // Save the user to the database
+    // Save the user in the database
     await user.save();
-    res.status(201).json(user);
+    res.status(200).json({ msg: "User registered successfully", user });
   } catch (err) {
-    console.error("Error during user registration:", err.message);
+    console.error("Error registering user:", err.message);
     res.status(500).send("Server error");
   }
 });
