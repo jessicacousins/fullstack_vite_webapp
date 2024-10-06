@@ -15,6 +15,7 @@
 - Firebase
 - React Router
 - Axios
+- npm install three @react-three/fiber @react-three/drei
 
 ## Project Overview
 

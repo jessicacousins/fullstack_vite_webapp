@@ -1,39 +1,50 @@
 import React from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
+import ParticleBackground from "../components/ParticleBackground.jsx";
 
 const Home = () => {
   const { user, logout } = useAuth();
 
   return (
-    <div style={styles.container}>
-      <h1 style={styles.heading}>Welcome to Your Homepage</h1>
-      <p style={styles.text}>Hello, {user?.email}</p>
-      <p style={styles.description}>
-        This is your personalized dashboard. Here you can find the latest
-        updates, personalized recommendations, and quick access to your profile.
-        Stay tuned for more!
-      </p>
-      <div style={styles.buttonContainer}>
-        <button onClick={logout} style={styles.button}>
-          Logout
-        </button>
-        <Link to="/profile" style={{ ...styles.button, ...styles.link }}>
-          Go to Profile
-        </Link>
+    <div style={styles.pageContainer}>
+      <ParticleBackground /> {/* Add particle background here */}
+      <div style={styles.contentContainer}>
+        <h1 style={styles.heading}>Welcome to Your Homepage</h1>
+        <p style={styles.text}>Hello, {user?.email}</p>
+        <p style={styles.description}>
+          This is your personalized dashboard. Here you can find the latest
+          updates, personalized recommendations, and quick access to your
+          profile. Stay tuned for more!
+        </p>
+        <div style={styles.buttonContainer}>
+          <button onClick={logout} style={styles.button}>
+            Logout
+          </button>
+          <Link to="/profile" style={{ ...styles.button, ...styles.link }}>
+            Go to Profile
+          </Link>
+        </div>
       </div>
     </div>
   );
 };
 
 const styles = {
-  container: {
+  pageContainer: {
+    position: "relative",
+    height: "100vh",
+    overflow: "hidden",
+  },
+  contentContainer: {
+    position: "relative",
+    zIndex: 1,
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     height: "100vh",
-    backgroundColor: "#1a1a1a",
+    backgroundColor: "rgba(0, 0, 0, 0.6)", // Semi-transparent background
     color: "#ffffff",
     fontFamily: "'Poppins', sans-serif",
     padding: "0 20px",

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, googleProvider } from "../../../firebase";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import ColorfulParticleBackground from "../ColorfulParticleBackground";
 import "./Login.css";
 
 const Login = () => {
@@ -105,6 +106,7 @@ const Login = () => {
 
   return (
     <div className="container-login">
+      <ColorfulParticleBackground />
       <form onSubmit={handleEmailLogin}>
         <input
           type="email"
