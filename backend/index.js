@@ -28,6 +28,12 @@ app.use("/api/users", require("./routes/userRoutes"));
 // Blog API routes
 app.use("/api/blogs", require("./routes/blog"));
 
+app.use((req, res, next) => {
+  res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+  res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+  next();
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

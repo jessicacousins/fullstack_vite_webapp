@@ -6,10 +6,24 @@ import axios from "axios";
 const Blog = () => {
   const { user } = useAuth();
   const [posts, setPosts] = useState([]);
+  const [comment, setComment] = useState("");
 
   useEffect(() => {
     axios.get("/api/blogs").then((response) => setPosts(response.data));
   }, []);
+
+  const handleCommentSubmit = async (postId) => {
+    try {
+      await axios.post(`/api/blogs/${postId}/comment`, {
+        body: comment,
+        user: user.email,
+      });
+      setComment("");
+      window.location.reload();
+    } catch (error) {
+      console.error("Failed to submit comment", error);
+    }
+  };
 
   return (
     <div style={styles.container}>
@@ -26,30 +40,37 @@ const Blog = () => {
             <p>{post.content}</p>
             <p>By {post.author}</p>
             <p>{new Date(post.createdAt).toLocaleString()}</p>
-            {user && user.email === post.author && (
+
+            <h3>Comments</h3>
+            <div>
+              {post.comments.map((comment, index) => (
+                <div key={index}>
+                  <p>{comment.body}</p>
+                  <p>
+                    By {comment.user} on{" "}
+                    {new Date(comment.date).toLocaleString()}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {user && (
               <div>
-                <Link to={`/edit-blog/${post._id}`} style={styles.editButton}>
-                  Edit
-                </Link>
-                <button
-                  style={styles.deleteButton}
-                  onClick={() => handleDelete(post._id)}
-                >
-                  Delete
+                <textarea
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  placeholder="Write a comment..."
+                />
+                <button onClick={() => handleCommentSubmit(post._id)}>
+                  Submit Comment
                 </button>
               </div>
             )}
-            {/* Comment this section until CommentSection is implemented */}
-            {/* <CommentSection postId={post._id} /> */}
           </div>
         ))}
       </div>
     </div>
   );
-};
-
-const handleDelete = (id) => {
-  axios.delete(`/api/blogs/${id}`).then(() => window.location.reload());
 };
 
 const styles = {
@@ -58,7 +79,6 @@ const styles = {
   postContainer: { display: "grid", gap: "20px" },
   post: { background: "#333", padding: "20px", borderRadius: "8px" },
   createButton: { marginBottom: "20px", display: "inline-block" },
-  editButton: { marginRight: "10px" },
   deleteButton: { color: "red" },
 };
 

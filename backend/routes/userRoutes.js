@@ -5,6 +5,32 @@ const bcrypt = require("bcryptjs");
 const requestIp = require("request-ip"); // For collecting IP address
 const useragent = require("useragent"); // For capturing user agent info
 
+// @route POST /api/users/login
+// @desc Log last login info in MongoDB (not for re-authentication)
+router.post("/login", async (req, res) => {
+  const { email } = req.body; // Only email is needed
+
+  try {
+    // Find the user by email
+    let user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(400).json({ msg: "User not found" });
+    }
+
+    // Update login details (optional)
+    user.lastLogin = new Date();
+    user.ip = requestIp.getClientIp(req);
+    user.deviceInfo = useragent.parse(req.headers["user-agent"]).toString();
+
+    await user.save();
+    res.status(200).json({ msg: "Login info updated", user });
+  } catch (err) {
+    console.error("Error during login update:", err.message);
+    res.status(500).send("Server error");
+  }
+});
+
 const calculateAge = (dob) => {
   const birthDate = new Date(dob);
   const today = new Date();
@@ -115,29 +141,28 @@ router.get("/:email", async (req, res) => {
   }
 });
 
-// @route POST /api/users/login
-// @desc User login with logging of device info and IP
-router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-
+// Add a comment to a blog post
+router.post("/:id/comments", async (req, res) => {
+  const { body, user } = req.body;
   try {
-    let user = await User.findOne({ email });
-
-    if (!user || !(await bcrypt.compare(password, user.password))) {
-      return res.status(400).json({ msg: "Invalid credentials" });
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) {
+      return res.status(404).json({ msg: "Blog not found" });
     }
 
-    // Update last login, IP address, and device info
-    user.lastLogin = new Date();
-    user.ip = requestIp.getClientIp(req);
-    user.deviceInfo = useragent.parse(req.headers["user-agent"]).toString();
+    const newComment = {
+      body,
+      date: new Date(),
+      user,
+    };
 
-    await user.save();
+    blog.comments.push(newComment);
 
-    res.json(user);
+    await blog.save();
+    res.status(200).json(blog);
   } catch (err) {
-    console.error("Error during login:", err.message);
-    res.status(500).send("Server error");
+    console.error(err.message);
+    res.status(500).send("Server Error");
   }
 });
 

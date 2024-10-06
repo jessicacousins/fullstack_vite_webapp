@@ -52,7 +52,6 @@ router.post("/:id/comment", async (req, res) => {
 
   try {
     const blog = await Blog.findById(req.params.id);
-
     if (!blog) {
       return res.status(404).json({ msg: "Blog post not found" });
     }

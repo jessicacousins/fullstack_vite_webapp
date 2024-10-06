@@ -11,34 +11,9 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const validateInputs = () => {
-    if (!email || !password) {
-      setError("Both email and password are required.");
-      return false;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setError("Please enter a valid email address.");
-      return false;
-    }
-
-    return true;
-  };
-
-  const resetFields = () => {
-    setEmail("");
-    setPassword("");
-  };
-
   const handleEmailLogin = async (e) => {
     e.preventDefault();
-    setError(""); // Clear any previous errors
-
-    if (!validateInputs()) {
-      resetFields(); // Reset fields if validation fails
-      return;
-    }
+    setError("");
 
     try {
       const userCredential = await signInWithEmailAndPassword(
@@ -46,34 +21,19 @@ const Login = () => {
         email,
         password
       );
+      // Once Firebase login is successful, navigate to home
+      navigate("/home");
 
-      // Log the login event in the backend
-      const response = await fetch("/api/users/login", {
+      // Optional: Send login info to the backend for tracking user data in MongoDB
+      await fetch("/api/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email }), // Only send email, no password check needed
       });
-
-      if (response.ok) {
-        console.log("User logged in with backend and Firebase");
-        navigate("/home");
-      } else {
-        console.error("Failed to log in user with backend");
-        setError("Failed to log in user with backend.");
-        resetFields();
-      }
     } catch (error) {
-      if (error.code === "auth/user-not-found") {
-        setError("No user found with this email.");
-      } else if (error.code === "auth/wrong-password") {
-        setError("Incorrect password. Please try again.");
-      } else {
-        setError("Failed to log in. Please try again.");
-      }
-      console.error("Error logging in:", error);
-      resetFields();
+      setError("Failed to log in. Please try again.");
     }
   };
 
@@ -82,24 +42,18 @@ const Login = () => {
       const userCredential = await signInWithPopup(auth, googleProvider);
       const { email } = userCredential.user;
 
-      // Log the login event in the backend
-      const response = await fetch("/api/users/login", {
+      // Once Google login is successful, navigate to home
+      navigate("/home");
+
+      // Optional: Send login info to the backend for tracking user data in MongoDB
+      await fetch("/api/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password: "" }),
+        body: JSON.stringify({ email }), // Only send email for Google login
       });
-
-      if (response.ok) {
-        console.log("User logged in with backend via Google and Firebase");
-        navigate("/home");
-      } else {
-        console.error("Failed to log in Google user with backend");
-        setError("Failed to log in Google user with backend.");
-      }
     } catch (error) {
-      console.error("Error logging in with Google:", error);
       setError("Failed to log in with Google. Please try again.");
     }
   };
