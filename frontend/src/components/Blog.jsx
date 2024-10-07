@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import * as THREE from "three";
 
-const Blog = () => {
+const Blog = ({ searchQuery, onSearchResults }) => {
   const { user } = useAuth();
   const [posts, setPosts] = useState([]);
   const [comment, setComment] = useState("");
@@ -28,6 +28,20 @@ const Blog = () => {
       console.error("Failed to submit comment", error);
     }
   };
+
+  // Filter posts based on the search query
+  const filteredPosts = posts.filter(
+    (post) =>
+      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.content.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Notify the App.js if there are results or not
+  useEffect(() => {
+    if (onSearchResults) {
+      onSearchResults(filteredPosts.length > 0);
+    }
+  }, [filteredPosts, onSearchResults]);
 
   // Setup Three.js animation for background (Particle effect)
   useEffect(() => {
@@ -98,43 +112,47 @@ const Blog = () => {
         </Link>
       )}
       <div style={styles.postContainer}>
-        {posts.map((post, index) => (
-          <div
-            key={post._id}
-            style={index % 2 === 0 ? styles.postLeft : styles.postRight}
-          >
-            <h2>{post.title}</h2>
-            <p>{post.content}</p>
-            <p>By {post.author}</p>
-            <p>{new Date(post.createdAt).toLocaleString()}</p>
+        {filteredPosts.length > 0 ? (
+          filteredPosts.map((post, index) => (
+            <div
+              key={post._id}
+              style={index % 2 === 0 ? styles.postLeft : styles.postRight}
+            >
+              <h2>{post.title}</h2>
+              <p>{post.content}</p>
+              <p>By {post.author}</p>
+              <p>{new Date(post.createdAt).toLocaleString()}</p>
 
-            <h3>Comments</h3>
-            <div>
-              {post.comments.map((comment, index) => (
-                <div key={index}>
-                  <p>{comment.body}</p>
-                  <p>
-                    By {comment.user} on{" "}
-                    {new Date(comment.date).toLocaleString()}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {user && (
+              <h3>Comments</h3>
               <div>
-                <textarea
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                  placeholder="Write a comment..."
-                />
-                <button onClick={() => handleCommentSubmit(post._id)}>
-                  Submit Comment
-                </button>
+                {post.comments.map((comment, index) => (
+                  <div key={index}>
+                    <p>{comment.body}</p>
+                    <p>
+                      By {comment.user} on{" "}
+                      {new Date(comment.date).toLocaleString()}
+                    </p>
+                  </div>
+                ))}
               </div>
-            )}
-          </div>
-        ))}
+
+              {user && (
+                <div>
+                  <textarea
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    placeholder="Write a comment..."
+                  />
+                  <button onClick={() => handleCommentSubmit(post._id)}>
+                    Submit Comment
+                  </button>
+                </div>
+              )}
+            </div>
+          ))
+        ) : (
+          <p>No posts match your search criteria.</p>
+        )}
       </div>
     </div>
   );
@@ -173,26 +191,5 @@ const styles = {
   createButton: { marginBottom: "20px", display: "inline-block" },
   deleteButton: { color: "red" },
 };
-
-// Add keyframe animations for sliding effects
-const styleSheet = document.styleSheets[0];
-styleSheet.insertRule(
-  `
-  @keyframes slideInLeft {
-    0% { transform: translateX(-100%); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
-  }
-`,
-  styleSheet.cssRules.length
-);
-styleSheet.insertRule(
-  `
-  @keyframes slideInRight {
-    0% { transform: translateX(100%); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
-  }
-`,
-  styleSheet.cssRules.length
-);
 
 export default Blog;

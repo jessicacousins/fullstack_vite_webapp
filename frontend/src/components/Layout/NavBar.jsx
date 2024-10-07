@@ -4,7 +4,7 @@ import { auth } from "../../../firebase";
 import { useAuth } from "../../context/AuthContext";
 import "./NavBar.css";
 
-const NavBar = () => {
+const NavBar = ({ onSearch }) => {
   const navigate = useNavigate();
   const { user } = useAuth();
 
@@ -17,6 +17,10 @@ const NavBar = () => {
       .catch((error) => {
         console.error("Error logging out:", error);
       });
+  };
+
+  const handleSearchChange = (e) => {
+    onSearch(e.target.value);
   };
 
   return (
@@ -46,6 +50,14 @@ const NavBar = () => {
             </li>
             <li>
               <button onClick={handleLogout}>Logout</button>
+            </li>
+            {/* Search bar */}
+            <li>
+              <input
+                type="text"
+                placeholder="Search..."
+                onChange={handleSearchChange}
+              />
             </li>
           </>
         )}
