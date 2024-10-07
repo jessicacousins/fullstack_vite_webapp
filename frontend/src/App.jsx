@@ -14,6 +14,7 @@ import SignUp from "./components/Auth/SignUp";
 import NavBar from "./components/Layout/NavBar";
 import Blog from "./components/Blog";
 import CreateBlog from "./components/CreateBlog";
+import About from "./pages/About";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -54,6 +55,8 @@ function App() {
           }
         />
         <Route path="/create-blog" element={<CreateBlog />} />
+
+        <Route path="/about" element={<About />} />
       </Routes>
     </AuthProvider>
   );

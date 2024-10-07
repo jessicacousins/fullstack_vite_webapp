@@ -1,0 +1,64 @@
+/* Base styles */
+.holygrail-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header,
+.footer {
+  background-color: #f5a3a3;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+.header {
+  flex-shrink: 0;
+}
+
+.footer {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+/* Content and sidebar styles */
+.content-container {
+  display: flex;
+  flex: 1;
+  padding: 1rem;
+}
+
+.main-content {
+  flex-grow: 1;
+  background-color: #271414;
+  padding: 1rem;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #9e6161;
+  padding: 1rem;
+  flex-shrink: 0;
+}
+
+/* Sidebar specific styling */
+.left-sidebar {
+  order: -1; /* Moves the left sidebar to the left of the main content */
+}
+
+.right-sidebar {
+  order: 1;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .content-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}

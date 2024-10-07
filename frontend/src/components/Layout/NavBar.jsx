@@ -43,6 +43,10 @@ const NavBar = ({ onSearch }) => {
               <Link to="/home">Home</Link>
             </li>
             <li>
+              <Link to="/about">About</Link>
+            </li>
+
+            <li>
               <Link to="/profile">Profile</Link>
             </li>
             <li>
@@ -51,7 +55,7 @@ const NavBar = ({ onSearch }) => {
             <li>
               <button onClick={handleLogout}>Logout</button>
             </li>
-            {/* Search bar */}
+            {/* Search bar here */}
             <li>
               <input
                 type="text"
