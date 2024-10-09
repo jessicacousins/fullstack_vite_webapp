@@ -56,6 +56,7 @@ This web application focuses on:
 ### Frontend
 
 - **Vite**: Vite is a modern build tool that provides fast development and improved performance compared to traditional bundlers like Webpack.
+- **Three.js**: A JavaScript library for creating 3D graphics and animations in the browser.
 - **React**: A front-end JavaScript library for building interactive user interfaces.
 - **Firebase**: Firebase Authentication is used to handle user authentication via email/password and Google sign-in. It simplifies the management of user accounts.
 - **React Router**: For seamless navigation and routing between the various pages (e.g., home, profile, login, signup, etc.).

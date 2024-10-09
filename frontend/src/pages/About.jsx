@@ -5,14 +5,14 @@ const About = () => {
   return (
     <div className="holygrail-layout">
       {/* Header */}
-      <header className="header">About Us - Header</header>
+      <header className="header">About Us - News and Updates Header</header>
 
       {/* Main content and sidebars */}
       <div className="content-container">
         <aside className="sidebar left-sidebar">Left Sidebar</aside>
 
         <main className="main-content">
-          <h1>About Us</h1>
+          <h1>About Us - News and Updates</h1>
           <section>
             <h2>Our Purpose</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
