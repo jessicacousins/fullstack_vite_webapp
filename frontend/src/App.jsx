@@ -15,6 +15,7 @@ import NavBar from "./components/Layout/NavBar";
 import Blog from "./components/Blog";
 import CreateBlog from "./components/CreateBlog";
 import About from "./pages/About";
+import Games from "./pages/Games";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -45,6 +46,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/home" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/games" element={<Games />} />
         <Route
           path="/blog"
           element={

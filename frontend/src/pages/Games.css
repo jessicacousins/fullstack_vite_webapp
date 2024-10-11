@@ -1,0 +1,28 @@
+.games-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.game-section {
+  margin-bottom: 40px;
+}
+
+.game-section h2 {
+  color: #4caf50;
+  margin-bottom: 10px;
+}
+
+.game-section p {
+  font-size: 1.2rem;
+}
+
+.game-section a {
+  text-decoration: none;
+  color: #ff6600;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.game-section a:hover {
+  color: #ff3300;
+}
