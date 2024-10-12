@@ -1,5 +1,13 @@
 # Fullstack Vite Web Application
 
+## TODO:
+
+- Add in games
+- Adjust backend to reflect new frontend features
+- Create client personalized feed
+- Add chat feature
+- Add AI bot
+
 ## Backend
 
 - MongoDB
