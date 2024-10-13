@@ -7,8 +7,8 @@ const Games = () => {
     <div className="games-container">
       <h1>Games</h1>
       <section className="game-section">
-        <h2>Tic-Tac-Toe</h2>
-        <p>A classic 2-player game where you try to get three in a row.</p>
+        <h2>Blackjack</h2>
+        <p>A classic game.</p>
         <Link to="/tic-tac-toe">Play Now</Link>
       </section>
       <section className="game-section">
