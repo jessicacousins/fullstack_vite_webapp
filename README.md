@@ -69,6 +69,38 @@ All user interactions with the games are tracked in the backend, and the data is
 - **Date and time** of each game played.
 - **User performance data** linked to their account.
 
+## News API Feature
+
+### Integration with NewsData.io API
+
+Integrated the **NewsData.io API** to fetch the latest news articles and display them on the user's personal feed.
+
+#### Features:
+
+- **Trending Topics**: Displays the latest trending news articles.
+- **Real-Time Updates**: News feed is updated regularly to provide current information.
+- **Secure API Calls**: API key is securely stored on the backend using environment variables.
+- **Attribution**: Proper attribution is given to NewsData.io as per their terms.
+
+#### How It Works:
+
+1. **Backend API Call**: The backend server makes a request to NewsData.io API using the stored API key.
+2. **Endpoint**: A custom endpoint `/api/news` is created to serve news data to the frontend.
+3. **Frontend Fetch**: The frontend fetches news data from the backend endpoint.
+4. **Display**: News articles are displayed in a user-friendly format with images, titles, descriptions, and publication details.
+
+#### Why NewsData.io?
+
+- **Free Tier**: Offers a generous free tier suitable for small to medium traffic.
+- **Legal Compliance**: Allows use in production with proper attribution.
+- **Ease of Use**: Provides a simple and straightforward API.
+
+#### Attribution:
+
+As per **NewsData.io's** terms of service, proper attribution is required.
+
+> News data provided by [NewsData.io](https://newsdata.io)
+
 ## Scope of the Project
 
 This web application focuses on:
@@ -94,6 +126,7 @@ This web application focuses on:
 - **Firebase**: Firebase Authentication is used to handle user authentication via email/password and Google sign-in. It simplifies the management of user accounts.
 - **React Router**: For seamless navigation and routing between the various pages (e.g., home, profile, login, signup, etc.).
 - **Axios**: Axios is a promise-based HTTP client used to make API calls to the backend for data retrieval and submission.
+- **dotenv**: Loading environment variables for secure configurations.
 - **React-Confetti**: Used to display celebratory confetti effects in games upon certain achievements or wins.
 - **CSS and Animations**: Custom CSS and animations are used to enhance the visual experience of the games.
 
@@ -105,6 +138,8 @@ This web application focuses on:
 - **bcryptjs**: A library used to securely hash passwords before storing them in the database.
 - **request-ip**: A package that helps capture the user's IP address when they make requests to the server.
 - **useragent**: This package is used to capture detailed information about the user's device and browser, such as browser type, operating system, and device category.
+- **Axios**: Making API calls to external services like NewsData.io.
+- **dotenv**: Loading environment variables for secure configurations.
 
 ## Features
 
@@ -144,6 +179,7 @@ Make sure you have the following installed:
 - **Node.js** (v16+)
 - **MongoDB** (either locally or use a cloud service like MongoDB Atlas)
 - **Firebase** account for authentication
+- **NewsData.io** API key
 
 ### Setup
 
