@@ -1,0 +1,20 @@
+.memory-game-stats {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  padding: 20px;
+}
+
+.memory-game-stats h2,
+.memory-game-stats h3 {
+  margin-bottom: 10px;
+}
+
+.memory-game-stats ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.memory-game-stats li {
+  margin: 5px 0;
+}

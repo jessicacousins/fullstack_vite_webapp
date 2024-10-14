@@ -1,0 +1,69 @@
+.memory-game {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  padding: 20px;
+}
+
+.memory-game h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.memory-game button {
+  padding: 10px 20px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 10px;
+  justify-content: center;
+}
+
+.card {
+  perspective: 1000px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100px;
+  height: 150px;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+}
+
+.card-front {
+  transform: rotateY(180deg);
+}
+
+.card-back {
+  background-color: #f0f0f0;
+}
+
+.card-front img,
+.card-back img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.game-over {
+  margin-top: 20px;
+}

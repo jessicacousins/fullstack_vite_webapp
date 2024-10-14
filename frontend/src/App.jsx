@@ -17,6 +17,8 @@ import CreateBlog from "./components/CreateBlog";
 import About from "./pages/About";
 import Games from "./pages/Games";
 import BlackjackGame from "./components/BlackjackGame";
+import MemoryGame from "./components/MemoryGame";
+import MemoryGameStats from "./components/MemoryGameStats";
 import StatsDashboard from "./components/StatsDashboard";
 
 function App() {
@@ -51,6 +53,8 @@ function App() {
         <Route path="/games" element={<Games />} />
         <Route path="/blackjack" element={<BlackjackGame />} />
         <Route path="/blackjack-stats" element={<StatsDashboard />} />
+        <Route path="/memory-game" element={<MemoryGame />} />
+        <Route path="/memory-game-stats" element={<MemoryGameStats />} />
 
         <Route
           path="/blog"

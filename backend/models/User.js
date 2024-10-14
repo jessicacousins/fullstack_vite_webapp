@@ -11,6 +11,17 @@ const ScoreSchema = new mongoose.Schema({
   },
 });
 
+const MemoryGameScoreSchema = new mongoose.Schema({
+  turns: {
+    type: Number,
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
 const UserSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -93,6 +104,11 @@ const UserSchema = new mongoose.Schema({
   currentWinningStreak: {
     type: Number,
     default: 0,
+  },
+  memoryGameScores: [MemoryGameScoreSchema],
+  bestMemoryGameScore: {
+    type: Number,
+    default: null,
   },
 });
 

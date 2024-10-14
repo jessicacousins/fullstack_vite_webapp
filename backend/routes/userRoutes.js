@@ -230,4 +230,52 @@ router.get("/stats/:email", async (req, res) => {
   }
 });
 
+// Update Memory Game Score
+router.post("/update-memory-score", async (req, res) => {
+  const { email, turns } = req.body;
+
+  try {
+    let user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+
+    // Add the new score
+    user.memoryGameScores.push({ turns });
+
+    // Update best score
+    if (user.bestMemoryGameScore === null || turns < user.bestMemoryGameScore) {
+      user.bestMemoryGameScore = turns;
+    }
+
+    await user.save();
+
+    res.status(200).json({ msg: "Memory game score updated", user });
+  } catch (error) {
+    console.error("Error updating memory game score:", error.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// Get Memory Game Stats
+router.get("/memory-game-stats/:email", async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.params.email });
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+
+    const stats = {
+      gamesPlayed: user.memoryGameScores.length,
+      bestScore: user.bestMemoryGameScore,
+      scores: user.memoryGameScores,
+    };
+
+    res.json(stats);
+  } catch (error) {
+    console.error("Error fetching memory game stats:", error.message);
+    res.status(500).send("Server error");
+  }
+});
+
 module.exports = router;

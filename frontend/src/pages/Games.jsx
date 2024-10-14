@@ -10,11 +10,13 @@ const Games = () => {
         <h2>Blackjack</h2>
         <p>A classic game.</p>
         <Link to="/blackjack">Blackjack</Link>
+        <Link to="/blackjack-stats">Blackjack Stats</Link>
       </section>
       <section className="game-section">
         <h2>Memory Game</h2>
         <p>Test your memory skills by matching cards as fast as you can!</p>
-        <Link to="/memory-game">Play Now</Link>
+        <Link to="/memory-game">Memory Game</Link>
+        <Link to="/memory-game-stats">Memory Game Stats</Link>
       </section>
       <section className="game-section">
         <h2>Trivia Quiz</h2>
