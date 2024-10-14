@@ -16,6 +16,8 @@ import Blog from "./components/Blog";
 import CreateBlog from "./components/CreateBlog";
 import About from "./pages/About";
 import Games from "./pages/Games";
+import BlackjackGame from "./components/BlackjackGame";
+import StatsDashboard from "./components/StatsDashboard";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -47,6 +49,9 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/games" element={<Games />} />
+        <Route path="/blackjack" element={<BlackjackGame />} />
+        <Route path="/blackjack-stats" element={<StatsDashboard />} />
+
         <Route
           path="/blog"
           element={

@@ -1,0 +1,282 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+/* body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #2a2a72, #009ffd);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+.blackjack-game {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  animation: fadeInDown 1s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Blackjack Rules container */
+.rules-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  animation: fadeInUp 1.2s ease-out;
+  font-size: 16px;
+}
+
+.rules-container h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.rules-container ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.rules-container li {
+  margin-bottom: 10px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.start-button {
+  padding: 20px 40px;
+  font-size: 20px;
+  background-color: #36f436;
+  color: #000;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.start-button:hover {
+  background-color: #79ec69;
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 60px rgba(255, 0, 0, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 0, 0, 0.2);
+  }
+}
+
+.reset-button {
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #3dcf03;
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 0 15px rgba(61, 207, 3, 0.5), 0 0 40px rgba(61, 207, 3, 0.3),
+    0 0 80px rgba(61, 207, 3, 0.1);
+  animation: pulse1 1.5s infinite ease-in-out;
+}
+
+.reset-button:hover {
+  background-color: #38a50c;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+@keyframes pulse1 {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(61, 207, 3, 0.5), 0 0 40px rgba(61, 207, 3, 0.3),
+      0 0 80px rgba(61, 207, 3, 0.1);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(61, 207, 3, 0.6), 0 0 60px rgba(61, 207, 3, 0.4),
+      0 0 100px rgba(61, 207, 3, 0.2);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(61, 207, 3, 0.5), 0 0 40px rgba(61, 207, 3, 0.3),
+      0 0 80px rgba(61, 207, 3, 0.1);
+  }
+}
+
+button:focus {
+  outline: none;
+}
+
+.hit-button {
+  margin: 2rem;
+  padding: 20px 40px;
+  font-size: 20px;
+  background-color: #4caf50;
+  color: white;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hit-button:hover {
+  background-color: #66bb6a;
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.stand-button {
+  padding: 20px 40px;
+  font-size: 20px;
+  background-color: #2196f3;
+  color: white;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.stand-button:hover {
+  background-color: #64b5f6;
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.controls {
+  margin-top: 20px;
+  animation: fadeInUp 1s ease-out;
+}
+
+/* Animation for rules and start button */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.rules-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.rules-container {
+  margin-top: 40px;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.card {
+  width: 100px;
+  height: 150px;
+  margin: 20px;
+  border-radius: 10px;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #ddd;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  transform: perspective(600px) rotateY(0deg);
+  transition: transform 0.6s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card.hearts .card-suit,
+.card.diamonds .card-suit {
+  color: red;
+}
+
+.card.clubs .card-suit,
+.card.spades .card-suit {
+  color: black;
+}
+
+.card-value {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.card-suit {
+  font-size: 24px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #333;
+  font-family: "Poppins", sans-serif;
+}
+
+.card-back {
+  width: 100px;
+  height: 150px;
+  background: url("/images/cardBack.png") no-repeat center center;
+  background-size: cover;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.winner .card {
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.7), 0 0 40px rgba(0, 255, 0, 0.5),
+    0 0 60px rgba(0, 255, 0, 0.3);
+  transition: box-shadow 0.5s ease;
+}

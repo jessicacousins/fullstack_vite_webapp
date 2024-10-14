@@ -166,4 +166,68 @@ router.post("/:id/comments", async (req, res) => {
   }
 });
 
+// Update Player Score
+router.post("/update-score", async (req, res) => {
+  const { email, score, didWin } = req.body;
+
+  try {
+    let user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+
+    // Increment games played
+    user.gamesPlayed += 1;
+
+    if (didWin) {
+      user.gamesWon += 1; // Increment games won
+      user.currentWinningStreak += 1; // Increment current streak
+      if (user.currentWinningStreak > user.longestWinningStreak) {
+        user.longestWinningStreak = user.currentWinningStreak; // Update longest streak
+      }
+    } else {
+      user.gamesLost += 1; // Increment games lost
+      user.currentWinningStreak = 0; // Reset current streak on loss
+    }
+
+    // Check if new score is the highest score
+    if (score > user.highestScore) {
+      user.highestScore = score;
+    }
+
+    // Add the new score with the current date
+    user.scores.push({ value: score });
+
+    await user.save();
+
+    res.status(200).json({ msg: "Score updated", user });
+  } catch (error) {
+    console.error("Error updating score:", error.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// Get User Stats
+router.get("/stats/:email", async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.params.email });
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+
+    const stats = {
+      gamesPlayed: user.gamesPlayed,
+      gamesWon: user.gamesWon,
+      gamesLost: user.gamesLost,
+      highestScore: user.highestScore,
+      longestWinningStreak: user.longestWinningStreak,
+    };
+
+    res.json(stats);
+  } catch (error) {
+    console.error("Error fetching stats:", error.message);
+    res.status(500).send("Server error");
+  }
+});
+
 module.exports = router;

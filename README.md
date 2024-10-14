@@ -24,6 +24,7 @@
 - React Router
 - Axios
 - npm install three @react-three/fiber @react-three/drei
+- React-Confetti
 
 ## Project Overview
 

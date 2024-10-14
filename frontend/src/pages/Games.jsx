@@ -9,7 +9,7 @@ const Games = () => {
       <section className="game-section">
         <h2>Blackjack</h2>
         <p>A classic game.</p>
-        <Link to="/tic-tac-toe">Play Now</Link>
+        <Link to="/blackjack">Blackjack</Link>
       </section>
       <section className="game-section">
         <h2>Memory Game</h2>
