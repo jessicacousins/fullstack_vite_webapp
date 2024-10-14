@@ -2,11 +2,12 @@
 
 ## TODO:
 
-- Add in games
-- Adjust backend to reflect new frontend features
-- Create client personalized feed
-- Add chat feature
+- Create client personalized feed (using free APIs)
+- Add chat feature. Add direction messages.
 - Add AI bot
+- Add Lore History with sublinks for category
+- Help section/Contact section
+- Merchandise with checkout cart. Stripe payment.
 
 ## Backend
 
