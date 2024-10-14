@@ -47,6 +47,28 @@ All user interactions with the blog posts are tracked in the backend, and the da
 - The **author’s details** (linked to their user account).
 - Any **updates made** to the blog posts.
 
+## Games Feature
+
+This web application includes interactive mini-games to enhance user engagement:
+
+### Blackjack
+
+- **Play Blackjack**: Users can play a classic game of Blackjack against a dealer.
+- **Score Tracking**: User scores, wins, losses, and other statistics are tracked and stored in the backend.
+- **Personal Stats**: Users can view their Blackjack game statistics, including highest scores, games played, and win/loss record.
+
+### Memory Matching Game
+
+- **Play Memory Game**: Users can test their memory by matching pairs of cards.
+- **Performance Tracking**: The number of turns taken and other statistics are recorded and stored in the backend.
+- **Personal Stats**: Users can view their personal best scores and game history.
+
+All user interactions with the games are tracked in the backend, and the data is stored securely in the MongoDB database. This includes:
+
+- **Game scores and statistics**.
+- **Date and time** of each game played.
+- **User performance data** linked to their account.
+
 ## Scope of the Project
 
 This web application focuses on:
@@ -60,6 +82,7 @@ This web application focuses on:
    - User acceptance of the Privacy Policy.
 4. **Profile Management**: Users can manage their profile details, such as updating their information or viewing their past login history.
 5. **Privacy Policy Compliance**: Users must agree to the privacy policy before completing the registration process. This policy explains the types of data being collected, including personal data, device information, and analytics data (Google Analytics and Google AdSense).
+6. **Interactive Games**: The application includes mini-games (Blackjack and Memory Matching Game) that allow users to engage and have fun while their game statistics and performance data are tracked and stored.
 
 ## Packages and Technologies Used
 
@@ -71,6 +94,8 @@ This web application focuses on:
 - **Firebase**: Firebase Authentication is used to handle user authentication via email/password and Google sign-in. It simplifies the management of user accounts.
 - **React Router**: For seamless navigation and routing between the various pages (e.g., home, profile, login, signup, etc.).
 - **Axios**: Axios is a promise-based HTTP client used to make API calls to the backend for data retrieval and submission.
+- **React-Confetti**: Used to display celebratory confetti effects in games upon certain achievements or wins.
+- **CSS and Animations**: Custom CSS and animations are used to enhance the visual experience of the games.
 
 ### Backend
 
@@ -97,6 +122,8 @@ This web application focuses on:
 - **Password Hashing**: User passwords are securely hashed using **bcryptjs** before being saved in the database.
 - **Device Logging**: The backend logs device and browser information during registration and login to maintain a secure environment and monitor user activities.
 - **MongoDB Storage**: All user data is stored in MongoDB, ensuring scalability and flexibility for large datasets.
+- **Game Data Collection**: The backend records and stores user game statistics such as scores, wins, losses, game durations, and other relevant data.
+- **User Game History**: Users can view their game history and performance statistics.
 
 ## Privacy Policy and Data Collection
 
