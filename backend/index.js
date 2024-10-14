@@ -6,6 +6,8 @@ require("dotenv").config();
 
 const app = express();
 
+const newsRoutes = require("./routes/newsRoutes");
+
 // connect to MongoDB here
 connectDB();
 
@@ -27,6 +29,9 @@ app.use("/api/users", require("./routes/userRoutes"));
 
 // Blog API routes
 app.use("/api/blogs", require("./routes/blog"));
+
+// Mount the news routes
+app.use("/api", newsRoutes);
 
 app.use((req, res, next) => {
   res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
