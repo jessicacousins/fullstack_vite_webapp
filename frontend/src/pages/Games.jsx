@@ -19,11 +19,10 @@ const Games = () => {
         <Link to="/memory-game-stats">Memory Game Stats</Link>
       </section>
       <section className="game-section">
-        <h2>Trivia Quiz</h2>
-        <p>
-          Challenge yourself with fun trivia questions across various topics.
-        </p>
-        <Link to="/trivia-quiz">Play Now</Link>
+        <h2>Simon Says</h2>
+        <p>Challenge your memory with Simon Says!</p>
+        <Link to="/simon-says">Play Now</Link>
+        <Link to="/simon-says-stats">Simon Says Stats</Link>
       </section>
     </div>
   );

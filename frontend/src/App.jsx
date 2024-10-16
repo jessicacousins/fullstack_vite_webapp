@@ -20,6 +20,8 @@ import BlackjackGame from "./components/BlackjackGame";
 import MemoryGame from "./components/MemoryGame";
 import MemoryGameStats from "./components/MemoryGameStats";
 import StatsDashboard from "./components/StatsDashboard";
+import SimonSaysGame from "./components/SimonSaysGame";
+import SimonSaysStats from "./components/SimonSaysStats";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -55,6 +57,8 @@ function App() {
         <Route path="/blackjack-stats" element={<StatsDashboard />} />
         <Route path="/memory-game" element={<MemoryGame />} />
         <Route path="/memory-game-stats" element={<MemoryGameStats />} />
+        <Route path="/simon-says" element={<SimonSaysGame />} />
+        <Route path="/simon-says-stats" element={<SimonSaysStats />} />
 
         <Route
           path="/blog"

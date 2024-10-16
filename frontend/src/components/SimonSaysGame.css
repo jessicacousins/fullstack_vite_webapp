@@ -1,0 +1,67 @@
+.simon-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.simon-board {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 300px;
+  margin: 20px auto;
+}
+
+.simon-button {
+  width: 140px;
+  height: 140px;
+  margin: 5px;
+  border: none;
+  border-radius: 10px;
+  opacity: 0.8;
+  transition: opacity 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.simon-button.red {
+  background-color: red;
+}
+
+.simon-button.green {
+  background-color: green;
+}
+
+.simon-button.blue {
+  background-color: blue;
+}
+
+.simon-button.yellow {
+  background-color: yellow;
+}
+
+/* Glow effect for active buttons */
+.simon-button.red.active {
+  box-shadow: 0 0 30px 10px rgba(255, 0, 0, 0.8);
+}
+
+.simon-button.green.active {
+  box-shadow: 0 0 30px 10px rgba(0, 255, 0, 0.8);
+}
+
+.simon-button.blue.active {
+  box-shadow: 0 0 30px 10px rgba(0, 0, 255, 0.8);
+}
+
+.simon-button.yellow.active {
+  box-shadow: 0 0 30px 10px rgba(255, 255, 0, 0.8);
+}
+
+.simon-button.active {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.start-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin-top: 20px;
+  cursor: pointer;
+}

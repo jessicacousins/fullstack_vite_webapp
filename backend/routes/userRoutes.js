@@ -278,4 +278,55 @@ router.get("/memory-game-stats/:email", async (req, res) => {
   }
 });
 
+// Update Simon Says Score
+router.post("/update-simon-says-score", async (req, res) => {
+  const { email, levelReached } = req.body;
+
+  try {
+    let user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+
+    // Add the new game record
+    user.simonSaysGameRecords.push({ levelReached });
+
+    // Increment games played
+    user.simonSaysGamesPlayed += 1;
+
+    // Update highest level reached
+    if (levelReached > user.simonSaysHighestLevel) {
+      user.simonSaysHighestLevel = levelReached;
+    }
+
+    await user.save();
+
+    res.status(200).json({ msg: "Simon Says score updated", user });
+  } catch (error) {
+    console.error("Error updating Simon Says score:", error.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// Get Simon Says Stats
+router.get("/simon-says-stats/:email", async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.params.email });
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+
+    const stats = {
+      gamesPlayed: user.simonSaysGamesPlayed,
+      highestLevel: user.simonSaysHighestLevel,
+      gameRecords: user.simonSaysGameRecords,
+    };
+
+    res.json(stats);
+  } catch (error) {
+    console.error("Error fetching Simon Says stats:", error.message);
+    res.status(500).send("Server error");
+  }
+});
+
 module.exports = router;
