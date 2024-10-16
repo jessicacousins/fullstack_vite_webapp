@@ -69,6 +69,18 @@ All user interactions with the games are tracked in the backend, and the data is
 - **Date and time** of each game played.
 - **User performance data** linked to their account.
 
+## Simon Says Game
+
+- **Play Simon Says**: Users can test their memory and reaction skills by following an increasingly complex sequence of colors.
+- **Progress Tracking:** The highest level reached and other statistics are recorded and stored in the backend.
+- **Personal Stats**: Users can view their Simon Says game statistics, including highest level achieved, games played, and game history.
+
+All user interactions with the Simon Says game are tracked in the backend, and the data is stored securely in the MongoDB database. This includes:
+
+- **Game levels and statistics.**
+- **Date and time of each game played.**
+- **User performance data linked to their account.**
+
 ## News API Feature
 
 ### Integration with NewsData.io API
