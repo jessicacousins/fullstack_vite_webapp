@@ -1,14 +1,21 @@
+/* src/App.css */
+
+/* Define CSS Variables for the New Color Palette */
 :root {
+  /* Colors */
   --color-background: #080705;
   --color-card-button: #99ddc8;
   --color-titles-text: #c8bfc7;
   --color-accent-primary: #006d77;
   --color-accent-secondary: #ffcab1;
 
+  /* Additional Semantic Colors */
   --color-white: #ffffff;
   --color-gray: #888888;
+  --color-gray-background: #f0f0f0; /* Added for optional grey backgrounds */
 }
 
+/* Global Styles */
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -19,8 +26,10 @@ body {
 #root {
   margin: 0 auto;
   text-align: center;
+  /* Removed max-width and padding as per your feedback */
 }
 
+/* Logo Styles */
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -36,6 +45,7 @@ body {
   filter: drop-shadow(0 0 2em var(--color-accent-primary));
 }
 
+/* Keyframes for Logo Spin */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -75,12 +85,14 @@ button {
 }
 
 button.primary {
-  background-color: var(--color-card-button);
-  color: var(--color-titles-text);
+  background-color: var(--color-accent-primary);
+  color: var(--color-white);
 }
 
 button.secondary {
-  background-color: var(--color-accent-primary);
+  background-color: var(
+    --color-accent-primary
+  ); /* Same as primary for consistency */
   color: var(--color-white);
 }
 
@@ -89,23 +101,24 @@ button.accent {
   color: var(--color-white);
 }
 
-button.primary:hover {
-  background-color: var(--color-accent-primary);
-  transform: scale(1.05);
-}
-
+button.primary:hover,
 button.secondary:hover {
-  background-color: var(--color-accent-secondary);
+  background-color: var(--color-card-button);
+  color: var(--color-background);
   transform: scale(1.05);
 }
 
 button.accent:hover {
   background-color: var(--color-titles-text);
+  color: var(--color-background);
   transform: scale(1.05);
 }
 
 /* Heading Styles */
-h1,
+h1 {
+  color: var(--color-accent-secondary);
+}
+
 h2,
 h3,
 h4,
@@ -118,4 +131,5 @@ h6 {
 /* Paragraph Styles */
 p {
   line-height: 1.6;
+  color: var(--color-titles-text);
 }

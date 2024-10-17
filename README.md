@@ -26,6 +26,7 @@
 - Axios
 - npm install three @react-three/fiber @react-three/drei
 - React-Confetti
+- React-Icons
 
 ## Project Overview
 

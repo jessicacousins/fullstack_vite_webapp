@@ -22,7 +22,7 @@ const Home = () => {
           <button onClick={logout} className="button primary">
             Logout
           </button>
-          <Link to="/profile" className="button secondary">
+          <Link to="/profile" className="button primary">
             Go to Profile
           </Link>
         </div>

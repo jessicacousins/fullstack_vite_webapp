@@ -20,10 +20,10 @@ const Welcome = () => {
           journey.
         </p>
         <div className="cta-container">
-          <Link to="/login" className="cta-button pulse">
+          <Link to="/login" className="cta-button primary pulse">
             Login
           </Link>
-          <Link to="/signup" className="cta-button pulse">
+          <Link to="/signup" className="cta-button primary pulse">
             Sign Up
           </Link>
         </div>
@@ -31,10 +31,10 @@ const Welcome = () => {
 
       {/* Image sections with placeholder images */}
       <div className="image-container-left">
-        <img src="../../public/placeHolder.png" alt="Ad placeholder" />
+        <img src="/placeHolder.png" alt="Ad placeholder" />
       </div>
       <div className="image-container-right">
-        <img src="../../public/placeHolder.png" alt="Ad placeholder" />
+        <img src="/placeHolder.png" alt="Ad placeholder" />
       </div>
     </div>
   );

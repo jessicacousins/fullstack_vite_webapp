@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./CreateBlog.css"; 
 
 const CreateBlog = () => {
   const { user } = useAuth();
@@ -19,36 +20,30 @@ const CreateBlog = () => {
   };
 
   return (
-    <div style={styles.container}>
-      <h1>Create a New Blog Post</h1>
-      <form onSubmit={handleSubmit} style={styles.form}>
+    <div className="create-blog-container">
+      <h1 className="create-blog-heading">Create a New Blog Post</h1>
+      <form onSubmit={handleSubmit} className="create-blog-form">
         <input
           type="text"
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          style={styles.input}
+          className="create-blog-input"
+          required
         />
         <textarea
           placeholder="Content"
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          style={styles.textarea}
+          className="create-blog-textarea"
+          required
         />
-        <button type="submit" style={styles.button}>
+        <button type="submit" className="create-blog-button">
           Submit
         </button>
       </form>
     </div>
   );
-};
-
-const styles = {
-  container: { padding: "20px", textAlign: "center" },
-  form: { display: "flex", flexDirection: "column", gap: "10px" },
-  input: { padding: "10px", fontSize: "1rem" },
-  textarea: { padding: "10px", fontSize: "1rem", height: "200px" },
-  button: { padding: "10px 20px", background: "#007bff", color: "#fff" },
 };
 
 export default CreateBlog;

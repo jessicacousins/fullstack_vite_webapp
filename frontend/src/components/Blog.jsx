@@ -1,32 +1,53 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import * as THREE from "three";
+import { FaComment, FaExpand } from "react-icons/fa"; 
+import "./Blog.css"; 
 
 const Blog = ({ searchQuery, onSearchResults }) => {
   const { user } = useAuth();
   const [posts, setPosts] = useState([]);
-  const [comment, setComment] = useState("");
-  const mountRef = useRef(null);
-  const rendererRef = useRef(null); // Store the renderer here
-
+  const [comments, setComments] = useState({});
+  const [expandedPosts, setExpandedPosts] = useState([]); 
+  const [showComments, setShowComments] = useState({}); 
   // Fetch posts
   useEffect(() => {
     axios.get("/api/blogs").then((response) => setPosts(response.data));
   }, []);
 
   const handleCommentSubmit = async (postId) => {
+    const comment = comments[postId];
+    if (!comment || !comment.trim()) return; // Prevent empty comments
+
     try {
       await axios.post(`/api/blogs/${postId}/comment`, {
         body: comment,
         user: user.email,
       });
-      setComment("");
-      window.location.reload();
+      const response = await axios.get("/api/blogs");
+      setPosts(response.data);
+      setComments((prev) => ({ ...prev, [postId]: "" }));
     } catch (error) {
       console.error("Failed to submit comment", error);
     }
+  };
+
+  // Toggle read more
+  const toggleReadMore = (postId) => {
+    setExpandedPosts((prev) =>
+      prev.includes(postId)
+        ? prev.filter((id) => id !== postId)
+        : [...prev, postId]
+    );
+  };
+
+  // Toggle comments view
+  const toggleComments = (postId) => {
+    setShowComments((prev) => ({
+      ...prev,
+      [postId]: !prev[postId], 
+    }));
   };
 
   // Filter posts based on the search query
@@ -43,153 +64,107 @@ const Blog = ({ searchQuery, onSearchResults }) => {
     }
   }, [filteredPosts, onSearchResults]);
 
-  // Setup Three.js animation for background (Particle effect)
-  useEffect(() => {
-    if (!mountRef.current) return;
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    mountRef.current.appendChild(renderer.domElement);
-    rendererRef.current = renderer; // Store the renderer
-
-    // Create particle effect
-    const particlesCount = 10000;
-    const geometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(particlesCount * 3); // x, y, z for each particle
-
-    for (let i = 0; i < particlesCount * 3; i++) {
-      positions[i] = (Math.random() - 0.5) * 10; // Random positions
-    }
-
-    geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-
-    const material = new THREE.PointsMaterial({
-      color: 0x00ffff,
-      size: 0.05,
-      transparent: true,
-      opacity: 0.8,
-    });
-
-    const particles = new THREE.Points(geometry, material);
-    scene.add(particles);
-
-    camera.position.z = 2;
-
-    const animate = function () {
-      requestAnimationFrame(animate);
-      particles.rotation.x += 0.000001;
-      particles.rotation.y += 0.0001;
-      renderer.render(scene, camera);
-    };
-
-    animate();
-
-    // Cleanup function
-    return () => {
-      if (rendererRef.current) {
-        rendererRef.current.dispose();
-        if (mountRef.current) {
-          mountRef.current.removeChild(renderer.domElement);
-        }
-      }
-    };
-  }, []);
-
   return (
-    <div style={styles.container}>
-      <div ref={mountRef} style={styles.canvasContainer}></div>
-      <h1 style={styles.heading}>Blog Posts</h1>
+    <div className="blog-container">
+      <h1 className="blog-heading">Blog Posts</h1>
       {user && (
-        <Link to="/create-blog" style={styles.createButton}>
+        <Link to="/create-blog" className="create-blog-button">
           Create New Blog Post
         </Link>
       )}
-      <div style={styles.postContainer}>
+      <div className="posts-grid">
         {filteredPosts.length > 0 ? (
-          filteredPosts.map((post, index) => (
-            <div
-              key={post._id}
-              style={index % 2 === 0 ? styles.postLeft : styles.postRight}
-            >
-              <h2>{post.title}</h2>
-              <p>{post.content}</p>
-              <p>By {post.author}</p>
-              <p>{new Date(post.createdAt).toLocaleString()}</p>
+          filteredPosts.map((post) => {
+            const isExpanded = expandedPosts.includes(post._id);
+            const areCommentsVisible = showComments[post._id];
+            return (
+              <div key={post._id} className="post-card">
+                <h2 className="post-title">{post.title}</h2>
+                <p className={`post-content ${isExpanded ? "" : "truncated"}`}>
+                  {post.content}
+                </p>
+                {post.content.length > 200 && (
+                  <span
+                    className="read-more"
+                    onClick={() => toggleReadMore(post._id)}
+                  >
+                    {isExpanded ? " Show Less" : " Read More"}
+                  </span>
+                )}
+                <p className="post-author">
+                  By <span className="author-name">{post.author}</span>
+                </p>
+                <p className="post-date">
+                  {new Date(post.createdAt).toLocaleString()}
+                </p>
 
-              <h3>Comments</h3>
-              <div>
-                {post.comments.map((comment, index) => (
-                  <div key={index}>
-                    <p>{comment.body}</p>
-                    <p>
-                      By {comment.user} on{" "}
-                      {new Date(comment.date).toLocaleString()}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              {user && (
-                <div>
-                  <textarea
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                    placeholder="Write a comment..."
+                <div className="post-actions">
+                  {/* Comments and Expand Buttons */}
+                  <FaComment
+                    className="icon-button"
+                    onClick={() => toggleComments(post._id)}
+                    title="View Comments"
                   />
-                  <button onClick={() => handleCommentSubmit(post._id)}>
-                    Submit Comment
-                  </button>
+                  <FaExpand
+                    className="icon-button"
+                    onClick={() => toggleReadMore(post._id)}
+                    title="Expand Post"
+                  />
                 </div>
-              )}
-            </div>
-          ))
+
+                {/* Comments Section */}
+                {areCommentsVisible && (
+                  <div className="comments-section">
+                    <h3 className="comments-heading">Comments</h3>
+                    {post.comments.length > 0 ? (
+                      post.comments.map((comment, idx) => (
+                        <div key={idx} className="comment">
+                          <p className="comment-body">{comment.body}</p>
+                          <p className="comment-user">
+                            By{" "}
+                            <span className="comment-author">
+                              {comment.user}
+                            </span>{" "}
+                            on {new Date(comment.date).toLocaleString()}
+                          </p>
+                        </div>
+                      ))
+                    ) : (
+                      <p className="no-comments">No comments yet.</p>
+                    )}
+                    {user && (
+                      <div className="comment-form">
+                        <textarea
+                          value={comments[post._id] || ""}
+                          onChange={(e) =>
+                            setComments({
+                              ...comments,
+                              [post._id]: e.target.value,
+                            })
+                          }
+                          placeholder="Write a comment..."
+                          className="comment-textarea"
+                          required
+                        />
+                        <button
+                          onClick={() => handleCommentSubmit(post._id)}
+                          className="submit-comment-button"
+                        >
+                          Submit Comment
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })
         ) : (
-          <p>No posts match your search criteria.</p>
+          <p className="no-posts">No posts match your search criteria.</p>
         )}
       </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    position: "relative",
-    padding: "20px",
-    textAlign: "center",
-    overflow: "hidden",
-  },
-  canvasContainer: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    zIndex: -1,
-    opacity: 0.6, // Subtle effect
-  },
-  heading: { fontSize: "2.5rem", marginBottom: "20px" },
-  postContainer: { display: "grid", gap: "20px" },
-  postLeft: {
-    background: "#333",
-    padding: "20px",
-    borderRadius: "8px",
-    animation: "slideInLeft 1s ease-out forwards",
-  },
-  postRight: {
-    background: "#333",
-    padding: "20px",
-    borderRadius: "8px",
-    animation: "slideInRight 1s ease-out forwards",
-  },
-  createButton: { marginBottom: "20px", display: "inline-block" },
-  deleteButton: { color: "red" },
 };
 
 export default Blog;

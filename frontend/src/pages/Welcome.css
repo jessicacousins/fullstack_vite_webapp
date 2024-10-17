@@ -4,11 +4,12 @@
   align-items: center;
   height: 100vh;
   padding: 20px;
-  background-color: #f0f8ff;
+  background-color: var(--color-background);
   animation: fadeIn 1s ease-in;
   position: relative;
 }
 
+/* Left and Right ad placeholders */
 .image-container-left,
 .image-container-right {
   width: 20%;
@@ -32,14 +33,17 @@
   transform: scale(1.05);
 }
 
+/* Center content */
 .welcome-content {
   width: 50%;
   text-align: center;
+  max-width: 800px; 
+  margin: 0 auto;
 }
 
 .welcome-heading {
   font-size: 4rem;
-  color: #4682b4;
+  color: var(--color-accent-secondary);
   margin-bottom: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -49,7 +53,7 @@
 
 .welcome-text {
   font-size: 1.3rem;
-  color: #696969;
+  color: var(--color-titles-text);
   margin-bottom: 3rem;
 }
 
@@ -63,20 +67,21 @@
   font-size: 1.5rem;
   padding: 1rem 3rem;
   border-radius: 30px;
-  background-color: #ffb6c1;
-  color: #fff;
+  background-color: var(--color-accent-primary); 
+  color: var(--color-white); 
   text-decoration: none;
   text-align: center;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 5px 15px rgba(255, 182, 193, 0.6);
+  box-shadow: 0 5px 15px rgba(153, 221, 200, 0.6); 
 }
 
 .pulse {
   animation: pulse-animation 1.5s infinite;
 }
 
-.cta-button:hover {
-  background-color: #ff69b4;
+.cta-button.primary:hover {
+  background-color: var(--color-card-button); 
+  color: var(--color-background); 
   transform: scale(1.1);
 }
 
@@ -101,14 +106,14 @@
 @keyframes pulse-animation {
   0% {
     transform: scale(1);
-    box-shadow: 0 0 10px rgba(255, 182, 193, 0.6);
+    box-shadow: 0 0 10px rgba(153, 221, 200, 0.6);
   }
   50% {
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255, 182, 193, 0.8);
+    box-shadow: 0 0 20px rgba(153, 221, 200, 0.8);
   }
   100% {
     transform: scale(1);
-    box-shadow: 0 0 10px rgba(255, 182, 193, 0.6);
+    box-shadow: 0 0 10px rgba(153, 221, 200, 0.6);
   }
 }

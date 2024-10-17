@@ -1,0 +1,70 @@
+/* src/pages/CreateBlog.css */
+
+.create-blog-container {
+  padding: 40px 20px;
+  background-color: var(
+    --color-gray-background,
+    #f0f0f0
+  ); /* Optional: Define a grey background */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-blog-heading {
+  font-size: 2.5rem;
+  color: var(--color-accent-secondary);
+  margin-bottom: 30px;
+}
+
+.create-blog-form {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.create-blog-input,
+.create-blog-textarea {
+  padding: 15px;
+  font-size: 1.1rem;
+  border: 2px solid var(--color-accent-primary);
+  border-radius: 8px;
+  background-color: var(--color-card-button);
+  color: var(--color-titles-text);
+  resize: vertical;
+}
+
+.create-blog-input::placeholder,
+.create-blog-textarea::placeholder {
+  color: var(--color-gray);
+}
+
+.create-blog-button {
+  padding: 15px;
+  font-size: 1.2rem;
+  background-color: var(--color-accent-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.create-blog-button:hover {
+  background-color: var(--color-card-button);
+  color: var(--color-background);
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .create-blog-heading {
+    font-size: 2rem;
+  }
+
+  .create-blog-form {
+    width: 90%;
+  }
+}

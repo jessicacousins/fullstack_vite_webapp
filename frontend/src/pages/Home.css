@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
   background-color: rgba(8, 7, 5, 0.8);
   color: var(--color-titles-text);
   font-family: "Poppins", sans-serif;
@@ -27,13 +28,13 @@
   letter-spacing: 1.5px;
   text-transform: uppercase;
   text-align: center;
-  color: var(--color-titles-text);
+  color: var(--color-accent-secondary);
 }
 
 .home-text {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: var(--color-accent-primary);
+  color: var(--color-titles-text);
 }
 
 .home-description {
@@ -49,6 +50,7 @@
   gap: 1rem;
 }
 
+/* Button Styles */
 .button {
   font-size: 1.25rem;
   padding: 0.75rem 2rem;
@@ -64,23 +66,17 @@
 }
 
 .button.primary {
-  background-color: var(--color-card-button);
-}
-
-.button.secondary {
   background-color: var(--color-accent-primary);
+  color: var(--color-white);
 }
 
 .button.primary:hover {
-  background-color: var(--color-accent-primary);
+  background-color: var(--color-card-button);
+  color: var(--color-background);
   transform: scale(1.05);
 }
 
-.button.secondary:hover {
-  background-color: var(--color-accent-secondary);
-  transform: scale(1.05);
-}
-
+/* Responsive Design */
 @media (max-width: 768px) {
   .home-heading {
     font-size: 2rem;
