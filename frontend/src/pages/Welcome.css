@@ -4,12 +4,11 @@
   align-items: center;
   height: 100vh;
   padding: 20px;
-  background-color: #f0f8ff; /* Soft pastel blue */
+  background-color: #f0f8ff;
   animation: fadeIn 1s ease-in;
   position: relative;
 }
 
-/* Left and Right ad placeholders */
 .image-container-left,
 .image-container-right {
   width: 20%;
@@ -33,7 +32,6 @@
   transform: scale(1.05);
 }
 
-/* Center content */
 .welcome-content {
   width: 50%;
   text-align: center;
@@ -41,7 +39,7 @@
 
 .welcome-heading {
   font-size: 4rem;
-  color: #4682b4; 
+  color: #4682b4;
   margin-bottom: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -51,7 +49,7 @@
 
 .welcome-text {
   font-size: 1.3rem;
-  color: #696969; 
+  color: #696969;
   margin-bottom: 3rem;
 }
 
@@ -65,7 +63,7 @@
   font-size: 1.5rem;
   padding: 1rem 3rem;
   border-radius: 30px;
-  background-color: #ffb6c1; 
+  background-color: #ffb6c1;
   color: #fff;
   text-decoration: none;
   text-align: center;
@@ -73,17 +71,15 @@
   box-shadow: 0 5px 15px rgba(255, 182, 193, 0.6);
 }
 
-/* Pulse animation */
 .pulse {
   animation: pulse-animation 1.5s infinite;
 }
 
 .cta-button:hover {
-  background-color: #ff69b4; 
+  background-color: #ff69b4;
   transform: scale(1.1);
 }
 
-/* Animations */
 @keyframes fadeIn {
   0% {
     opacity: 0;

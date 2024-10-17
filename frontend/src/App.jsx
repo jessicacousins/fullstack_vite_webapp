@@ -23,6 +23,8 @@ import StatsDashboard from "./components/StatsDashboard";
 import SimonSaysGame from "./components/SimonSaysGame";
 import SimonSaysStats from "./components/SimonSaysStats";
 
+import "./App.css";
+
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResultsFound, setSearchResultsFound] = useState(true);

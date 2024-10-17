@@ -1,7 +1,23 @@
+:root {
+  --color-background: #080705;
+  --color-card-button: #99ddc8;
+  --color-titles-text: #c8bfc7;
+  --color-accent-primary: #006d77;
+  --color-accent-secondary: #ffcab1;
+
+  --color-white: #ffffff;
+  --color-gray: #888888;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-titles-text);
+}
+
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -11,11 +27,13 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em var(--color-accent-primary));
 }
+
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em var(--color-accent-primary));
 }
 
 @keyframes logo-spin {
@@ -33,10 +51,71 @@
   }
 }
 
+/* Card Styles */
 .card {
   padding: 2em;
+  background-color: var(--color-card-button);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Read the Docs Link */
 .read-the-docs {
-  color: #888;
+  color: var(--color-gray);
+}
+
+/* Button Styles */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 5px;
+}
+
+button.primary {
+  background-color: var(--color-card-button);
+  color: var(--color-titles-text);
+}
+
+button.secondary {
+  background-color: var(--color-accent-primary);
+  color: var(--color-white);
+}
+
+button.accent {
+  background-color: var(--color-accent-secondary);
+  color: var(--color-white);
+}
+
+button.primary:hover {
+  background-color: var(--color-accent-primary);
+  transform: scale(1.05);
+}
+
+button.secondary:hover {
+  background-color: var(--color-accent-secondary);
+  transform: scale(1.05);
+}
+
+button.accent:hover {
+  background-color: var(--color-titles-text);
+  transform: scale(1.05);
+}
+
+/* Heading Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-titles-text);
+  margin: 0.5em 0;
+}
+
+/* Paragraph Styles */
+p {
+  line-height: 1.6;
 }
