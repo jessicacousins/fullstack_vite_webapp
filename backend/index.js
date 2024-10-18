@@ -3,6 +3,7 @@ const connectDB = require("./config/db");
 const cors = require("cors");
 const useragent = require("useragent");
 require("dotenv").config();
+const cartRoutes = require("./routes/cart");
 
 const app = express();
 
@@ -23,6 +24,9 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
+
+// for the shopping  cart
+app.use("/api/cart", cartRoutes);
 
 //  API routes
 app.use("/api/users", require("./routes/userRoutes"));

@@ -56,6 +56,15 @@ const NavBar = ({ onSearch }) => {
               <Link to="/games">Games</Link>
             </li>
             <li>
+              <Link to="/checkout">Checkout</Link>
+            </li>
+            <li>
+              <Link to="/shopping">Shopping</Link>
+            </li>
+            <li>
+              <Link to="/cart">Cart</Link>
+            </li>
+            <li>
               <button onClick={handleLogout}>Logout</button>
             </li>
             {/* Search bar here */}

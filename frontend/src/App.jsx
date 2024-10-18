@@ -22,13 +22,23 @@ import MemoryGameStats from "./components/MemoryGameStats";
 import StatsDashboard from "./components/StatsDashboard";
 import SimonSaysGame from "./components/SimonSaysGame";
 import SimonSaysStats from "./components/SimonSaysStats";
+import Shopping from "./components/Shopping";
+import Cart from "./components/Cart";
+import Checkout from "./components/Checkout";
 
 import "./App.css";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResultsFound, setSearchResultsFound] = useState(true);
-  const navigate = useNavigate();
+  const [cartItems, setCartItems] = useState([]);
+
+  const addToCart = (item) => setCartItems([...cartItems, item]);
+
+  const removeFromCart = (index) => {
+    setCartItems(cartItems.filter((_, i) => i !== index));
+  };
+
+  const proceedToCheckout = useNavigate();
 
   // Handle search function
   const handleSearch = (query) => {
@@ -61,6 +71,19 @@ function App() {
         <Route path="/memory-game-stats" element={<MemoryGameStats />} />
         <Route path="/simon-says" element={<SimonSaysGame />} />
         <Route path="/simon-says-stats" element={<SimonSaysStats />} />
+
+        <Route path="/shopping" element={<Shopping addToCart={addToCart} />} />
+        <Route
+          path="/cart"
+          element={
+            <Cart
+              cartItems={cartItems}
+              removeFromCart={removeFromCart}
+              proceedToCheckout={() => proceedToCheckout("/checkout")}
+            />
+          }
+        />
+        <Route path="/checkout" element={<Checkout cartItems={cartItems} />} />
 
         <Route
           path="/blog"

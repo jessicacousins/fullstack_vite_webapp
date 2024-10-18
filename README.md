@@ -17,6 +17,8 @@
 - bcryptjs
 - request-ip
 - useragent
+- Stripe
+- npm install uuid
 
 ## Frontend
 
@@ -27,6 +29,7 @@
 - npm install three @react-three/fiber @react-three/drei
 - React-Confetti
 - React-Icons
+- npm install @stripe/react-stripe-js @stripe/stripe-js
 
 ## Project Overview
 

@@ -1,0 +1,38 @@
+.shopping-container {
+  padding: 20px;
+  background-color: var(--color-gray-background);
+  min-height: 100vh;
+  text-align: center;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background-color: var(--color-card-button);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+.price {
+  font-size: 1.2rem;
+  color: var(--color-accent-primary);
+}
+
+button {
+  background-color: var(--color-accent-primary);
+  color: var(--color-white);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--color-accent-secondary);
+}

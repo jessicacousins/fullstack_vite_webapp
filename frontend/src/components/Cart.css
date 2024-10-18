@@ -1,0 +1,34 @@
+.cart-container {
+  padding: 20px;
+  background-color: var(--color-gray-background);
+  min-height: 100vh;
+  text-align: center;
+}
+
+.cart-item {
+  background-color: var(--color-card-button);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.price {
+  font-size: 1.2rem;
+  color: var(--color-accent-primary);
+}
+
+.total-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-titles-text);
+}
+
+.checkout-button {
+  background-color: var(--color-accent-primary);
+  color: var(--color-white);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
