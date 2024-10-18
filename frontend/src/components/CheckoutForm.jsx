@@ -1,7 +1,6 @@
-
 import React, { useState, useContext } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
-import AuthContext from "../context/AuthContext"; 
+import AuthContext from "../context/AuthContext";
 import axios from "axios";
 import "./CheckoutForm.css";
 
@@ -9,7 +8,25 @@ const CheckoutForm = ({ cartItems }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
-  const { user } = useContext(AuthContext); // Get the logged-in user
+  const { user } = useContext(AuthContext);
+
+  // State for shipping information
+  const [shippingAddress, setShippingAddress] = useState({
+    line1: "",
+    city: "",
+    state: "",
+    postal_code: "",
+    country: "US",
+  });
+
+  // Handle shipping address input changes
+  const handleShippingChange = (e) => {
+    const { name, value } = e.target;
+    setShippingAddress((prevAddress) => ({
+      ...prevAddress,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -37,16 +54,10 @@ const CheckoutForm = ({ cartItems }) => {
       const response = await axios.post(
         "http://localhost:5000/api/cart/checkout",
         {
-          userId: user.uid, // Use the logged-in user's ID from Firebase
+          userId: user.uid, // Use the logged-in user's ID
           paymentMethodId: id,
           cartItems,
-          shippingAddress: {
-            line1: "123 Main St",
-            city: "San Francisco",
-            state: "CA",
-            postal_code: "94111",
-            country: "US",
-          },
+          shippingAddress,
         }
       );
 
@@ -68,6 +79,59 @@ const CheckoutForm = ({ cartItems }) => {
     <div className="checkout-card">
       <h2>Checkout</h2>
       <form onSubmit={handleSubmit} className="checkout-form">
+        {/* Shipping address input fields */}
+        <div className="shipping-input">
+          <label>Address Line 1</label>
+          <input
+            type="text"
+            name="line1"
+            value={shippingAddress.line1}
+            onChange={handleShippingChange}
+            required
+          />
+        </div>
+        <div className="shipping-input">
+          <label>City</label>
+          <input
+            type="text"
+            name="city"
+            value={shippingAddress.city}
+            onChange={handleShippingChange}
+            required
+          />
+        </div>
+        <div className="shipping-input">
+          <label>State</label>
+          <input
+            type="text"
+            name="state"
+            value={shippingAddress.state}
+            onChange={handleShippingChange}
+            required
+          />
+        </div>
+        <div className="shipping-input">
+          <label>Postal Code</label>
+          <input
+            type="text"
+            name="postal_code"
+            value={shippingAddress.postal_code}
+            onChange={handleShippingChange}
+            required
+          />
+        </div>
+        <div className="shipping-input">
+          <label>Country</label>
+          <input
+            type="text"
+            name="country"
+            value={shippingAddress.country}
+            onChange={handleShippingChange}
+            required
+          />
+        </div>
+
+        {/* Card input */}
         <div className="card-input">
           <CardElement
             options={{

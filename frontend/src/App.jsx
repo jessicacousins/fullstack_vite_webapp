@@ -30,6 +30,7 @@ import "./App.css";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchResultsFound, setSearchResultsFound] = useState(true);
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (item) => setCartItems([...cartItems, item]);
@@ -46,13 +47,13 @@ function App() {
 
     // If the search query is not empty, navigate the user to the Blog page
     if (query.trim()) {
-      navigate("/blog");
+      proceedToCheckout("/blog");
     }
   };
 
   // Handle setting search results found or not
   const handleSearchResults = (hasResults) => {
-    setSearchResultsFound(hasResults);
+    setSearchResultsFound(hasResults); // This was missing in your original code
   };
 
   return (
