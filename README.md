@@ -1,32 +1,43 @@
-# Fullstack Vite Web Application
+# Fullstack Vite React MongoDB Express Node.js App - MERN Stack
 
-## Backend
+![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)
+![Node.js Version](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-brightgreen)
+![Express](https://img.shields.io/badge/Express-Backend-lightgrey)
+![React](https://img.shields.io/badge/React-Frontend-blue)
+![Vite](https://img.shields.io/badge/Vite-Build--Tool-orange)
+![Stripe](https://img.shields.io/badge/Stripe-Payment-brightblue)
+![Firebase Authentication](https://img.shields.io/badge/Firebase-Auth-yellow)
+![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)
 
-- MongoDB
-- Express
-- NodeJS
-- bcryptjs
-- request-ip
-- useragent
-- axios
-- Stripe
-- uuid
+## Project Description
 
-## Frontend
+A full-stack Vite application using React, Node.js, Express, MongoDB, and Stripe. This project integrates Firebase for authentication, features engaging mini-games (Blackjack, Memory Matching, and Simon Says), includes a blog platform with CRUD functionality, and a shopping cart with secure Stripe payment processing.
 
-- Vite
-- Firebase
-- React Router
-- Axios
-- React-Three/fiber
-- React-Three/drei
-- React-Confetti
-- React-Icons
-- React-Stripe and Stripe
+## Table of Contents
 
-## Project Overview
+- [Project Description](#project-description)
+- [Blog Feature](#blog-feature)
+- [Games Feature](#games-feature)
+  - [Blackjack](#blackjack)
+  - [Memory Matching Game](#memory-matching-game)
+  - [Simon Says Game](#simon-says-game)
+- [News API Feature](#news-api-feature)
+- [Shopping Cart and Stripe Integration](#shopping-cart-and-checkout-with-stripe-integration-feature)
+- [Scope of the Project](#scope-of-the-project)
+- [Packages and Technologies Used](#packages-and-technologies-used)
+  - [Frontend](#frontend)
+  - [Backend](#backend)
+- [Privacy Policy and Data Collection](#privacy-policy-and-data-collection)
+- [How to Run the Project](#how-to-run-the-project)
+- [Installation Guide](#installation-guide)
+- [Future Enhancements](#future-enhancements)
+- [License Info](#license-info)
+- [Contributing](#contributing)
 
-This project is a full-stack web application built using **Vite**, **React**, and **Firebase** on the frontend, while leveraging **Node.js**, **Express**, and **MongoDB** for the backend. The primary objective of this project is to implement a user registration and authentication system with data collection features, enabling a comprehensive user experience that includes account creation, login, blog feature, profile management, 3 mini games (Blackjack, Matching, and Simon Says), and a shopping cart with **Stripe** payment processing. Payment details are never stored in the backend, but transaction logs (cart items, payment status, user details) are securely stored in MongoDB.
+## Project Objective
+
+The primary objective of this MERN stack project is to implement a user registration and authentication system with data collection features, enabling a comprehensive user experience that includes account creation, login, blog feature, profile management, 3 mini games (Blackjack, Matching, and Simon Says), and a shopping cart with **Stripe** payment processing. Payment details are never stored in the backend, but transaction logs (cart items, payment status, user details) are securely stored in MongoDB.
 
 The backend securely handles user data such as personal information, device and browser details, IP address, and more. This data is stored in **MongoDB**, with _strict age verification in compliance with legal guidelines_. The **password reset** feature includes backend validation to check if the email exists in the system before triggering a password reset email through Firebase. This helps prevent abuse and exploitation by malicious users.
 
@@ -269,6 +280,30 @@ This web application focuses on:
   - It stores all posts and comments, linking them to the appropriate user accounts.
   - Each post includes metadata such as the creation date, author, and update history.
 
+## Backend
+
+- MongoDB
+- Express
+- NodeJS
+- bcryptjs
+- request-ip
+- useragent
+- axios
+- Stripe
+- uuid
+
+## Frontend
+
+- Vite
+- Firebase
+- React Router
+- Axios
+- React-Three/fiber
+- React-Three/drei
+- React-Confetti
+- React-Icons
+- React-Stripe and Stripe
+
 ## Privacy Policy and Data Collection
 
 This application complies with privacy regulations by ensuring users must agree to the privacy policy before completing the registration process. The privacy policy explicitly states that the following data is collected:
@@ -319,7 +354,7 @@ npm install
 npm run dev
 ```
 
-## TODO - Future Enhancements:
+## Future Enhancements:
 
 These features will be added in future releases. Suggestions are welcomed.
 
@@ -329,8 +364,6 @@ These features will be added in future releases. Suggestions are welcomed.
 - **AI Bot**: Add an AI bot to assist users or provide dynamic interactions.
 - **Lore History Section**: Develop a detailed lore/history section with categorized sublinks for easy navigation.
 - **Help/Contact Section**: Create a help and contact page to provide user support and FAQs.
-
-## License Info
 
 ## License Info
 
