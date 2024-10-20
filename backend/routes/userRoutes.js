@@ -329,4 +329,21 @@ router.get("/simon-says-stats/:email", async (req, res) => {
   }
 });
 
+// POST /api/users/check-email
+router.post("/check-email", async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+
+    if (user) {
+      res.json({ exists: true });
+    } else {
+      res.json({ exists: false });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 module.exports = router;
