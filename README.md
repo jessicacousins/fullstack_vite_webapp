@@ -28,7 +28,7 @@
 
 This project is a full-stack web application built using **Vite**, **React**, and **Firebase** on the frontend, while leveraging **Node.js**, **Express**, and **MongoDB** for the backend. The primary objective of this project is to implement a user registration and authentication system with data collection features, enabling a comprehensive user experience that includes account creation, login, blog feature, profile management, 3 mini games (Blackjack, Matching, and Simon Says), and a shopping cart with **Stripe** payment processing. Payment details are never stored in the backend, but transaction logs (cart items, payment status, user details) are securely stored in MongoDB.
 
-The backend securely handles user data such as personal information, device and browser details, IP address, and more. This data is stored in MongoDB, with strict age verification in compliance with legal guidelines.
+The backend securely handles user data such as personal information, device and browser details, IP address, and more. This data is stored in **MongoDB**, with _strict age verification in compliance with legal guidelines_. The **password reset** feature includes backend validation to check if the email exists in the system before triggering a password reset email through Firebase. This helps prevent abuse and exploitation by malicious users.
 
 ## Blog Feature
 
@@ -199,6 +199,7 @@ This web application focuses on:
 9. **Comments**: Users can comment on blog posts, and all comments are stored in MongoDB. Comments can also be deleted by the post author.
 10. **Shopping Cart and Checkout System**: Users can browse a list of items and add them to their cart. The cart is viewable, where users can adjust item quantities or remove items. Each user’s shopping history, including cart items and transaction logs, is securely stored in the backend.
 11. **Checkout**: Users can proceed to checkout where they can securely process payments using Stripe. Payments are handled via Stripe’s API, and all transaction data, such as total amounts and payment statuses, are logged in MongoDB.
+12. **Password Reset**: Implemented secure password reset functionality with backend checks to prevent password reset abuse.
 
 ## Packages and Technologies Used
 
@@ -234,6 +235,7 @@ This web application focuses on:
 ### Frontend Features
 
 - **Sign-Up & Login**: Users can register for an account using either their email/password or via Google authentication.
+- **Password Reset**: checks if the email exists in the database before sending the reset link, ensuring that only valid users can reset their password.
 - **Form Validation**: The sign-up form validates user input such as email format, password complexity, and ensures users are at least 13 years old before allowing them to create an account.
 - **Privacy Policy Confirmation**: Users must confirm that they have read and agreed to the privacy policy before completing registration.
 - **Google Sign-In Integration**: Users can use Google credentials for seamless sign-up and login via Firebase.
@@ -251,6 +253,7 @@ This web application focuses on:
 ### Backend Features
 
 - **User Data Collection**: The backend captures and stores user data such as IP address, device type, operating system, and browser information. This is useful for security measures, analytics, and personalization.
+- **Password Reset**: The backend verifies if the email exists in the database before sending a password reset link via Firebase, protecting the system from potential abuse and malicious reset attempts.
 - **Age Verification**: The backend checks the user's date of birth to enforce that users under 13 are denied from registering, ensuring compliance with legal guidelines (e.g., COPPA).
 - **Password Hashing**: User passwords are securely hashed using **bcryptjs** before being saved in the database.
 - **Device Logging**: The backend logs device and browser information during registration and login to maintain a secure environment and monitor user activities.
