@@ -65,6 +65,9 @@ const NavBar = ({ onSearch }) => {
               <Link to="/cart">Cart</Link>
             </li>
             <li>
+              <Link to="/admin-dashboard">Admin Dashboard</Link>
+            </li>
+            <li>
               <button onClick={handleLogout}>Logout</button>
             </li>
             {/* Search bar here */}

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Blog = require("../models/Blog");
+const { analyzeSentiment } = require("../services/sentimentService");
 
 // @route GET /api/blogs
 router.get("/", async (req, res) => {
@@ -56,11 +57,22 @@ router.post("/:id/comment", async (req, res) => {
       return res.status(404).json({ msg: "Blog post not found" });
     }
 
-    blog.comments.push({ body, date: new Date(), user });
+    // Perform sentiment analysis on the comment
+    const sentimentAnalysis = await analyzeSentiment(body);
+
+    const newComment = {
+      body,
+      date: new Date(),
+      user,
+      sentimentAnalysis, // Store the sentiment analysis result in mongodb
+    };
+
+    blog.comments.push(newComment);
     await blog.save();
 
-    res.json(blog);
+    res.status(200).json(blog);
   } catch (err) {
+    console.error(err.message);
     res.status(500).send("Server error");
   }
 });

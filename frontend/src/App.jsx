@@ -26,6 +26,7 @@ import Shopping from "./components/Shopping";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
 import Chatbot from "./components/Chatbot";
+import AdminDashboard from "./components/AdminDashboard";
 
 import "./App.css";
 
@@ -99,6 +100,8 @@ function App() {
         <Route path="/create-blog" element={<CreateBlog />} />
 
         <Route path="/about" element={<About />} />
+
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
       </Routes>
       <Chatbot />
     </AuthProvider>

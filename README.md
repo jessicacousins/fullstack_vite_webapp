@@ -71,23 +71,17 @@ This web application includes interactive mini-games to enhance user engagement:
 - **Performance Tracking**: The number of turns taken and other statistics are recorded and stored in the backend.
 - **Personal Stats**: Users can view their personal best scores and game history.
 
-All user interactions with the games are tracked in the backend, and the data is stored securely in the MongoDB database. This includes:
-
-- **Game scores and statistics**.
-- **Date and time** of each game played.
-- **User performance data** linked to their account.
-
 ## Simon Says Game
 
 - **Play Simon Says**: Users can test their memory and reaction skills by following an increasingly complex sequence of colors.
 - **Progress Tracking:** The highest level reached and other statistics are recorded and stored in the backend.
 - **Personal Stats**: Users can view their Simon Says game statistics, including highest level achieved, games played, and game history.
 
-All user interactions with the Simon Says game are tracked in the backend, and the data is stored securely in the MongoDB database. This includes:
+_Note_: All user interactions with the games are tracked in the backend, and the data is stored securely in the MongoDB database. This includes:
 
-- **Game levels and statistics.**
-- **Date and time of each game played.**
-- **User performance data linked to their account.**
+- **Game scores and statistics**.
+- **Date and time** of each game played.
+- **User performance data** linked to their account.
 
 ## News API Feature
 
@@ -292,7 +286,6 @@ This web application focuses on:
 - Stripe
 - uuid
 - npm install openai
-
 
 ## Frontend
 

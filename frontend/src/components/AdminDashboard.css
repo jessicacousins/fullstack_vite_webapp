@@ -1,0 +1,29 @@
+.admin-dashboard {
+  padding: 20px;
+  color: var(--color-titles-text);
+  background-color: var(--color-background);
+}
+
+.posts-overview {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-card {
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.comment-sentiment {
+  padding: 10px;
+  margin-top: 10px;
+  border-top: 1px solid var(--color-titles-text);
+}
+
+.sentiment-probabilities {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 5px;
+}
