@@ -291,6 +291,8 @@ This web application focuses on:
 - axios
 - Stripe
 - uuid
+- npm install openai
+
 
 ## Frontend
 

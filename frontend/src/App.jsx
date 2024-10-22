@@ -25,6 +25,7 @@ import SimonSaysStats from "./components/SimonSaysStats";
 import Shopping from "./components/Shopping";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
+import Chatbot from "./components/Chatbot";
 
 import "./App.css";
 
@@ -99,6 +100,7 @@ function App() {
 
         <Route path="/about" element={<About />} />
       </Routes>
+      <Chatbot />
     </AuthProvider>
   );
 }

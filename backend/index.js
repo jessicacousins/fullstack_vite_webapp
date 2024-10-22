@@ -37,6 +37,10 @@ app.use("/api/blogs", require("./routes/blog"));
 // Mount the news routes
 app.use("/api", newsRoutes);
 
+// openAI chatbot routes
+const chatbotRoutes = require("./routes/chatbot");
+app.use("/api/chatbot", chatbotRoutes);
+
 app.use((req, res, next) => {
   res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
   res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
