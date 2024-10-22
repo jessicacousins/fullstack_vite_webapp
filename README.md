@@ -12,11 +12,12 @@
 
 ## Project Description
 
-A full-stack Vite application using React, Node.js, Express, MongoDB, and Stripe. This project integrates Firebase for authentication, features engaging mini-games (Blackjack, Memory Matching, and Simon Says), includes a blog platform with CRUD functionality, and a shopping cart with secure Stripe payment processing.
+A full-stack Vite application using React, Node.js, Express, MongoDB, and Stripe. This project integrates Firebase for authentication, features engaging mini-games (Blackjack, Memory Matching, and Simon Says), includes a blog platform with CRUD functionality, and a shopping cart with secure Stripe payment processing. Additionally, OpenAI has been integrated to provide an AI-powered chatbot for user interaction and AI-driven sentiment analysis of blog post comments.
 
 ## Table of Contents
 
 - [Project Description](#project-description)
+- [OpenAI Integration](#openai-integration)
 - [Blog Feature](#blog-feature)
 - [Games Feature](#games-feature)
   - [Blackjack](#blackjack)
@@ -39,7 +40,29 @@ A full-stack Vite application using React, Node.js, Express, MongoDB, and Stripe
 
 The primary objective of this MERN stack project is to implement a user registration and authentication system with data collection features, enabling a comprehensive user experience that includes account creation, login, blog feature, profile management, 3 mini games (Blackjack, Matching, and Simon Says), and a shopping cart with **Stripe** payment processing. Payment details are never stored in the backend, but transaction logs (cart items, payment status, user details) are securely stored in MongoDB.
 
+The blog platform with AI Sentiment Analysis allows users to create, edit, and comment on blog posts. All comments are processed through **OpenAI** for **AI Sentiment Analysis**, categorizing comments as positive, neutral, or negative. This sentiment data is tracked and stored in MongoDB and can be accessed through the Admin Dashboard.
+
 The backend securely handles user data such as personal information, device and browser details, IP address, and more. This data is stored in **MongoDB**, with _strict age verification in compliance with legal guidelines_. The **password reset** feature includes backend validation to check if the email exists in the system before triggering a password reset email through Firebase. This helps prevent abuse and exploitation by malicious users.
+
+## OpenAI Integration
+
+This project includes two powerful AI features using OpenAI, and proper attribution to OpenAI is provided in accordance with their usage guidelines.
+
+### AI ChatBot
+
+- **Chat Interaction**: Users can interact with an AI-driven chatbot, asking questions and receiving dynamic responses. This chatbot is powered by OpenAI's GPT model.
+- **Real-Time Responses**: The chatbot processes user inputs and generates responses in real-time, enhancing user interaction.
+- **User-Friendly Interface**: The chatbot interface is seamlessly integrated into the platform, allowing users to toggle the chatbot on or off and submit messages effortlessly.
+
+### AI Comment Sentiment Analysis
+
+- **Sentiment Analysis on Blog Comments**: Every comment made on a blog post is processed by OpenAI to analyze its sentiment, categorizing it as positive, neutral, or negative.
+- **Probabilities**: The sentiment is determined based on probabilities provided by the OpenAI model, with a percentage breakdown for each sentiment type (positive, neutral, negative).
+- **Backend Storage**: Sentiment analysis results, including the sentiment type and probability scores, are saved in MongoDB for each comment. This data is displayed on the **Admin Dashboard**, providing a detailed overview of user feedback and engagement on blog posts.
+
+### Legal Attribution for OpenAI
+
+This project utilizes OpenAI services for AI-driven chatbot interactions and comment sentiment analysis. OpenAI’s API powers both of these features, and proper credit is given for their services in accordance with OpenAI’s usage guidelines. For more details on OpenAI’s terms, please refer to their [API Terms of Use](https://openai.com/policies/terms-of-use/).
 
 ## Blog Feature
 
@@ -205,6 +228,8 @@ This web application focuses on:
 10. **Shopping Cart and Checkout System**: Users can browse a list of items and add them to their cart. The cart is viewable, where users can adjust item quantities or remove items. Each user’s shopping history, including cart items and transaction logs, is securely stored in the backend.
 11. **Checkout**: Users can proceed to checkout where they can securely process payments using Stripe. Payments are handled via Stripe’s API, and all transaction data, such as total amounts and payment statuses, are logged in MongoDB.
 12. **Password Reset**: Implemented secure password reset functionality with backend checks to prevent password reset abuse.
+13. **OpenAI Chatbot**: Users can engage with a chatbot that provides real-time AI-generated responses powered by OpenAI. The chatbot is seamlessly integrated on the frontend without storing conversation history, maintaining user privacy.
+14. **AI Comment Sentiment Analysis**: Each blog comment is automatically analyzed for sentiment (positive, neutral, or negative) using OpenAI's GPT model and is stored in MongoDB for each comment. Sentiment analysis results are displayed on the Admin Dashboard, offering insights for content creators and administrators
 
 ## Packages and Technologies Used
 
@@ -221,6 +246,8 @@ This web application focuses on:
 - **CSS and Animations**: Custom CSS and animations are used to enhance the visual experience of the games.
 - **@stripe/react-stripe-js**: The official React library for integrating Stripe’s payment system. It provides components to manage Stripe Elements and handle the payment process.
 - **@stripe/stripe-js**: A library that loads the Stripe.js script to handle payment processing, allowing secure and seamless integration with the Stripe API.
+- **openAI ChatBot**: An AI-powered chatbot integrated into the frontend using OpenAI's GPT model.
+- **OpenAI Comment Sentiment Analysis**: This feature processes and analyzes the sentiment of blog post comments using OpenAI's GPT model. Each comment is evaluated and categorized as positive, neutral, or negative, with corresponding probabilities.
 
 ### Backend
 
@@ -234,6 +261,8 @@ This web application focuses on:
 - **dotenv**: Loading environment variables for secure configurations.
 - **uuid**: A library used to generate unique identifiers (UUIDs) for cart items and other objects in the application.
 - **stripe**: A package that provides integration with Stripe’s API for securely processing payments, creating payment intents, and managing transactions.
+- **openAI Chatbot**: There is no data currently stored from the chatbot in the backend.
+- **OpenAI Comment Sentiment Analysis**: This sentiment data is stored in MongoDB and displayed on the Admin Dashboard for review by administrators and content creators.
 
 ## Features
 
@@ -253,7 +282,9 @@ This web application focuses on:
 - **Blog**:
   - Users can create new blog posts, edit, and delete their own posts.
   - Users can also comment on blog posts, adding discussions and feedback.
-  - A search feature allows users to search for specific blog posts by keywords.
+  - A **search** feature allows users to search for specific blog posts by keywords.
+  - **OpenAI Chatbot**: Users can interact with an AI-driven chatbot integrated into the platform, which provides real-time responses to user queries based on OpenAI's GPT model.
+- **Comment Sentiment Analysis**: Every blog comment is automatically analyzed by OpenAI for sentiment (positive, neutral, or negative), with the results displayed in real-time on the Admin Dashboard.
 
 ### Backend Features
 
@@ -265,6 +296,8 @@ This web application focuses on:
 - **MongoDB Storage**: All user data is stored in MongoDB, ensuring scalability and flexibility for large datasets.
 - **Game Data Collection**: The backend records and stores user game statistics such as scores, wins, losses, game durations, and other relevant data.
 - **User Game History**: Users can view their game history and performance statistics.
+- **OpenAI Chatbot Integration**: The backend communicates with OpenAI to process and generate responses for user interactions with the chatbot, enhancing engagement without storing conversation history.
+- **Comment Sentiment Storage**: Sentiment analysis for blog comments is performed via OpenAI, with sentiment data (positive, neutral, or negative) and probability scores securely stored in MongoDB for each comment.
 - **Shopping Cart**:
   - The backend tracks the user's cart, storing the items they have added, and updating the cart when items are removed or quantities are changed.
   - The backend also processes Stripe payment intents and records successful transactions, including payment status, cart contents, and user details.
@@ -285,7 +318,7 @@ This web application focuses on:
 - axios
 - Stripe
 - uuid
-- npm install openai
+- openai
 
 ## Frontend
 
@@ -301,13 +334,37 @@ This web application focuses on:
 
 ## Privacy Policy and Data Collection
 
-This application complies with privacy regulations by ensuring users must agree to the privacy policy before completing the registration process. The privacy policy explicitly states that the following data is collected:
+### OpenAI Chatbot Integration
 
-- **Personal Information**: Name, email, phone number, date of birth, etc.
-- **IP Address**: Collected via `request-ip` to monitor user sessions and track locations for security purposes.
-- **Device and Browser Information**: Collected via `useragent` to track user devices, operating systems, and browsers used to access the platform.
-- **Google Analytics**: (To be added) Traffic and usage data will be collected through Google Analytics to improve the user experience.
-- **Google AdSense**: (To be added) Advertisements served via Google AdSense will track user interactions to display relevant ads.
+The backend integrates with OpenAI to process and generate dynamic responses for user interactions with the chatbot. In addition to generating real-time responses, the backend collects and stores important metadata related to each interaction, such as:
+
+- **User Input**: The exact text entered by the user during the interaction.
+- **Timestamp**: The exact date and time when the interaction occurred.
+- **Device Metadata**: Details about the user’s device, including browser type, operating system, and device type (e.g., mobile, desktop).
+- **IP Address**: The user’s IP address for security and location tracking purposes.
+
+While the chatbot interaction itself is not stored, these metadata points are crucial for maintaining analytics, tracking user interaction trends, and ensuring personalized engagement. The OpenAI API is used to power the chatbot, but conversation histories are deliberately not retained to protect user privacy.
+
+### Comment Sentiment Analysis and Storage
+
+Every comment made on a blog post undergoes sentiment analysis using OpenAI’s API. The backend collects the following data for each comment:
+
+- **Sentiment Type**: The comment is categorized as positive, neutral, or negative based on its content.
+- **Sentiment Probabilities**: Probabilities for each sentiment type (positive, neutral, and negative) are calculated and stored as percentage scores.
+- **Comment Content**: The actual text of the user’s comment.
+- **Author Information**: The user’s details, including their email or user ID, are associated with the comment for accountability.
+- **Timestamp**: The date and time when the comment was created and analyzed.
+- **IP Address**: The user’s IP address is stored for security and monitoring purposes.
+- **Device Metadata**: Information about the user’s browser, operating system, and device is captured during the comment submission.
+
+This data is securely stored in MongoDB and displayed on the Admin Dashboard, providing a comprehensive overview of user sentiment and engagement across blog posts. This includes detailed sentiment breakdowns (positive, neutral, and negative) along with metadata about the comment and its author, helping administrators understand user feedback trends more effectively.
+
+### Additional Data Collected
+
+- **User Information**: During the user registration process, the system collects personal information such as the user’s first name, last name, email, date of birth, and phone number. This data is securely stored in MongoDB and used for personalized experiences and account management.
+- **Login History**: Every login event is tracked with timestamps and device metadata to provide detailed records of user activity.
+- **Game Statistics**: For users playing the integrated games (e.g., Blackjack, Memory Matching, Simon Says), the backend collects data such as scores, turns taken, games played, wins, losses, highest levels achieved, and more. This data is stored and displayed for users and administrators to track performance and progress.
+- **Transaction Data**: When users make purchases through the shopping cart, the backend collects transaction details, including the items purchased, total price, shipping address, payment status, and Stripe payment intent ID. These details are securely stored in MongoDB.
 
 ## How to Run the Project
 
@@ -320,6 +377,7 @@ Make sure you have the following installed:
 - **Firebase** account for authentication
 - **NewsData.io** API key
 - **Stripe** Public API Key and Private API Key
+- **OpenAI** API key
 
 ### Setup
 
