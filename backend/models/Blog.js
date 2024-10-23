@@ -5,7 +5,8 @@ const CommentSchema = new mongoose.Schema({
   body: { type: String, required: true },
   date: { type: Date, default: Date.now },
   user: { type: String, required: true },
-  sentimentAnalysis: SentimentSchema, // sentiment schema here
+  sentimentAnalysis: SentimentSchema, // Sentiment data for comments
+  isFlagged: { type: Boolean, default: false }, // Flag for inappropriate comments
 });
 
 const BlogSchema = new mongoose.Schema({
@@ -13,7 +14,8 @@ const BlogSchema = new mongoose.Schema({
   content: { type: String, required: true },
   author: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
-  comments: [CommentSchema], // each blog can have multiple comments
+  comments: [CommentSchema], // Comments associated with the blog
+  isFlagged: { type: Boolean, default: false }, // Flag for inappropriate posts
 });
 
 const Blog = mongoose.model("Blog", BlogSchema);
