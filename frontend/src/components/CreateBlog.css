@@ -16,6 +16,21 @@
   width: 100%;
 }
 
+.ai-keywords-input {
+  background-color: #999;
+  padding: 15px;
+  font-size: 1.1rem;
+  border: 2px solid var(--color-accent-primary);
+  border-radius: 8px;
+  color: var(--color-titles-text);
+  width: 100%;
+  height: 150px;
+  max-height: 500px;
+  resize: vertical;
+  line-height: 1.5;
+  overflow-y: auto;
+}
+
 .create-blog-heading {
   font-size: 2.5rem;
   color: var(--color-accent-secondary);
@@ -35,7 +50,7 @@
   font-size: 1.1rem;
   border: 2px solid var(--color-accent-primary);
   border-radius: 8px;
-  background-color: var(--color-card-button);
+  background-color: #1f1e1e;
   color: var(--color-titles-text);
   resize: vertical;
 }

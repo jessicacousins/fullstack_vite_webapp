@@ -8,8 +8,8 @@ const CreateBlog = () => {
   const { user } = useAuth();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [aiGenerating, setAiGenerating] = useState(false); // New state to track AI generation
-  const [keywords, setKeywords] = useState(""); // New state for AI prompt keywords
+  const [aiGenerating, setAiGenerating] = useState(false); // AI generation
+  const [keywords, setKeywords] = useState(""); // AI prompt keywords
   const navigate = useNavigate();
 
   // Submit blog post
@@ -27,16 +27,16 @@ const CreateBlog = () => {
       });
   };
 
-  // Generate content using OpenAI API
+  // generate content using openAI API
   const generateContent = async () => {
-    if (!keywords.trim()) return; // Prevent empty AI generation requests
+    if (!keywords.trim()) return; // prevent empty AI generation requests
     setAiGenerating(true);
 
     try {
       const response = await axios.post("/api/blogs/generate", {
         prompt: keywords,
       });
-      setContent(response.data.content); // Set AI-generated content
+      setContent(response.data.content); // set AI generated content
     } catch (error) {
       console.error("Error generating content:", error);
     } finally {
@@ -60,8 +60,7 @@ const CreateBlog = () => {
 
           {/* AI Content Generation Section */}
           <div className="ai-content-generator">
-            <input
-              type="text"
+            <textarea
               placeholder="Enter keywords for AI-generated content"
               value={keywords}
               onChange={(e) => setKeywords(e.target.value)}
