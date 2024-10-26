@@ -11,7 +11,7 @@ const Home = () => {
     <div className="home-page">
       <ParticleBackground />
       <div className="home-content">
-        <h1 className="home-heading">Welcome to [Your Website Name]</h1>
+        <h1 className="home-heading">Welcome to the Community</h1>
         <p className="home-text">Hello, {user?.email}</p>
         <p className="home-description">
           Explore the exciting features available to you. Here’s a quick
@@ -76,7 +76,7 @@ const Home = () => {
         </div>
 
         <div className="home-button-container">
-          <button onClick={logout} className="button primary">
+          <button onClick={logout} className="button warning">
             Logout
           </button>
           <Link to="/profile" className="button primary">

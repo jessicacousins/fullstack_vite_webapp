@@ -1,206 +1,73 @@
-/* src/App.css */
-
-/* Define CSS Variables for the New Color Palette */
-:root {
-  /* Colors */
-  --color-background: #080705;
-  --color-card-button: #99ddc8;
-  --color-titles-text: #c8bfc7;
-  --color-accent-primary: #006d77;
-  --color-accent-secondary: #ffcab1;
-
-  /* Additional Semantic Colors */
-  --color-white: #ffffff;
-  --color-gray: #888888;
-  --color-gray-background: #f0f0f0; /* Added for optional grey backgrounds */
-}
-
-/* Global Styles */
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: var(--color-background);
-  color: var(--color-titles-text);
-}
-
-#root {
-  margin: 0 auto;
-  text-align: center;
-  /* Removed max-width and padding as per your feedback */
-}
-
-/* Logo Styles */
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em var(--color-accent-primary));
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em var(--color-accent-primary));
-}
-
-/* Keyframes for Logo Spin */
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-/* Card Styles */
-.card {
-  padding: 2em;
-  background-color: var(--color-card-button);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Read the Docs Link */
-.read-the-docs {
-  color: var(--color-gray);
-}
-
-/* Button Styles */
-button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  border-radius: 5px;
-}
-
-button.primary {
-  background-color: var(--color-accent-primary);
-  color: var(--color-white);
-}
-
-button.secondary {
-  background-color: var(
-    --color-accent-primary
-  ); /* Same as primary for consistency */
-  color: var(--color-white);
-}
-
-button.accent {
-  background-color: var(--color-accent-secondary);
-  color: var(--color-white);
-}
-
-button.primary:hover,
-button.secondary:hover {
-  background-color: var(--color-card-button);
-  color: var(--color-background);
-  transform: scale(1.05);
-}
-
-button.accent:hover {
-  background-color: var(--color-titles-text);
-  color: var(--color-background);
-  transform: scale(1.05);
-}
-
-/* Heading Styles */
-h1 {
-  color: var(--color-accent-secondary);
-}
-
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--color-titles-text);
-  margin: 0.5em 0;
-}
-
-/* Paragraph Styles */
-p {
-  line-height: 1.6;
-  color: var(--color-titles-text);
-}
-
-/* chatbot area  */
+/* Chatbot area */
 .chatbot-toggle {
   position: fixed;
   top: 80px;
   right: 20px;
   background-color: #4caf50;
-  color: white;
+  color: #000;
   border-radius: 50%;
-  padding: 10px;
+  padding: 5px;
   cursor: pointer;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1001; 
+  z-index: 1001;
 }
 
 .chatbot-container {
   position: fixed;
-  top: 80px; 
+  top: 80px;
   right: 20px;
   width: 350px;
   max-height: 400px;
-  background-color: white;
+  background-color: rgb(53, 51, 51);
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   padding: 10px;
-  z-index: 1000; 
+  z-index: 1000;
 }
 
-.chatbox {
+.chatbot-chatbox {
   height: 300px;
   max-height: 300px;
   overflow-y: auto;
   padding: 5px;
   border-bottom: 1px solid #ccc;
   margin-bottom: 10px;
+  margin-top: 40px;
 }
 
-.message {
+.chatbot-message {
   padding: 8px;
   border-radius: 8px;
   margin-bottom: 5px;
 }
 
-.user {
+.chatbot-user-message {
   background-color: #dcf8c6;
+  color: #000;
   text-align: right;
 }
 
-.bot {
+.chatbot-bot-message {
   background-color: #f1f0f0;
+  color: #000;
   text-align: left;
 }
 
-.input-container {
+.chatbot-input-container {
   display: flex;
 }
 
-input {
+.chatbot-input {
   flex-grow: 1;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-button {
+.chatbot-send-button {
   padding: 8px;
   background-color: #4caf50;
   color: white;

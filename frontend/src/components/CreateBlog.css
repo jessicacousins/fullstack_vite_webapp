@@ -1,6 +1,6 @@
 .create-blog-container {
   padding: 40px 20px;
-  background-color: var(--color-gray-background, #f0f0f0);
+  background-color: #585555;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -20,7 +20,7 @@
   background-color: #999;
   padding: 15px;
   font-size: 1.1rem;
-  border: 2px solid var(--color-accent-primary);
+  border: 2px solid #000;
   border-radius: 8px;
   color: var(--color-titles-text);
   width: 100%;
@@ -33,7 +33,7 @@
 
 .create-blog-heading {
   font-size: 2.5rem;
-  color: var(--color-accent-secondary);
+  color: rgb(213, 132, 18);
   margin-bottom: 30px;
   text-align: center;
 }
@@ -68,8 +68,8 @@
 .create-blog-button {
   padding: 15px;
   font-size: 1.2rem;
-  background-color: var(--color-accent-primary);
-  color: var(--color-white);
+  background-color: #000;
+  color: #fff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -77,9 +77,26 @@
 }
 
 .create-blog-button:hover {
-  background-color: var(--color-card-button);
-  color: var(--color-background);
+  background-color: #888;
+  color: #fff;
   transform: scale(1.05);
+}
+
+.generate-content-button {
+  margin-top: 20px;
+  padding: 15px;
+  font-size: 1.2rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.generate-content-button:hover {
+  background-color: #999595;
+  color: #000;
 }
 
 @media (max-width: 768px) {

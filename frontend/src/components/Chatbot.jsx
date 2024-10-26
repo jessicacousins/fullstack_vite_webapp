@@ -37,21 +37,31 @@ const Chatbot = () => {
       {/* Chatbot window */}
       {isOpen && (
         <div className="chatbot-container">
-          <div className="chatbox">
+          <div className="chatbot-chatbox">
             {chatLog.map((log, index) => (
-              <div key={index} className={`message ${log.sender}`}>
+              <div
+                key={index}
+                className={`chatbot-message ${
+                  log.sender === "user"
+                    ? "chatbot-user-message"
+                    : "chatbot-bot-message"
+                }`}
+              >
                 {log.message}
               </div>
             ))}
           </div>
-          <div className="input-container">
+          <div className="chatbot-input-container">
             <input
               type="text"
+              className="chatbot-input"
               value={userMessage}
               onChange={(e) => setUserMessage(e.target.value)}
               placeholder="Ask me anything..."
             />
-            <button onClick={handleSendMessage}>Send</button>
+            <button className="chatbot-send-button" onClick={handleSendMessage}>
+              Send
+            </button>
           </div>
         </div>
       )}
