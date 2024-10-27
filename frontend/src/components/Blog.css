@@ -1,6 +1,6 @@
 .blog-container {
   padding: 40px 20px;
-  background-color: #555555;
+  background-color: #044153;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,7 +21,7 @@
 
 .blog-heading {
   font-size: 3rem;
-  color: #fbc16f;
+  color: #c2e4ee;
   margin-bottom: 30px;
   text-align: center;
 }
@@ -30,7 +30,7 @@
   max-width: 800px;
   margin-bottom: 40px;
   padding: 12px 25px;
-  background-color: #43ff04cd;
+  background-color: #4caf50;
   color: #ffffff;
   border-radius: 8px;
   text-decoration: none;
@@ -56,16 +56,17 @@
   background-color: #2c2c2c;
   border-radius: 10px;
   padding: 25px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(197, 234, 245, 0.5);
   position: relative;
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .post-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(216, 238, 245, 0.7) !important;
 }
 
 .post-title {
@@ -101,7 +102,7 @@
 
 .post-author {
   font-size: 1rem;
-  color: #43ff04cd;
+  color: #4caf50;
   margin-bottom: 5px;
   text-align: center;
 }
@@ -122,7 +123,7 @@
 
 .icon-button {
   font-size: 1.5rem;
-  color: #43ff04cd;
+  color: #4caf50;
   cursor: pointer;
   transition: color 0.3s;
 }
@@ -180,7 +181,7 @@
 .submit-comment-button {
   align-self: flex-end;
   padding: 10px 20px;
-  background-color: #43ff04cd;
+  background-color: #4caf50;
   color: #ffffff;
   border: none;
   border-radius: 5px;
