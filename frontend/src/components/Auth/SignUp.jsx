@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, googleProvider } from "../../../firebase";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import ColorfulParticleBackground from "../ColorfulParticleBackground";
+// import ColorfulParticleBackground from "../ColorfulParticleBackground";
 import "./SignUp.css";
 
 const SignUp = () => {
@@ -169,7 +169,7 @@ const SignUp = () => {
 
   return (
     <div className="container-signup">
-      <ColorfulParticleBackground />
+      {/* <ColorfulParticleBackground /> */}
       <form onSubmit={handleEmailSignup}>
         <input
           type="text"

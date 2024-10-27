@@ -6,7 +6,7 @@ import {
   signInWithPopup,
   sendPasswordResetEmail,
 } from "firebase/auth";
-import ColorfulParticleBackground from "../ColorfulParticleBackground";
+// import ColorfulParticleBackground from "../ColorfulParticleBackground";
 import "./Login.css";
 
 const Login = () => {
@@ -91,7 +91,7 @@ const Login = () => {
 
   return (
     <div className="container-login">
-      <ColorfulParticleBackground />
+      {/* <ColorfulParticleBackground /> */}
       <form onSubmit={handleEmailLogin}>
         <input
           type="email"
