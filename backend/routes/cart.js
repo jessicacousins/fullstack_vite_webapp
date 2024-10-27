@@ -1,10 +1,9 @@
 const express = require("express");
+require("dotenv").config();
 const router = express.Router();
 const { v4: uuidv4 } = require("uuid");
 const Stripe = require("stripe");
-const stripe = Stripe(
-  "Add_Your_Private_Stripe_API_Here"
-);
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 const Cart = require("../models/Cart");
 
 // @route POST /api/cart/add
@@ -41,7 +40,7 @@ router.post("/checkout", async (req, res) => {
   }
 
   const totalAmount = cartItems.reduce(
-    (acc, item) => acc + item.price * 100,
+    (acc, item) => acc + item.price * item.quantity * 100,
     0
   ); // in cents
 

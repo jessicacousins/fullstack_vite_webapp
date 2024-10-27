@@ -35,7 +35,17 @@ function App() {
   const [searchResultsFound, setSearchResultsFound] = useState(true);
   const [cartItems, setCartItems] = useState([]);
 
-  const addToCart = (item) => setCartItems([...cartItems, item]);
+  const addToCart = (product) => {
+    setCartItems((prevItems) => [...prevItems, { ...product, quantity: 1 }]);
+  };
+
+  const updateCartQuantity = (index, newQuantity) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item, i) =>
+        i === index ? { ...item, quantity: newQuantity } : item
+      )
+    );
+  };
 
   const removeFromCart = (index) => {
     setCartItems(cartItems.filter((_, i) => i !== index));
@@ -55,7 +65,7 @@ function App() {
 
   // Handle setting search results found or not
   const handleSearchResults = (hasResults) => {
-    setSearchResultsFound(hasResults); // This was missing in your original code
+    setSearchResultsFound(hasResults); 
   };
 
   return (
@@ -82,6 +92,8 @@ function App() {
             <Cart
               cartItems={cartItems}
               removeFromCart={removeFromCart}
+              updateCartQuantity={updateCartQuantity}
+              setCartItems={setCartItems}
               proceedToCheckout={() => proceedToCheckout("/checkout")}
             />
           }

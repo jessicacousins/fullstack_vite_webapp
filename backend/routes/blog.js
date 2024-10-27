@@ -93,10 +93,10 @@ router.post("/:id/comment", async (req, res) => {
       return res.status(404).json({ msg: "Blog post not found" });
     }
 
-    // Perform sentiment analysis on the comment
+    // sentiment analysis on the comment here
     const sentimentAnalysis = await analyzeSentiment(body);
 
-    // Perform content moderation on the comment
+    // content moderation on the comment here
     const moderationResult = await moderateContent(body);
     const isFlagged = moderationResult?.flagged || false;
 
@@ -105,7 +105,7 @@ router.post("/:id/comment", async (req, res) => {
       date: new Date(),
       user,
       sentimentAnalysis,
-      isFlagged, // Track flagged status for admin review
+      isFlagged, // track flagged status for admin review
     };
 
     blog.comments.push(newComment);
