@@ -2,13 +2,15 @@ import React, { useState, useContext } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import AuthContext from "../context/AuthContext";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./CheckoutForm.css";
 
-const CheckoutForm = ({ cartItems }) => {
+const CheckoutForm = ({ cartItems, clearCart }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   // State for shipping information
   const [shippingAddress, setShippingAddress] = useState({
@@ -27,7 +29,6 @@ const CheckoutForm = ({ cartItems }) => {
       [name]: value,
     }));
   };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
@@ -51,19 +52,23 @@ const CheckoutForm = ({ cartItems }) => {
 
     const { id } = paymentMethod;
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/cart/checkout",
-        {
-          userId: user.uid, // Use the logged-in user's ID
-          paymentMethodId: id,
-          cartItems,
-          shippingAddress,
-        }
-      );
+      const response = await axios.post("/api/cart/checkout", {
+        userId: user.uid,
+        paymentMethodId: id,
+        cartItems,
+        shippingAddress,
+      });
 
       if (response.data.success) {
         alert("Payment Successful!");
-        // Redirect or clear the cart, etc.
+
+        // Clear the cart
+        clearCart();
+
+        // redirect to order success view
+        navigate("/order-success", {
+          state: { orderDetails: response.data.order },
+        });
       } else {
         alert("Payment Failed: " + response.data.error);
       }

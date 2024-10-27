@@ -48,12 +48,9 @@ router.post("/checkout", async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: totalAmount,
       currency: "usd",
+      payment_method_types: ["card"], // only accepting card payments
       payment_method: paymentMethodId,
       confirm: true,
-      automatic_payment_methods: {
-        enabled: true,
-        allow_redirects: "never",
-      },
       shipping: {
         name: userId,
         address: shippingAddress,
@@ -72,7 +69,8 @@ router.post("/checkout", async (req, res) => {
 
     await newCart.save();
 
-    res.json({ success: true, paymentIntent });
+    // Send the response including the order details
+    res.json({ success: true, paymentIntent, order: newCart });
   } catch (error) {
     console.error("Payment error:", error.message);
     res.status(400).json({ success: false, error: error.message });

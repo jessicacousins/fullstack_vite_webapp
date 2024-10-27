@@ -5,12 +5,12 @@ import CheckoutForm from "./CheckoutForm";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
-const Checkout = ({ cartItems }) => {
+const Checkout = ({ cartItems, clearCart }) => {
   return (
     <div className="checkout-container">
       <h1>Checkout</h1>
       <Elements stripe={stripePromise}>
-        <CheckoutForm cartItems={cartItems} />
+        <CheckoutForm cartItems={cartItems} clearCart={clearCart} />
       </Elements>
     </div>
   );

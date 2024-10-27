@@ -27,6 +27,7 @@ import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
 import Chatbot from "./components/Chatbot";
 import AdminDashboard from "./components/AdminDashboard";
+import OrderSuccess from "./components/OrderSuccess";
 
 import "./App.css";
 
@@ -65,7 +66,11 @@ function App() {
 
   // Handle setting search results found or not
   const handleSearchResults = (hasResults) => {
-    setSearchResultsFound(hasResults); 
+    setSearchResultsFound(hasResults);
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
   };
 
   return (
@@ -83,7 +88,8 @@ function App() {
         <Route path="/memory-game" element={<MemoryGame />} />
         <Route path="/memory-game-stats" element={<MemoryGameStats />} />
         <Route path="/simon-says" element={<SimonSaysGame />} />
-        <Route path="/simon-says-stats" element={<SimonSaysStats />} />
+
+        <Route path="/order-success" element={<OrderSuccess />} />
 
         <Route path="/shopping" element={<Shopping addToCart={addToCart} />} />
         <Route
@@ -98,7 +104,10 @@ function App() {
             />
           }
         />
-        <Route path="/checkout" element={<Checkout cartItems={cartItems} />} />
+        <Route
+          path="/checkout"
+          element={<Checkout cartItems={cartItems} clearCart={clearCart} />}
+        />
 
         <Route
           path="/blog"
