@@ -130,11 +130,7 @@ const NavBar = ({ onSearch }) => {
                 Admin
               </NavLink>
             </li>
-            <li>
-              <button onClick={handleLogout} className="logout-button">
-                Logout
-              </button>
-            </li>
+
             <li>
               <div className="search-container">
                 <input
@@ -147,6 +143,11 @@ const NavBar = ({ onSearch }) => {
                   🔍
                 </button>
               </div>
+            </li>
+            <li>
+              <button onClick={handleLogout} className="logout-button">
+                Logout
+              </button>
             </li>
           </>
         )}
