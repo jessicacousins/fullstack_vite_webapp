@@ -1,0 +1,40 @@
+.fashion-classifier {
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin-bottom: 20px;
+  max-width: 300px;
+  color: #000;
+}
+
+.canvas-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+canvas {
+  border: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.prediction {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.prediction.correct {
+  color: #00a000;
+  border: 2px solid #00a000;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.prediction.wrong {
+  color: #ff0000;
+  border: 2px solid #ff0000;
+  padding: 5px;
+  border-radius: 5px;
+}

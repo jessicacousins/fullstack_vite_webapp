@@ -347,6 +347,8 @@ This web application focuses on:
 - React-Confetti
 - React-Icons
 - React-Stripe and Stripe
+- npm install @tensorflow/tfjs
+- npm install @tensorflow-models/mobilenet
 
 ## Privacy Policy and Data Collection
 
@@ -370,7 +372,6 @@ Users may use OpenAI’s API to generate blog posts based on prompts or keywords
 - **Generated Content**: The AI-generated content is stored in the backend to display on the frontend before user approval.
 - **Timestamp**: The exact date and time when the content was generated.
 - **Author Information**: The user’s details, including their email or user ID, are associated with the generated content for accountability.
-
 
 #### AI Moderation and Flagging
 

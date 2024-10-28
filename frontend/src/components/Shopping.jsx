@@ -1,5 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import "./Shopping.css";
+
+const FashionClassifier = React.lazy(() => import("./FashionClassifier"));
+
+const MobileNetClassifier = React.lazy(() => import("./MobileNetClassifier"));
 
 const products = [
   {
@@ -8,6 +12,7 @@ const products = [
     description: "Comfortable cotton T-shirt",
     price: 25,
     image: "/img/pinkTshirt.webp",
+    label: "Shirt",
   },
   {
     id: 2,
@@ -15,6 +20,7 @@ const products = [
     description: "Warm and cozy",
     price: 40,
     image: "/img/funnyGreenSweatShirt.webp",
+    label: "Pullover",
   },
   {
     id: 3,
@@ -22,6 +28,7 @@ const products = [
     description: "Stylish tshirt",
     price: 65,
     image: "/img/yellowRobot.webp",
+    label: "Shirt",
   },
   {
     id: 4,
@@ -29,13 +36,15 @@ const products = [
     description: "Stylish red cap",
     price: 15,
     image: "/img/redHat.webp",
+    label: "Hat",
   },
   {
     id: 5,
     title: "Funny Sweatshirt",
-    description: "Stylish funny sweatshirt",
+    description: "Warm and cozy",
     price: 65,
     image: "/img/funnyPurpleSweatshirt.webp",
+    label: "Pullover",
   },
   {
     id: 6,
@@ -43,6 +52,7 @@ const products = [
     description: "Comfortable cotton T-shirt",
     price: 35,
     image: "/img/blueTshirt.webp",
+    label: "Shirt",
   },
   {
     id: 7,
@@ -50,6 +60,7 @@ const products = [
     description: "Comfortable cotton T-shirt",
     price: 35,
     image: "/img/greenTshirt.webp",
+    label: "Shirt",
   },
   {
     id: 8,
@@ -57,15 +68,18 @@ const products = [
     description: "Comfortable cotton T-shirt",
     price: 35,
     image: "/img/blackTshirt.webp",
+    label: "Shirt",
   },
 ];
 
 const Shopping = ({ addToCart }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const handleImageClick = (image) => {
-    setSelectedImage(image);
+  const handleImageClick = (product) => {
+    setSelectedProduct(product);
+    setSelectedImage(product.image);
   };
 
   const handleMouseMove = (e) => {
@@ -82,13 +96,23 @@ const Shopping = ({ addToCart }) => {
 
   return (
     <div className="shopping-container">
+      <Suspense
+        fallback={
+          <div className="loading-message">Loading Fashion Classifier...</div>
+        }
+      >
+        <FashionClassifier selectedProduct={selectedProduct} />
+      </Suspense>
+      <Suspense fallback={<div>Loading MobileNet Classifier...</div>}>
+        <MobileNetClassifier selectedProduct={selectedProduct} />
+      </Suspense>
       <h1 className="heading-shop-title">Shop Merchandise</h1>
       <div className="products-grid">
         {products.map((product) => (
           <div className="product-card" key={product.id}>
             <div
               className="product-image"
-              onClick={() => handleImageClick(product.image)}
+              onClick={() => handleImageClick(product)}
             >
               <img src={product.image} alt={product.title} />
             </div>
@@ -99,8 +123,6 @@ const Shopping = ({ addToCart }) => {
           </div>
         ))}
       </div>
-
-      {/* Modal for larger image view */}
       {selectedImage && (
         <div className="image-modal" onClick={handleCloseModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
