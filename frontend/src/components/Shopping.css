@@ -12,6 +12,10 @@
   font-weight: 700;
 }
 
+.heading-shop-title {
+  letter-spacing: 2px;
+}
+
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

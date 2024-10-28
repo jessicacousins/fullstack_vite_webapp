@@ -82,7 +82,7 @@ const CheckoutForm = ({ cartItems, clearCart }) => {
 
   return (
     <div className="checkout-card">
-      <h2>Checkout</h2>
+      <h2 className="checkout-heading">Checkout</h2>
       <form onSubmit={handleSubmit} className="checkout-form">
         {/* Shipping address input fields */}
         <div className="shipping-input">

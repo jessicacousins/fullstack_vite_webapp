@@ -82,7 +82,7 @@ const Shopping = ({ addToCart }) => {
 
   return (
     <div className="shopping-container">
-      <h1>Shop Merchandise</h1>
+      <h1 className="heading-shop-title">Shop Merchandise</h1>
       <div className="products-grid">
         {products.map((product) => (
           <div className="product-card" key={product.id}>
