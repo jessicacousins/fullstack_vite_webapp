@@ -1,7 +1,7 @@
 import React, { useState, Suspense } from "react";
 import "./Shopping.css";
 
-const FashionClassifier = React.lazy(() => import("./FashionClassifier"));
+// const FashionClassifier = React.lazy(() => import("./FashionClassifier"));
 
 const MobileNetClassifier = React.lazy(() => import("./MobileNetClassifier"));
 
@@ -96,13 +96,13 @@ const Shopping = ({ addToCart }) => {
 
   return (
     <div className="shopping-container">
-      <Suspense
+      {/* <Suspense
         fallback={
           <div className="loading-message">Loading Fashion Classifier...</div>
         }
       >
         <FashionClassifier selectedProduct={selectedProduct} />
-      </Suspense>
+      </Suspense> */}
       <Suspense fallback={<div>Loading MobileNet Classifier...</div>}>
         <MobileNetClassifier selectedProduct={selectedProduct} />
       </Suspense>
