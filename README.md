@@ -20,7 +20,7 @@ In addition to the existing features, this project now includes **TensorFlow.js*
 
 - [Project Description](#project-description)
 - [OpenAI Integration](#openai-integration)
-- [Machine Learning with TensorFlow.js](#machine-learning)
+- [Machine Learning with TensorFlow.js](#machine-learning-with-tensorflow.js)
 - [Blog Feature](#blog-feature)
 - [Games Feature](#games-feature)
   - [Blackjack](#blackjack)
