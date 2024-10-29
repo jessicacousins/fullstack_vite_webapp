@@ -20,7 +20,7 @@ In addition to the existing features, this project now includes **TensorFlow.js*
 
 - [Project Description](#project-description)
 - [OpenAI Integration](#openai-integration)
-- [Machine Learning with TensorFlow.js](#machine-learning-with-tensorflow.js)
+- [Machine Learning with TensorFlow.js](#machine-learning-with-tensorflow-js)
 - [Blog Feature](#blog-feature)
 - [Games Feature](#games-feature)
   - [Blackjack](#blackjack)
@@ -73,7 +73,7 @@ This project includes two powerful AI features using OpenAI, and proper attribut
 
 This project utilizes OpenAI services for AI-driven chatbot interactions and comment sentiment analysis. OpenAI’s API powers both of these features, and proper credit is given for their services in accordance with OpenAI’s usage guidelines. For more details on OpenAI’s terms, please refer to their [API Terms of Use](https://openai.com/policies/terms-of-use/).
 
-## Machine Learning with TensorFlow.js
+## Machine Learning with TensorFlow JS
 
 ### What is Machine Learning?
 
