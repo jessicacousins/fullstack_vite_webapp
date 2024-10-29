@@ -12,12 +12,15 @@
 
 ## Project Description
 
-A full-stack Vite application using React, Node.js, Express, MongoDB, and Stripe. This project integrates Firebase for authentication, features engaging mini-games (Blackjack, Memory Matching, and Simon Says), includes a blog platform with CRUD functionality, and a shopping cart with secure Stripe payment processing. Additionally, OpenAI has been integrated for AI-driven moderation, automatically flagging inappropriate comments, and generating blog content. The Admin Dashboard provides moderators with a comprehensive view of flagged content, alongside sentiment analysis for all interactions.
+A full-stack **Vite** application using **React**, **Node.js**, **Express**, **MongoDB**, and **Stripe**. This project integrates **Firebase** for authentication, features engaging mini-games (Blackjack, Memory Matching, and Simon Says), includes a blog platform with CRUD functionality, and a shopping cart with secure **Stripe** payment processing. Additionally, **OpenAI** has been integrated for AI-driven moderation, automatically flagging inappropriate comments, and generating blog content. The Admin Dashboard provides moderators with a comprehensive view of flagged content, alongside sentiment analysis for all interactions.
+
+In addition to the existing features, this project now includes **TensorFlow.js** integration with the **MobileNet Classifier**. This enhancement allows for machine learning capabilities directly on the frontend, specifically for image classification in the shopping cart component. Users can click on merchandise images, and the MobileNet model will identify and classify them into broad categories, delivering real-time feedback on the predicted label.
 
 ## Table of Contents
 
 - [Project Description](#project-description)
 - [OpenAI Integration](#openai-integration)
+- [Machine Learning with TensorFlow.js](#machine-learning)
 - [Blog Feature](#blog-feature)
 - [Games Feature](#games-feature)
   - [Blackjack](#blackjack)
@@ -69,6 +72,20 @@ This project includes two powerful AI features using OpenAI, and proper attribut
 ### Legal Attribution for OpenAI
 
 This project utilizes OpenAI services for AI-driven chatbot interactions and comment sentiment analysis. OpenAI’s API powers both of these features, and proper credit is given for their services in accordance with OpenAI’s usage guidelines. For more details on OpenAI’s terms, please refer to their [API Terms of Use](https://openai.com/policies/terms-of-use/).
+
+## Machine Learning with TensorFlow.js
+
+### What is Machine Learning?
+
+Machine learning is a field of artificial intelligence that enables systems to learn and improve from experience without being explicitly programmed. By processing vast amounts of data, machine learning models can recognize patterns and make predictions, which can then be applied to tasks such as image recognition, natural language processing, and more.
+
+### What is TensorFlow?
+
+TensorFlow is an open-source machine learning library developed by Google, enabling developers to build and deploy machine learning models easily. TensorFlow.js allows for running these models directly in the browser, providing a powerful toolset for incorporating AI on the frontend without requiring a backend server to handle predictions.
+
+### TensorFlow.js and MobileNet Integration
+
+Using TensorFlow.js, this project includes the MobileNet model for on-device image recognition. MobileNet is a lightweight, efficient neural network model designed for mobile and embedded applications, optimized to handle real-world images and general object classification. Integrated within the shopping cart, this feature allows users to identify categories of merchandise through direct interaction, enhancing the overall shopping experience with intelligent AI-driven insights.
 
 ## Blog Feature
 
