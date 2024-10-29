@@ -9,12 +9,23 @@
 ![Stripe](https://img.shields.io/badge/Stripe-Payment-brightblue)
 ![Firebase Authentication](https://img.shields.io/badge/Firebase-Auth-yellow)
 ![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)
+![OpenAI](https://img.shields.io/badge/OpenAI-Chatbot%20%26%20AI%20Features-purple)
+![TensorFlow.js](https://img.shields.io/badge/TensorFlow.js-Image%20Classifier-orange)
+![Three.js](https://img.shields.io/badge/Three.js-3D%20Graphics-blueviolet)
+![React Router](https://img.shields.io/badge/React%20Router-Navigation-blue)
+![Bcrypt.js](https://img.shields.io/badge/Bcrypt.js-Password%20Hashing-green)
+![Uuid](https://img.shields.io/badge/Uuid-Unique%20IDs-lightgrey)
+![Request-IP](https://img.shields.io/badge/Request--IP-User%20Location-brightgreen)
+![UserAgent](https://img.shields.io/badge/UserAgent-Device%20Details-orange)
+![NewsData.io](https://img.shields.io/badge/NewsData.io-API-blue)
+![OpenAI API](https://img.shields.io/badge/OpenAI-API%20Integration-purple)
+![Stripe API](https://img.shields.io/badge/Stripe-API%20Integration-blueviolet)
 
 ## Project Description
 
 A full-stack **Vite** application using **React**, **Node.js**, **Express**, **MongoDB**, and **Stripe**. This project integrates **Firebase** for authentication, features engaging mini-games (Blackjack, Memory Matching, and Simon Says), includes a blog platform with CRUD functionality, and a shopping cart with secure **Stripe** payment processing. Additionally, **OpenAI** has been integrated for AI-driven moderation, automatically flagging inappropriate comments, and generating blog content. The Admin Dashboard provides moderators with a comprehensive view of flagged content, alongside sentiment analysis for all interactions.
 
-In addition to the existing features, this project now includes **TensorFlow.js** integration with the **MobileNet Classifier**. This enhancement allows for machine learning capabilities directly on the frontend, specifically for image classification in the shopping cart component. Users can click on merchandise images, and the MobileNet model will identify and classify them into broad categories, delivering real-time feedback on the predicted label.
+In addition to the existing features, this project now includes **TensorFlow.js** integration with the **MobileNet Classifier**. This enhancement allows for **machine learning** capabilities directly on the frontend, specifically for image classification in the shopping cart component. Users can click on merchandise images, and the MobileNet model will identify and classify them into broad categories, delivering real-time feedback on the predicted label.
 
 ## Table of Contents
 
@@ -86,6 +97,12 @@ TensorFlow is an open-source machine learning library developed by Google, enabl
 ### TensorFlow.js and MobileNet Integration
 
 Using TensorFlow.js, this project includes the MobileNet model for on-device image recognition. MobileNet is a lightweight, efficient neural network model designed for mobile and embedded applications, optimized to handle real-world images and general object classification. Integrated within the shopping cart, this feature allows users to identify categories of merchandise through direct interaction, enhancing the overall shopping experience with intelligent AI-driven insights.
+
+### Legal Attribution for TensorFlow.js and MobileNet
+
+This project uses **TensorFlow.js**, an open-source machine learning library developed by Google, licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). TensorFlow.js enables machine learning capabilities directly in the browser, providing the foundation for real-time image classification within this project.
+
+The **MobileNet model** used in this project is also developed by Google and licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). MobileNet is a pre-trained model optimized for object classification, integrated here to enhance the shopping experience by identifying merchandise categories.
 
 ## Blog Feature
 
@@ -255,6 +272,7 @@ This web application focuses on:
 14. **AI Comment Sentiment Analysis**: Each blog comment is automatically analyzed for sentiment (positive, neutral, or negative) using OpenAI's GPT model and is stored in MongoDB for each comment. Sentiment analysis results are displayed on the Admin Dashboard, offering insights for content creators and administrators
 15. **AI-Generated Content**: Users can generate content for blog posts through OpenAI’s GPT model. This feature allows for seamless AI-driven content creation, helping users draft blog posts based on input prompts. The generated content is displayed in the blog editor and can be customized further by the user before publishing.
 16. **AI moderation**: Integrated AI moderation to automatically flag inappropriate comments, including those containing hate speech, profanity, or other harmful content. Moderators can review flagged content via the Admin Dashboard, where the flagged comments are displayed alongside sentiment analysis to help identify potential violations in real-time.
+17. **TensorFlow.js Image Classification**: TensorFlow.js is integrated into the frontend to enable machine learning capabilities directly in the browser. Using the MobileNet model, this feature allows users to classify and identify categories of merchandise images in the shopping component with real-time feedback. When a user clicks on an item, the model predicts the item’s category, providing insights into the types of products available. This implementation demonstrates basic machine learning concepts and enhances the shopping experience with interactive AI-driven categorization.
 
 ## Packages and Technologies Used
 
@@ -275,6 +293,8 @@ This web application focuses on:
 - **OpenAI Comment Sentiment Analysis**: This feature processes and analyzes the sentiment of blog post comments using OpenAI's GPT model. Each comment is evaluated and categorized as positive, neutral, or negative, with corresponding probabilities.
 - **AI-Generated Content**: Users can generate content for blog posts via prompts to OpenAI’s GPT model. The generated content is displayed in the blog editor and can be further customized by the user before publishing.
 - **AI Moderation**: Integrated AI-driven moderation automatically flags inappropriate comments for review. Flagged comments are displayed in the Admin Dashboard, with sentiment analysis and reasons for flagging (such as hate speech, profanity, etc.) easily accessible to moderators.
+- **TensorFlow.js**: A JavaScript library that allows machine learning to be run directly in the browser. TensorFlow.js powers the machine learning capabilities for real-time image classification on the frontend.
+- **MobileNet Classifier**: A pre-trained model integrated with TensorFlow.js to classify merchandise images within the shopping component. When users click on an item, the MobileNet model predicts its category, providing immediate AI-driven insights into the type of product.
 
 ### Backend
 
@@ -316,6 +336,7 @@ This web application focuses on:
 - **Comment Sentiment Analysis**: Every blog comment is automatically analyzed by OpenAI for sentiment (positive, neutral, or negative), with the results displayed in real-time on the Admin Dashboard.
 - **AI-Generated Content**: Users can generate blog post content using OpenAI’s GPT model by providing keywords or prompts. The AI-generated content is displayed in the blog editor for further customization before publishing.
 - **AI Moderation**: Comments are automatically moderated by OpenAI’s moderation API. Inappropriate or flagged comments are sent to the Admin Dashboard, where moderators can review and take action.
+- **Machine Learning**: Enables real-time image classification within the shopping cart, providing users with AI-driven insights on merchandise categories through TensorFlow.js and the MobileNet model.
 
 ### Backend Features
 
@@ -345,13 +366,13 @@ This web application focuses on:
 - MongoDB
 - Express
 - NodeJS
-- bcryptjs
-- request-ip
-- useragent
-- axios
+- Bcryptjs
+- Request-IP
+- Useragent
+- Axios
 - Stripe
-- uuid
-- openai
+- Uuid
+- OpenAI
 
 ## Frontend
 
@@ -364,8 +385,8 @@ This web application focuses on:
 - React-Confetti
 - React-Icons
 - React-Stripe and Stripe
-- npm install @tensorflow/tfjs
-- npm install @tensorflow-models/mobilenet
+- TensorFlow.js
+- MobileNet Model
 
 ## Privacy Policy and Data Collection
 
@@ -471,8 +492,6 @@ These features will be added in future releases. Suggestions are welcomed.
 - **Personalized User Feed**: Integrate free APIs to create a tailored content feed for each user.
 - **Chat Feature**: Implement direct messaging functionality to allow users to communicate in real-time.
 - **AI Image Generator**: Integrate an AI-powered image generator for user interactions or creative features.
-- **AI Bot**: Add an AI bot to assist users or provide dynamic interactions.
-- **Lore History Section**: Develop a detailed lore/history section with categorized sublinks for easy navigation.
 - **Help/Contact Section**: Create a help and contact page to provide user support and FAQs.
 
 ## License Info
