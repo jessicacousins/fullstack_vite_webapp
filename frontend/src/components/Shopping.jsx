@@ -1,4 +1,5 @@
 import React, { useState, Suspense } from "react";
+import axios from "axios";
 import "./Shopping.css";
 
 // const FashionClassifier = React.lazy(() => import("./FashionClassifier"));
@@ -205,9 +206,24 @@ const Shopping = ({ addToCart }) => {
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
   const [selectedProduct, setSelectedProduct] = useState(null);
 
+  const [learningContent, setLearningContent] = useState("");
+  const [showLearningModal, setShowLearningModal] = useState(false);
+
   const handleImageClick = (product) => {
     setSelectedProduct(product);
     setSelectedImage(product.image);
+  };
+
+  const handleLearnMore = async (product) => {
+    try {
+      const response = await axios.post("/api/learning/insights", {
+        label: product.label,
+      });
+      setLearningContent(response.data.insight);
+      setShowLearningModal(true);
+    } catch (error) {
+      console.error("Error fetching learning content:", error);
+    }
   };
 
   const handleMouseMove = (e) => {
@@ -224,13 +240,6 @@ const Shopping = ({ addToCart }) => {
 
   return (
     <div className="shopping-container">
-      {/* <Suspense
-        fallback={
-          <div className="loading-message">Loading Fashion Classifier...</div>
-        }
-      >
-        <FashionClassifier selectedProduct={selectedProduct} />
-      </Suspense> */}
       <Suspense fallback={<div>Loading MobileNet Classifier...</div>}>
         <MobileNetClassifier selectedProduct={selectedProduct} />
       </Suspense>
@@ -248,9 +257,25 @@ const Shopping = ({ addToCart }) => {
             <p>{product.description}</p>
             <p className="price">${product.price}</p>
             <button onClick={() => addToCart(product)}>Add to Cart</button>
+            <button onClick={() => handleLearnMore(product)}>Learn More</button>
           </div>
         ))}
       </div>
+
+      {/* Modal for Learning Content */}
+      {showLearningModal && (
+        <div
+          className="learning-modal"
+          onClick={() => setShowLearningModal(false)}
+        >
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h2>Learning Mode</h2>
+            <p>{learningContent}</p>
+            <button onClick={() => setShowLearningModal(false)}>Close</button>
+          </div>
+        </div>
+      )}
+
       {selectedImage && (
         <div className="image-modal" onClick={handleCloseModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>

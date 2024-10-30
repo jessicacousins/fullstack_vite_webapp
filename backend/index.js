@@ -4,6 +4,7 @@ const cors = require("cors");
 const useragent = require("useragent");
 require("dotenv").config();
 const cartRoutes = require("./routes/cart");
+const learningRoutes = require("./routes/learning");
 
 const app = express();
 
@@ -40,6 +41,9 @@ app.use("/api", newsRoutes);
 // openAI chatbot routes
 const chatbotRoutes = require("./routes/chatbot");
 app.use("/api/chatbot", chatbotRoutes);
+
+// openAI learning more feature
+app.use("/api/learning", learningRoutes);
 
 app.use((req, res, next) => {
   res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
