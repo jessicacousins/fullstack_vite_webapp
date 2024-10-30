@@ -12,7 +12,6 @@ const About = () => {
       try {
         setLoading(true);
         const response = await axios.get("/api/news");
-
         setNewsArticles(response.data.results);
       } catch (error) {
         console.error("Error fetching news:", error);
@@ -21,18 +20,15 @@ const About = () => {
         setLoading(false);
       }
     };
-
     fetchNews();
   }, []);
 
   return (
     <div className="holygrail-layout">
-      {/* Header */}
       <header className="header">
-        <h1>Your Personal Feed</h1>
+        <h1>Latest News and Trending Topics</h1>
       </header>
 
-      {/* Main content and sidebars */}
       <div className="content-container">
         <aside className="sidebar left-sidebar">
           <h2>Sponsored</h2>
@@ -41,7 +37,6 @@ const About = () => {
 
         <main className="main-content">
           <h2>News and Updates</h2>
-
           <section>
             <h3>Trending Topics</h3>
             {loading && <p>Loading news...</p>}
@@ -74,16 +69,6 @@ const About = () => {
                 ))
               : null}
           </section>
-
-          {/* Other sections remain the same */}
-          <section>
-            <h3>Popular Posts</h3>
-            <p>{/* Your existing content */}</p>
-          </section>
-          <section>
-            <h3>Your Suggested Content</h3>
-            <p>{/* Your existing content */}</p>
-          </section>
         </main>
 
         <aside className="sidebar right-sidebar">
@@ -92,14 +77,12 @@ const About = () => {
         </aside>
       </div>
 
-      {/* Footer */}
       <footer className="footer">
         <p>
-          &copy; 2024 [Update Name Here]. All rights reserved.
+          &copy; 2024 Your Site Name. All rights reserved.
           <br />
           News data provided by{" "}
           <a
-            className="footerLink"
             href="https://newsdata.io"
             target="_blank"
             rel="noopener noreferrer"

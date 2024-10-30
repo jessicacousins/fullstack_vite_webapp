@@ -1,6 +1,6 @@
 .blog-container {
   padding: 40px 20px;
-  background-color: #044153;
+  /* background-color: #044153; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,7 +21,7 @@
 
 .blog-heading {
   font-size: 3rem;
-  color: #c2e4ee;
+  color: #044153;
   margin-bottom: 30px;
   text-align: center;
   letter-spacing: 2px;
@@ -67,12 +67,12 @@
 
 .post-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(216, 238, 245, 0.7) !important;
+  box-shadow: 2px 2px 3px 3px rgba(48, 52, 53, 0.7) !important;
 }
 
 .post-title {
   font-size: 2rem;
-  color: #fbc16f;
+  color: #00d4ff;
   margin-bottom: 15px;
   text-align: center;
 }

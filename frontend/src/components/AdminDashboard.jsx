@@ -44,7 +44,7 @@ const AdminDashboard = () => {
 
       {/* Flagged Comments Section */}
       <div className="flagged-comments-section">
-        <h2>Flagged Comments for Review</h2>
+        <h2 className="flagged-comment-title">Flagged Comments for Review</h2>
         {flaggedComments.length > 0 ? (
           flaggedComments.map((comment) => (
             <div key={comment.commentId} className="flagged-comment-card">
