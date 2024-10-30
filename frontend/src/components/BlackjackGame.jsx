@@ -199,7 +199,7 @@ const BlackjackGame = () => {
 
   return (
     <div className="blackjack-game">
-      <h1>Blackjack</h1>
+      <h1 className="blackjack-title">Blackjack</h1>
       {playerWins && <Confetti />}
       {!gameStarted ? (
         <button className="start-button" onClick={dealInitialCards}>

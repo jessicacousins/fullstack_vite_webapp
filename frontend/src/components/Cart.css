@@ -1,6 +1,6 @@
 .cart-container {
   padding: 20px;
-  background-color: #caedeeb4;
+  /* background-color: #caedeeb4; */
   min-height: 100vh;
   text-align: center;
 }
@@ -13,6 +13,17 @@
   max-width: 800px;
   margin: 0 auto;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cart-icon {
+  font-size: 2.5rem;
+  color: #9dcdd6;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease;
+}
+
+.cart-icon:hover {
+  transform: scale(1.1);
 }
 
 .cart-items {

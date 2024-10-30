@@ -1,22 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
-/* body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #2a2a72, #009ffd);
-  color: #fff;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
 .blackjack-game {
   text-align: center;
   font-family: "Poppins", sans-serif;
-  color: #fff;
+  /* color: #fff; */
 }
 
 h1 {

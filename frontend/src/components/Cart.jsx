@@ -1,4 +1,5 @@
 import React from "react";
+import { FaShoppingCart } from "react-icons/fa";
 import "./Cart.css";
 
 const Cart = ({
@@ -15,6 +16,7 @@ const Cart = ({
   return (
     <div className="cart-container">
       <h1>Your Cart</h1>
+      <FaShoppingCart className="cart-icon" />
       {cartItems.length === 0 ? (
         <p>Your cart is empty</p>
       ) : (
