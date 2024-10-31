@@ -32,3 +32,8 @@ dist-ssr
 
 # Ignore firebase.js file
 /firebase.js
+
+
+# Ignore SnapQuestGame files
+# src/components/SnapQuestGame.css
+# src/components/SnapQuestGame.jsx

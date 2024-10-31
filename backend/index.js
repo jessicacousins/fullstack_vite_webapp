@@ -5,6 +5,7 @@ const useragent = require("useragent");
 require("dotenv").config();
 const cartRoutes = require("./routes/cart");
 const learningRoutes = require("./routes/learning");
+const snapquestRoutes = require("./routes/snapquestRoutes");
 
 const app = express();
 
@@ -44,6 +45,9 @@ app.use("/api/chatbot", chatbotRoutes);
 
 // openAI learning more feature
 app.use("/api/learning", learningRoutes);
+
+// SnapQuest Routes
+app.use("/api/snapquest", snapquestRoutes);
 
 app.use((req, res, next) => {
   res.setHeader("Cross-Origin-Opener-Policy", "same-origin");

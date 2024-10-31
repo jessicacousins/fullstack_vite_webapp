@@ -11,6 +11,21 @@ const ScoreSchema = new mongoose.Schema({
   },
 });
 
+const SnapQuestScoreSchema = new mongoose.Schema({
+  score: {
+    type: Number,
+    default: 0,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+  challengesCompleted: {
+    type: Number,
+    default: 0,
+  },
+});
+
 const MemoryGameScoreSchema = new mongoose.Schema({
   turns: {
     type: Number,
@@ -127,6 +142,11 @@ const UserSchema = new mongoose.Schema({
     default: 0,
   },
   simonSaysHighestLevel: {
+    type: Number,
+    default: 0,
+  },
+  snapQuestScores: [SnapQuestScoreSchema],
+  highestSnapQuestScore: {
     type: Number,
     default: 0,
   },

@@ -373,6 +373,8 @@ This web application focuses on:
 - Stripe
 - Uuid
 - OpenAI
+- npm install multer
+- npm install @tensorflow/tfjs-node
 
 ## Frontend
 

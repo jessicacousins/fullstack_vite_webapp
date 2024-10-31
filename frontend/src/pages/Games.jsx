@@ -24,6 +24,15 @@ const Games = () => {
         <Link to="/simon-says">Play Now</Link>
         <Link to="/simon-says-stats">Simon Says Stats</Link>
       </section>
+
+      <section className="game-section">
+        <h2>SnapQuest</h2>
+        <p>
+          Find and upload an image of a given item within 30 seconds to score
+          points!
+        </p>
+        <Link to="/snapquest">Play SnapQuest</Link>
+      </section>
     </div>
   );
 };
