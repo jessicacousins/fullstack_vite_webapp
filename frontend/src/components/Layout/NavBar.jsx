@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { auth } from "../../../firebase";
 import { useAuth } from "../../context/AuthContext";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaShoppingCart } from "react-icons/fa";
 import "./NavBar.css";
 
-const NavBar = ({ onSearch }) => {
+const NavBar = ({ onSearch, cartItemCount }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -33,6 +33,12 @@ const NavBar = ({ onSearch }) => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const handleSearch = (event) => {
+    if (event.key === "Enter") {
+      onSearch(event.target.value);
+    }
+  };
 
   return (
     <nav className="navbar" ref={navRef}>
@@ -73,7 +79,7 @@ const NavBar = ({ onSearch }) => {
               { path: "/games", label: "Games" },
               { path: "/checkout", label: "Checkout" },
               { path: "/shopping", label: "Shopping" },
-              { path: "/cart", label: "Cart" },
+              // { path: "/cart", label: "Cart" },
               { path: "/admin-dashboard", label: "Admin" },
             ].map((link) => (
               <li key={link.path} onClick={closeMobileMenu}>
@@ -85,7 +91,17 @@ const NavBar = ({ onSearch }) => {
                 </NavLink>
               </li>
             ))}
-
+            <li className="cart-link" onClick={closeMobileMenu}>
+              <NavLink
+                to="/cart"
+                className={({ isActive }) => (isActive ? "active-link" : "")}
+              >
+                <FaShoppingCart />
+                {cartItemCount > 0 && (
+                  <span className="cart-count">{cartItemCount}</span>
+                )}
+              </NavLink>
+            </li>
             <li>
               <div className="search-container">
                 <input

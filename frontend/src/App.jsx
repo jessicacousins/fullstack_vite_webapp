@@ -55,6 +55,12 @@ function App() {
 
   const proceedToCheckout = useNavigate();
 
+  // Calculate the total number of items in the cart
+  const cartItemCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
   // Handle search function
   const handleSearch = (query) => {
     setSearchQuery(query.toLowerCase());
@@ -76,7 +82,8 @@ function App() {
 
   return (
     <AuthProvider>
-      <NavBar onSearch={handleSearch} />
+      {/* <NavBar onSearch={handleSearch} /> */}
+      <NavBar onSearch={handleSearch} cartItemCount={cartItemCount} />
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/login" element={<Login />} />
