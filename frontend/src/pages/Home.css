@@ -1,12 +1,12 @@
 .home-page {
   position: relative;
   min-height: 100vh;
-  background-color: #000;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
   overflow-x: hidden;
+  background-color: #101522;
 }
 
 .home-content {
@@ -15,73 +15,90 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(8, 7, 5, 0.9);
-  color: #fff;
+  background-color: rgba(15, 23, 36, 0.95);
+  color: #e1e9f1;
   font-family: "Poppins", sans-serif;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  max-width: 800px;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 900px;
   width: 100%;
 }
 
 .home-heading {
-  font-size: 2.5rem;
-  font-weight: 600;
+  font-size: 2.8rem;
+  font-weight: 700;
   margin: 20px 0 10px;
   text-align: center;
-  color: #fbc16f;
+  color: #4db8ff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 
 .home-text {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin-bottom: 1rem;
   text-align: center;
+  color: #ffb84d;
 }
 
 .home-description {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
   text-align: center;
-  max-width: 600px;
+  max-width: 650px;
+  line-height: 1.6;
 }
 
 .feature-section {
   width: 100%;
-  margin-bottom: 1.5rem;
-  padding: 10px;
+  margin-bottom: 2rem;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
   text-align: center;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.feature-section:hover {
+  transform: scale(1.02);
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .feature-link {
   text-decoration: none;
-  color: #fbc16f;
+  color: #4db8ff;
+  font-weight: bold;
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
 }
 
 .feature-heading {
-  font-size: 1.25rem;
-  color: var(--color-accent-primary);
+  font-size: 1.4rem;
+  color: #ffffff;
   margin: 10px 0;
 }
 
 .feature-text {
-  font-size: 1rem;
-  color: #fff;
+  font-size: 1.1rem;
+  color: #c7d0dc;
+  line-height: 1.4;
 }
 
 .home-button-container {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 /* Button Styles */
 .button {
   font-size: 1.25rem;
-  padding: 0.75rem 2rem;
-  border-radius: 5px;
+  padding: 0.75rem 2.5rem;
+  border-radius: 8px;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -91,32 +108,31 @@
 }
 
 .button.warning {
-  background-color: #ff6804cd;
-  color: var(--color-white);
+  background-color: #ff6b6b;
 }
 
 .button.primary {
-  background-color: #43ff04cd;
-  color: var(--color-white);
+  background-color: #4db8ff;
 }
 
-.button.primary:hover {
-  background-color: #43ff04a5;
+.button.primary:hover,
+.button.warning:hover {
   transform: scale(1.05);
+  background-color: #3ea1ff;
 }
 
 .button.warning:hover {
-  transform: scale(1.05);
+  background-color: #ff5959;
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
   .home-heading {
-    font-size: 2rem;
+    font-size: 2.4rem;
   }
 
   .home-text {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
 
   .home-description {
@@ -128,7 +144,7 @@
   }
 
   .feature-text {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .button {
@@ -139,11 +155,11 @@
 
 @media (max-width: 768px) {
   .home-heading {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .home-text {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .home-description {
@@ -161,32 +177,5 @@
   .button {
     font-size: 1rem;
     padding: 0.5rem 1.2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .home-heading {
-    font-size: 1.5rem;
-  }
-
-  .home-text {
-    font-size: 1rem;
-  }
-
-  .home-description {
-    font-size: 0.85rem;
-  }
-
-  .feature-heading {
-    font-size: 0.9rem;
-  }
-
-  .feature-text {
-    font-size: 0.85rem;
-  }
-
-  .button {
-    font-size: 0.9rem;
-    padding: 0.4rem 1rem;
   }
 }

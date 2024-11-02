@@ -6,28 +6,32 @@ import * as THREE from "three";
 function Particles() {
   const pointsRef = useRef();
 
-  const particleCount = 1000;
+  const particleCount = 500;
   const positions = new Float32Array(particleCount * 3);
 
   for (let i = 0; i < particleCount; i++) {
-    positions[i * 3] = (Math.random() - 0.5) * 10; // X axis
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 10; // Y axis
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 10; // Z axis
+    positions[i * 3] = (Math.random() - 0.5) * 15; // X axis
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 15; // Y axis
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 15; // Z axis
   }
 
-  useFrame(() => {
+  useFrame(({ clock }) => {
     if (pointsRef.current) {
-      pointsRef.current.rotation.y += 0.001; // Continuous rotation
+      pointsRef.current.rotation.y = clock.getElapsedTime() * 0.04;
+      pointsRef.current.rotation.x =
+        Math.sin(clock.getElapsedTime() * 0.05) * 0.4;
     }
   });
 
   return (
     <Points ref={pointsRef} positions={positions} stride={3}>
       <PointMaterial
-        color="#00bfff"
-        size={0.05}
+        color="#ffffff"
+        size={0.075}
         sizeAttenuation={true}
         depthWrite={false}
+        transparent={true}
+        opacity={0.7}
       />
     </Points>
   );
@@ -43,6 +47,7 @@ const ParticleBackground = () => {
         width: "100%",
         height: "100%",
         zIndex: 1,
+        background: "linear-gradient(135deg, #0f2027, #203a43, #2c5364)",
       }}
     >
       <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
