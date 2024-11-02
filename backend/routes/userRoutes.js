@@ -98,8 +98,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// @route POST /api/users/update
-// @desc Update user profile
+// @route POST /api/users/update     Update user profile
 router.post("/update", async (req, res) => {
   const { email, firstName, lastName, phone, bio, photoURL } = req.body;
 
@@ -128,7 +127,6 @@ router.post("/update", async (req, res) => {
 });
 
 // @route GET /api/users/:email
-// @desc Get user profile by email
 router.get("/:email", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.params.email });
@@ -343,6 +341,43 @@ router.post("/check-email", async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ message: "Server error" });
+  }
+});
+
+// fetch SnapQuest stats
+router.get("/snapquest-stats/:email", async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.params.email });
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+
+    const snapQuestStats = {
+      highestScore: user.highestSnapQuestScore,
+      scores: user.snapQuestScores,
+    };
+
+    res.json(snapQuestStats);
+  } catch (error) {
+    console.error("Error fetching SnapQuest stats:", error.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// @route DELETE /api/users/:email
+router.delete("/:email", async (req, res) => {
+  try {
+    const { email } = req.params;
+    const user = await User.findOneAndDelete({ email });
+
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+
+    res.status(200).json({ msg: "Account deleted successfully." });
+  } catch (error) {
+    console.error("Error deleting account:", error.message);
+    res.status(500).send("Server error");
   }
 });
 

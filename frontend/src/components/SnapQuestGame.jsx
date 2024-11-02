@@ -62,12 +62,10 @@ const SnapQuestGame = () => {
     const img = new Image();
     img.src = URL.createObjectURL(imageFile);
     await img.decode();
-
     const predictions = await model.classify(img);
     const isCorrect = predictions.some((p) =>
       p.className.toLowerCase().includes(challenge.toLowerCase())
     );
-
     setIsJudging(false);
     return isCorrect;
   };
