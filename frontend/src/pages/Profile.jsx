@@ -19,6 +19,10 @@ const Profile = () => {
   const [simonSaysStats, setSimonSaysStats] = useState(null);
   const [memoryGameStats, setMemoryGameStats] = useState(null);
   const [snapQuestStats, setSnapQuestStats] = useState(null);
+  const [userComments, setUserComments] = useState([]);
+  const [userPosts, setUserPosts] = useState([]);
+  const [showComments, setShowComments] = useState(false);
+  const [showPosts, setShowPosts] = useState(false);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -39,12 +43,32 @@ const Profile = () => {
         })
         .catch((err) => setError("Failed to fetch user data"));
 
+      fetchUserComments();
+      fetchUserPosts();
       fetchBlackjackStats();
       fetchSimonSaysStats();
       fetchMemoryGameStats();
       fetchSnapQuestStats();
     }
   }, [user]);
+
+  const fetchUserComments = async () => {
+    try {
+      const response = await axios.get(`/api/users/${user.email}/comments`);
+      setUserComments(response.data);
+    } catch (error) {
+      console.error("Error fetching user comments:", error);
+    }
+  };
+
+  const fetchUserPosts = async () => {
+    try {
+      const response = await axios.get(`/api/users/${user.email}/posts`);
+      setUserPosts(response.data);
+    } catch (error) {
+      console.error("Error fetching user posts:", error);
+    }
+  };
 
   const handleAccountDeletion = async () => {
     if (deleteConfirmation !== email) {
@@ -149,6 +173,9 @@ const Profile = () => {
       setError("Failed to update profile. Please try again.");
     }
   };
+
+  const toggleShowComments = () => setShowComments(!showComments);
+  const toggleShowPosts = () => setShowPosts(!showPosts);
 
   return (
     <div className="profile-page">
@@ -275,9 +302,60 @@ const Profile = () => {
         )}
       </div>
 
+      {/* User Comments Section */}
+      <div className="user-comments-section">
+        <h3 onClick={toggleShowComments} className="expandable-heading">
+          Your Comments {showComments ? "▲" : "▼"}
+        </h3>
+        {showComments && userComments.length > 0
+          ? userComments.map((comment, index) => (
+              <div key={index} className="comment-card">
+                <p>{comment.body}</p>
+                <p>Blog Title: {comment.blogTitle}</p>
+                <p>Date: {new Date(comment.date).toLocaleDateString()}</p>
+                <div className="sentiment-analysis">
+                  <p>Sentiment: {comment.sentiment?.sentiment || "N/A"}</p>
+                  <p>
+                    Positive:{" "}
+                    {comment.sentiment?.positiveProbability?.toFixed(2)}
+                  </p>
+                  <p>
+                    Neutral: {comment.sentiment?.neutralProbability?.toFixed(2)}
+                  </p>
+                  <p>
+                    Negative:{" "}
+                    {comment.sentiment?.negativeProbability?.toFixed(2)}
+                  </p>
+                </div>
+              </div>
+            ))
+          : showComments && <p>No comments available.</p>}
+      </div>
+
+      {/* User Posts Section */}
+      <div className="user-posts-section">
+        <h3 onClick={toggleShowPosts} className="expandable-heading">
+          Your Blog Posts {showPosts ? "▲" : "▼"}
+        </h3>
+        {showPosts && userPosts.length > 0
+          ? userPosts.map((post, index) => (
+              <div key={index} className="post-card">
+                <h4>{post.title}</h4>
+                <p>{post.content}</p>
+                <p>Date: {new Date(post.createdAt).toLocaleDateString()}</p>
+              </div>
+            ))
+          : showPosts && <p>No blog posts available.</p>}
+      </div>
+
       {/* Account Deletion Section */}
       <div className="account-deletion-section">
-        <h3>Delete Account</h3>
+        <h3>Delete User Account:</h3>
+        <p>
+          Warning: deleting account will result in the permanent loss of all
+          data for your current account. It cannot be restored. Information for
+          purchases stays on record for the business for legal purposes.
+        </p>
         <button
           className="delete-button"
           onClick={() => setShowDeleteModal(true)}

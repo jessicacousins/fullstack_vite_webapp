@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const Blog = require("../models/Blog");
 const bcrypt = require("bcryptjs");
 const requestIp = require("request-ip"); // For collecting IP address
 const useragent = require("useragent"); // For capturing user agent info
@@ -377,6 +378,47 @@ router.delete("/:email", async (req, res) => {
     res.status(200).json({ msg: "Account deleted successfully." });
   } catch (error) {
     console.error("Error deleting account:", error.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// @route GET /api/users/:email/comments
+// @desc Get all comments made by a user
+router.get("/:email/comments", async (req, res) => {
+  try {
+    const blogs = await Blog.find({ "comments.user": req.params.email });
+    const userComments = [];
+
+    blogs.forEach((blog) => {
+      blog.comments.forEach((comment) => {
+        if (comment.user === req.params.email) {
+          userComments.push({
+            blogId: blog._id,
+            blogTitle: blog.title,
+            commentId: comment._id,
+            body: comment.body,
+            date: comment.date,
+            sentiment: comment.sentimentAnalysis,
+          });
+        }
+      });
+    });
+
+    res.json(userComments);
+  } catch (err) {
+    console.error("Error fetching user comments:", err.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// @route GET /api/users/:email/posts
+// @desc Get all blog posts made by a user
+router.get("/:email/posts", async (req, res) => {
+  try {
+    const userPosts = await Blog.find({ author: req.params.email });
+    res.json(userPosts);
+  } catch (err) {
+    console.error("Error fetching user posts:", err.message);
     res.status(500).send("Server error");
   }
 });

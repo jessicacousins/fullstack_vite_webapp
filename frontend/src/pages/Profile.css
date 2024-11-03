@@ -178,3 +178,27 @@
   background-color: #ddd;
   color: black;
 }
+
+.expandable-heading {
+  cursor: pointer;
+  color: #066481;
+  margin-top: 20px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.comment-card,
+.post-card {
+  background-color: #f7f9fc;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px 0;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sentiment-analysis p {
+  color: #555;
+  margin: 3px 0;
+  font-size: 0.9rem;
+}
