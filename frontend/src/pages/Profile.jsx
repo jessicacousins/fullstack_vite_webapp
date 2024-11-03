@@ -352,9 +352,14 @@ const Profile = () => {
       <div className="account-deletion-section">
         <h3>Delete User Account:</h3>
         <p>
-          Warning: deleting account will result in the permanent loss of all
-          data for your current account. It cannot be restored. Information for
-          purchases stays on record for the business for legal purposes.
+          WARNING: Deleting your account will result in the permanent removal of
+          most data associated with your account, and this action cannot be
+          undone. However, certain information—such as purchase records,
+          shipping addresses, comments, and blog posts—will be retained as
+          required by law for legal and compliance purposes. This retained
+          information will be securely stored and limited to what is strictly
+          necessary. All other personal data will be permanently removed from
+          our systems.
         </p>
         <button
           className="delete-button"
