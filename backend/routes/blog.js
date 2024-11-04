@@ -131,4 +131,70 @@ router.post("/generate", async (req, res) => {
   }
 });
 
+// Like a blog post
+router.post("/:id/like", async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) return res.status(404).json({ msg: "Blog post not found" });
+
+    blog.likes += 1;
+    await blog.save();
+    res.json({ likes: blog.likes });
+  } catch (error) {
+    console.error("Error liking blog post:", error);
+    res.status(500).send("Server error");
+  }
+});
+
+// Dislike a blog post
+router.post("/:id/dislike", async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) return res.status(404).json({ msg: "Blog post not found" });
+
+    blog.dislikes += 1;
+    await blog.save();
+    res.json({ dislikes: blog.dislikes });
+  } catch (error) {
+    console.error("Error disliking blog post:", error);
+    res.status(500).send("Server error");
+  }
+});
+
+// Like a comment
+router.post("/:postId/comments/:commentId/like", async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.postId);
+    if (!blog) return res.status(404).json({ msg: "Blog post not found" });
+
+    const comment = blog.comments.id(req.params.commentId);
+    if (!comment) return res.status(404).json({ msg: "Comment not found" });
+
+    comment.likes += 1;
+    await blog.save();
+    res.json({ likes: comment.likes });
+  } catch (error) {
+    console.error("Error liking comment:", error);
+    res.status(500).send("Server error");
+  }
+});
+
+// Dislike a comment
+router.post("/:postId/comments/:commentId/dislike", async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.postId);
+    if (!blog) return res.status(404).json({ msg: "Blog post not found" });
+
+    const comment = blog.comments.id(req.params.commentId);
+    if (!comment) return res.status(404).json({ msg: "Comment not found" });
+
+    comment.dislikes += 1;
+    await blog.save();
+    res.json({ dislikes: comment.dislikes });
+  } catch (error) {
+    console.error("Error disliking comment:", error);
+    res.status(500).send("Server error");
+  }
+});
+
 module.exports = router;

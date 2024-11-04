@@ -199,6 +199,38 @@
   text-align: center;
 }
 
+.like-dislike-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.like-button,
+.dislike-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #4caf50;
+  color: #ffffff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.like-button:hover {
+  background-color: #357a38;
+}
+
+.dislike-button {
+  background-color: #e57373;
+}
+
+.dislike-button:hover {
+  background-color: #c62828;
+}
+
 @media (max-width: 768px) {
   .blog-heading {
     font-size: 2.5rem;

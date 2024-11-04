@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { FaComment, FaExpand } from "react-icons/fa"; 
-import "./Blog.css"; 
+import { FaComment, FaExpand, FaHeart, FaThumbsDown } from "react-icons/fa";
+import "./Blog.css";
 
 const Blog = ({ searchQuery, onSearchResults }) => {
   const { user } = useAuth();
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState({});
-  const [expandedPosts, setExpandedPosts] = useState([]); 
-  const [showComments, setShowComments] = useState({}); 
+  const [expandedPosts, setExpandedPosts] = useState([]);
+  const [showComments, setShowComments] = useState({});
+
   // Fetch posts
   useEffect(() => {
     axios.get("/api/blogs").then((response) => setPosts(response.data));
@@ -46,7 +47,7 @@ const Blog = ({ searchQuery, onSearchResults }) => {
   const toggleComments = (postId) => {
     setShowComments((prev) => ({
       ...prev,
-      [postId]: !prev[postId], 
+      [postId]: !prev[postId],
     }));
   };
 
@@ -63,6 +64,83 @@ const Blog = ({ searchQuery, onSearchResults }) => {
       onSearchResults(filteredPosts.length > 0);
     }
   }, [filteredPosts, onSearchResults]);
+
+  // Likes and Dislikes Comments & Posts
+  const handleLikePost = async (postId) => {
+    try {
+      const response = await axios.post(`/api/blogs/${postId}/like`);
+      setPosts((prevPosts) =>
+        prevPosts.map((post) =>
+          post._id === postId ? { ...post, likes: response.data.likes } : post
+        )
+      );
+    } catch (error) {
+      console.error("Error liking post:", error);
+    }
+  };
+
+  const handleDislikePost = async (postId) => {
+    try {
+      const response = await axios.post(`/api/blogs/${postId}/dislike`);
+      setPosts((prevPosts) =>
+        prevPosts.map((post) =>
+          post._id === postId
+            ? { ...post, dislikes: response.data.dislikes }
+            : post
+        )
+      );
+    } catch (error) {
+      console.error("Error disliking post:", error);
+    }
+  };
+
+  const handleLikeComment = async (postId, commentId) => {
+    try {
+      const response = await axios.post(
+        `/api/blogs/${postId}/comments/${commentId}/like`
+      );
+      setPosts((prevPosts) =>
+        prevPosts.map((post) =>
+          post._id === postId
+            ? {
+                ...post,
+                comments: post.comments.map((comment) =>
+                  comment._id === commentId
+                    ? { ...comment, likes: response.data.likes }
+                    : comment
+                ),
+              }
+            : post
+        )
+      );
+    } catch (error) {
+      console.error("Error liking comment:", error);
+    }
+  };
+
+  const handleDislikeComment = async (postId, commentId) => {
+    try {
+      const response = await axios.post(
+        `/api/blogs/${postId}/comments/${commentId}/dislike`
+      );
+      setPosts((prevPosts) =>
+        prevPosts.map((post) =>
+          post._id === postId
+            ? {
+                ...post,
+                comments: post.comments.map((comment) =>
+                  comment._id === commentId
+                    ? { ...comment, dislikes: response.data.dislikes }
+                    : comment
+                ),
+              }
+            : post
+        )
+      );
+    } catch (error) {
+      console.error("Error disliking comment:", error);
+    }
+  };
 
   return (
     <div className="blog-container">
@@ -98,8 +176,23 @@ const Blog = ({ searchQuery, onSearchResults }) => {
                   {new Date(post.createdAt).toLocaleString()}
                 </p>
 
+                {/* Like and Dislike buttons for the post */}
+                <div className="like-dislike-buttons">
+                  <button
+                    onClick={() => handleLikePost(post._id)}
+                    className="like-button"
+                  >
+                    <FaHeart /> {post.likes}
+                  </button>
+                  <button
+                    onClick={() => handleDislikePost(post._id)}
+                    className="dislike-button"
+                  >
+                    <FaThumbsDown /> {post.dislikes}
+                  </button>
+                </div>
+
                 <div className="post-actions">
-                  {/* Comments and Expand Buttons */}
                   <FaComment
                     className="icon-button"
                     onClick={() => toggleComments(post._id)}
@@ -112,13 +205,12 @@ const Blog = ({ searchQuery, onSearchResults }) => {
                   />
                 </div>
 
-                {/* Comments Section */}
                 {areCommentsVisible && (
                   <div className="comments-section">
                     <h3 className="comments-heading">Comments</h3>
                     {post.comments.length > 0 ? (
-                      post.comments.map((comment, idx) => (
-                        <div key={idx} className="comment">
+                      post.comments.map((comment) => (
+                        <div key={comment._id} className="comment">
                           <p className="comment-body">{comment.body}</p>
                           <p className="comment-user">
                             By{" "}
@@ -127,6 +219,24 @@ const Blog = ({ searchQuery, onSearchResults }) => {
                             </span>{" "}
                             on {new Date(comment.date).toLocaleString()}
                           </p>
+                          <div className="like-dislike-buttons">
+                            <button
+                              onClick={() =>
+                                handleLikeComment(post._id, comment._id)
+                              }
+                              className="like-button"
+                            >
+                              <FaHeart /> {comment.likes}
+                            </button>
+                            <button
+                              onClick={() =>
+                                handleDislikeComment(post._id, comment._id)
+                              }
+                              className="dislike-button"
+                            >
+                              <FaThumbsDown /> {comment.dislikes}
+                            </button>
+                          </div>
                         </div>
                       ))
                     ) : (
