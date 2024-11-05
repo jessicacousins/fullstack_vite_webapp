@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
+import ReactLoading from "react-loading";
 import { useNavigate } from "react-router-dom";
 import "./CreateBlog.css";
 
@@ -74,6 +75,18 @@ const CreateBlog = () => {
             >
               {aiGenerating ? "Generating..." : "Generate Content"}
             </button>
+
+            {/* Loading Bubbles Spinner */}
+            {aiGenerating && (
+              <div className="loading-spinner">
+                <ReactLoading
+                  type="bubbles"
+                  color="#4caf50"
+                  height={50}
+                  width={50}
+                />
+              </div>
+            )}
           </div>
 
           <textarea

@@ -389,6 +389,7 @@ This web application focuses on:
 - React-Stripe and Stripe
 - TensorFlow.js
 - MobileNet Model
+- npm install react-loading
 
 ## Privacy Policy and Data Collection
 

@@ -16,6 +16,13 @@
   width: 100%;
 }
 
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
 .ai-keywords-input {
   background-color: #999;
   padding: 15px;
