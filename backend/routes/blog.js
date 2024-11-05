@@ -133,21 +133,18 @@ router.post("/generate", async (req, res) => {
 
 // Toggle Like a blog post
 router.post("/:id/like", async (req, res) => {
-  const userId = req.body.userId; // Assume userId is passed from the frontend
+  const userId = req.body.userId;
 
   try {
     const blog = await Blog.findById(req.params.id);
     if (!blog) return res.status(404).json({ msg: "Blog post not found" });
 
     if (blog.likedBy.includes(userId)) {
-      // If the user has already liked, remove their like
       blog.likes -= 1;
       blog.likedBy = blog.likedBy.filter((id) => id !== userId);
     } else {
-      // Otherwise, add the user's like
       blog.likes += 1;
       blog.likedBy.push(userId);
-      // Also, remove dislike if previously disliked
       blog.dislikedBy = blog.dislikedBy.filter((id) => id !== userId);
       if (blog.dislikedBy.includes(userId)) blog.dislikes -= 1;
     }
@@ -168,14 +165,12 @@ router.post("/:id/dislike", async (req, res) => {
     if (!blog) return res.status(404).json({ msg: "Blog post not found" });
 
     if (blog.dislikedBy.includes(userId)) {
-      // If the user has already disliked, remove their dislike
       blog.dislikes -= 1;
       blog.dislikedBy = blog.dislikedBy.filter((id) => id !== userId);
     } else {
-      // Otherwise, add the user's dislike
       blog.dislikes += 1;
       blog.dislikedBy.push(userId);
-      // Also, remove like if previously liked
+
       blog.likedBy = blog.likedBy.filter((id) => id !== userId);
       if (blog.likedBy.includes(userId)) blog.likes -= 1;
     }
@@ -199,14 +194,12 @@ router.post("/:postId/comments/:commentId/like", async (req, res) => {
     if (!comment) return res.status(404).json({ msg: "Comment not found" });
 
     if (comment.likedBy.includes(userId)) {
-      // If the user has already liked, remove their like
       comment.likes -= 1;
       comment.likedBy = comment.likedBy.filter((id) => id !== userId);
     } else {
-      // Otherwise, add the user's like
       comment.likes += 1;
       comment.likedBy.push(userId);
-      // Also, remove dislike if previously disliked
+
       comment.dislikedBy = comment.dislikedBy.filter((id) => id !== userId);
       if (comment.dislikedBy.includes(userId)) comment.dislikes -= 1;
     }
@@ -230,14 +223,12 @@ router.post("/:postId/comments/:commentId/dislike", async (req, res) => {
     if (!comment) return res.status(404).json({ msg: "Comment not found" });
 
     if (comment.dislikedBy.includes(userId)) {
-      // If the user has already disliked, remove their dislike
       comment.dislikes -= 1;
       comment.dislikedBy = comment.dislikedBy.filter((id) => id !== userId);
     } else {
-      // Otherwise, add the user's dislike
       comment.dislikes += 1;
       comment.dislikedBy.push(userId);
-      // Also, remove like if previously liked
+
       comment.likedBy = comment.likedBy.filter((id) => id !== userId);
       if (comment.likedBy.includes(userId)) comment.likes -= 1;
     }
