@@ -9,6 +9,8 @@ const CommentSchema = new mongoose.Schema({
   isFlagged: { type: Boolean, default: false }, // Flag for inappropriate comments
   likes: { type: Number, default: 0 },
   dislikes: { type: Number, default: 0 },
+  likedBy: [{ type: String }],
+  dislikedBy: [{ type: String }],
 });
 
 const BlogSchema = new mongoose.Schema({
@@ -20,6 +22,8 @@ const BlogSchema = new mongoose.Schema({
   isFlagged: { type: Boolean, default: false }, // Flag for inappropriate posts
   likes: { type: Number, default: 0 },
   dislikes: { type: Number, default: 0 },
+  likedBy: [{ type: String }],
+  dislikedBy: [{ type: String }],
 });
 
 const Blog = mongoose.model("Blog", BlogSchema);

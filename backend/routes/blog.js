@@ -131,38 +131,66 @@ router.post("/generate", async (req, res) => {
   }
 });
 
-// Like a blog post
+// Toggle Like a blog post
 router.post("/:id/like", async (req, res) => {
+  const userId = req.body.userId; // Assume userId is passed from the frontend
+
   try {
     const blog = await Blog.findById(req.params.id);
     if (!blog) return res.status(404).json({ msg: "Blog post not found" });
 
-    blog.likes += 1;
+    if (blog.likedBy.includes(userId)) {
+      // If the user has already liked, remove their like
+      blog.likes -= 1;
+      blog.likedBy = blog.likedBy.filter((id) => id !== userId);
+    } else {
+      // Otherwise, add the user's like
+      blog.likes += 1;
+      blog.likedBy.push(userId);
+      // Also, remove dislike if previously disliked
+      blog.dislikedBy = blog.dislikedBy.filter((id) => id !== userId);
+      if (blog.dislikedBy.includes(userId)) blog.dislikes -= 1;
+    }
     await blog.save();
-    res.json({ likes: blog.likes });
+    res.json({ likes: blog.likes, dislikes: blog.dislikes });
   } catch (error) {
-    console.error("Error liking blog post:", error);
+    console.error("Error toggling like:", error);
     res.status(500).send("Server error");
   }
 });
 
-// Dislike a blog post
+// Toggle Dislike a blog post
 router.post("/:id/dislike", async (req, res) => {
+  const userId = req.body.userId;
+
   try {
     const blog = await Blog.findById(req.params.id);
     if (!blog) return res.status(404).json({ msg: "Blog post not found" });
 
-    blog.dislikes += 1;
+    if (blog.dislikedBy.includes(userId)) {
+      // If the user has already disliked, remove their dislike
+      blog.dislikes -= 1;
+      blog.dislikedBy = blog.dislikedBy.filter((id) => id !== userId);
+    } else {
+      // Otherwise, add the user's dislike
+      blog.dislikes += 1;
+      blog.dislikedBy.push(userId);
+      // Also, remove like if previously liked
+      blog.likedBy = blog.likedBy.filter((id) => id !== userId);
+      if (blog.likedBy.includes(userId)) blog.likes -= 1;
+    }
     await blog.save();
-    res.json({ dislikes: blog.dislikes });
+    res.json({ likes: blog.likes, dislikes: blog.dislikes });
   } catch (error) {
-    console.error("Error disliking blog post:", error);
+    console.error("Error toggling dislike:", error);
     res.status(500).send("Server error");
   }
 });
 
-// Like a comment
+// Toggle Like a comment
 router.post("/:postId/comments/:commentId/like", async (req, res) => {
+  const userId = req.body.userId;
+
   try {
     const blog = await Blog.findById(req.params.postId);
     if (!blog) return res.status(404).json({ msg: "Blog post not found" });
@@ -170,17 +198,30 @@ router.post("/:postId/comments/:commentId/like", async (req, res) => {
     const comment = blog.comments.id(req.params.commentId);
     if (!comment) return res.status(404).json({ msg: "Comment not found" });
 
-    comment.likes += 1;
+    if (comment.likedBy.includes(userId)) {
+      // If the user has already liked, remove their like
+      comment.likes -= 1;
+      comment.likedBy = comment.likedBy.filter((id) => id !== userId);
+    } else {
+      // Otherwise, add the user's like
+      comment.likes += 1;
+      comment.likedBy.push(userId);
+      // Also, remove dislike if previously disliked
+      comment.dislikedBy = comment.dislikedBy.filter((id) => id !== userId);
+      if (comment.dislikedBy.includes(userId)) comment.dislikes -= 1;
+    }
     await blog.save();
-    res.json({ likes: comment.likes });
+    res.json({ likes: comment.likes, dislikes: comment.dislikes });
   } catch (error) {
-    console.error("Error liking comment:", error);
+    console.error("Error toggling like on comment:", error);
     res.status(500).send("Server error");
   }
 });
 
-// Dislike a comment
+// Toggle Dislike a comment
 router.post("/:postId/comments/:commentId/dislike", async (req, res) => {
+  const userId = req.body.userId;
+
   try {
     const blog = await Blog.findById(req.params.postId);
     if (!blog) return res.status(404).json({ msg: "Blog post not found" });
@@ -188,11 +229,22 @@ router.post("/:postId/comments/:commentId/dislike", async (req, res) => {
     const comment = blog.comments.id(req.params.commentId);
     if (!comment) return res.status(404).json({ msg: "Comment not found" });
 
-    comment.dislikes += 1;
+    if (comment.dislikedBy.includes(userId)) {
+      // If the user has already disliked, remove their dislike
+      comment.dislikes -= 1;
+      comment.dislikedBy = comment.dislikedBy.filter((id) => id !== userId);
+    } else {
+      // Otherwise, add the user's dislike
+      comment.dislikes += 1;
+      comment.dislikedBy.push(userId);
+      // Also, remove like if previously liked
+      comment.likedBy = comment.likedBy.filter((id) => id !== userId);
+      if (comment.likedBy.includes(userId)) comment.likes -= 1;
+    }
     await blog.save();
-    res.json({ dislikes: comment.dislikes });
+    res.json({ likes: comment.likes, dislikes: comment.dislikes });
   } catch (error) {
-    console.error("Error disliking comment:", error);
+    console.error("Error toggling dislike on comment:", error);
     res.status(500).send("Server error");
   }
 });

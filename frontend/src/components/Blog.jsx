@@ -19,7 +19,7 @@ const Blog = ({ searchQuery, onSearchResults }) => {
 
   const handleCommentSubmit = async (postId) => {
     const comment = comments[postId];
-    if (!comment || !comment.trim()) return; // Prevent empty comments
+    if (!comment || !comment.trim()) return;
 
     try {
       await axios.post(`/api/blogs/${postId}/comment`, {
@@ -65,39 +65,56 @@ const Blog = ({ searchQuery, onSearchResults }) => {
     }
   }, [filteredPosts, onSearchResults]);
 
-  // Likes and Dislikes Comments & Posts
+  // Toggle like for a post
   const handleLikePost = async (postId) => {
     try {
-      const response = await axios.post(`/api/blogs/${postId}/like`);
-      setPosts((prevPosts) =>
-        prevPosts.map((post) =>
-          post._id === postId ? { ...post, likes: response.data.likes } : post
-        )
-      );
-    } catch (error) {
-      console.error("Error liking post:", error);
-    }
-  };
-
-  const handleDislikePost = async (postId) => {
-    try {
-      const response = await axios.post(`/api/blogs/${postId}/dislike`);
+      const response = await axios.post(`/api/blogs/${postId}/like`, {
+        userId: user.uid,
+      });
       setPosts((prevPosts) =>
         prevPosts.map((post) =>
           post._id === postId
-            ? { ...post, dislikes: response.data.dislikes }
+            ? {
+                ...post,
+                likes: response.data.likes,
+                dislikes: response.data.dislikes,
+              }
             : post
         )
       );
     } catch (error) {
-      console.error("Error disliking post:", error);
+      console.error("Error toggling like on post:", error);
     }
   };
 
+  // Toggle dislike for a post
+  const handleDislikePost = async (postId) => {
+    try {
+      const response = await axios.post(`/api/blogs/${postId}/dislike`, {
+        userId: user.uid,
+      });
+      setPosts((prevPosts) =>
+        prevPosts.map((post) =>
+          post._id === postId
+            ? {
+                ...post,
+                likes: response.data.likes,
+                dislikes: response.data.dislikes,
+              }
+            : post
+        )
+      );
+    } catch (error) {
+      console.error("Error toggling dislike on post:", error);
+    }
+  };
+
+  // Toggle like for a comment
   const handleLikeComment = async (postId, commentId) => {
     try {
       const response = await axios.post(
-        `/api/blogs/${postId}/comments/${commentId}/like`
+        `/api/blogs/${postId}/comments/${commentId}/like`,
+        { userId: user.uid }
       );
       setPosts((prevPosts) =>
         prevPosts.map((post) =>
@@ -106,7 +123,11 @@ const Blog = ({ searchQuery, onSearchResults }) => {
                 ...post,
                 comments: post.comments.map((comment) =>
                   comment._id === commentId
-                    ? { ...comment, likes: response.data.likes }
+                    ? {
+                        ...comment,
+                        likes: response.data.likes,
+                        dislikes: response.data.dislikes,
+                      }
                     : comment
                 ),
               }
@@ -114,14 +135,16 @@ const Blog = ({ searchQuery, onSearchResults }) => {
         )
       );
     } catch (error) {
-      console.error("Error liking comment:", error);
+      console.error("Error toggling like on comment:", error);
     }
   };
 
+  // Toggle dislike for a comment
   const handleDislikeComment = async (postId, commentId) => {
     try {
       const response = await axios.post(
-        `/api/blogs/${postId}/comments/${commentId}/dislike`
+        `/api/blogs/${postId}/comments/${commentId}/dislike`,
+        { userId: user.uid }
       );
       setPosts((prevPosts) =>
         prevPosts.map((post) =>
@@ -130,7 +153,11 @@ const Blog = ({ searchQuery, onSearchResults }) => {
                 ...post,
                 comments: post.comments.map((comment) =>
                   comment._id === commentId
-                    ? { ...comment, dislikes: response.data.dislikes }
+                    ? {
+                        ...comment,
+                        likes: response.data.likes,
+                        dislikes: response.data.dislikes,
+                      }
                     : comment
                 ),
               }
@@ -138,7 +165,7 @@ const Blog = ({ searchQuery, onSearchResults }) => {
         )
       );
     } catch (error) {
-      console.error("Error disliking comment:", error);
+      console.error("Error toggling dislike on comment:", error);
     }
   };
 
