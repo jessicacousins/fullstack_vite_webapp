@@ -183,7 +183,7 @@ const Blog = ({ searchQuery, onSearchResults }) => {
             const isExpanded = expandedPosts.includes(post._id);
             const areCommentsVisible = showComments[post._id];
             return (
-              <div key={post._id} className="post-card">
+              <div key={post._id} className="post-card1">
                 <h2 className="post-title">{post.title}</h2>
                 <p className={`post-content ${isExpanded ? "" : "truncated"}`}>
                   {post.content}

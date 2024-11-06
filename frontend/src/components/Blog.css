@@ -53,8 +53,8 @@
   align-items: center;
 }
 
-.post-card {
-  background-color: #2c2c2c;
+.post-card1 {
+  background-color: #192734 !important;
   border-radius: 10px;
   padding: 25px;
   box-shadow: 0 4px 12px rgba(197, 234, 245, 0.5);
@@ -75,12 +75,14 @@
   color: #00d4ff;
   margin-bottom: 15px;
   text-align: center;
+  letter-spacing: 2px;
 }
 
 .post-content {
   font-size: 1.2rem;
   color: #ffffff;
   margin-bottom: 15px;
+  letter-spacing: 1.2px;
 }
 
 .post-content.truncated {
@@ -103,7 +105,8 @@
 
 .post-author {
   font-size: 1rem;
-  color: #4caf50;
+  color: #00d4ff;
+  letter-spacing: 2px;
   margin-bottom: 5px;
   text-align: center;
 }
@@ -124,13 +127,14 @@
 
 .icon-button {
   font-size: 1.5rem;
-  color: #4caf50;
+  color: #00d4ff;
   cursor: pointer;
   transition: color 0.3s;
+  padding: 5px;
 }
 
 .icon-button:hover {
-  color: #43ff046b;
+  color: #aeedfa;
 }
 
 .comments-section {
