@@ -208,12 +208,14 @@ const Blog = ({ searchQuery, onSearchResults }) => {
                   <button
                     onClick={() => handleLikePost(post._id)}
                     className="like-button"
+                    title="Like"
                   >
                     <FaHeart /> {post.likes}
                   </button>
                   <button
                     onClick={() => handleDislikePost(post._id)}
                     className="dislike-button"
+                    title="Dislike"
                   >
                     <FaThumbsDown /> {post.dislikes}
                   </button>

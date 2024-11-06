@@ -31,7 +31,11 @@ const Chatbot = () => {
     <>
       {/* Button to toggle the chatbot */}
       <div className="chatbot-toggle" onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? <FaTimes size={24} /> : <FaComments size={24} />}
+        {isOpen ? (
+          <FaTimes size={24} title="Close" />
+        ) : (
+          <FaComments title="ChatBot" size={24} />
+        )}
       </div>
 
       {/* Chatbot window */}

@@ -93,6 +93,7 @@ const NavBar = ({ onSearch, cartItemCount }) => {
             ))}
             <li className="cart-link" onClick={closeMobileMenu}>
               <NavLink
+                title="Cart"
                 to="/cart"
                 className={({ isActive }) => (isActive ? "active-link" : "")}
               >
@@ -103,7 +104,7 @@ const NavBar = ({ onSearch, cartItemCount }) => {
               </NavLink>
             </li>
             <li>
-              <div className="search-container">
+              <div className="search-container" title="Search">
                 <input
                   type="text"
                   placeholder="Search Blog Posts..."
