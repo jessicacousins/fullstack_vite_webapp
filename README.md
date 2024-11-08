@@ -27,6 +27,8 @@ A full-stack **Vite** application using **React**, **Node.js**, **Express**, **M
 
 In addition to the existing features, this project now includes **TensorFlow.js** integration with the **MobileNet Classifier**. This enhancement allows for **machine learning** capabilities directly on the frontend, specifically for image classification in the shopping cart component. Users can click on merchandise images, and the MobileNet model will identify and classify them into broad categories, delivering real-time feedback on the predicted label.
 
+The "Learn More" button not only provides real-time feedback on the identified label of a product but also generates suggestions for similar projects or items. This recommendation system, powered by OpenAI, leverages the getProductRecommendations function to suggest relevant products based on user interests. User activity is logged in the backend, enabling the app to track interests and provide users with more personalized suggestions.
+
 ## Table of Contents
 
 - [Project Description](#project-description)
@@ -56,11 +58,11 @@ The primary objective of this MERN stack project is to implement a user registra
 
 The blog platform is enhanced with **AI Sentiment Analysis** and **AI-Generated Content** through **OpenAI**. Users can create, edit, and comment on blog posts, and every comment is processed through OpenAI to categorize it as positive, neutral, or negative. Additionally, **AI moderation** has been integrated to automatically flag inappropriate comments. This flagged data, along with sentiment analysis, is tracked and stored in **MongoDB** and can be accessed through the **Admin Dashboard**, which provides moderators with a comprehensive view of all flagged content and interactions.
 
-The backend securely handles user data such as personal information, device and browser details, IP address, and more. This data is stored in **MongoDB**, with _strict age verification in compliance with legal guidelines_. The **password reset** feature includes backend validation to check if the email exists in the system before triggering a password reset email through Firebase. This helps prevent abuse and exploitation by malicious users.
+The backend securely handles user data such as personal information, device and browser details, IP address, product view history which informs product recommendations. This data is stored in **MongoDB**, with _strict age verification in compliance with legal guidelines_. The **password reset** feature includes backend validation to check if the email exists in the system before triggering a password reset email through Firebase. This helps prevent abuse and exploitation by malicious users.
 
 ## OpenAI Integration
 
-This project includes two powerful AI features using OpenAI, and proper attribution to OpenAI is provided in accordance with their usage guidelines.
+This project includes several advanced AI features powered by OpenAI, with proper attribution to OpenAI provided according to their usage guidelines.
 
 ### AI ChatBot
 
@@ -79,6 +81,11 @@ This project includes two powerful AI features using OpenAI, and proper attribut
 - **AI Moderation for flagging comments**: Integrated AI moderation to automatically flag inappropriate comments based on predefined criteria.
 - **AI-generated content**: Enhanced blog functionality with AI-generated content creation using OpenAI.
 - **Admin Dashboard Data Access**: Provides moderators with a comprehensive view of flagged content, supported by sentiment analysis for all interactions, ensuring an informed and efficient review process.
+
+### AI Product Recommendations
+
+- **Real-Time Suggestions and Interest Tracking**: The system provides real-time feedback on product categories and suggests similar items, enriching user experience with AI-driven recommendations. Additionally, viewed product data is logged in the backend, allowing tailored suggestions based on user interests.
+- **Learn More Details**: When users click on the "Learn More" button for a product, they receive a detailed, AI-generated post about the item, including relevant information and insights. This provides users with an enriched, informative view of the product they are currently exploring
 
 ### Legal Attribution for OpenAI
 
@@ -273,6 +280,8 @@ This web application focuses on:
 15. **AI-Generated Content**: Users can generate content for blog posts through OpenAI’s GPT model. This feature allows for seamless AI-driven content creation, helping users draft blog posts based on input prompts. The generated content is displayed in the blog editor and can be customized further by the user before publishing.
 16. **AI moderation**: Integrated AI moderation to automatically flag inappropriate comments, including those containing hate speech, profanity, or other harmful content. Moderators can review flagged content via the Admin Dashboard, where the flagged comments are displayed alongside sentiment analysis to help identify potential violations in real-time.
 17. **TensorFlow.js Image Classification**: TensorFlow.js is integrated into the frontend to enable machine learning capabilities directly in the browser. Using the MobileNet model, this feature allows users to classify and identify categories of merchandise images in the shopping component with real-time feedback. When a user clicks on an item, the model predicts the item’s category, providing insights into the types of products available. This implementation demonstrates basic machine learning concepts and enhances the shopping experience with interactive AI-driven categorization.
+18. **Learn More Insights**: When users click the “Learn More” button for an item in the shopping cart, they receive an AI-generated description and insights about the product. This feature, powered by OpenAI, offers additional context on the product's uses, features, and related categories, enhancing the shopping experience.
+19. **Product Recommendations**: Based on the products users views, the system provides AI-driven recommendations for similar items. This feature uses OpenAI to generate recommendations tailored to user preferences. Product views are logged in the backend, allowing the application to suggest relevant items based on users' browsing patterns.
 
 ## Packages and Technologies Used
 
@@ -295,6 +304,7 @@ This web application focuses on:
 - **AI Moderation**: Integrated AI-driven moderation automatically flags inappropriate comments for review. Flagged comments are displayed in the Admin Dashboard, with sentiment analysis and reasons for flagging (such as hate speech, profanity, etc.) easily accessible to moderators.
 - **TensorFlow.js**: A JavaScript library that allows machine learning to be run directly in the browser. TensorFlow.js powers the machine learning capabilities for real-time image classification on the frontend.
 - **MobileNet Classifier**: A pre-trained model integrated with TensorFlow.js to classify merchandise images within the shopping component. When users click on an item, the MobileNet model predicts its category, providing immediate AI-driven insights into the type of product.
+- **Product Recommendations**: When users click the “Learn More” button on an item in the shopping cart, OpenAI generates personalized product recommendations based on the selected item. This feature provides real-time feedback on similar items and displays AI-generated insights about the product being viewed.
 
 ### Backend
 
@@ -312,6 +322,7 @@ This web application focuses on:
 - **OpenAI Comment Sentiment Analysis**: This sentiment data is stored in MongoDB and displayed on the Admin Dashboard for review by administrators and content creators.
 - **AI-Generated Content**: OpenAI’s GPT model is used to generate blog post content based on user prompts. The content is processed and delivered through the backend to the frontend blog editor.
 - **AI Moderation**: The backend integrates OpenAI’s moderation API to automatically flag inappropriate content in blog posts and comments. Flagged content, including the reason for flagging, is stored in MongoDB and displayed in the Admin Dashboard for moderator review.
+- **Product View Logging**: Each time a user views a product, relevant data (such as product ID, category, and timestamp) is logged in MongoDB. This stored view history helps generate personalized product recommendations and tracks user interests for tailored suggestions.
 
 ## Features
 
@@ -337,6 +348,7 @@ This web application focuses on:
 - **AI-Generated Content**: Users can generate blog post content using OpenAI’s GPT model by providing keywords or prompts. The AI-generated content is displayed in the blog editor for further customization before publishing.
 - **AI Moderation**: Comments are automatically moderated by OpenAI’s moderation API. Inappropriate or flagged comments are sent to the Admin Dashboard, where moderators can review and take action.
 - **Machine Learning**: Enables real-time image classification within the shopping cart, providing users with AI-driven insights on merchandise categories through TensorFlow.js and the MobileNet model.
+- **Product Recommendations and Insights**: When users click "Learn More" on a product, they receive AI-generated insights and related product recommendations, enhancing the shopping experience.
 
 ### Backend Features
 
@@ -352,6 +364,7 @@ This web application focuses on:
 - **Comment Sentiment Storage**: Sentiment analysis for blog comments is performed via OpenAI, with sentiment data (positive, neutral, or negative) and probability scores securely stored in MongoDB for each comment.
 - **AI-Generated Content**: The backend facilitates interaction with OpenAI’s GPT model, generating blog post content based on user-provided prompts. The generated content is processed and returned to the frontend for customization and publication.
 - **AI Moderation**: The backend integrates OpenAI’s moderation API to flag inappropriate content in blog posts and comments. Flagged content is stored in MongoDB and displayed on the Admin Dashboard for review by moderators.
+- **Product View Logging**: The backend logs each product view, capturing details like product ID and category, to enable personalized product recommendations based on user interests.
 - **Shopping Cart**:
   - The backend tracks the user's cart, storing the items they have added, and updating the cart when items are removed or quantities are changed.
   - The backend also processes Stripe payment intents and records successful transactions, including payment status, cart contents, and user details.
@@ -439,6 +452,17 @@ Every comment made on a blog post undergoes sentiment analysis using OpenAI’s 
 - **Device Metadata**: Information about the user’s browser, operating system, and device is captured during the comment submission.
 
 This data is securely stored in MongoDB and displayed on the Admin Dashboard, providing a comprehensive overview of user sentiment and engagement across blog posts. This includes detailed sentiment breakdowns (positive, neutral, and negative) along with metadata about the comment and its author, helping administrators understand user feedback trends more effectively.
+
+### Product View Logging and Recommendations
+
+To enhance the personalized shopping experience, the system logs details each time a user views a product. This data enables targeted product recommendations and insights based on user behavior. The following data is collected and stored:
+
+- **Product Details**: Information about the viewed product, including its ID, title, and category.
+- **User Interaction History**: A record of each product viewed by the user, allowing for tailored recommendations based on browsing history.
+- **Timestamp**: The date and time of each product view to track recent interactions.
+- **User Metadata**: The user’s ID or email is associated with each product view, helping to build personalized suggestions.
+
+This data is stored in MongoDB and is used to generate real-time product recommendations and insights when users click "Learn More" on an item in the shopping cart, providing a customized and enriched shopping experience.
 
 ### Additional Data Collected
 
