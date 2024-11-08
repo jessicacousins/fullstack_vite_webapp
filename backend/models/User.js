@@ -11,6 +11,16 @@ const ScoreSchema = new mongoose.Schema({
   },
 });
 
+const ProductViewSchema = new mongoose.Schema({
+  productId: String,
+  title: String,
+  category: String,
+  viewedAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
 const SnapQuestScoreSchema = new mongoose.Schema({
   score: {
     type: Number,
@@ -150,6 +160,7 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  viewedProducts: [ProductViewSchema],
 });
 
 const User = mongoose.model("User", UserSchema);

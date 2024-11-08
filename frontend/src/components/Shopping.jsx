@@ -1,4 +1,5 @@
 import React, { useState, Suspense } from "react";
+import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 import "./Shopping.css";
 
@@ -202,10 +203,11 @@ const products = [
 ];
 
 const Shopping = ({ addToCart }) => {
+  const { user } = useAuth();
   const [selectedImage, setSelectedImage] = useState(null);
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
   const [selectedProduct, setSelectedProduct] = useState(null);
-
+  const [recommendations, setRecommendations] = useState("");
   const [learningContent, setLearningContent] = useState("");
   const [showLearningModal, setShowLearningModal] = useState(false);
 
@@ -216,13 +218,36 @@ const Shopping = ({ addToCart }) => {
 
   const handleLearnMore = async (product) => {
     try {
-      const response = await axios.post("/api/learning/insights", {
-        label: product.label,
+      console.log("User ID:", user?._id);
+      console.log("Fetching insights and recommendations for:", product.label);
+
+      await axios.post("/api/users/view-product", {
+        email: user?.email,
+        productId: product.id,
+        title: product.title,
+        category: product.label,
       });
-      setLearningContent(response.data.insight);
+
+      const [insightResponse, recommendationResponse] = await Promise.all([
+        axios.post("/api/learning/insights", {
+          label: product.label,
+        }),
+        axios.post("/api/chatbot/recommendations", {
+          category: product.label,
+          productId: product.id,
+          title: product.title,
+          userId: user?._id,
+        }),
+      ]);
+
+      setLearningContent(insightResponse.data.insight);
+      setRecommendations(recommendationResponse.data.recommendations);
       setShowLearningModal(true);
     } catch (error) {
-      console.error("Error fetching learning content:", error);
+      console.error(
+        "Error logging product view or fetching recommendations:",
+        error
+      );
     }
   };
 
@@ -262,7 +287,7 @@ const Shopping = ({ addToCart }) => {
         ))}
       </div>
 
-      {/* Modal for Learning Content */}
+      {/* Modal for Learning Content & Recommendations */}
       {showLearningModal && (
         <div
           className="learning-modal"
@@ -271,6 +296,10 @@ const Shopping = ({ addToCart }) => {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <h2>Learning Mode</h2>
             <p>{learningContent}</p>
+
+            <h3>Recommended Products</h3>
+            <p>{recommendations}</p>
+
             <button onClick={() => setShowLearningModal(false)}>Close</button>
           </div>
         </div>

@@ -19,4 +19,30 @@ const getChatbotResponse = async (message) => {
   }
 };
 
-module.exports = { getChatbotResponse };
+const getProductRecommendations = async (productCategory) => {
+  try {
+    const response = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "system",
+          content: "You are a product recommendation assistant.",
+        },
+        {
+          role: "user",
+          content: `Recommend similar products to a user interested in ${productCategory}.`,
+        },
+      ],
+      max_tokens: 150,
+    });
+
+    return response.choices[0].message.content.trim();
+  } catch (error) {
+    console.error("Error generating recommendations:", error);
+    return "We couldn't generate recommendations at this time.";
+  }
+};
+
+module.exports = { getChatbotResponse, getProductRecommendations };
+
+// module.exports = { getChatbotResponse };

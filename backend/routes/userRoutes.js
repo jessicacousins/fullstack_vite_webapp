@@ -423,4 +423,31 @@ router.get("/:email/posts", async (req, res) => {
   }
 });
 
+// @route POST /api/users/view-product
+// @desc Log a product view for a user
+router.post("/view-product", async (req, res) => {
+  const { email, productId, title, category } = req.body;
+
+  try {
+    let user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+
+    // Add the viewedProducts array displaying in the Users data
+    user.viewedProducts.push({
+      productId,
+      title,
+      category,
+    });
+
+    await user.save();
+
+    res.status(200).json({ msg: "Product view logged", user });
+  } catch (error) {
+    console.error("Error logging product view:", error.message);
+    res.status(500).send("Server error");
+  }
+});
+
 module.exports = router;

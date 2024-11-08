@@ -175,45 +175,44 @@ button:hover {
 
 .learning-modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.learning-modal .modal-content {
-  background-color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
-  max-width: 500px;
-  text-align: center;
-  color: #333;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  width: 80%;
+  max-width: 600px;
+  overflow-y: auto;
 }
 
-.learning-modal h2 {
-  margin-bottom: 10px;
-  font-size: 1.8rem;
+.learning-modal h2,
+.learning-modal h3 {
+  margin: 0 0 10px;
+  color: #066ddb;
 }
 
 .learning-modal p {
-  font-size: 1.2rem;
+  color: #333;
+  font-size: 1rem;
   margin-bottom: 15px;
 }
 
-.learning-modal button {
-  background-color: #0bd89bde;
-  color: #fff;
-  padding: 10px 20px;
+.learning-modal .close-modal {
+  background-color: #066ddb;
+  color: #ffffff;
   border: none;
+  padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 1rem;
 }
 
-.learning-modal button:hover {
-  background-color: #04815c93;
+.modal-image {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
 }
