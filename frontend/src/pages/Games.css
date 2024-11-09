@@ -1,7 +1,7 @@
 .games-container {
   padding: 20px;
   text-align: center;
-  /* background-color: #1e1e2e; */
+  background-color: #1e1e1e;
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
 }

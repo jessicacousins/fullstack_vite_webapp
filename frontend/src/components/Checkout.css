@@ -3,3 +3,12 @@
   text-align: center;
   letter-spacing: 2px;
 }
+
+.checkout-container {
+  color: #ffffff;
+  background-color: #1e1e1e;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  padding: 20px;
+  flex-direction: column;
+}

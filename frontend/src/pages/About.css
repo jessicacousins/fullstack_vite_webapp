@@ -3,7 +3,7 @@
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
-  background-color: #f2f2f5;
+  background-color: #1e1e1e;
   color: #333;
 }
 
@@ -15,7 +15,7 @@ body {
 
 .header,
 .footer {
-  background-color: #1c1c1e;
+  background-color: #8888f3;
   color: #fefefe;
   text-align: center;
   padding: 1.5rem;
