@@ -1,14 +1,14 @@
-.navbar {
-  background-color: #e0dcdc;
-  padding: 10px 20px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+.navbar.dark-mode {
+  background-color: #333;
+  padding: 10px;
   position: sticky;
   top: 0;
   z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
 }
 
 .navbar-header {
@@ -19,15 +19,14 @@
 }
 
 .navbar-brand {
-  color: #2b86a1;
   font-size: 20px;
-  letter-spacing: 2px;
+  color: #d3aaaa;
 }
 
 .hamburger-menu {
   display: none;
   font-size: 24px;
-  color: #fff;
+  color: #ffffff;
   background: none;
   border: none;
   cursor: pointer;
@@ -36,175 +35,107 @@
 .navbar-list {
   list-style: none;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 0;
-  padding: 0;
   gap: 15px;
+  padding: 0;
+  margin: 0;
 }
 
-.navbar-list li {
-  display: inline;
-}
-
-.navbar-list li a,
-.navbar-list li button {
-  color: #fff;
+.navbar-list li a {
+  color: hsl(192, 31%, 84%);
   text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 8px;
-  font-size: 1.3rem;
-  transition: all 0.3s ease;
-  background-color: #2b86a1;
-  border: none;
+  padding: 8px;
+  transition: color 0.3s;
 }
 
 .navbar-list li a:hover,
-.navbar-list li button:hover {
-  background-color: #4e4c4c;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+.navbar-list li a.active-link {
+  color: #ffffff;
+  background-color: #4e4e4e;
+  border-radius: 4px;
 }
 
 .logout-button {
-  background-color: #c53f3f !important;
-  color: white;
+  background: none;
+  border: 1px solid #ff4a4a;
+  color: #ff4a4a;
   cursor: pointer;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: all 0.3s ease;
+  margin-top: -2px;
+  padding: 8px 12px;
+  border-radius: 4px;
 }
 
 .logout-button:hover {
-  background-color: #f5acac !important;
+  background-color: #f06a6a;
   color: #000;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  border: 1px solid #000;
-}
-
-.navbar-auth-links {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.search-container {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.search-input {
-  padding: 8px 12px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #666;
-  color: #fff;
-  background-color: #444;
-  outline: none;
-  transition: all 0.3s ease;
-  margin-top: 12px;
-}
-
-.search-input::placeholder {
-  color: #aaa;
-}
-
-.search-input:focus {
-  border-color: #2b86a1;
-  box-shadow: 0px 0px 1px 3px rgba(2, 67, 97, 0.6);
-}
-
-.search-button {
-  padding: 8px 10px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #333;
-  background-color: #abe6f8 !important;
-  color: #fff;
   cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.search-button:hover {
-  background-color: #b4c5d4 !important;
-}
-
-.cart-container {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-}
-
-.cart-link {
-  position: relative;
-  display: flex;
-  align-items: center;
-  color: #2b86a1;
-  text-decoration: none;
+  border: 1px solid #f06a6a;
 }
 
 .cart-count {
+  background-color: #ff4a4a;
+  color: white;
+  border-radius: 50%;
+  padding: 0 5px;
+  font-size: 12px;
   position: absolute;
   top: -8px;
   right: -8px;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  padding: 0 6px;
-  font-size: 12px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-/*  styling for smaller screens and tablets */
+.sticky-search-bar {
+  position: sticky;
+  top: 80px;
+  z-index: 9;
+  background-color: #333;
+  padding: 5px 15px;
+  border-top: 1px solid #4d4d4d;
+  border-bottom: 1px solid #4d4d4d;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 8px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #2f2f2f;
+  color: #d3d3d3;
+  width: 100%;
+}
+
+.search-input::placeholder {
+  color: #a1a1a1;
+}
+
+.search-button {
+  background: none;
+  border: none;
+  color: #d3d3d3;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
 @media (max-width: 1024px) {
-  .mobile-menu-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 15px;
-    box-sizing: border-box;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: #e0dcdc;
-    z-index: 20;
-  }
-
-  .navbar-brand {
-    font-size: 24px;
-    color: #2b86a1;
-    margin: 0;
-  }
-
   .hamburger-menu {
     display: block;
-    font-size: 24px;
-    color: #000;
-    background: none;
-    border: 1px solid #000;
-    cursor: pointer;
   }
 
   .navbar-list {
     display: none;
     flex-direction: column;
-    padding-top: 60px;
-    padding-bottom: 20px;
-    background-color: #e0dcdc;
+    background-color: #2b2b2b;
     position: fixed;
-    top: 70px;
+    top: 80px;
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 20;
+    gap: 2px;
     overflow-y: auto;
-    z-index: 10;
   }
 
   .navbar-list.open {
@@ -214,11 +145,62 @@
   .navbar-list li {
     width: 100%;
     text-align: center;
-    padding: 15px 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid #444;
+  }
+
+  .navbar-list li a {
+    color: #d3d3d3;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    display: block;
+    transition: background-color 0.3s;
+  }
+
+  .navbar-list li a:hover {
+    background-color: #4e4e4e;
+  }
+
+  .search-bar {
+    display: flex;
+    padding: 15px;
+    background-color: #2b2b2b;
+    border-top: 1px solid #444;
   }
 
   .search-input {
-    width: calc(70% - 40px);
-    margin: 15px 20px;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: #d3d3d3;
+  }
+
+  .search-button {
+    font-size: 18px;
+    padding: 8px;
+    color: #d3d3d3;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* For a slight shadow effect in dark mode */
+  .navbar-list li a:hover,
+  .search-input:focus {
+    background-color: #444;
+  }
+
+  /* Styling the hamburger menu button */
+  .hamburger-menu {
+    display: block;
+    font-size: 24px;
+    color: #ffffff;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 }
