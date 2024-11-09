@@ -1,3 +1,14 @@
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(6, 109, 219, 0.5), 0 0 20px rgba(6, 109, 219, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(6, 109, 219, 0.7), 0 0 30px rgba(6, 109, 219, 0.5);
+  }
+}
+
 .chatbot-toggle {
   position: fixed;
   bottom: 20px;
@@ -10,6 +21,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 1001;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  animation: pulse 2s infinite;
 }
 
 .chatbot-toggle:hover {
@@ -22,6 +34,7 @@
   bottom: 70px;
   right: 20px;
   width: 380px;
+  height: 450px; /* Set a fixed height for the container */
   max-height: 450px;
   background-color: #f9f9f9;
   border-radius: 16px;
@@ -38,6 +51,7 @@
   flex: 1;
   padding: 10px;
   overflow-y: auto;
+  max-height: 350px; /* Adjusted to keep a consistent height */
   scrollbar-width: thin;
   scrollbar-color: #d1d1d1 #f9f9f9;
 }

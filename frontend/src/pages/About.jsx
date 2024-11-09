@@ -72,8 +72,8 @@ const About = () => {
         </main>
 
         <aside className="sidebar right-sidebar">
-          <h2>Messages</h2>
-          <p>Direct Messages and friends list populate here</p>
+          <h2>Sponsored</h2>
+          <p>Google Adsense Here</p>
         </aside>
       </div>
 
