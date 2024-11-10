@@ -27,7 +27,7 @@ A full-stack **Vite** application using **React**, **Node.js**, **Express**, **M
 
 In addition to the existing features, there is **TensorFlow.js** integration with the **MobileNet Classifier**. This allows for **machine learning** capabilities directly on the frontend, specifically for image classification in the shopping cart component. Users can click on merchandise images, and the MobileNet model will identify and classify them into broad categories, delivering real-time feedback on the predicted label.
 
-The "Learn More" button provides real-time feedback on the identified label of a product and also generates suggestions for similar projects or items. This recommendation system, powered by OpenAI, leverages the getProductRecommendations function to suggest relevant products based on user interests. User activity is logged in the backend, enabling the app to track interests and provide users with more personalized suggestions.
+The "Learn More" button provides real-time feedback on the identified label of a product and also generates suggestions for similar projects or items. This recommendation system, powered by OpenAI, leverages the **getProductRecommendations** function to suggest relevant products based on user interests. User activity is logged in the backend, enabling the app to track interests and provide users with more personalized suggestions.
 
 ## Table of Contents
 
