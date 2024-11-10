@@ -450,4 +450,56 @@ router.post("/view-product", async (req, res) => {
   }
 });
 
+// Fetch Top 10 Blackjack Scores
+router.get("/leaderboard/blackjack", async (req, res) => {
+  try {
+    const topBlackjackScores = await User.find()
+      .sort({ highestScore: -1 })
+      .limit(10)
+      .select("email highestScore");
+    res.json(topBlackjackScores);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching leaderboard", error });
+  }
+});
+
+// Fetch Top 10 Memory Game Scores (fewest turns)
+router.get("/leaderboard/memory-game", async (req, res) => {
+  try {
+    const topMemoryGameScores = await User.find()
+      .sort({ bestMemoryGameScore: 1 })
+      .limit(10)
+      .select("email bestMemoryGameScore");
+    res.json(topMemoryGameScores);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching leaderboard", error });
+  }
+});
+
+// Fetch Top 10 Simon Says Levels
+router.get("/leaderboard/simon-says", async (req, res) => {
+  try {
+    const topSimonSaysScores = await User.find()
+      .sort({ simonSaysHighestLevel: -1 })
+      .limit(10)
+      .select("email simonSaysHighestLevel");
+    res.json(topSimonSaysScores);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching leaderboard", error });
+  }
+});
+
+// Fetch Top 10 SnapQuest Scores
+router.get("/leaderboard/snapquest", async (req, res) => {
+  try {
+    const topSnapQuestScores = await User.find()
+      .sort({ highestSnapQuestScore: -1 })
+      .limit(10)
+      .select("email highestSnapQuestScore");
+    res.json(topSnapQuestScores);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching leaderboard", error });
+  }
+});
+
 module.exports = router;
