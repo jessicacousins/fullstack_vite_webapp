@@ -1,17 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import "./Cart.css";
+import { products } from "./Shopping";
 
 const Cart = ({
   cartItems,
   updateCartQuantity,
   removeFromCart,
   proceedToCheckout,
+  addToCart,
 }) => {
   const total = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
+
+  // filtering recommendations based on items in the cart
+  const getRecommendations = () => {
+    const cartLabels = cartItems.map((item) => item.label);
+    return products
+      .filter(
+        (product) =>
+          cartLabels.includes(product.label) &&
+          !cartItems.some((cartItem) => cartItem.id === product.id)
+      )
+      .slice(0, 3); // limit recommendations 3 items for simplicity
+  };
+
+  const recommendations = getRecommendations();
 
   return (
     <div className="cart-page-container">
@@ -67,6 +83,29 @@ const Cart = ({
             >
               Proceed to Checkout
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* Display Recommendations */}
+      {recommendations.length > 0 && (
+        <div className="recommendations-section">
+          <h2>You May Also Like</h2>
+          <div className="recommendations-grid">
+            {recommendations.map((recommendation) => (
+              <div className="recommendation-card" key={recommendation.id}>
+                <img
+                  src={recommendation.image}
+                  alt={recommendation.title}
+                  className="recommendation-image"
+                />
+                <h3>{recommendation.title}</h3>
+                <p>${recommendation.price}</p>
+                <button onClick={() => addToCart(recommendation)}>
+                  Add to Cart
+                </button>
+              </div>
+            ))}
           </div>
         </div>
       )}

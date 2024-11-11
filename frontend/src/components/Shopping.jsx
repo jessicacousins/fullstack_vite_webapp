@@ -7,7 +7,7 @@ import "./Shopping.css";
 
 const MobileNetClassifier = React.lazy(() => import("./MobileNetClassifier"));
 
-const products = [
+export const products = [
   {
     id: 1,
     title: "Pink T-Shirt",

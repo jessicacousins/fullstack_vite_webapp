@@ -110,6 +110,7 @@ function App() {
               updateCartQuantity={updateCartQuantity}
               setCartItems={setCartItems}
               proceedToCheckout={() => proceedToCheckout("/checkout")}
+              addToCart={addToCart}
             />
           }
         />
