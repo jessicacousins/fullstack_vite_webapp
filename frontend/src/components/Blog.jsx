@@ -171,6 +171,9 @@ const Blog = ({ searchQuery, onSearchResults }) => {
 
   return (
     <div className="blog-container">
+      {/* Hero Section */}
+      <div className="hero-section">Blog – Discover, Engage, and Connect</div>
+
       <h1 className="blog-heading">Blog Posts</h1>
       {user && (
         <Link to="/create-blog" className="create-blog-button">
