@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { FaComment, FaExpand, FaHeart, FaThumbsDown } from "react-icons/fa";
 import "./Blog.css";
+import GlobeCanvas from "./WireframeGlobe";
 
 const Blog = ({ searchQuery, onSearchResults }) => {
   const { user } = useAuth();
@@ -173,6 +174,9 @@ const Blog = ({ searchQuery, onSearchResults }) => {
     <div className="blog-container">
       {/* Hero Section */}
       <div className="hero-section">Blog – Discover, Engage, and Connect</div>
+
+      {/* Globe NASA here */}
+      <GlobeCanvas />
 
       <h1 className="blog-heading">Blog Posts</h1>
       {user && (
