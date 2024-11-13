@@ -178,7 +178,10 @@ const Blog = ({ searchQuery, onSearchResults }) => {
       {/* Globe NASA here */}
       <GlobeCanvas />
 
-      <h1 className="blog-heading">Blog Posts</h1>
+      {/* <h1 className="blog-heading">Blog Posts</h1> */}
+
+      <h1 className="blog-heading glitch-heading">Blog Posts</h1>
+
       {user && (
         <Link to="/create-blog" className="create-blog-button">
           Create New Blog Post
