@@ -12,7 +12,7 @@
 
 .shopping-container h1 {
   font-size: 2.5rem;
-  color: #333;
+  color: #00d4ff;
   text-align: center;
   margin-bottom: 30px;
   font-weight: 700;
@@ -31,7 +31,8 @@
 }
 
 .product-card {
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-color: #424242;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -65,13 +66,13 @@
 
 .product-card h2 {
   font-size: 1.5rem;
-  color: #333;
+  color: #00d4ff;
   margin: 10px 0;
 }
 
 .product-card p {
   font-size: 1rem;
-  color: #555;
+  color: #d5f2f8;
 }
 
 .price {
@@ -121,7 +122,6 @@ button:hover {
   }
 }
 
-/* Modal overlay */
 .image-modal {
   position: fixed;
   top: 0;
@@ -135,10 +135,9 @@ button:hover {
   z-index: 1000;
 }
 
-/* Modal content styling */
 .modal-content {
   position: relative;
-  background-color: #fff;
+  background-color: #2e2d2d;
   border-radius: 8px;
   padding: 20px;
   width: 80%;
@@ -146,6 +145,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  letter-spacing: 1px;
 }
 
 .modal-image {
@@ -178,7 +178,7 @@ button:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #ffffff;
+  background-color: #2e2d2d;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -191,11 +191,11 @@ button:hover {
 .learning-modal h2,
 .learning-modal h3 {
   margin: 0 0 10px;
-  color: #066ddb;
+  color: #00d4ff;
 }
 
 .learning-modal p {
-  color: #333;
+  color: #f0e5e5;
   font-size: 1rem;
   margin-bottom: 15px;
 }
