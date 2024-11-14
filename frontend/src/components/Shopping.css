@@ -35,13 +35,14 @@
   background-color: #424242;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(240, 237, 237, 0.1);
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .product-card:hover {
   transform: translateY(-5px);
+  border: 1px solid #000;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
