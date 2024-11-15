@@ -94,35 +94,27 @@
   margin-top: 3rem;
 }
 
-/* Button Styles */
-.button {
+.button-home {
   font-size: 1.25rem;
   padding: 0.75rem 2.5rem;
   border-radius: 8px;
-  color: #fff;
-  border: none;
+  color: #00d4ff;
+  background-color: transparent;
+  border: 2px solid #00d4ff;
   cursor: pointer;
   margin-bottom: 1rem;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
   text-align: center;
+  max-width: 160px;
+  height: 60px; /* Set fixed height */
+  box-sizing: border-box; 
 }
 
-.button.warning {
-  background-color: #ff6b6b;
-}
-
-.button.primary {
-  background-color: #4db8ff;
-}
-
-.button.primary:hover,
-.button.warning:hover {
+.button-home:hover {
+  background-color: #00d4ff;
+  color: #1e1e2e;
   transform: scale(1.05);
-  background-color: #3ea1ff;
-}
-
-.button.warning:hover {
-  background-color: #ff5959;
 }
 
 /* Responsive Design */

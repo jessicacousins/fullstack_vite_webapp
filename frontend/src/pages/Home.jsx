@@ -76,11 +76,11 @@ const Home = () => {
         </div>
 
         <div className="home-button-container">
-          <button onClick={logout} className="button warning">
+          {/* <button onClick={logout} className="button-home">
             Logout
-          </button>
-          <Link to="/profile" className="button primary">
-            Go to Profile
+          </button> */}
+          <Link to="/profile" className="button-home">
+            Profile
           </Link>
         </div>
       </div>
