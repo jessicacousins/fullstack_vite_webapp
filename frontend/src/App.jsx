@@ -29,6 +29,7 @@ import Chatbot from "./components/Chatbot";
 import AdminDashboard from "./components/AdminDashboard";
 import OrderSuccess from "./components/OrderSuccess";
 import SnapQuestGame from "./components/SnapQuestGame";
+import Achievements from "./components/Achievements";
 
 import "./App.css";
 
@@ -97,7 +98,7 @@ function App() {
         <Route path="/memory-game-stats" element={<MemoryGameStats />} />
         <Route path="/simon-says" element={<SimonSaysGame />} />
         <Route path="/snapquest" element={<SnapQuestGame />} />
-
+        <Route path="/achievements" element={<Achievements />} />
         <Route path="/order-success" element={<OrderSuccess />} />
 
         <Route path="/shopping" element={<Shopping addToCart={addToCart} />} />

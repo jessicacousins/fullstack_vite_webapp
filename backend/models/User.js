@@ -1,5 +1,20 @@
 const mongoose = require("mongoose");
 
+const AchievementSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  dateEarned: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
 const ScoreSchema = new mongoose.Schema({
   value: {
     type: Number,
@@ -161,6 +176,7 @@ const UserSchema = new mongoose.Schema({
     default: 0,
   },
   viewedProducts: [ProductViewSchema],
+  achievements: [AchievementSchema],
 });
 
 const User = mongoose.model("User", UserSchema);

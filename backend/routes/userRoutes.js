@@ -502,4 +502,89 @@ router.get("/leaderboard/snapquest", async (req, res) => {
   }
 });
 
+router.get("/:email/achievements", async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.params.email });
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+
+    // dynamic achievements from games
+    const gameAchievements = [];
+    if (user.highestScore >= 100) {
+      gameAchievements.push({
+        name: "Blackjack Master",
+        description: "Scored 100 or more in Blackjack.",
+        dateEarned: new Date(),
+      });
+    }
+    if (user.bestMemoryGameScore <= 10) {
+      gameAchievements.push({
+        name: "Memory Wizard",
+        description: "Completed a memory game in 10 or fewer turns.",
+        dateEarned: new Date(),
+      });
+    }
+    if (user.simonSaysHighestLevel >= 15) {
+      gameAchievements.push({
+        name: "Simon Says Pro",
+        description: "Reached level 15 in Simon Says.",
+        dateEarned: new Date(),
+      });
+    }
+
+    // Dynamic achievements from blogs
+    const blogAchievements = [];
+    const blogCount = await Blog.countDocuments({ author: req.params.email });
+    if (blogCount >= 5) {
+      blogAchievements.push({
+        name: "Blogger Extraordinaire",
+        description: "Created 5 or more blog posts.",
+        dateEarned: new Date(),
+      });
+    }
+    const likedBlogs = await Blog.countDocuments({ likedBy: req.params.email });
+    if (likedBlogs >= 10) {
+      blogAchievements.push({
+        name: "Content Curator",
+        description: "Liked 10 or more blog posts.",
+        dateEarned: new Date(),
+      });
+    }
+
+    // Combine static achievements with dynamic ones
+    const allAchievements = [
+      ...user.achievements,
+      ...gameAchievements,
+      ...blogAchievements,
+    ];
+
+    res.json(allAchievements);
+  } catch (error) {
+    console.error("Error fetching achievements:", error.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// Add an achievement to a user
+router.post("/achievements/add", async (req, res) => {
+  const { email, name, description } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+
+    const achievement = { name, description, dateEarned: new Date() };
+    user.achievements.push(achievement);
+    await user.save();
+
+    res.status(200).json({ msg: "Achievement added", user });
+  } catch (error) {
+    console.error("Error adding achievement:", error.message);
+    res.status(500).send("Server error");
+  }
+});
+
 module.exports = router;
