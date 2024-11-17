@@ -502,6 +502,7 @@ router.get("/leaderboard/snapquest", async (req, res) => {
   }
 });
 
+// ! achievements blog and games
 router.get("/:email/achievements", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.params.email });
@@ -509,31 +510,78 @@ router.get("/:email/achievements", async (req, res) => {
       return res.status(404).json({ msg: "User not found" });
     }
 
-    // dynamic achievements from games
-    const gameAchievements = [];
+    // Initialize dynamic achievements array
+    const dynamicAchievements = [];
+
+    // Game achievements for individual games
+    if (user.gamesPlayed >= 10) {
+      dynamicAchievements.push({
+        name: "Blackjack Enthusiast",
+        description: "Played 10 games of Blackjack.",
+        dateEarned: new Date(),
+      });
+    }
+    if (user.memoryGameScores.length >= 10) {
+      dynamicAchievements.push({
+        name: "Memory Game Pro",
+        description: "Played 10 games of Memory Game.",
+        dateEarned: new Date(),
+      });
+    }
+    if (user.snapQuestScores.length >= 10) {
+      dynamicAchievements.push({
+        name: "SnapQuest Adventurer",
+        description: "Played 10 games of SnapQuest.",
+        dateEarned: new Date(),
+      });
+    }
+    if (user.simonSaysGamesPlayed >= 10) {
+      dynamicAchievements.push({
+        name: "Simon Says Expert",
+        description: "Played 10 games of Simon Says.",
+        dateEarned: new Date(),
+      });
+    }
+
+    // Combined game achievement
+    const playedAllGames =
+      user.gamesPlayed >= 10 &&
+      user.memoryGameScores.length >= 10 &&
+      user.snapQuestScores.length >= 10 &&
+      user.simonSaysGamesPlayed >= 10;
+
+    if (playedAllGames) {
+      dynamicAchievements.push({
+        name: "Ultimate Gamer",
+        description: "Played 10 games of all four games.",
+        dateEarned: new Date(),
+      });
+    }
+
+    // Other game-related achievements
     if (user.highestScore >= 100) {
-      gameAchievements.push({
+      dynamicAchievements.push({
         name: "Blackjack Master",
         description: "Scored 100 or more in Blackjack.",
         dateEarned: new Date(),
       });
     }
     if (user.bestMemoryGameScore <= 10) {
-      gameAchievements.push({
+      dynamicAchievements.push({
         name: "Memory Wizard",
         description: "Completed a memory game in 10 or fewer turns.",
         dateEarned: new Date(),
       });
     }
     if (user.simonSaysHighestLevel >= 15) {
-      gameAchievements.push({
+      dynamicAchievements.push({
         name: "Simon Says Pro",
         description: "Reached level 15 in Simon Says.",
         dateEarned: new Date(),
       });
     }
 
-    // Dynamic achievements from blogs
+    // Blog-related achievements
     const blogAchievements = [];
     const blogCount = await Blog.countDocuments({ author: req.params.email });
     if (blogCount >= 5) {
@@ -552,10 +600,10 @@ router.get("/:email/achievements", async (req, res) => {
       });
     }
 
-    // Combine static achievements with dynamic ones
+    // Combine all achievements
     const allAchievements = [
       ...user.achievements,
-      ...gameAchievements,
+      ...dynamicAchievements,
       ...blogAchievements,
     ];
 
