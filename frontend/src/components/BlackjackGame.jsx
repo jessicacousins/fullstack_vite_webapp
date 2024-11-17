@@ -200,45 +200,51 @@ const BlackjackGame = () => {
   return (
     <div className="blackjack-game">
       <h1 className="blackjack-title">Blackjack</h1>
-      {playerWins && <Confetti />}
+      {playerWins && <Confetti className="blackjack-confetti" />}
       {!gameStarted ? (
-        <button className="start-button" onClick={dealInitialCards}>
+        <button className="blackjack-start-button" onClick={dealInitialCards}>
           Start Game
         </button>
       ) : (
         <>
-          <div className="hands">
-            <div className={`player-hand ${playerWins ? "winner" : ""}`}>
+          <div className="blackjack-hands">
+            <div
+              className={`blackjack-player-hand ${
+                playerWins ? "blackjack-winner" : ""
+              }`}
+            >
               <h2>Your Hand (Total: {playerTotal})</h2>
-              <div className="cards">
+              <div className="blackjack-cards">
                 {playerHand.map((card, index) => (
-                  <div className="card" key={index}>
-                    <div className={`card-content ${card.suit}`}>
-                      <span className="card-value">{card.value}</span>
-                      <span className="card-suit">{card.suit}</span>
+                  <div className="blackjack-card" key={index}>
+                    <div className={`blackjack-card-content ${card.suit}`}>
+                      <span className="blackjack-card-value">{card.value}</span>
+                      <span className="blackjack-card-suit">{card.suit}</span>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
             <div
-              className={`dealer-hand ${
-                !playerWins && !tie && gameOver ? "winner" : ""
+              className={`blackjack-dealer-hand ${
+                !playerWins && !tie && gameOver ? "blackjack-winner" : ""
               }`}
             >
               <h2>
                 Dealer's Hand (Total:{" "}
                 {playerTurn ? dealerTotal : calculateHandValue(dealerHand)})
               </h2>
-              <div className="cards">
+              <div className="blackjack-cards">
                 {dealerHand.map((card, index) => (
-                  <div className="card" key={index}>
+                  <div className="blackjack-card" key={index}>
                     {playerTurn && index === 0 ? (
-                      <div className="card-back"></div>
+                      <div className="blackjack-card-back"></div>
                     ) : (
-                      <div className={`card-content ${card.suit}`}>
-                        <span className="card-value">{card.value}</span>
-                        <span className="card-suit">{card.suit}</span>
+                      <div className={`blackjack-card-content ${card.suit}`}>
+                        <span className="blackjack-card-value">
+                          {card.value}
+                        </span>
+                        <span className="blackjack-card-suit">{card.suit}</span>
                       </div>
                     )}
                   </div>
@@ -246,14 +252,14 @@ const BlackjackGame = () => {
               </div>
             </div>
           </div>
-          <div className="controls">
+          <div className="blackjack-controls">
             {playerTurn && (
-              <button className="hit-button" onClick={handleHit}>
+              <button className="blackjack-hit-button" onClick={handleHit}>
                 Hit
               </button>
             )}
             {playerTurn && (
-              <button className="stand-button" onClick={handleStand}>
+              <button className="blackjack-stand-button" onClick={handleStand}>
                 Stand
               </button>
             )}
@@ -269,7 +275,7 @@ const BlackjackGame = () => {
                   ? "Player Wins!"
                   : "Dealer Wins!"}
               </p>
-              <button className="reset-button" onClick={resetGame}>
+              <button className="blackjack-reset-button" onClick={resetGame}>
                 Play Again!
               </button>
             </>

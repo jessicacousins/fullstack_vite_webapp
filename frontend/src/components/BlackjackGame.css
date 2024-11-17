@@ -61,7 +61,7 @@ h1 {
   }
 }
 
-.start-button {
+.blackjack-start-button {
   padding: 20px 40px;
   font-size: 20px;
   background-color: #36f436;
@@ -74,7 +74,7 @@ h1 {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.start-button:hover {
+.blackjack-start-button:hover {
   background-color: #79ec69;
   transform: scale(1.1);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
@@ -92,7 +92,7 @@ h1 {
   }
 }
 
-.reset-button {
+.blackjack-reset-button {
   padding: 15px 30px;
   font-size: 18px;
   background-color: #3dcf03;
@@ -107,7 +107,7 @@ h1 {
   animation: pulse1 1.5s infinite ease-in-out;
 }
 
-.reset-button:hover {
+.blackjack-reset-button:hover {
   background-color: #38a50c;
   color: #fff;
   transform: scale(1.1);
@@ -135,7 +135,7 @@ button:focus {
   outline: none;
 }
 
-.hit-button {
+.blackjack-hit-button {
   margin: 2rem;
   padding: 20px 40px;
   font-size: 20px;
@@ -149,13 +149,13 @@ button:focus {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.hit-button:hover {
+.blackjack-hit-button:hover {
   background-color: #66bb6a;
   transform: scale(1.1);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-.stand-button {
+.blackjack-stand-button {
   padding: 20px 40px;
   font-size: 20px;
   background-color: #2196f3;
@@ -168,13 +168,13 @@ button:focus {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.stand-button:hover {
+.blackjack-stand-button:hover {
   background-color: #64b5f6;
   transform: scale(1.1);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-.controls {
+.blackjack-controls {
   margin-top: 20px;
   animation: fadeInUp 1s ease-out;
 }
@@ -198,13 +198,13 @@ button:focus {
   margin-top: 40px;
 }
 
-.cards {
+.blackjack-cards {
   display: flex;
   justify-content: center;
   margin: 20px 0;
 }
 
-.card {
+.blackjack-card {
   width: 100px;
   height: 150px;
   margin: 20px;
@@ -218,32 +218,32 @@ button:focus {
   transition: transform 0.6s ease;
 }
 
-.card img {
+.blackjack-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.card.hearts .card-suit,
-.card.diamonds .card-suit {
+.blackjack-card.hearts .blackjack-card-suit,
+.blackjack-card.diamonds .blackjack-card-suit {
   color: red;
 }
 
-.card.clubs .card-suit,
-.card.spades .card-suit {
+.blackjack-card.clubs .blackjack-card-suit,
+.blackjack-card.spades .blackjack-card-suit {
   color: black;
 }
 
-.card-value {
+.blackjack-card-value {
   font-size: 32px;
   font-weight: bold;
 }
 
-.card-suit {
+.blackjack-card-suit {
   font-size: 24px;
 }
 
-.card-content {
+.blackjack-card-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -253,7 +253,7 @@ button:focus {
   font-family: "Poppins", sans-serif;
 }
 
-.card-back {
+.blackjack-card-back {
   width: 100px;
   height: 150px;
   background: url("/images/cardBack.png") no-repeat center center;
@@ -262,8 +262,18 @@ button:focus {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 
-.winner .card {
+.blackjack-winner .blackjack-card {
   box-shadow: 0 0 10px rgba(0, 255, 0, 0.7), 0 0 40px rgba(0, 255, 0, 0.5),
     0 0 60px rgba(0, 255, 0, 0.3);
   transition: box-shadow 0.5s ease;
+}
+
+.blackjack-confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
 }
