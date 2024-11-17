@@ -278,8 +278,37 @@ router.get("/memory-game-stats/:email", async (req, res) => {
 });
 
 // Update Simon Says Score
+// router.post("/update-simon-says-score", async (req, res) => {
+//   const { email, levelReached } = req.body;
+
+//   try {
+//     let user = await User.findOne({ email });
+//     if (!user) {
+//       return res.status(404).json({ msg: "User not found" });
+//     }
+
+//     // Add the new game record
+//     user.simonSaysGameRecords.push({ levelReached });
+
+//     // Increment games played
+//     user.simonSaysGamesPlayed += 1;
+
+//     // Update highest level reached
+//     if (levelReached > user.simonSaysHighestLevel) {
+//       user.simonSaysHighestLevel = levelReached;
+//     }
+
+//     await user.save();
+
+//     res.status(200).json({ msg: "Simon Says score updated", user });
+//   } catch (error) {
+//     console.error("Error updating Simon Says score:", error.message);
+//     res.status(500).send("Server error");
+//   }
+// });
+
 router.post("/update-simon-says-score", async (req, res) => {
-  const { email, levelReached } = req.body;
+  const { email, levelReached, mistakesMade } = req.body;
 
   try {
     let user = await User.findOne({ email });
@@ -288,7 +317,7 @@ router.post("/update-simon-says-score", async (req, res) => {
     }
 
     // Add the new game record
-    user.simonSaysGameRecords.push({ levelReached });
+    user.simonSaysGameRecords.push({ levelReached, mistakesMade });
 
     // Increment games played
     user.simonSaysGamesPlayed += 1;
@@ -298,8 +327,12 @@ router.post("/update-simon-says-score", async (req, res) => {
       user.simonSaysHighestLevel = levelReached;
     }
 
-    await user.save();
+    // Update levels completed without mistakes
+    if (mistakesMade === 0) {
+      user.simonSaysLevelsCompleted += levelReached;
+    }
 
+    await user.save();
     res.status(200).json({ msg: "Simon Says score updated", user });
   } catch (error) {
     console.error("Error updating Simon Says score:", error.message);
@@ -581,8 +614,58 @@ router.get("/:email/achievements", async (req, res) => {
       });
     }
 
+    // Additional achievements
+    if (user.blackjackWins >= 5) {
+      dynamicAchievements.push({
+        name: "Blackjack Streaker",
+        description: "Won 5 games of Blackjack in a row.",
+        dateEarned: new Date(),
+      });
+    }
+    if (user.snapQuestBestTime <= 30) {
+      dynamicAchievements.push({
+        name: "SnapQuest Speedster",
+        description: "Completed a SnapQuest game in under 30 seconds.",
+        dateEarned: new Date(),
+      });
+    }
+    if (user.simonSaysLevelsCompleted >= 5) {
+      dynamicAchievements.push({
+        name: "Simon Says Apprentice",
+        description: "Completed 5 Simon Says levels without making a mistake.",
+        dateEarned: new Date(),
+      });
+    }
+    if (user.simonSaysLevelsCompleted >= 10) {
+      dynamicAchievements.push({
+        name: "Simon Says Master",
+        description: "Completed 10 Simon Says levels without making a mistake.",
+        dateEarned: new Date(),
+      });
+    }
+    if (user.gamesWonAllCategories >= 1) {
+      dynamicAchievements.push({
+        name: "All-Rounder",
+        description: "Won a game in each category.",
+        dateEarned: new Date(),
+      });
+    }
+    if (user.blackjackExact21Count >= 5) {
+      dynamicAchievements.push({
+        name: "Lucky Streak",
+        description: "Achieved a Blackjack score of exactly 21 five times.",
+        dateEarned: new Date(),
+      });
+    }
+
     // Blog-related achievements
     const blogAchievements = [];
+    const commentsOnBlogs = await Blog.find({
+      "comments.user": req.params.email,
+    });
+    const likedBlogsCount = await Blog.countDocuments({
+      likedBy: req.params.email,
+    });
     const blogCount = await Blog.countDocuments({ author: req.params.email });
     if (blogCount >= 5) {
       blogAchievements.push({
@@ -591,11 +674,61 @@ router.get("/:email/achievements", async (req, res) => {
         dateEarned: new Date(),
       });
     }
-    const likedBlogs = await Blog.countDocuments({ likedBy: req.params.email });
-    if (likedBlogs >= 10) {
+    if (blogCount >= 1) {
       blogAchievements.push({
-        name: "Content Curator",
-        description: "Liked 10 or more blog posts.",
+        name: "First Words",
+        description: "Published your first blog post.",
+        dateEarned: new Date(),
+      });
+    }
+    if (commentsOnBlogs.length >= 10) {
+      blogAchievements.push({
+        name: "Discussion Starter",
+        description: "Received 10 comments on a single blog post.",
+        dateEarned: new Date(),
+      });
+    }
+    if (blogCount >= 20) {
+      blogAchievements.push({
+        name: "Power Blogger",
+        description: "Published 20 blog posts.",
+        dateEarned: new Date(),
+      });
+    }
+    if (likedBlogsCount >= 50) {
+      blogAchievements.push({
+        name: "Top Commenter",
+        description: "Liked 50 blog posts.",
+        dateEarned: new Date(),
+      });
+    }
+    if (commentsOnBlogs.length >= 100) {
+      blogAchievements.push({
+        name: "Master of Engagement",
+        description: "Accumulated 100 comments across all your blog posts.",
+        dateEarned: new Date(),
+      });
+    }
+    if (blogCount >= 3) {
+      blogAchievements.push({
+        name: "Engagement Starter",
+        description: "Published 3 blog posts.",
+        dateEarned: new Date(),
+      });
+    }
+
+    if (likedBlogsCount >= 5) {
+      blogAchievements.push({
+        name: "Blog Supporter",
+        description: "Liked 5 blog posts.",
+        dateEarned: new Date(),
+      });
+    }
+
+    if (commentsOnBlogs.length >= 5) {
+      blogAchievements.push({
+        name: "Comment Explorer",
+        description: "Commented on 5 different blog posts.",
         dateEarned: new Date(),
       });
     }
@@ -614,7 +747,7 @@ router.get("/:email/achievements", async (req, res) => {
   }
 });
 
-// Add an achievement to a user
+// ! Add an achievement to a user
 router.post("/achievements/add", async (req, res) => {
   const { email, name, description } = req.body;
 

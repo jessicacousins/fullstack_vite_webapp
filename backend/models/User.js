@@ -71,6 +71,10 @@ const SimonSaysGameRecordSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  mistakesMade: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const UserSchema = new mongoose.Schema({
@@ -177,6 +181,19 @@ const UserSchema = new mongoose.Schema({
   },
   viewedProducts: [ProductViewSchema],
   achievements: [AchievementSchema],
+  wordCount: { type: Number, default: 0 },
+  mostLikedPostCount: { type: Number, default: 0 },
+  blackjackWins: { type: Number, default: 0 },
+  snapQuestBestTime: { type: Number, default: null },
+  gamesWonAllCategories: { type: Number, default: 0 },
+  simonSaysLevelsCompleted: {
+    type: Number,
+    default: 0,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const User = mongoose.model("User", UserSchema);
