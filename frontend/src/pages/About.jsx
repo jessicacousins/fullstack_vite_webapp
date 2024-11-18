@@ -26,7 +26,7 @@ const About = () => {
   return (
     <div className="holygrail-layout">
       <header className="header">
-        <h1>Latest News and Trending Topics</h1>
+        <h1 className="news-title">Latest News and Trending Topics</h1>
       </header>
 
       <div className="content-container">
@@ -36,9 +36,9 @@ const About = () => {
         </aside>
 
         <main className="main-content">
-          <h2>News and Updates</h2>
+          <h2 className="news-subtitle">News and Updates</h2>
           <section>
-            <h3>Trending Topics</h3>
+            <h3 className="trending-topics">Trending Topics</h3>
             {loading && <p>Loading news...</p>}
             {error && <p>{error}</p>}
             {!loading && !error && newsArticles.length > 0
