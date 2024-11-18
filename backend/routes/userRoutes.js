@@ -157,6 +157,13 @@ router.post("/:id/comments", async (req, res) => {
 
     blog.comments.push(newComment);
 
+    // Update user's total comments count
+    const userDoc = await User.findOne({ email: user });
+    if (userDoc) {
+      userDoc.totalComments += 1;
+      await userDoc.save();
+    }
+
     await blog.save();
     res.status(200).json(blog);
   } catch (err) {
@@ -614,7 +621,7 @@ router.get("/:email/achievements", async (req, res) => {
       });
     }
 
-    // Additional achievements
+    // Individaul game achievements
     if (user.blackjackWins >= 5) {
       dynamicAchievements.push({
         name: "Blackjack Streaker",
@@ -666,6 +673,13 @@ router.get("/:email/achievements", async (req, res) => {
     const likedBlogsCount = await Blog.countDocuments({
       likedBy: req.params.email,
     });
+    const totalComments = commentsOnBlogs.reduce(
+      (count, blog) =>
+        count +
+        blog.comments.filter((comment) => comment.user === req.params.email)
+          .length,
+      0
+    );
     const blogCount = await Blog.countDocuments({ author: req.params.email });
     if (blogCount >= 5) {
       blogAchievements.push({
@@ -729,6 +743,27 @@ router.get("/:email/achievements", async (req, res) => {
       blogAchievements.push({
         name: "Comment Explorer",
         description: "Commented on 5 different blog posts.",
+        dateEarned: new Date(),
+      });
+    }
+    if (totalComments >= 1) {
+      dynamicAchievements.push({
+        name: "First Comment",
+        description: "Posted your first comment.",
+        dateEarned: new Date(),
+      });
+    }
+    if (totalComments >= 5) {
+      dynamicAchievements.push({
+        name: "Comment Explorer",
+        description: "Posted 5 comments.",
+        dateEarned: new Date(),
+      });
+    }
+    if (totalComments >= 10) {
+      dynamicAchievements.push({
+        name: "Discussion Pro",
+        description: "Posted 10 comments.",
         dateEarned: new Date(),
       });
     }
