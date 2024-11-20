@@ -12,6 +12,10 @@
   gap: 1.5rem;
 }
 
+.achievements-title {
+  color: #ffef14;
+}
+
 .achievement-card {
   background-color: #2b2b2b;
   padding: 1rem;
@@ -38,5 +42,5 @@
 }
 
 .achievement-card small {
-  color: #888;
+  color: #b1f3f3;
 }

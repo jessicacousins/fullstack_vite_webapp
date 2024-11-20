@@ -39,7 +39,7 @@ const Achievements = () => {
 
   return (
     <div className="achievements-container">
-      <h1>Your Achievements</h1>
+      <h1 className="achievements-title">Your Achievements</h1>
       {achievements.length > 0 ? (
         <div className="achievement-list">
           {achievements.map((achievement, index) => (
