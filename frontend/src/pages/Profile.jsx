@@ -179,6 +179,7 @@ const Profile = () => {
 
   return (
     <div className="profile-page">
+      <h2 className="main-title">Profile Page</h2>
       <div className="profile-header">
         <img
           src={photoURL || "/default-avatar.png"}
@@ -192,6 +193,7 @@ const Profile = () => {
           <p className="email">{email}</p>
           <p className="bio">{bio}</p>
           <input
+            className="file-profile-pic"
             type="file"
             accept="image/jpeg, image/png"
             onChange={handlePhotoUpload}
@@ -199,24 +201,29 @@ const Profile = () => {
         </div>
       </div>
       <form onSubmit={handleUpdate} className="profile-form">
+        <h2 className="edit-title">Edit User Info</h2>
+        <p className="edit-info-input">First Name</p>
         <input
           type="text"
           placeholder="First Name"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
         />
+        <p class="edit-info-input">Last Name</p>
         <input
           type="text"
           placeholder="Last Name"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
         />
+        <p class="edit-info-input">Phone</p>
         <input
           type="tel"
           placeholder="Phone Number"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
         />
+        <p class="edit-info-input">Bio</p>
         <textarea
           placeholder="Bio"
           value={bio}
@@ -228,7 +235,7 @@ const Profile = () => {
       </form>
 
       <div className="game-stats-container">
-        <h3>Game Stats</h3>
+        <h3 className="game-stats-title">User Game Stats</h3>
 
         {/* Blackjack Stats */}
         {blackjackStats ? (

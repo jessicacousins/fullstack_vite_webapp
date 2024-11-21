@@ -11,12 +11,33 @@
   min-height: 100vh;
 }
 
+.main-title {
+  font-size: 3.5rem;
+  color: #66c0f4;
+}
+
 .profile-pic {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   margin-right: 20px;
   object-fit: cover;
+}
+
+.edit-title {
+  text-align: center;
+  color: #4caf50;
+  font-size: 2.2rem;
+}
+
+.game-stats-title {
+  color: #c4a1e0;
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+.edit-info-input {
+  color: #66c0f4;
 }
 
 .profile-header,
@@ -36,10 +57,14 @@
 
 .profile-info h2 {
   font-size: 1.8rem;
-  color: #f5f5f5;
+  color: #f9fd1adc;
+  text-align: center;
 }
 
-.email,
+.email {
+  color: #66c0f4;
+}
+
 .bio,
 .game-section p,
 .game-section ul,
