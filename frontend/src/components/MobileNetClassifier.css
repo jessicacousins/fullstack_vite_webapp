@@ -7,6 +7,12 @@
   margin-bottom: 20px;
   max-width: 300px;
   color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .prediction {

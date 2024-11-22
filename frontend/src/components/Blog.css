@@ -225,7 +225,8 @@ canvas {
 
 .post-title {
   font-size: 2rem;
-  color: #00d4ff;
+  /* color: #00d4ff; */
+  color: #ff944d;
   margin-bottom: 15px;
   text-align: center;
   letter-spacing: 2px;
