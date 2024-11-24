@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const Blog = require("../models/Blog");
+const Cart = require("../models/Cart");
 const bcrypt = require("bcryptjs");
 const requestIp = require("request-ip"); // For collecting IP address
 const useragent = require("useragent"); // For capturing user agent info
@@ -284,36 +285,6 @@ router.get("/memory-game-stats/:email", async (req, res) => {
   }
 });
 
-// Update Simon Says Score
-// router.post("/update-simon-says-score", async (req, res) => {
-//   const { email, levelReached } = req.body;
-
-//   try {
-//     let user = await User.findOne({ email });
-//     if (!user) {
-//       return res.status(404).json({ msg: "User not found" });
-//     }
-
-//     // Add the new game record
-//     user.simonSaysGameRecords.push({ levelReached });
-
-//     // Increment games played
-//     user.simonSaysGamesPlayed += 1;
-
-//     // Update highest level reached
-//     if (levelReached > user.simonSaysHighestLevel) {
-//       user.simonSaysHighestLevel = levelReached;
-//     }
-
-//     await user.save();
-
-//     res.status(200).json({ msg: "Simon Says score updated", user });
-//   } catch (error) {
-//     console.error("Error updating Simon Says score:", error.message);
-//     res.status(500).send("Server error");
-//   }
-// });
-
 router.post("/update-simon-says-score", async (req, res) => {
   const { email, levelReached, mistakesMade } = req.body;
 
@@ -465,6 +436,31 @@ router.get("/:email/posts", async (req, res) => {
 
 // @route POST /api/users/view-product
 // @desc Log a product view for a user
+// router.post("/view-product", async (req, res) => {
+//   const { email, productId, title, category } = req.body;
+
+//   try {
+//     let user = await User.findOne({ email });
+//     if (!user) {
+//       return res.status(404).json({ msg: "User not found" });
+//     }
+
+//     // Add the viewedProducts array displaying in the Users data
+//     user.viewedProducts.push({
+//       productId,
+//       title,
+//       category,
+//     });
+
+//     await user.save();
+
+//     res.status(200).json({ msg: "Product view logged", user });
+//   } catch (error) {
+//     console.error("Error logging product view:", error.message);
+//     res.status(500).send("Server error");
+//   }
+// });
+// @route POST /api/users/view-product
 router.post("/view-product", async (req, res) => {
   const { email, productId, title, category } = req.body;
 
@@ -474,11 +470,11 @@ router.post("/view-product", async (req, res) => {
       return res.status(404).json({ msg: "User not found" });
     }
 
-    // Add the viewedProducts array displaying in the Users data
     user.viewedProducts.push({
       productId,
       title,
       category,
+      viewedAt: new Date(),
     });
 
     await user.save();
@@ -552,6 +548,35 @@ router.get("/:email/achievements", async (req, res) => {
 
     // Initialize dynamic achievements array
     const dynamicAchievements = [];
+
+    // **Product Viewing Achievements**
+    const viewedProductsCount = user.viewedProducts.length;
+    if (viewedProductsCount >= 10) {
+      dynamicAchievements.push({
+        name: "Product Explorer",
+        description: "Viewed 10 different products.",
+        dateEarned: new Date(),
+      });
+    }
+    if (viewedProductsCount >= 50) {
+      dynamicAchievements.push({
+        name: "Shopaholic",
+        description: "Viewed 50 products.",
+        dateEarned: new Date(),
+      });
+    }
+
+    // **Category Explorer Achievement**
+    const categoriesViewed = new Set(
+      user.viewedProducts.map((p) => p.category)
+    );
+    if (categoriesViewed.size >= 5) {
+      dynamicAchievements.push({
+        name: "Category Explorer",
+        description: "Viewed products from 5 different categories.",
+        dateEarned: new Date(),
+      });
+    }
 
     // Game achievements for individual games
     if (user.gamesPlayed >= 10) {
