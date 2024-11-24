@@ -53,7 +53,7 @@
 .feature-section {
   width: 100%;
   margin-bottom: 2rem;
-  padding: 20px;
+  padding: 40px 20px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.05);
   text-align: center;
@@ -78,6 +78,26 @@
   font-size: 1.4rem;
   color: #ffffff;
   margin: 10px 0;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.feature-heading::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: #4af3eb;
+  transition: width 0.3s ease;
+}
+
+.feature-heading:hover::after {
+  width: 100%;
 }
 
 .feature-text {
