@@ -558,6 +558,13 @@ router.get("/:email/achievements", async (req, res) => {
         dateEarned: new Date(),
       });
     }
+    if (viewedProductsCount >= 10) {
+      dynamicAchievements.push({
+        name: "Product Adventurer",
+        description: "Viewed 20 different products.",
+        dateEarned: new Date(),
+      });
+    }
     if (viewedProductsCount >= 50) {
       dynamicAchievements.push({
         name: "Shopaholic",
@@ -574,6 +581,13 @@ router.get("/:email/achievements", async (req, res) => {
       dynamicAchievements.push({
         name: "Category Explorer",
         description: "Viewed products from 5 different categories.",
+        dateEarned: new Date(),
+      });
+    }
+    if (categoriesViewed.size >= 5) {
+      dynamicAchievements.push({
+        name: "Category Adventurer",
+        description: "Viewed products from 10 different categories.",
         dateEarned: new Date(),
       });
     }

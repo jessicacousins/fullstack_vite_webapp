@@ -210,6 +210,8 @@ const Shopping = ({ addToCart }) => {
   const [recommendations, setRecommendations] = useState("");
   const [learningContent, setLearningContent] = useState("");
   const [showLearningModal, setShowLearningModal] = useState(false);
+  const [addingToCart, setAddingToCart] = useState([]);
+  const [isClosing, setIsClosing] = useState(false);
 
   const handleImageClick = (product) => {
     setSelectedProduct(product);
@@ -263,6 +265,22 @@ const Shopping = ({ addToCart }) => {
     setSelectedImage(null);
   };
 
+  const handleAddToCart = (product) => {
+    setAddingToCart((prev) => [...prev, product.id]);
+    addToCart(product);
+    setTimeout(() => {
+      setAddingToCart((prev) => prev.filter((id) => id !== product.id));
+    }, 1000);
+  };
+
+  const handleCloseLearningModal = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setShowLearningModal(false);
+      setIsClosing(false);
+    }, 500);
+  };
+
   return (
     <div className="shopping-container">
       <Suspense fallback={<div>Loading MobileNet Classifier...</div>}>
@@ -276,12 +294,20 @@ const Shopping = ({ addToCart }) => {
               className="product-image"
               onClick={() => handleImageClick(product)}
             >
+              {addingToCart.includes(product.id) && (
+                <div className="added-to-cart-overlay">Added to Cart!</div>
+              )}
               <img src={product.image} alt={product.title} />
             </div>
             <h2>{product.title}</h2>
             <p>{product.description}</p>
             <p className="price">${product.price}</p>
-            <button onClick={() => addToCart(product)}>Add to Cart</button>
+            {/* <button onClick={() => addToCart(product)}>Add to Cart</button>
+             */}
+            <button onClick={() => handleAddToCart(product)}>
+              Add to Cart
+            </button>
+
             <button onClick={() => handleLearnMore(product)}>Learn More</button>
           </div>
         ))}
