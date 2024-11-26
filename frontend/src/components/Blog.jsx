@@ -180,7 +180,23 @@ const Blog = ({ searchQuery, onSearchResults }) => {
 
       {/* <h1 className="blog-heading">Blog Posts</h1> */}
 
-      <h1 className="blog-heading glitch-heading">Blog Posts</h1>
+      {/* <h1 className="blog-heading glitch-heading">Blog Posts</h1> */}
+      <div className="info-blog-card">
+        <h1 className="info-blog-title">Community Blog Posts</h1>
+        <p className="info-blog-intro">
+          Welcome to the Community Blog Posts section! Here, users share their
+          thoughts, ideas, and experiences through engaging blog posts. Dive
+          into the rich content created by our community, and don't hesitate to
+          join the conversation.
+        </p>
+        <p className="info-blog-interactions">
+          You can <strong>like</strong> and <strong>dislike</strong> blog posts
+          and comments to express your opinions, or leave a thoughtful comment
+          to contribute to the discussion. Your feedback and participation help
+          make this space more vibrant and interactive. Share the love or spark
+          a debate, it's all part of building our community!
+        </p>
+      </div>
 
       {user && (
         <Link to="/create-blog" className="create-blog-button">

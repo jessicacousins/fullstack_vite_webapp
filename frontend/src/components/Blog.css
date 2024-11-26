@@ -48,7 +48,7 @@ canvas {
   color: #00d4ff;
   text-transform: uppercase;
   letter-spacing: 2px;
-  animation: flicker 2s infinite alternate ease-in-out;
+  animation: flicker 1s infinite alternate ease-in-out;
   overflow: hidden;
   text-shadow: 0 0 5px #00d4ff, 0 0 10px #00d4ff, 0 0 15px #ff007f,
     0 0 20px #ff007f, 0 0 25px #ff007f, 0 0 30px #ff007f;
@@ -138,6 +138,36 @@ canvas {
   100% {
     transform: translate(0, 0);
   }
+}
+
+.info-blog-card {
+  background-color: #2a2a2a;
+  color: #d3d3d3;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.info-blog-title {
+  font-size: 2rem;
+  color: #66c0f4;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.info-blog-intro {
+  font-size: 1.2rem;
+  color: #d3d3d3;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.info-blog-interactions {
+  font-size: 1rem;
+  color: #bbbbbb;
+  line-height: 1.5;
 }
 
 .blog-heading-container {
