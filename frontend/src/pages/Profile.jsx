@@ -190,6 +190,16 @@ const Profile = () => {
           <h2>
             {firstName} {lastName}
           </h2>
+
+          <div className="profile-welcome">
+            <h2 className="profile-welcome-title">Welcome, {firstName}!</h2>
+            <p className="profile-welcome-message">
+              This is your personal profile page. Here you can view and edit
+              your personal information, check your game stats, see your
+              comments and posts, and manage your account settings.
+            </p>
+          </div>
+
           <p className="email">{email}</p>
           <p className="bio">{bio}</p>
           <input
@@ -202,6 +212,10 @@ const Profile = () => {
       </div>
       <form onSubmit={handleUpdate} className="profile-form">
         <h2 className="edit-title">Edit User Info</h2>
+        <p className="profile-section-description">
+          Update your personal information and customize your profile.
+        </p>
+
         <p className="edit-info-input">First Name</p>
         <input
           type="text"
@@ -233,10 +247,11 @@ const Profile = () => {
         {message && <p className="success">{message}</p>}
         <button type="submit">Update Profile</button>
       </form>
-
       <div className="game-stats-container">
         <h3 className="game-stats-title">User Game Stats</h3>
-
+        <p className="profile-section-description">
+          Track your progress and achievements across different games.
+        </p>
         {/* Blackjack Stats */}
         {blackjackStats ? (
           <div className="game-section">
@@ -308,7 +323,6 @@ const Profile = () => {
           <p>Loading SnapQuest stats...</p>
         )}
       </div>
-
       {/* User Comments Section */}
       <div className="user-comments-section">
         <h3 onClick={toggleShowComments} className="expandable-heading">
@@ -338,7 +352,6 @@ const Profile = () => {
             ))
           : showComments && <p>No comments available.</p>}
       </div>
-
       {/* User Posts Section */}
       <div className="user-posts-section">
         <h3 onClick={toggleShowPosts} className="expandable-heading">
@@ -354,19 +367,18 @@ const Profile = () => {
             ))
           : showPosts && <p>No blog posts available.</p>}
       </div>
-
       {/* Account Deletion Section */}
       <div className="account-deletion-section">
         <h3>Delete User Account:</h3>
-        <p>
-          WARNING: Deleting your account will result in the permanent removal of
-          most data associated with your account, and this action cannot be
-          undone. However, certain information—such as purchase records,
-          shipping addresses, comments, and blog posts—will be retained as
-          required by law for legal and compliance purposes. This retained
-          information will be securely stored and limited to what is strictly
-          necessary. All other personal data will be permanently removed from
-          our systems.
+        <p className="profile-warning-title"> WARNING</p>
+        <p className="delete-user-info">
+          Deleting your account will result in the permanent removal of most
+          data associated with your account, and this action cannot be undone.
+          However, certain information—such as purchase records, shipping
+          addresses, comments, and blog posts—will be retained as required by
+          law for legal and compliance purposes. This retained information will
+          be securely stored and limited to what is strictly necessary. All
+          other personal data will be permanently removed from our systems.
         </p>
         <button
           className="delete-button"
@@ -375,7 +387,6 @@ const Profile = () => {
           Delete Account
         </button>
       </div>
-
       {/* Modal for Account Deletion Confirmation */}
       {showDeleteModal && (
         <div className="modal-overlay">

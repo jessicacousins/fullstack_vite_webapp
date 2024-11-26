@@ -14,6 +14,7 @@
 .main-title {
   font-size: 3.5rem;
   color: #66c0f4;
+  letter-spacing: 4px;
 }
 
 .profile-pic {
@@ -24,20 +25,47 @@
   object-fit: cover;
 }
 
+.profile-welcome {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-welcome-title {
+  font-size: 2.5rem;
+  color: #66c0f4;
+  letter-spacing: 1.2px;
+}
+
+.profile-welcome-message {
+  font-size: 1.2rem;
+  color: #d3d3d3;
+  letter-spacing: 1.2px;
+}
+
 .edit-title {
   text-align: center;
   color: #4caf50;
   font-size: 2.2rem;
+  letter-spacing: 1.2px;
 }
 
 .game-stats-title {
   color: #c4a1e0;
   font-size: 2.2rem;
   text-align: center;
+  letter-spacing: 1.2px;
 }
 
 .edit-info-input {
   color: #66c0f4;
+}
+
+.profile-section-description {
+  font-size: 1.2rem;
+  color: #d3d3d3;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 1.2px;
 }
 
 .profile-header,
@@ -63,6 +91,7 @@
 
 .email {
   color: #66c0f4;
+  letter-spacing: 1.2px;
 }
 
 .bio,
@@ -70,6 +99,7 @@
 .game-section ul,
 .sentiment-analysis p {
   color: #bbbbbb;
+  letter-spacing: 1.2px;
 }
 
 .game-section h4 {
@@ -111,6 +141,20 @@
   border: 1px solid #fd8db0;
 }
 
+.delete-user-info {
+  font-size: 1.2rem;
+  text-align: center;
+  letter-spacing: 1.2px;
+}
+
+.profile-warning-title {
+  font-size: 1.3rem;
+  font-weight: 900;
+  text-align: center;
+  color: #ffa5c2;
+  letter-spacing: 2.3px;
+}
+
 .delete-button:hover {
   background-color: #f05c5c;
 }
@@ -133,7 +177,7 @@
 .cancel-button {
   background-color: #444;
   color: #d3d3d3;
-  border: 1px solid #666;
+  border: 1px solid #676;
 }
 
 .expandable-heading {
