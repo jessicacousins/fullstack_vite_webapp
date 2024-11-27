@@ -199,9 +199,32 @@ const Blog = ({ searchQuery, onSearchResults }) => {
       </div>
 
       {user && (
-        <Link to="/create-blog" className="create-blog-button">
-          Create New Blog Post
-        </Link>
+        // <Link to="/create-blog" className="create-blog-button">
+        //   Create New Blog Post
+        // </Link>
+        <div className="info-blog-ai-card">
+          <h1 className="info-blog-ai-title">
+            Create a Blog with AI Assistance
+          </h1>
+          <p className="info-blog-ai-intro">
+            Ready to share your story but need a little help getting started?
+            The blog creation tool offers{" "}
+            <strong>OpenAI-powered assistance</strong> to help you craft
+            engaging posts. Whether you want to write from scratch or refine
+            your thoughts, the AI editor is here to guide you every step of the
+            way.
+          </p>
+          <p className="info-blog-ai-usage">
+            Tap into the power of AI to generate ideas, improve your drafts, or
+            explore creative writing styles. Start expressing yourself
+            effortlessly and make your mark in the community!
+          </p>
+          {user && (
+            <Link to="/create-blog" className="create-blog-button">
+              Start Your Blog Now
+            </Link>
+          )}
+        </div>
       )}
       <div className="posts-grid">
         {filteredPosts.length > 0 ? (
