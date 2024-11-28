@@ -237,11 +237,12 @@ canvas {
 }
 
 .blog-intro-title {
-  font-size: 2rem;
+  font-size: 2.4rem;
   color: #66c0f4;
   margin-top: 30px;
   text-align: center;
   text-shadow: 0 0 1px #111111;
+  letter-spacing: 2px;
 }
 
 .styled-divider {
