@@ -236,6 +236,21 @@ canvas {
   transform: scale(1.1);
 }
 
+.blog-intro-title {
+  font-size: 2rem;
+  color: #66c0f4;
+  margin-top: 30px;
+  text-align: center;
+  text-shadow: 0 0 1px #111111;
+}
+
+.styled-divider {
+  border: none;
+  height: 15px;
+  background: linear-gradient(to right, #4caf50, #00d4ff);
+  margin: 20px 0;
+  color: #66c0f4;
+}
 .post-card1 {
   background-color: #343536;
   border-radius: 12px;
