@@ -7,6 +7,8 @@ const cartRoutes = require("./routes/cart");
 const learningRoutes = require("./routes/learning");
 const snapquestRoutes = require("./routes/snapquestRoutes");
 
+const soundboardRoutes = require("./routes/soundboard");
+
 const app = express();
 
 const newsRoutes = require("./routes/newsRoutes");
@@ -54,6 +56,8 @@ app.use((req, res, next) => {
   res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
   next();
 });
+
+app.use("/api/soundboard", soundboardRoutes);
 
 const PORT = process.env.PORT || 5000;
 

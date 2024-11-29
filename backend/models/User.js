@@ -198,6 +198,22 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  soundboard: [
+    {
+      name: String,
+      url: String,
+    },
+  ],
+
+  soundPlays: [
+    {
+      soundName: String,
+      playedAt: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
 });
 
 const User = mongoose.model("User", UserSchema);

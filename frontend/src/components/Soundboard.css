@@ -1,0 +1,20 @@
+.soundboard {
+  text-align: center;
+  padding: 20px;
+}
+
+.sound-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.sound-item {
+  margin: 10px;
+}
+
+.sound-item button {
+  padding: 10px 20px;
+  font-size: 16px;
+}

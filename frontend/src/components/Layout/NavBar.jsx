@@ -56,6 +56,7 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                 { path: "/shopping", label: "Shopping" },
                 { path: "/admin-dashboard", label: "Admin" },
                 { path: "/achievements", label: "Achievements" },
+                { path: "/soundboard", label: "Soundboard" },
               ].map((link) => (
                 <li key={link.path} onClick={closeMobileMenu}>
                   <NavLink
