@@ -3,11 +3,61 @@ import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import trainSound from "../sounds/train.mp3";
 
+// Import all the tropical house tracks
+import track1 from "../sounds/Untitled (1).mp3";
+import track2 from "../sounds/Untitled (2).mp3";
+import track3 from "../sounds/Untitled (3).mp3";
+import track4 from "../sounds/Untitled (4).mp3";
+import track5 from "../sounds/Untitled (5).mp3";
+import track6 from "../sounds/Untitled (6).mp3";
+import track7 from "../sounds/Untitled (7).mp3";
+import track8 from "../sounds/Untitled (8).mp3";
+import track9 from "../sounds/Untitled (9).mp3";
+import track10 from "../sounds/Untitled (10).mp3";
+import track11 from "../sounds/Untitled (11).mp3";
+import track12 from "../sounds/Untitled (12).mp3";
+import track13 from "../sounds/Untitled (13).mp3";
+import track14 from "../sounds/Untitled (14).mp3";
+import track15 from "../sounds/Untitled (15).mp3";
+import track16 from "../sounds/Untitled (16).mp3";
+import track17 from "../sounds/Untitled (17).mp3";
+import track18 from "../sounds/Untitled (18).mp3";
+import track19 from "../sounds/Untitled (19).mp3";
+import track20 from "../sounds/Untitled (20).mp3";
+import track21 from "../sounds/Untitled (21).mp3";
+
 function Soundboard() {
   const { user } = useAuth();
   const userEmail = user?.email;
+
+  // ! tropical house tracks 
+  const tropicalHouseTracks = [
+    { id: 1, name: "Sunset Bliss", url: track1 },
+    { id: 2, name: "Ocean Breeze", url: track2 },
+    { id: 3, name: "Tropical Vibes", url: track3 },
+    { id: 4, name: "Palm Paradise", url: track4 },
+    { id: 5, name: "Island Glow", url: track5 },
+    { id: 6, name: "Seafoam Dreams", url: track6 },
+    { id: 7, name: "Hammock Haven", url: track7 },
+    { id: 8, name: "Coconut Groove", url: track8 },
+    { id: 9, name: "Lagoon Serenity", url: track9 },
+    { id: 10, name: "Beach Bonfire", url: track10 },
+    { id: 11, name: "Sandcastle Funk", url: track11 },
+    { id: 12, name: "Wave Rider", url: track12 },
+    { id: 13, name: "Coastal Chill", url: track13 },
+    { id: 14, name: "Pineapple Jam", url: track14 },
+    { id: 15, name: "Surfside Sunset", url: track15 },
+    { id: 16, name: "Tiki Torch Dance", url: track16 },
+    { id: 17, name: "Breeze & Beats", url: track17 },
+    { id: 18, name: "Island Melody", url: track18 },
+    { id: 19, name: "Tropical Escape", url: track19 },
+    { id: 20, name: "Paradise Groove", url: track20 },
+    { id: 21, name: "Aqua Rhythm", url: track21 },
+  ];
+
   const [sounds, setSounds] = useState([
-    { id: 1, name: "Train", url: trainSound },
+    { id: 0, name: "Train", url: trainSound },
+    ...tropicalHouseTracks,
   ]);
 
   const playSound = (sound) => {
