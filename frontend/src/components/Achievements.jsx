@@ -46,10 +46,10 @@ const Achievements = () => {
             <div key={index} className="achievement-card">
               <h3>{achievement.name}</h3>
               <p>{achievement.description}</p>
-              <small>
+              {/* <small>
                 Date Earned:{" "}
                 {new Date(achievement.dateEarned).toLocaleDateString()}
-              </small>
+              </small> */}
             </div>
           ))}
         </div>
