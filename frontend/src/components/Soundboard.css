@@ -1,20 +1,104 @@
-.soundboard {
+.soundboard-container {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 20px;
   text-align: center;
+}
+
+.soundboard-title {
+  font-size: 3rem;
+  text-transform: uppercase;
+  text-shadow: 0 0 15px #ff5733, 0 0 30px #ffc300;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.add-button-container {
+  margin-bottom: 20px;
+}
+
+.add-sound-button {
+  background: #ffd700;
+  border: none;
+  color: #000;
+  font-size: 1rem;
+  padding: 12px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.add-sound-button:hover {
+  background: #ffe066;
+}
+
+.soundboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
   padding: 20px;
 }
 
-.sound-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
-}
-
 .sound-item {
-  margin: 10px;
+  background: linear-gradient(to top, #4facfe, #00f2fe);
+  border: 2px solid #ffffff;
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.sound-item button {
-  padding: 10px 20px;
-  font-size: 16px;
+.play-sound-button {
+  background: #34e89e;
+  border: none;
+  color: #000;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.play-sound-button:hover {
+  background: #78ffd6;
+}
+
+.replace-audio-label {
+  display: block;
+  background: #ff6f61;
+  color: #ffffff;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.replace-audio-input {
+  display: none;
+}
+
+.replace-audio-label:hover {
+  background: #ff9f8f;
+}
+
+.pause-sound-button {
+  background: #ffa500;
+  color: #000;
+}
+
+.stop-sound-button {
+  background: #ff4500;
+  color: #fff;
+}
+
+.replay-sound-button {
+  background: #4b0082;
+  color: #fff;
+}
+
+button:hover {
+  opacity: 0.9;
 }

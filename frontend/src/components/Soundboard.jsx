@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import trainSound from "../sounds/train.mp3";
 
-// Import all the tropical house tracks
+//  tropical house tracks
 import track1 from "../sounds/Untitled (1).mp3";
 import track2 from "../sounds/Untitled (2).mp3";
 import track3 from "../sounds/Untitled (3).mp3";
@@ -26,11 +26,12 @@ import track19 from "../sounds/Untitled (19).mp3";
 import track20 from "../sounds/Untitled (20).mp3";
 import track21 from "../sounds/Untitled (21).mp3";
 
+import "./Soundboard.css";
+
 function Soundboard() {
   const { user } = useAuth();
   const userEmail = user?.email;
 
-  // ! tropical house tracks 
   const tropicalHouseTracks = [
     { id: 1, name: "Sunset Bliss", url: track1 },
     { id: 2, name: "Ocean Breeze", url: track2 },
@@ -60,11 +61,16 @@ function Soundboard() {
     ...tropicalHouseTracks,
   ]);
 
+  // store references to audio elements
+  const audioRefs = useRef({});
+
   const playSound = (sound) => {
-    const audio = new Audio(sound.url);
-    audio.play().catch((error) => {
-      console.error("Error playing sound:", error);
-    });
+    const audio = audioRefs.current[sound.id];
+    if (audio) {
+      audio
+        .play()
+        .catch((error) => console.error("Error playing sound:", error));
+    }
 
     if (userEmail) {
       axios
@@ -72,14 +78,37 @@ function Soundboard() {
           email: userEmail,
           soundName: sound.name,
         })
-        .then((response) => {
-          console.log("Sound play recorded:", response.data.msg);
-        })
-        .catch((error) => {
-          console.error("Error recording sound play:", error);
-        });
+        .then((response) =>
+          console.log("Sound play recorded:", response.data.msg)
+        )
+        .catch((error) => console.error("Error recording sound play:", error));
     } else {
       console.warn("User not logged in. Sound play not recorded.");
+    }
+  };
+
+  const pauseSound = (sound) => {
+    const audio = audioRefs.current[sound.id];
+    if (audio) {
+      audio.pause();
+    }
+  };
+
+  const stopSound = (sound) => {
+    const audio = audioRefs.current[sound.id];
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+  };
+
+  const replaySound = (sound) => {
+    const audio = audioRefs.current[sound.id];
+    if (audio) {
+      audio.currentTime = 0;
+      audio
+        .play()
+        .catch((error) => console.error("Error replaying sound:", error));
     }
   };
 
@@ -111,93 +140,52 @@ function Soundboard() {
   };
 
   return (
-    <div
-      style={{
-        fontFamily: "'Courier New', Courier, monospace",
-        background: "linear-gradient(135deg, #0f0c29, #302b63, #24243e)",
-        color: "#00ff99",
-        minHeight: "100vh",
-        padding: "20px",
-        textAlign: "center",
-      }}
-    >
-      <h1
-        style={{
-          fontSize: "2.5rem",
-          textTransform: "uppercase",
-          textShadow: "0 0 10px #00ff99, 0 0 20px #00ffcc",
-        }}
-      >
-        Soundboard
-      </h1>
-      <div style={{ textAlign: "center", margin: "20px 0" }}>
-        <button
-          onClick={addNewSoundButton}
-          style={{
-            background: "#00ffaa",
-            border: "none",
-            color: "#000",
-            fontSize: "1rem",
-            padding: "8px 16px",
-            borderRadius: "10px",
-            cursor: "pointer",
-          }}
-        >
-          Add New Sound Button
+    <div className="soundboard-container">
+      <h1 className="soundboard-title">Tropical Vibes Soundboard</h1>
+      <div className="add-button-container">
+        <button className="add-sound-button" onClick={addNewSoundButton}>
+          Add New Sound
         </button>
       </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))",
-          gap: "10px",
-          padding: "20px",
-        }}
-      >
+      <div className="soundboard-grid">
         {sounds.map((sound) => (
-          <div
-            key={sound.id}
-            style={{
-              background: "#1a1a2e",
-              border: "2px solid #00ff99",
-              borderRadius: "10px",
-              padding: "10px",
-              textAlign: "center",
-            }}
-          >
+          <div className="sound-item" key={sound.id}>
+            <audio
+              ref={(el) => (audioRefs.current[sound.id] = el)}
+              src={sound.url}
+            />
             <button
+              className="play-sound-button"
               onClick={() => playSound(sound)}
-              style={{
-                background: "#00ff99",
-                border: "none",
-                color: "#000",
-                fontSize: "0.9rem",
-                padding: "10px",
-                borderRadius: "8px",
-                marginBottom: "5px",
-                width: "100%",
-                textOverflow: "ellipsis",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-              }}
             >
               {sound.name || "Unnamed Sound"}
             </button>
-            <label
-              style={{
-                display: "block",
-                background: "#ff0066",
-                color: "white",
-                padding: "5px",
-                borderRadius: "5px",
-                cursor: "pointer",
-              }}
+
+            <button
+              className="pause-sound-button"
+              onClick={() => pauseSound(sound)}
             >
+              Pause
+            </button>
+            <button
+              className="stop-sound-button"
+              onClick={() => stopSound(sound)}
+            >
+              Stop
+            </button>
+            <button
+              className="replay-sound-button"
+              onClick={() => replaySound(sound)}
+            >
+              Replay
+            </button>
+
+            <label className="replace-audio-label">
               Replace Audio
               <input
                 type="file"
                 accept=".mp3, .wav"
-                style={{ display: "none" }}
+                className="replace-audio-input"
                 onChange={(e) => updateSound(sound.id, e.target.files[0])}
               />
             </label>
