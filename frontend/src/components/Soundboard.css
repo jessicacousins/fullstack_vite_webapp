@@ -120,6 +120,16 @@ button:hover {
 
 .saved-playlists {
   margin-top: 20px;
+  text-align: left;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.saved-playlists h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #ffffff;
 }
 
 .playlist-item {
@@ -127,9 +137,38 @@ button:hover {
   padding: 10px;
   border-radius: 8px;
   margin: 10px 0;
-  text-align: center;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
 }
 
-button:hover {
-  opacity: 0.9;
+.playlist-item:hover {
+  transform: scale(1.05);
+  background: #6ac0ff;
+}
+
+.playlist-item.active {
+  background: #007bff;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.playlist-item ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.playlist-sound-item {
+  background: #ffffff;
+  color: #333;
+  padding: 8px;
+  border-radius: 5px;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.playlist-sound-item:hover {
+  background: #ffcccb;
+  color: #000;
 }

@@ -64,6 +64,7 @@ function Soundboard() {
 
   const [playlist, setPlaylist] = useState([]);
   const [playlists, setPlaylists] = useState([]);
+  const [selectedPlaylist, setSelectedPlaylist] = useState(null);
   // store references to audio elements
   const audioRefs = useRef({});
 
@@ -153,7 +154,7 @@ function Soundboard() {
   };
 
   const playPlaylist = (playlist) => {
-    if (playlist.sounds.length === 0) return;
+    if (!playlist || playlist.sounds.length === 0) return;
 
     let currentIndex = 0;
 
@@ -178,24 +179,64 @@ function Soundboard() {
   const addToPlaylist = (sound) => {
     setPlaylist((prev) => [...prev, sound]);
   };
-
   const savePlaylist = (name) => {
     if (name && playlist.length > 0 && userEmail) {
-      const newPlaylist = { name, sounds: playlist };
+      const newPlaylist = {
+        name,
+        sounds: playlist.map((sound) => ({ ...sound })),
+      };
 
       // Save to backend
       axios
         .post("/api/soundboard/save-playlist", {
           email: userEmail,
           playlistName: name,
-          sounds: playlist,
+          sounds: newPlaylist.sounds,
         })
         .then((response) => {
-          setPlaylists(response.data.playlists); // Update local playlists
-          setPlaylist([]); // Clear current playlist
+          setPlaylists(response.data.playlists);
+          setPlaylist([]);
         })
         .catch((error) => console.error("Error saving playlist:", error));
     }
+  };
+
+  const playPlaylistFromIndex = (playlist, startIndex) => {
+    if (!playlist || playlist.sounds.length === 0) {
+      console.error("Playlist is empty or not found");
+      return;
+    }
+
+    let currentIndex = startIndex;
+
+    const playNext = () => {
+      if (currentIndex >= playlist.sounds.length) return;
+
+      const sound = playlist.sounds[currentIndex];
+
+      // Check if audio reference exists
+      let audio = audioRefs.current[sound.id];
+
+      // Fallback to find by name if ID is not defined
+      if (!audio) {
+        const matchedSound = sounds.find((s) => s.name === sound.name);
+        audio = audioRefs.current[matchedSound?.id];
+      }
+
+      if (audio) {
+        audio.play();
+        audio.onended = () => {
+          currentIndex++;
+          playNext();
+        };
+      } else {
+        console.error(
+          `Audio not found for sound ID: ${sound.id} or name: ${sound.name}`
+        );
+      }
+    };
+
+    playNext();
   };
 
   return (
@@ -207,6 +248,7 @@ function Soundboard() {
         </button>
       </div>
 
+      {/* Playlist Controls */}
       <div className="playlist-controls">
         <input
           type="text"
@@ -232,6 +274,41 @@ function Soundboard() {
             </ul>
           </div>
         )}
+      </div>
+
+      {/* Saved Playlists */}
+      <div className="saved-playlists">
+        <h3>Saved Playlists:</h3>
+        <ul>
+          {playlists.map((pl, index) => (
+            <li
+              key={index}
+              className={`playlist-item ${
+                selectedPlaylist === pl.name ? "active" : ""
+              }`}
+            >
+              <strong
+                onClick={() => {
+                  setSelectedPlaylist(pl.name);
+                  playPlaylistFromIndex(pl, 0); // start - beginning
+                }}
+              >
+                {pl.name}
+              </strong>
+              <ul>
+                {pl.sounds.map((sound, idx) => (
+                  <li
+                    key={idx}
+                    className="playlist-sound-item"
+                    onClick={() => playPlaylistFromIndex(pl, idx)} // start specific track from anywhere
+                  >
+                    {sound.name}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div className="soundboard-grid">
