@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import trainSound from "../sounds/train.mp3";
@@ -61,8 +62,20 @@ function Soundboard() {
     ...tropicalHouseTracks,
   ]);
 
+  const [playlist, setPlaylist] = useState([]);
+  const [playlists, setPlaylists] = useState([]);
   // store references to audio elements
   const audioRefs = useRef({});
+
+  useEffect(() => {
+    // Fetch playlists from backend
+    if (userEmail) {
+      axios
+        .get(`/api/soundboard/get-playlists/${userEmail}`)
+        .then((response) => setPlaylists(response.data.playlists))
+        .catch((error) => console.error("Error fetching playlists:", error));
+    }
+  }, [userEmail]);
 
   const playSound = (sound) => {
     const audio = audioRefs.current[sound.id];
@@ -139,6 +152,52 @@ function Soundboard() {
     reader.readAsDataURL(file);
   };
 
+  const playPlaylist = (playlist) => {
+    if (playlist.sounds.length === 0) return;
+
+    let currentIndex = 0;
+
+    const playNext = () => {
+      if (currentIndex >= playlist.sounds.length) return;
+
+      const sound = playlist.sounds[currentIndex];
+      const audio = audioRefs.current[sound.id];
+
+      if (audio) {
+        audio.play();
+        audio.onended = () => {
+          currentIndex++;
+          playNext();
+        };
+      }
+    };
+
+    playNext();
+  };
+
+  const addToPlaylist = (sound) => {
+    setPlaylist((prev) => [...prev, sound]);
+  };
+
+  const savePlaylist = (name) => {
+    if (name && playlist.length > 0 && userEmail) {
+      const newPlaylist = { name, sounds: playlist };
+
+      // Save to backend
+      axios
+        .post("/api/soundboard/save-playlist", {
+          email: userEmail,
+          playlistName: name,
+          sounds: playlist,
+        })
+        .then((response) => {
+          setPlaylists(response.data.playlists); // Update local playlists
+          setPlaylist([]); // Clear current playlist
+        })
+        .catch((error) => console.error("Error saving playlist:", error));
+    }
+  };
+
   return (
     <div className="soundboard-container">
       <h1 className="soundboard-title">Tropical Vibes Soundboard</h1>
@@ -147,6 +206,57 @@ function Soundboard() {
           Add New Sound
         </button>
       </div>
+
+      <div className="playlist-controls">
+        <input
+          type="text"
+          placeholder="Playlist Name"
+          id="playlistName"
+          className="playlist-input"
+        />
+        <button
+          className="add-sound-button"
+          onClick={() =>
+            savePlaylist(document.getElementById("playlistName").value)
+          }
+        >
+          Save Playlist
+        </button>
+        {playlist.length > 0 && (
+          <div>
+            <h3>Current Playlist:</h3>
+            <ul>
+              {playlist.map((sound, index) => (
+                <li key={index}>{sound.name}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+
+      <div className="soundboard-grid">
+        {sounds.map((sound) => (
+          <div className="sound-item" key={sound.id}>
+            <audio
+              ref={(el) => (audioRefs.current[sound.id] = el)}
+              src={sound.url}
+            />
+            <button
+              className="play-sound-button"
+              onClick={() => playSound(sound)}
+            >
+              {sound.name}
+            </button>
+            <button
+              className="add-to-playlist-button"
+              onClick={() => addToPlaylist(sound)}
+            >
+              Add to Playlist
+            </button>
+          </div>
+        ))}
+      </div>
+
       <div className="soundboard-grid">
         {sounds.map((sound) => (
           <div className="sound-item" key={sound.id}>

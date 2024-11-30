@@ -102,3 +102,34 @@
 button:hover {
   opacity: 0.9;
 }
+
+.playlist-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.playlist-input {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 2px solid #ffd700;
+  border-radius: 8px;
+  width: 200px;
+}
+
+.saved-playlists {
+  margin-top: 20px;
+}
+
+.playlist-item {
+  background: #4facfe;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+button:hover {
+  opacity: 0.9;
+}

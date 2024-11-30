@@ -15,6 +15,17 @@ const AchievementSchema = new mongoose.Schema({
   },
 });
 
+const PlaylistSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  sounds: [
+    {
+      name: String,
+      url: String,
+    },
+  ],
+  createdAt: { type: Date, default: Date.now },
+});
+
 const ScoreSchema = new mongoose.Schema({
   value: {
     type: Number,
@@ -214,6 +225,7 @@ const UserSchema = new mongoose.Schema({
       },
     },
   ],
+  playlists: [PlaylistSchema],
 });
 
 const User = mongoose.model("User", UserSchema);
