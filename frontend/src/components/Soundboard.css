@@ -1,7 +1,8 @@
+
 .soundboard-container {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  background: linear-gradient(to right, #ff7e5f, #feb47b);
-  color: #ffffff;
+  background: #121212; 
+  color: #4af3eb; 
   min-height: 100vh;
   padding: 20px;
   text-align: center;
@@ -10,9 +11,9 @@
 .soundboard-title {
   font-size: 3rem;
   text-transform: uppercase;
-  text-shadow: 0 0 15px #ff5733, 0 0 30px #ffc300;
-  color: #fff;
+  color: #4af3eb;
   margin-bottom: 20px;
+  text-shadow: 0 0 10px #4af3eb, 0 0 20px #4af3eb;
 }
 
 .add-button-container {
@@ -20,60 +21,70 @@
 }
 
 .add-sound-button {
-  background: #ffd700;
+  background: #4af3eb;
   border: none;
-  color: #000;
+  color: #121212;
   font-size: 1rem;
   padding: 12px 20px;
   border-radius: 12px;
   cursor: pointer;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 5px 10px rgba(74, 243, 235, 0.3);
+  transition: background 0.3s ease;
 }
 
 .add-sound-button:hover {
-  background: #ffe066;
+  background: #3bc9c0;
 }
 
 .soundboard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
   padding: 20px;
 }
 
 .sound-item {
-  background: linear-gradient(to top, #4facfe, #00f2fe);
-  border: 2px solid #ffffff;
-  border-radius: 15px;
+  background: #1c1c1c; 
+  border: 1px solid #4af3eb;
+  border-radius: 10px;
   padding: 15px;
   text-align: center;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sound-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 16px rgba(74, 243, 235, 0.3);
 }
 
 .play-sound-button {
-  background: #34e89e;
+  background: #4af3eb;
   border: none;
-  color: #000;
+  color: #121212;
   font-size: 1rem;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 8px;
   margin-bottom: 10px;
   width: 100%;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 3px 6px rgba(74, 243, 235, 0.2);
+  transition: background 0.3s ease;
 }
 
 .play-sound-button:hover {
-  background: #78ffd6;
+  background: #3bc9c0;
 }
 
 .replace-audio-label {
   display: block;
-  background: #ff6f61;
-  color: #ffffff;
+  background: #4af3eb;
+  color: #121212;
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
+  margin-top: 10px;
+  transition: background 0.3s ease;
 }
 
 .replace-audio-input {
@@ -81,22 +92,27 @@
 }
 
 .replace-audio-label:hover {
-  background: #ff9f8f;
+  background: #3bc9c0;
 }
 
-.pause-sound-button {
-  background: #ffa500;
-  color: #000;
-}
-
-.stop-sound-button {
-  background: #ff4500;
-  color: #fff;
-}
-
+.pause-sound-button,
+.stop-sound-button,
 .replay-sound-button {
-  background: #4b0082;
-  color: #fff;
+  background: #1c1c1c;
+  color: #4af3eb;
+  border: 1px solid #4af3eb;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.pause-sound-button:hover,
+.stop-sound-button:hover,
+.replay-sound-button:hover {
+  background: #4af3eb;
+  color: #121212;
 }
 
 button:hover {
@@ -113,43 +129,47 @@ button:hover {
 .playlist-input {
   padding: 8px;
   margin-bottom: 10px;
-  border: 2px solid #ffd700;
+  border: 1px solid #4af3eb;
   border-radius: 8px;
-  width: 200px;
+  background: #1c1c1c;
+  color: #4af3eb;
+  width: 250px;
 }
 
 .saved-playlists {
   margin-top: 20px;
-  text-align: left;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.1);
+  background: #1c1c1c;
+  border: 1px solid #4af3eb;
   border-radius: 10px;
+  text-align: left;
 }
 
 .saved-playlists h3 {
   font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #ffffff;
+  margin-bottom: 15px;
+  color: #4af3eb;
 }
 
 .playlist-item {
-  background: #4facfe;
-  padding: 10px;
+  background: #1c1c1c;
+  border: 1px solid #4af3eb;
+  padding: 15px;
   border-radius: 8px;
   margin: 10px 0;
   text-align: left;
   cursor: pointer;
-  transition: transform 0.2s, background 0.2s;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .playlist-item:hover {
-  transform: scale(1.05);
-  background: #6ac0ff;
+  transform: scale(1.03);
+  background: rgba(74, 243, 235, 0.1);
 }
 
 .playlist-item.active {
-  background: #007bff;
-  color: #ffffff;
+  background: rgba(74, 243, 235, 0.2);
+  color: #4af3eb;
   font-weight: bold;
 }
 
@@ -159,16 +179,16 @@ button:hover {
 }
 
 .playlist-sound-item {
-  background: #ffffff;
-  color: #333;
+  background: #1c1c1c;
+  color: #4af3eb;
   padding: 8px;
   border-radius: 5px;
   margin: 5px 0;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .playlist-sound-item:hover {
-  background: #ffcccb;
-  color: #000;
+  background: rgba(74, 243, 235, 0.2);
+  color: #121212;
 }
