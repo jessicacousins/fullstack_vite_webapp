@@ -288,6 +288,7 @@ function Soundboard() {
               }`}
             >
               <strong
+              className="saved-titled"
                 onClick={() => {
                   setSelectedPlaylist(pl.name);
                   playPlaylistFromIndex(pl, 0); // start - beginning

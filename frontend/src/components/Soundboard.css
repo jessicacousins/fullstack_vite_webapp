@@ -1,8 +1,7 @@
-
 .soundboard-container {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  background: #121212; 
-  color: #4af3eb; 
+  background: #121212;
+  color: #4af3eb;
   min-height: 100vh;
   padding: 20px;
   text-align: center;
@@ -44,7 +43,7 @@
 }
 
 .sound-item {
-  background: #1c1c1c; 
+  background: #1c1c1c;
   border: 1px solid #4af3eb;
   border-radius: 10px;
   padding: 15px;
@@ -138,17 +137,25 @@ button:hover {
 
 .saved-playlists {
   margin-top: 20px;
-  padding: 20px;
+  padding: 20px 20px;
   background: #1c1c1c;
   border: 1px solid #4af3eb;
   border-radius: 10px;
-  text-align: left;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .saved-playlists h3 {
-  font-size: 1.5rem;
+  font-size: 3.5rem;
   margin-bottom: 15px;
   color: #4af3eb;
+}
+
+.saved-titled {
+  font-size: 2rem;
+  color: aliceblue;
 }
 
 .playlist-item {
@@ -157,9 +164,10 @@ button:hover {
   padding: 15px;
   border-radius: 8px;
   margin: 10px 0;
-  text-align: left;
+  text-align: center;
   cursor: pointer;
   transition: transform 0.2s ease, background 0.2s ease;
+  list-style: none;
 }
 
 .playlist-item:hover {
@@ -186,6 +194,7 @@ button:hover {
   margin: 5px 0;
   cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease;
+  list-style: none;
 }
 
 .playlist-sound-item:hover {
