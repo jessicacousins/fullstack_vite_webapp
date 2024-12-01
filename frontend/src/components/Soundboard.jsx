@@ -65,6 +65,7 @@ function Soundboard() {
   const [playlist, setPlaylist] = useState([]);
   const [playlists, setPlaylists] = useState([]);
   const [selectedPlaylist, setSelectedPlaylist] = useState(null);
+  const [currentlyPlaying, setCurrentlyPlaying] = useState(null);
   // store references to audio elements
   const audioRefs = useRef({});
 
@@ -239,6 +240,65 @@ function Soundboard() {
     playNext();
   };
 
+  const togglePlayPause = (sound) => {
+    const audio = audioRefs.current[sound.id];
+
+    if (!audio) return;
+
+    // If the track is currently playing, pause it
+    if (currentlyPlaying === sound.id) {
+      audio.pause();
+      setCurrentlyPlaying(null);
+    } else {
+      // Pause the currently playing track if any
+      if (currentlyPlaying !== null) {
+        const currentAudio = audioRefs.current[currentlyPlaying];
+        if (currentAudio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0; // Reset the previous track
+        }
+      }
+
+      // Play the selected track
+      audio.play();
+      setCurrentlyPlaying(sound.id);
+
+      // Automatically clear the `currentlyPlaying` state when the track ends
+      audio.onended = () => setCurrentlyPlaying(null);
+    }
+  };
+
+  const togglePlayPauseFromPlaylist = (playlist, sound) => {
+    const audio = audioRefs.current[sound.id];
+
+    if (!audio) {
+      console.error("Audio element not found for sound:", sound.name);
+      return;
+    }
+
+    if (currentlyPlaying === sound.id) {
+      // Pause the currently playing sound
+      audio.pause();
+      setCurrentlyPlaying(null);
+    } else {
+      // Pause any currently playing sound
+      if (currentlyPlaying !== null) {
+        const currentAudio = audioRefs.current[currentlyPlaying];
+        if (currentAudio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0; // Reset the track
+        }
+      }
+
+      // Play the selected sound
+      audio.play();
+      setCurrentlyPlaying(sound.id);
+
+      // Automatically clear `currentlyPlaying` when the track ends
+      audio.onended = () => setCurrentlyPlaying(null);
+    }
+  };
+
   return (
     <div className="soundboard-container">
       <h1 className="soundboard-title">Tropical Vibes Soundboard</h1>
@@ -288,10 +348,10 @@ function Soundboard() {
               }`}
             >
               <strong
-              className="saved-titled"
+                className="saved-titled"
                 onClick={() => {
                   setSelectedPlaylist(pl.name);
-                  playPlaylistFromIndex(pl, 0); // start - beginning
+                  playPlaylistFromIndex(pl, 0);
                 }}
               >
                 {pl.name}
@@ -301,7 +361,7 @@ function Soundboard() {
                   <li
                     key={idx}
                     className="playlist-sound-item"
-                    onClick={() => playPlaylistFromIndex(pl, idx)} // start specific track from anywhere
+                    onClick={() => playPlaylistFromIndex(pl, idx)}
                   >
                     {sound.name}
                   </li>
@@ -312,7 +372,7 @@ function Soundboard() {
         </ul>
       </div>
 
-      <div className="soundboard-grid">
+      {/* <div className="soundboard-grid">
         {sounds.map((sound) => (
           <div className="sound-item" key={sound.id}>
             <audio
@@ -324,6 +384,29 @@ function Soundboard() {
               onClick={() => playSound(sound)}
             >
               {sound.name}
+            </button>
+            <button
+              className="add-to-playlist-button"
+              onClick={() => addToPlaylist(sound)}
+            >
+              Add to Playlist
+            </button>
+          </div>
+        ))}
+      </div> */}
+
+      <div className="soundboard-grid">
+        {sounds.map((sound) => (
+          <div className="sound-item" key={sound.id}>
+            <audio
+              ref={(el) => (audioRefs.current[sound.id] = el)}
+              src={sound.url}
+            />
+            <button
+              className="play-sound-button"
+              onClick={() => togglePlayPause(sound)}
+            >
+              {currentlyPlaying === sound.id ? "Pause" : "Play"} {sound.name}
             </button>
             <button
               className="add-to-playlist-button"
