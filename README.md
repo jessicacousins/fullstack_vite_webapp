@@ -31,6 +31,8 @@ This is a full-stack **Vite** application built with **React**, **Node.js**, **E
 - **Shopping Cart**: Includes a shopping cart with secure **Stripe** payment processing.
 - **AI-Driven Features**: Integrates **OpenAI** for automatic moderation of user-generated content. Comments are flagged for inappropriate language, and AI-generated content suggestions assist in blog post creation.
 - **Admin Dashboard**: Provides moderators with a comprehensive view of flagged content, alongside sentiment analysis for user interactions.
+- **Soundboard** with AI-Generated Music: Features a soundboard offering AI-generated music tracks. Users can play, pause, and stop sounds and save playlists for future playback.
+- **Achievement Tracking**: Tracks user actions in blogs, games, and shopping linked to the corresponding user account
 
 ### Enhanced Features
 
@@ -71,7 +73,8 @@ This project demonstrates the power of combining machine learning, real-time AI-
 
 The objective of this **MERN** stack project is to create an immersive **fullstack** experience that leverages a rich set of modern technologies and features to deliver an engaging and comprehensive platform. This includes a sophisticated user interface with multiple interactive elements, such as a blog platform with **AI-powered sentiment analysis** and **AI-generated content** via OpenAI, a series of **mini-games** (Blackjack, Matching, and Simon Says), and a fully functional **shopping cart** with **Stripe** payment processing.
 
-User interactions are closely monitored and enhanced through **AI moderation** to flag inappropriate content, providing a safe environment for engagement. All user interactions, including blog comments, are analyzed for sentiment (positive, neutral, or negative) and tracked within **MongoDB** for review through a detailed **Admin Dashboard**.
+User interactions are closely monitored and enhanced through **AI moderation** to flag inappropriate content, providing a safe environment for engagement. All user interactions, including blog comments, are analyzed for sentiment (positive, neutral, or negative) and tracked within **MongoDB** for review through a detailed **Admin Dashboard**. A **soundboard** with AI-generated music, allowing users to save and manage playlists while interacting with a dynamic audio experience.
+The **Achievement System**, rewards user milestones across games, blogs, and the shopping experience. This system gamifies user engagement, encouraging active participation and fostering a sense of accomplishment.
 
 The platform securely manages user data, including personal information, device and browser details, IP addresses, and product view history, which drives **personalized recommendations**. Data storage and handling comply with strict **privacy and legal standards**, including age verification. A robust **password reset** mechanism further ensures security, validating email authenticity before triggering password reset actions. All features are designed with privacy and security as a priority, creating an immersive, AI-enhanced environment that goes beyond basic **authentication** and **user management**.
 
@@ -299,6 +302,8 @@ This web application focuses on:
 17. **TensorFlow.js Image Classification**: TensorFlow.js is integrated into the frontend to enable machine learning capabilities directly in the browser. Using the MobileNet model, this feature allows users to classify and identify categories of merchandise images in the shopping component with real-time feedback. When a user clicks on an item, the model predicts the item’s category, providing insights into the types of products available. This implementation demonstrates basic machine learning concepts and enhances the shopping experience with interactive AI-driven categorization.
 18. **Learn More Insights**: When users click the “Learn More” button for an item in the shopping cart, they receive an AI-generated description and insights about the product. This feature, powered by OpenAI, offers additional context on the product's uses, features, and related categories, enhancing the shopping experience.
 19. **Product Recommendations**: Based on the products users views, the system provides AI-driven recommendations for similar items. This feature uses OpenAI to generate recommendations tailored to user preferences. Product views are logged in the backend, allowing the application to suggest relevant items based on users' browsing patterns.
+20. **Soundboard**: The backend stores user-created playlists, including the track information, user clicks, and playback history.
+21. **Achievement Tracking:**: Tracks user actions in blogs, games, and shopping. Includes APIs for fetching user achievements, adding new ones, and displaying progress.
 
 ## Packages and Technologies Used
 
@@ -366,6 +371,7 @@ This web application focuses on:
 - **AI Moderation**: Comments are automatically moderated by OpenAI’s moderation API. Inappropriate or flagged comments are sent to the Admin Dashboard, where moderators can review and take action.
 - **Machine Learning**: Enables real-time image classification within the shopping cart, providing users with AI-driven insights on merchandise categories through TensorFlow.js and the MobileNet model.
 - **Product Recommendations and Insights**: When users click "Learn More" on a product, they receive AI-generated insights and related product recommendations, enhancing the shopping experience.
+- **Soundboard**: Includes a fully interactive soundboard with AI-generated music. Features save functionality for user playlists, integrated with the backend. Allows users to manage and retrieve their saved playlists dynamically.
 
 ### Backend Features
 
@@ -382,6 +388,8 @@ This web application focuses on:
 - **AI-Generated Content**: The backend facilitates interaction with OpenAI’s GPT model, generating blog post content based on user-provided prompts. The generated content is processed and returned to the frontend for customization and publication.
 - **AI Moderation**: The backend integrates OpenAI’s moderation API to flag inappropriate content in blog posts and comments. Flagged content is stored in MongoDB and displayed on the Admin Dashboard for review by moderators.
 - **Product View Logging**: The backend logs each product view, capturing details like product ID and category, to enable personalized product recommendations based on user interests.
+- **Achievement system**: Handles tracking, storage, and retrieval of user achievements. Connects milestones in games, blogs, and shopping to achievement progress.
+- **Soundboard**: Enables CRUD operations for user-created playlists. Handles secure storage of playlist metadata and associated tracks in MongoDB.
 - **Shopping Cart**:
   - The backend tracks the user's cart, storing the items they have added, and updating the cart when items are removed or quantities are changed.
   - The backend also processes Stripe payment intents and records successful transactions, including payment status, cart contents, and user details.
