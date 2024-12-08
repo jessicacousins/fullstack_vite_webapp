@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -6,6 +7,9 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
 import Welcome from "./pages/Welcome";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
@@ -32,7 +36,14 @@ import SnapQuestGame from "./components/SnapQuestGame";
 import Achievements from "./components/Achievements";
 import Soundboard from "./components/Soundboard";
 
+import Customers from "./components/Billing/Customers";
+import Invoices from "./components/Billing/Invoices";
+import AdminBillingDashboard from "./components/Billing/AdminBillingDashboard";
+import InvoicePaymentForm from "./components/Billing/InvoicePaymentForm";
+
 import "./App.css";
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -57,23 +68,18 @@ function App() {
 
   const proceedToCheckout = useNavigate();
 
-  // Calculate the total number of items in the cart
   const cartItemCount = cartItems.reduce(
     (total, item) => total + item.quantity,
     0
   );
 
-  // Handle search function
   const handleSearch = (query) => {
     setSearchQuery(query.toLowerCase());
-
-    // If the search query is not empty, navigate the user to the Blog page
     if (query.trim()) {
       proceedToCheckout("/blog");
     }
   };
 
-  // Handle setting search results found or not
   const handleSearchResults = (hasResults) => {
     setSearchResultsFound(hasResults);
   };
@@ -84,7 +90,6 @@ function App() {
 
   return (
     <AuthProvider>
-      {/* <NavBar onSearch={handleSearch} /> */}
       <NavBar onSearch={handleSearch} cartItemCount={cartItemCount} />
       <Routes>
         <Route path="/" element={<Welcome />} />
@@ -102,6 +107,19 @@ function App() {
         <Route path="/achievements" element={<Achievements />} />
         <Route path="/order-success" element={<OrderSuccess />} />
         <Route path="/soundboard" element={<Soundboard />} />
+
+        <Route path="/customers" element={<Customers />} />
+        <Route path="/invoices" element={<Invoices />} />
+        <Route path="/billing-dashboard" element={<AdminBillingDashboard />} />
+        <Route
+          path="/invoice-payment/:id"
+          element={
+            <Elements stripe={stripePromise}>
+              <InvoicePaymentForm />
+            </Elements>
+          }
+        />
+
         <Route path="/shopping" element={<Shopping addToCart={addToCart} />} />
         <Route
           path="/cart"

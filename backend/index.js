@@ -6,8 +6,11 @@ require("dotenv").config();
 const cartRoutes = require("./routes/cart");
 const learningRoutes = require("./routes/learning");
 const snapquestRoutes = require("./routes/snapquestRoutes");
-
 const soundboardRoutes = require("./routes/soundboard");
+
+// ! Billing system
+const customerRoutes = require("./routes/customerRoutes");
+const invoiceRoutes = require("./routes/invoiceRoutes");
 
 const app = express();
 
@@ -50,6 +53,10 @@ app.use("/api/learning", learningRoutes);
 
 // SnapQuest Routes
 app.use("/api/snapquest", snapquestRoutes);
+
+// ! billing system
+app.use("/api/customers", customerRoutes);
+app.use("/api/invoices", invoiceRoutes);
 
 app.use((req, res, next) => {
   res.setHeader("Cross-Origin-Opener-Policy", "same-origin");

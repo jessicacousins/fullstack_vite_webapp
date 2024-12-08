@@ -413,6 +413,7 @@ This web application focuses on:
 - OpenAI
 - npm install multer
 - npm install @tensorflow/tfjs-node
+- npm install pdfkit moment
 
 ## Frontend
 
@@ -428,6 +429,7 @@ This web application focuses on:
 - TensorFlow.js
 - MobileNet Model
 - npm install react-loading
+- npm install moment
 
 ## Privacy Policy and Data Collection
 
