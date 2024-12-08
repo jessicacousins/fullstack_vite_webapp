@@ -10,7 +10,7 @@
 
 .invoice-header {
   font-size: 2.5rem;
-  color: #66c0f4;
+  color: #4af3eb;
   text-align: center;
   margin-bottom: 20px;
   letter-spacing: 2px;
@@ -44,9 +44,9 @@
 .payment-card-element {
   padding: 15px;
   background: #2a2a2a;
-  border: 2px solid #00d4ff;
+  border: 2px solid #4af3eb;
   border-radius: 8px;
-  color: #ffffff;
+  color: #000;
   font-size: 1rem;
 }
 
@@ -57,8 +57,8 @@
 .payment-button {
   padding: 15px 30px;
   font-size: 1.2rem;
-  color: #ffffff;
-  background-color: #00d4ff;
+  color: #000;
+  background-color: #4af3eb;
   border: none;
   border-radius: 8px;
   cursor: pointer;
