@@ -1,0 +1,108 @@
+/* Container for Customers Section */
+.customers-container {
+  background-color: #1e1e1e;
+  color: #d3d3d3;
+  padding: 40px;
+  max-width: 900px;
+  margin: 50px auto;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.customers-header {
+  font-size: 2.5rem;
+  color: #66c0f4;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+}
+
+/* Form Styles */
+.customer-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.customer-form input {
+  padding: 12px 15px;
+  font-size: 1rem;
+  color: #ffffff;
+  background: #2a2a2a;
+  border: 2px solid #00d4ff;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.customer-form input:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.customer-form button {
+  grid-column: span 2;
+  padding: 15px 25px;
+  font-size: 1.2rem;
+  background-color: #00d4ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.customer-form button:hover {
+  background-color: #4caf50;
+  transform: scale(1.05);
+}
+
+/* Table Styles */
+.customers-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+.customers-table th,
+.customers-table td {
+  padding: 15px 20px;
+  text-align: left;
+  color: #ffffff;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.customers-table th {
+  background: #4caf50;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+.customers-table td {
+  background: #2a2a2a;
+  color: #d3d3d3;
+  font-size: 1rem;
+}
+
+.customers-table tr:hover td {
+  background: #3a3a3a;
+}
+
+.no-customers {
+  font-size: 1.5rem;
+  color: #ff4444;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .customer-form {
+    grid-template-columns: 1fr;
+  }
+
+  .customers-table th,
+  .customers-table td {
+    font-size: 0.9rem;
+  }
+}

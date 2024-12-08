@@ -54,12 +54,12 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                 { path: "/games", label: "Games" },
                 { path: "/checkout", label: "Checkout" },
                 { path: "/shopping", label: "Shopping" },
-                { path: "/admin-dashboard", label: "Admin" },
+                { path: "/admin-dashboard", label: "Blog_Admin" },
                 { path: "/achievements", label: "Achievements" },
                 { path: "/soundboard", label: "Soundboard" },
                 { path: "/customers", label: "Customers" },
                 { path: "/invoices", label: "Invoices" },
-                { path: "/billing-dashboard", label: "Financial Reports" },
+                { path: "/billing-dashboard", label: "Financial_Admin" },
               ].map((link) => (
                 <li key={link.path} onClick={closeMobileMenu}>
                   <NavLink

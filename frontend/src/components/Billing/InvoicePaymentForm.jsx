@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import "./InvoicePaymentForm.css";
 
 const InvoicePaymentForm = () => {
   const { id: invoiceId } = useParams();
@@ -77,16 +78,39 @@ const InvoicePaymentForm = () => {
   if (loading) return <div>Loading invoice...</div>;
   if (!invoice) return <div>Invoice not found</div>;
 
+  //   return (
+  //     <div>
+  //       <h2>Pay Invoice {invoice.invoiceNumber}</h2>
+  //       <p>Amount Due: ${invoice.totalAmount.toFixed(2)}</p>
+  //       {invoice.status === "paid" ? (
+  //         <p>This invoice is already paid.</p>
+  //       ) : (
+  //         <form onSubmit={handleSubmit}>
+  //           <CardElement />
+  //           <button type="submit" disabled={!stripe}>
+  //             Pay Invoice
+  //           </button>
+  //         </form>
+  //       )}
+  //     </div>
+  //   );
+  // };
+
   return (
-    <div>
-      <h2>Pay Invoice {invoice.invoiceNumber}</h2>
-      <p>Amount Due: ${invoice.totalAmount.toFixed(2)}</p>
+    <div className="invoice-payment-container">
+      <h2 className="invoice-header">Pay Invoice {invoice.invoiceNumber}</h2>
+      <div className="invoice-details">
+        <p className="amount-due">
+          Amount Due: ${invoice.totalAmount.toFixed(2)}
+        </p>
+      </div>
+
       {invoice.status === "paid" ? (
-        <p>This invoice is already paid.</p>
+        <p className="success-message">This invoice is already paid.</p>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <CardElement />
-          <button type="submit" disabled={!stripe}>
+        <form className="payment-form" onSubmit={handleSubmit}>
+          <CardElement className="payment-card-element" />
+          <button type="submit" className="payment-button" disabled={!stripe}>
             Pay Invoice
           </button>
         </form>
