@@ -60,6 +60,8 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                 { path: "/customers", label: "Customers" },
                 { path: "/invoices", label: "Invoices" },
                 { path: "/billing-dashboard", label: "Financial_Admin" },
+                { path: "/fileconverter", label: "File_Convert" },
+
               ].map((link) => (
                 <li key={link.path} onClick={closeMobileMenu}>
                   <NavLink

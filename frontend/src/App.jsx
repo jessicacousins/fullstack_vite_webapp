@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -40,6 +39,8 @@ import Customers from "./components/Billing/Customers";
 import Invoices from "./components/Billing/Invoices";
 import AdminBillingDashboard from "./components/Billing/AdminBillingDashboard";
 import InvoicePaymentForm from "./components/Billing/InvoicePaymentForm";
+
+import FileConverter from "./components/FileConverter";
 
 import "./App.css";
 
@@ -107,6 +108,7 @@ function App() {
         <Route path="/achievements" element={<Achievements />} />
         <Route path="/order-success" element={<OrderSuccess />} />
         <Route path="/soundboard" element={<Soundboard />} />
+        <Route path="/fileconverter" element={<FileConverter />} />
 
         <Route path="/customers" element={<Customers />} />
         <Route path="/invoices" element={<Invoices />} />
