@@ -41,6 +41,7 @@ import AdminBillingDashboard from "./components/Billing/AdminBillingDashboard";
 import InvoicePaymentForm from "./components/Billing/InvoicePaymentForm";
 
 import FileConverter from "./components/FileConverter";
+import PasswordGenerator from "./components/PasswordGenerator";
 
 import "./App.css";
 
@@ -109,6 +110,7 @@ function App() {
         <Route path="/order-success" element={<OrderSuccess />} />
         <Route path="/soundboard" element={<Soundboard />} />
         <Route path="/fileconverter" element={<FileConverter />} />
+        <Route path="/passwordgenerator" element={<PasswordGenerator />} />
 
         <Route path="/customers" element={<Customers />} />
         <Route path="/invoices" element={<Invoices />} />
