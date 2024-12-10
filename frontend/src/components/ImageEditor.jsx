@@ -92,7 +92,7 @@ const ImageEditor = () => {
           </div>
 
           <div className="image-preview">
-            <h3>Preview:</h3>
+            <h3 className="image-preview-title">Image Preview</h3>
             <img
               src={filteredImage}
               alt="Edited"
