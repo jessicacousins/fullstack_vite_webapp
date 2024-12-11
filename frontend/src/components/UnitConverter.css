@@ -11,7 +11,7 @@
 
 .unit-converter-header {
   font-size: 2rem;
-  color: #66c0f4;
+  color: #4af3eb;
   margin-bottom: 20px;
 }
 
@@ -27,7 +27,7 @@
   font-size: 1rem;
   width: 100%;
   max-width: 300px;
-  border: 2px solid #00d4ff;
+  border: 2px solid #4af3eb;
   border-radius: 8px;
   background-color: #2a2a2a;
   color: #ffffff;
@@ -38,7 +38,7 @@
   font-size: 1rem;
   width: 100%;
   max-width: 300px;
-  border: 2px solid #00d4ff;
+  border: 2px solid #4af3eb;
   border-radius: 8px;
   background-color: #2a2a2a;
   color: #ffffff;
@@ -47,8 +47,8 @@
 .convert-button {
   padding: 10px 20px;
   font-size: 1rem;
-  background-color: #00d4ff;
-  color: #ffffff;
+  background-color: #4af3eb;
+  color: #000;
   border: none;
   border-radius: 8px;
   cursor: pointer;
