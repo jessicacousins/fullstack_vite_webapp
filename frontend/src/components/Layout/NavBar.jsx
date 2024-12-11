@@ -63,6 +63,7 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                 { path: "/fileconverter", label: "File_Convert" },
                 { path: "/passwordgenerator", label: "Password Generator" },
                 { path: "/imageeditor", label: "Image Editor" },
+                { path: "/unitconverter", label: "Unit Converter" },
               ].map((link) => (
                 <li key={link.path} onClick={closeMobileMenu}>
                   <NavLink
