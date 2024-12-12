@@ -1,9 +1,8 @@
-
 .achievements-container {
   text-align: center;
-  color: rgba(220, 220, 220, 1); 
+  color: rgba(220, 220, 220, 1);
   padding: 2rem;
-  background-color: rgba(20, 20, 20, 1); 
+  background-color: rgba(20, 20, 20, 1);
 }
 
 .achievement-list {
@@ -14,7 +13,7 @@
 }
 
 .achievements-title {
-  color: rgba(180, 156, 90, 1);
+  color: #4af3eb;
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 2rem;

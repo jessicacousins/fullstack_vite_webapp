@@ -8,7 +8,7 @@
 
 .games-container h1 {
   font-size: 4rem;
-  color: #00d4ff;
+  color: #4af3eb;
   margin-bottom: 40px;
   letter-spacing: 7px;
   text-shadow: 1px 1px 2px #0d0d0e, 2px 2px 4px #0d0d0e, 3px 3px 6px #0d0d0e,
@@ -50,17 +50,17 @@
   margin: 5px 10px;
   padding: 10px 15px;
   font-size: 1.1rem;
-  color: #00d4ff;
+  color: #4af3eb;
   background-color: transparent;
   border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
-  border: 2px solid #00d4ff;
+  border: 2px solid #4af3eb;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .game-section a:hover {
-  background-color: #00d4ff;
+  background-color: #4af3eb;
   color: #1e1e2e;
   transform: scale(1.05);
 }
@@ -92,7 +92,7 @@
 
 .leaderboard-card h3 {
   font-size: 1.5rem;
-  color: #00d4ff;
+  color: #4af3eb;
   margin-bottom: 10px;
   letter-spacing: 2px;
 }
@@ -124,6 +124,9 @@
 .leaderboard-card li:nth-child(3) .rank {
   color: #cd7f32;
   font-weight: bold;
+}
+.leaderboard-card li:nth-child(4) .rank {
+  color: #cd32ab;
 }
 
 .leaderboard-card li .rank {
