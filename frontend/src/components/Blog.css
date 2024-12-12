@@ -34,7 +34,7 @@ canvas {
   max-width: 800px;
   margin-bottom: 40px;
   padding: 12px 25px;
-  background-color: #43ff04cd;
+  background-color: #4af3eb;
   color: #ffffff;
   border-radius: 8px;
   text-decoration: none;
@@ -45,7 +45,7 @@ canvas {
 .glitch-heading {
   position: relative;
   font-size: 7rem;
-  color: #00d4ff;
+  color: #4af3eb;
   text-transform: uppercase;
   letter-spacing: 2px;
   animation: flicker 1s infinite alternate ease-in-out;
@@ -152,7 +152,7 @@ canvas {
 
 .info-blog-title {
   font-size: 2rem;
-  color: #66c0f4;
+  color: #4af3eb;
   margin-bottom: 15px;
   text-align: center;
 }
@@ -223,8 +223,8 @@ canvas {
   max-width: 800px;
   margin-bottom: 40px;
   padding: 12px 25px;
-  background-color: #0abadd;
-  color: #ffffff;
+  background-color: #4af3eb;
+  color: #000;
   border-radius: 8px;
   text-decoration: none;
   font-size: 1.1rem;
@@ -238,7 +238,7 @@ canvas {
 
 .blog-intro-title {
   font-size: 2.4rem;
-  color: #66c0f4;
+  color: #4af3eb;
   margin-top: 30px;
   text-align: center;
   text-shadow: 0 0 1px #111111;
@@ -266,7 +266,7 @@ canvas {
 
 .post-card1:hover {
   transform: translateY(-5px);
-  border: 2px solid #00d4ff;
+  border: 2px solid #4af3eb;
   box-shadow: 2px 2px 3px 3px rgba(48, 52, 53, 0.7);
 }
 
@@ -336,7 +336,7 @@ canvas {
 
 .post-author {
   font-size: 1rem;
-  color: #00d4ff;
+  color: #4af3eb;
   letter-spacing: 2px;
   margin-bottom: 5px;
   text-align: center;
@@ -358,14 +358,14 @@ canvas {
 
 .icon-button {
   font-size: 1.5rem;
-  color: #00d4ff;
+  color: #4af3eb;
   cursor: pointer;
   transition: color 0.3s;
   padding: 5px;
 }
 
 .icon-button:hover {
-  color: #aeedfa;
+  color: #4af3eb81;
 }
 
 .comments-section {
@@ -379,7 +379,7 @@ canvas {
 }
 
 .comment {
-  background-color: #357a38;
+  background-color: #4af3eb28;
   padding: 10px 15px;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -392,7 +392,7 @@ canvas {
 
 .comment-user {
   font-size: 0.9rem;
-  color: #43ff04cd;
+  color: #4af3eb;
 }
 
 .comment-author {
@@ -409,7 +409,7 @@ canvas {
 .comment-textarea {
   padding: 10px;
   font-size: 1rem;
-  border: 2px solid #43ff04cd;
+  border: 2px solid #4af3eb;
   border-radius: 5px;
   background-color: #ffffff;
 }
@@ -417,15 +417,15 @@ canvas {
 .submit-comment-button {
   align-self: flex-end;
   padding: 10px 20px;
-  background-color: #4caf50;
-  color: #ffffff;
+  background-color: #4af3eb;
+  color: #000;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .submit-comment-button:hover {
-  background-color: #357a38;
+  background-color: #4af3ebad;
 }
 
 .no-posts,
