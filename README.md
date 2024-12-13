@@ -430,6 +430,7 @@ This web application focuses on:
 - MobileNet Model
 - npm install react-loading
 - npm install moment
+- npm install react-color
 
 ## Privacy Policy and Data Collection
 

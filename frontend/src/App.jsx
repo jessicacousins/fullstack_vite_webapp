@@ -44,6 +44,7 @@ import FileConverter from "./components/FileConverter";
 import PasswordGenerator from "./components/PasswordGenerator";
 import ImageEditor from "./components/ImageEditor";
 import UnitConverter from "./components/UnitConverter";
+import ColorPicker from "./components/ColorPicker";
 
 import "./App.css";
 
@@ -115,6 +116,7 @@ function App() {
         <Route path="/passwordgenerator" element={<PasswordGenerator />} />
         <Route path="/imageeditor" element={<ImageEditor />} />
         <Route path="/unitconverter" element={<UnitConverter />} />
+        <Route path="/colorpicker" element={<ColorPicker />} />
 
         <Route path="/customers" element={<Customers />} />
         <Route path="/invoices" element={<Invoices />} />
