@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ChromePicker } from "react-color";
 import "./ColorPicker.css";
 
-const ColorPicker = ({ initialColor = "#66c0f4" }) => {
+const ColorPicker = ({ initialColor = "#b91356" }) => {
   const [color, setColor] = useState(initialColor);
   const [showPicker, setShowPicker] = useState(false);
 
