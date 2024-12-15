@@ -38,11 +38,11 @@ const MoodTracker = () => {
 
   useEffect(() => {
     fetchMoods();
-  }, [email]); 
+  }, [email]);
 
   return (
     <div className="mood-tracker-container">
-      <h2>Mood Tracker</h2>
+      <h2 className="mood-tracker-title">Mood Tracker</h2>
       <div className="mood-input">
         <label>Select Mood:</label>
         <select value={mood} onChange={(e) => setMood(e.target.value)}>
@@ -66,7 +66,7 @@ const MoodTracker = () => {
         Add Mood
       </button>
 
-      <h3>Past Moods</h3>
+      <h3 className="past-mood-title">Past Moods</h3>
       <ul className="mood-list">
         {moods.map((entry, index) => (
           <li key={index}>
