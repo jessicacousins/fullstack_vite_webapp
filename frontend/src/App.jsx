@@ -45,6 +45,7 @@ import PasswordGenerator from "./components/PasswordGenerator";
 import ImageEditor from "./components/ImageEditor";
 import UnitConverter from "./components/UnitConverter";
 import ColorPicker from "./components/ColorPicker";
+import MoodTracker from "./components/MoodTracker";
 
 import "./App.css";
 
@@ -117,7 +118,7 @@ function App() {
         <Route path="/imageeditor" element={<ImageEditor />} />
         <Route path="/unitconverter" element={<UnitConverter />} />
         <Route path="/colorpicker" element={<ColorPicker />} />
-
+        <Route path="/mood-tracker" element={<MoodTracker />} />;
         <Route path="/customers" element={<Customers />} />
         <Route path="/invoices" element={<Invoices />} />
         <Route path="/billing-dashboard" element={<AdminBillingDashboard />} />
@@ -129,7 +130,6 @@ function App() {
             </Elements>
           }
         />
-
         <Route path="/shopping" element={<Shopping addToCart={addToCart} />} />
         <Route
           path="/cart"
@@ -148,7 +148,6 @@ function App() {
           path="/checkout"
           element={<Checkout cartItems={cartItems} clearCart={clearCart} />}
         />
-
         <Route
           path="/blog"
           element={
@@ -159,9 +158,7 @@ function App() {
           }
         />
         <Route path="/create-blog" element={<CreateBlog />} />
-
         <Route path="/about" element={<About />} />
-
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
       </Routes>
       <Chatbot />

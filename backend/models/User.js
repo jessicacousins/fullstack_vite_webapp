@@ -1,5 +1,10 @@
 const mongoose = require("mongoose");
 
+const MoodSchema = new mongoose.Schema({
+  mood: { type: String, required: true },
+  journalEntry: { type: String, default: "" },
+  date: { type: Date, default: Date.now },
+});
 const AchievementSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -226,6 +231,7 @@ const UserSchema = new mongoose.Schema({
     },
   ],
   playlists: [PlaylistSchema],
+  moods: [MoodSchema],
 });
 
 const User = mongoose.model("User", UserSchema);

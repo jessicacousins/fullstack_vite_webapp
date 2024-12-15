@@ -842,4 +842,36 @@ router.post("/achievements/add", async (req, res) => {
   }
 });
 
+// ! POST: add a new mood entry
+router.post("/:email/mood", async (req, res) => {
+  const { mood, journalEntry } = req.body;
+  try {
+    const user = await User.findOne({ email: req.params.email });
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+    const newMood = { mood, journalEntry, date: new Date() };
+    user.moods.push(newMood);
+    await user.save();
+    res.status(200).json({ msg: "Mood added", moods: user.moods });
+  } catch (err) {
+    console.error("Error adding mood:", err.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// ! GET retrieve all moods
+router.get("/:email/moods", async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.params.email });
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+    res.status(200).json(user.moods);
+  } catch (err) {
+    console.error("Error fetching moods:", err.message);
+    res.status(500).send("Server error");
+  }
+});
+
 module.exports = router;
