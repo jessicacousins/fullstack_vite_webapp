@@ -66,6 +66,8 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                 { path: "/unitconverter", label: "Unit Converter" },
                 { path: "/colorpicker", label: "Color Picker" },
                 { path: "/mood-tracker", label: "Mood Tracker" },
+                { path: "/timecard", label: "Timecard" },
+                { path: "/admin-timecards", label: "Admin Timecards" },
               ].map((link) => (
                 <li key={link.path} onClick={closeMobileMenu}>
                   <NavLink

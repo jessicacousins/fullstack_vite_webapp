@@ -7,6 +7,7 @@ const cartRoutes = require("./routes/cart");
 const learningRoutes = require("./routes/learning");
 const snapquestRoutes = require("./routes/snapquestRoutes");
 const soundboardRoutes = require("./routes/soundboard");
+const timeEntryRoutes = require("./routes/timeEntryRoutes");
 
 // ! Billing system
 const customerRoutes = require("./routes/customerRoutes");
@@ -63,6 +64,9 @@ app.use((req, res, next) => {
   res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
   next();
 });
+
+// ! payroll system
+app.use("/api/timecards", timeEntryRoutes);
 
 app.use("/api/soundboard", soundboardRoutes);
 

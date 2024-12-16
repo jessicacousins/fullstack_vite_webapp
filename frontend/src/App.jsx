@@ -46,6 +46,8 @@ import ImageEditor from "./components/ImageEditor";
 import UnitConverter from "./components/UnitConverter";
 import ColorPicker from "./components/ColorPicker";
 import MoodTracker from "./components/MoodTracker";
+import Timecard from "./components/Timecard";
+import AdminTimecards from "./components/AdminTimecards";
 
 import "./App.css";
 
@@ -121,6 +123,11 @@ function App() {
         <Route path="/mood-tracker" element={<MoodTracker />} />;
         <Route path="/customers" element={<Customers />} />
         <Route path="/invoices" element={<Invoices />} />
+        <Route
+          path="/timecard"
+          element={<Timecard employeeId="current-employee-id" />}
+        />
+        <Route path="/admin-timecards" element={<AdminTimecards />} />
         <Route path="/billing-dashboard" element={<AdminBillingDashboard />} />
         <Route
           path="/invoice-payment/:id"
