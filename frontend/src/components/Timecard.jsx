@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import "./Timecard.css";
 
 const Timecard = () => {
   const { user } = useAuth();
@@ -52,9 +53,9 @@ const Timecard = () => {
   };
 
   return (
-    <div>
-      <h2>Your Timecard</h2>
-      <div>
+    <div className="timecard-container">
+      <h2 className="timecard-header">Your Timecard</h2>
+      <div className="timecard-dropdown">
         <label>
           Holiday Time:{" "}
           <select
@@ -67,19 +68,25 @@ const Timecard = () => {
         </label>
       </div>
       {clockedIn ? (
-        <button onClick={handleClockOut}>Clock Out</button>
+        <button className="timecard-button" onClick={handleClockOut}>
+          Clock Out
+        </button>
       ) : (
-        <button onClick={handleClockIn}>Clock In</button>
+        <button className="timecard-button" onClick={handleClockIn}>
+          Clock In
+        </button>
       )}
 
-      <ul>
+      <ul className="timecard-entries">
         {timeEntries.map((entry) => (
-          <li key={entry._id}>
+          <li key={entry._id} className="timecard-entry">
             Clocked In: {new Date(entry.clockIn).toLocaleString()} -{" "}
             {entry.clockOut
               ? `Clocked Out: ${new Date(entry.clockOut).toLocaleString()}`
               : "Ongoing"}{" "}
-            {entry.isHoliday && <span>(Holiday)</span>}
+            {entry.isHoliday && (
+              <span className="holiday-badge">(Holiday)</span>
+            )}
           </li>
         ))}
       </ul>

@@ -1,0 +1,99 @@
+.timecard-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.timecard-header {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #4af3eb;
+}
+
+.timecard-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.timecard-dropdown label {
+  font-weight: bold;
+  color: #f0f0f0;
+}
+
+.timecard-dropdown select {
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid #555;
+  background-color: #2e2e2e;
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.timecard-dropdown select:focus {
+  border-color: #4af3eb;
+}
+
+.timecard-button {
+  display: block;
+  width: 100%;
+  padding: 0.7rem;
+  margin: 1rem 0;
+  background-color: #4af3eb;
+  color: #1e1e1e;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.timecard-button:hover {
+  background-color: #4af3eb77;
+}
+
+.timecard-entries {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.timecard-entry {
+  background-color: #2e2e2e;
+  padding: 0.8rem;
+  border: 1px solid #444;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.timecard-entry span {
+  font-weight: bold;
+  color: #4af3eb;
+}
+
+.timecard-entry:hover {
+  background-color: #3e3e3e;
+}
+
+.holiday-badge {
+  background-color: #000000;
+  color: #000;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
