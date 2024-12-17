@@ -1,0 +1,65 @@
+.admin-timecards-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.admin-timecards-header {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #4af3eb;
+}
+
+.admin-timecards-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: #2e2e2e;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.admin-timecards-thead {
+  background-color: #4af3eb;
+  color: #1e1e1e;
+}
+
+.admin-timecards-th {
+  padding: 0.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.admin-timecards-tbody .admin-timecards-row:nth-child(even) {
+  background-color: #292929;
+}
+
+.admin-timecards-row:hover {
+  background-color: #3e3e3e;
+  transition: background-color 0.3s ease;
+}
+
+.admin-timecards-td {
+  padding: 0.8rem;
+  text-align: center;
+  border-bottom: 1px solid #444;
+}
+
+.admin-timecards-holiday {
+  color: #ff6347;
+  font-weight: bold;
+}
+
+.admin-timecards-no-data {
+  text-align: center;
+  padding: 1rem 0;
+  color: #999;
+  font-style: italic;
+}
