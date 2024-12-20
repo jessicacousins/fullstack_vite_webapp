@@ -151,6 +151,93 @@ const Home = () => {
             tool.
           </p>
         </div>
+        {/* Soundboard Section */}
+        <div className="feature-section">
+          <Link to="/soundboard" className="feature-link">
+            <h3 className="feature-heading">🎵 Soundboard</h3>
+          </Link>
+          <p className="feature-text">
+            Explore and enjoy a variety of sounds and audio effects with our
+            interactive soundboard.
+          </p>
+        </div>
+
+        {/* Customers Section */}
+        <div className="feature-section">
+          <Link to="/customers" className="feature-link">
+            <h3 className="feature-heading">👥 Customers</h3>
+          </Link>
+          <p className="feature-text">
+            Manage customer details and view their purchase history for seamless
+            interactions.
+          </p>
+        </div>
+
+        {/* Invoices Section */}
+        <div className="feature-section">
+          <Link to="/invoices" className="feature-link">
+            <h3 className="feature-heading">📑 Invoices</h3>
+          </Link>
+          <p className="feature-text">
+            Create, track, and manage invoices with ease. View payment history
+            and generate reports.
+          </p>
+        </div>
+
+        {/* Financial Admin Section */}
+        <div className="feature-section">
+          <Link to="/billing-dashboard" className="feature-link">
+            <h3 className="feature-heading">💼 Financial Admin</h3>
+          </Link>
+          <p className="feature-text">
+            Access financial data, manage billing systems, and generate
+            insightful reports.
+          </p>
+        </div>
+
+        {/* Password Generator Section */}
+        <div className="feature-section">
+          <Link to="/passwordgenerator" className="feature-link">
+            <h3 className="feature-heading">🔐 Password Generator</h3>
+          </Link>
+          <p className="feature-text">
+            Create strong, secure passwords to protect your accounts and
+            personal information.
+          </p>
+        </div>
+
+        {/* Image Editor Section */}
+        <div className="feature-section">
+          <Link to="/imageeditor" className="feature-link">
+            <h3 className="feature-heading">🖼️ Image Editor</h3>
+          </Link>
+          <p className="feature-text">
+            Edit images effortlessly with our powerful and intuitive image
+            editing tools.
+          </p>
+        </div>
+
+        {/* Unit Converter Section */}
+        <div className="feature-section">
+          <Link to="/unitconverter" className="feature-link">
+            <h3 className="feature-heading">📏 Unit Converter</h3>
+          </Link>
+          <p className="feature-text">
+            Convert units of measurement easily, including length, weight,
+            temperature, and more.
+          </p>
+        </div>
+
+        {/* Color Picker Section */}
+        <div className="feature-section">
+          <Link to="/colorpicker" className="feature-link">
+            <h3 className="feature-heading">🎨 Color Picker</h3>
+          </Link>
+          <p className="feature-text">
+            Choose and customize colors for your projects with our dynamic color
+            picker tool.
+          </p>
+        </div>
 
         {/* Final Section */}
         <div className="home-button-container">
