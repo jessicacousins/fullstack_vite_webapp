@@ -48,7 +48,7 @@ const ParticleBackground = () => {
         height: "100%",
         zIndex: 1,
         background:
-          "linear-gradient(135deg,rgb(165, 143, 177), #4af3eb, rgb(83, 145, 172))",
+          "linear-gradient(135deg, #1d3557, #4af3eb, #457b9d, #a8dadc)",
       }}
     >
       <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
