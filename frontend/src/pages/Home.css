@@ -15,14 +15,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(2, 31, 23, 0.85);
-  color: #e1e9f1;
+  background: rgba(20, 20, 20, 0.8);
+  color: #ffffff;
   font-family: "Poppins", sans-serif;
   padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   max-width: 900px;
   width: 100%;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .home-heading {
@@ -33,13 +35,15 @@
   color: #4af3eb;
   text-transform: uppercase;
   letter-spacing: 1.5px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .home-text {
   font-size: 1.6rem;
   margin-bottom: 1rem;
   text-align: center;
-  color: #dc96f1;
+  color: #ffccff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .home-description {
@@ -48,6 +52,8 @@
   text-align: center;
   max-width: 650px;
   line-height: 1.6;
+  color: rgba(245, 245, 245, 1);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .feature-section {
@@ -55,19 +61,22 @@
   margin-bottom: 2rem;
   padding: 40px 20px;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.05);
+  background: rgba(25, 25, 25, 0.85);
   text-align: center;
   transition: transform 0.3s, background-color 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .feature-section:hover {
   transform: scale(1.02);
-  background-color: rgba(255, 255, 255, 0.08);
+  background: rgba(30, 30, 30, 0.9);
 }
 
 .feature-link {
   text-decoration: none;
-  color: #4db8ff;
+  color: #4af3eb;
   font-weight: bold;
   display: block;
   font-size: 1.5rem;
@@ -83,6 +92,7 @@
   display: inline-block;
   position: relative;
   transition: transform 0.3s ease, color 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .feature-heading::after {
