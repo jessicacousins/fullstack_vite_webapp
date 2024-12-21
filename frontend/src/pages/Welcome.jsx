@@ -35,7 +35,7 @@ const Welcome = ({ userName }) => {
         <img src="/placeHolder.png" alt="Ad placeholder" />
       </div>
       <div className="image-container-right">
-        <img src="/placeHolder.png" alt="Ad placeholder" />
+        <img src="/placeholder2.png" alt="Ad placeholder" />
       </div>
     </div>
   );
