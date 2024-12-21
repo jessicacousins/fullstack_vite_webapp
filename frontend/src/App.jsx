@@ -48,6 +48,7 @@ import ColorPicker from "./components/ColorPicker";
 import MoodTracker from "./components/MoodTracker";
 import Timecard from "./components/Timecard";
 import AdminTimecards from "./components/AdminTimecards";
+import PomodoroTimer from "./components/PomodoroTimer";
 
 import "./App.css";
 
@@ -167,6 +168,7 @@ function App() {
         <Route path="/create-blog" element={<CreateBlog />} />
         <Route path="/about" element={<About />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/pomodoro-timer" element={<PomodoroTimer />} />
       </Routes>
       <Chatbot />
     </AuthProvider>

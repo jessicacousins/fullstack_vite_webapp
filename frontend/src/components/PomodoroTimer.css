@@ -1,0 +1,67 @@
+.pomodoro-container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 400px;
+  margin: 40px auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+}
+
+.pomodoro-heading {
+  font-size: 2.5rem;
+  color: #4af3eb;
+  margin-bottom: 10px;
+}
+
+.mode-label {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #dc96f1;
+}
+
+.timer-display {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #4af3eb;
+  color: #101522;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #3cb0c6;
+}
+
+.settings label {
+  display: block;
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.settings input {
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  width: 60px;
+  text-align: center;
+}
