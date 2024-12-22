@@ -6,8 +6,8 @@ const TimeEntry = require("../models/TimeEntry");
 const calculatePayroll = async (employeeId, startDate, endDate) => {
   const timeEntries = await TimeEntry.find({
     employee: employeeId,
-    clockIn: { $gte: new Date(startDate) },
-    clockOut: { $lte: new Date(endDate) },
+    clockIn: { $gte: new Date(startDate), $lte: new Date(endDate) }, // Ensure valid range
+    clockOut: { $gte: new Date(startDate), $lte: new Date(endDate) }, // Ensure valid range
   });
 
   if (timeEntries.length === 0) {
