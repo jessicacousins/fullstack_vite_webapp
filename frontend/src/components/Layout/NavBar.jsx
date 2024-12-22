@@ -69,6 +69,7 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                 { path: "/timecard", label: "Timecard" },
                 { path: "/admin-timecards", label: "Admin Timecards" },
                 { path: "/pomodoro-timer", label: "Pomodoro Timer" },
+                { path: "/payroll-admin", label: "PayrollAdmin" },
               ].map((link) => (
                 <li key={link.path} onClick={closeMobileMenu}>
                   <NavLink
