@@ -63,3 +63,30 @@
   color: #999;
   font-style: italic;
 }
+
+.filter-container {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.filter-container label {
+  font-size: 1rem;
+  color: #f0f0f0;
+}
+
+.filter-container input {
+  padding: 0.5rem;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background-color: #2e2e2e;
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.filter-container input:focus {
+  border-color: #4af3eb;
+  box-shadow: 0 0 5px rgba(74, 243, 235, 0.8);
+}
