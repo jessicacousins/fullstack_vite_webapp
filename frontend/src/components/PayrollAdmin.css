@@ -20,6 +20,15 @@
   width: 100%;
 }
 
+.calculate-button {
+  background-color: #4af3eb;
+  color: #000;
+}
+.calculate-button:hover {
+  background-color: #4af3eb70;
+  color: #fff;
+}
+
 .payroll-summary {
   margin-top: 2rem;
   padding: 1rem;

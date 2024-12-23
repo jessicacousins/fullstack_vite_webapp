@@ -100,3 +100,15 @@
   color: #f0f0f0;
   font-size: 1.2rem;
 }
+
+.pagination-button {
+  background-color: #4af3eb;
+  color: #000;
+  margin-right: 10px;
+}
+
+.pagination-button:hover {
+  background-color: #4af3eb42;
+  color: #fff;
+  margin-right: 10px;
+}

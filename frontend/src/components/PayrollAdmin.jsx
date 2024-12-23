@@ -99,7 +99,7 @@ const PayrollAdmin = () => {
             onChange={(e) => setEndDate(e.target.value)}
           />
         </label>
-        <button onClick={handleCalculatePayroll}>Calculate Payroll</button>
+        <button className="calculate-button" onClick={handleCalculatePayroll}>Calculate Payroll</button>
       </div>
 
       {selectedEmployee && (

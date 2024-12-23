@@ -234,7 +234,11 @@ const AdminTimecards = () => {
         {Array.from(
           { length: Math.ceil(filteredTimecards.length / rowsPerPage) },
           (_, index) => (
-            <button key={index} onClick={() => setCurrentPage(index + 1)}>
+            <button
+              className="pagination-button"
+              key={index}
+              onClick={() => setCurrentPage(index + 1)}
+            >
               {index + 1}
             </button>
           )
