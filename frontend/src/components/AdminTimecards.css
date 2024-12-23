@@ -90,3 +90,13 @@
   border-color: #4af3eb;
   box-shadow: 0 0 5px rgba(74, 243, 235, 0.8);
 }
+
+.summary-container {
+  background-color: #2e2e2e;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  color: #f0f0f0;
+  font-size: 1.2rem;
+}
