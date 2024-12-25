@@ -229,4 +229,47 @@ router.put("/employees/:id", async (req, res) => {
   }
 });
 
+// ! bulk approve
+router.put("/bulk-approve", async (req, res) => {
+  const { timecardIds, approvalStatus } = req.body;
+  try {
+    await TimeEntry.updateMany(
+      { _id: { $in: timecardIds } },
+      { approvalStatus }
+    );
+    res.status(200).json({ message: "Bulk approval status updated." });
+  } catch (error) {
+    console.error("Bulk approval error:", error.message);
+    res.status(500).json({ error: "Server error during bulk approval." });
+  }
+});
+
+// ! approve or reject a single timecard
+router.put("/approve", async (req, res) => {
+  const { timecardId, approvalStatus } = req.body;
+
+  if (!timecardId || !approvalStatus) {
+    return res
+      .status(400)
+      .json({ error: "Timecard ID and approval status are required." });
+  }
+
+  try {
+    const timeEntry = await TimeEntry.findByIdAndUpdate(
+      timecardId,
+      { approvalStatus },
+      { new: true }
+    );
+    if (!timeEntry) {
+      return res.status(404).json({ error: "Timecard not found." });
+    }
+    res.json(timeEntry);
+  } catch (error) {
+    console.error("Error updating approval status:", error.message);
+    res
+      .status(500)
+      .json({ error: "Server error while updating approval status." });
+  }
+});
+
 module.exports = router;
