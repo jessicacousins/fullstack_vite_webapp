@@ -191,6 +191,7 @@ const AdminTimecards = () => {
                     Approve
                   </button>
                   <button
+                    className="reject-button-2"
                     onClick={() =>
                       handleApprovalStatusChange(entry._id, "rejected")
                     }

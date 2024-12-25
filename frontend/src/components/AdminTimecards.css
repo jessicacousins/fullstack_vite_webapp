@@ -128,3 +128,21 @@
   color: #fff;
   margin-right: 10px;
 }
+
+.reject-button {
+  background-color: rgb(194, 19, 19);
+  margin-left: 10px;
+}
+
+.reject-button:hover {
+  background-color: rgba(194, 19, 19, 0.623);
+  color: #fff;
+}
+
+.reject-button-2 {
+  background-color: rgb(194, 19, 19);
+}
+
+.reject-button-2:hover {
+  background-color: rgba(194, 19, 19, 0.623);
+}
