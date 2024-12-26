@@ -8,6 +8,7 @@ const learningRoutes = require("./routes/learning");
 const snapquestRoutes = require("./routes/snapquestRoutes");
 const soundboardRoutes = require("./routes/soundboard");
 const timeEntryRoutes = require("./routes/timeEntryRoutes");
+const roleRoutes = require("./routes/roles");
 
 // ! Billing system
 const customerRoutes = require("./routes/customerRoutes");
@@ -66,6 +67,8 @@ app.use((req, res, next) => {
 });
 
 // ! payroll system
+app.use("/api/roles", require("./routes/roles"));
+
 app.use("/api/timecards", timeEntryRoutes);
 
 app.use("/api/soundboard", soundboardRoutes);

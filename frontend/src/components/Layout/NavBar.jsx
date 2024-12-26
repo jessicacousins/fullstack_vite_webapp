@@ -69,6 +69,7 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                 { path: "/timecard", label: "Timecard" },
                 { path: "/admin-timecards", label: "Admin Timecards" },
                 { path: "/pomodoro-timer", label: "Pomodoro Timer" },
+                { path: "/payroll-date", label: "PayrollDate" },
                 { path: "/payroll-admin", label: "PayrollAdmin" },
               ].map((link) => (
                 <li key={link.path} onClick={closeMobileMenu}>
@@ -82,6 +83,18 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                   </NavLink>
                 </li>
               ))}
+              {user?.role === "god" && (
+                <li onClick={closeMobileMenu}>
+                  <NavLink
+                    to="/payroll-admin"
+                    className={({ isActive }) =>
+                      isActive ? "active-link" : ""
+                    }
+                  >
+                    Payroll Admin
+                  </NavLink>
+                </li>
+              )}
               <li className="cart-link" onClick={closeMobileMenu}>
                 <NavLink
                   title="Cart"

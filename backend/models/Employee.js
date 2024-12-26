@@ -4,6 +4,11 @@ const EmployeeSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   wage: { type: Number, required: true, default: 16.75 },
+  role: {
+    type: String,
+    enum: ["employee", "manager", "hr", "admin", "god"],
+    default: "employee",
+  },
   federalTaxRate: { type: Number, default: 0.1 }, // Default 10%
   stateTaxRate: { type: Number, default: 0.05 }, // Default 5%
   localTaxRate: { type: Number, default: 0.02 }, // Default 2%

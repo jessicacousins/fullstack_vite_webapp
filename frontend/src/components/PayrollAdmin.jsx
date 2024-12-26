@@ -1,16 +1,35 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./PayrollAdmin.css";
+import { useAuth } from "../context/AuthContext";
 
 const PayrollAdmin = () => {
-  const [employees, setEmployees] = useState([]); // To store the list of employees
-  const [selectedEmployee, setSelectedEmployee] = useState(""); // Store selected employee ID
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [payrollData, setPayrollData] = useState(null);
-  const [newWage, setNewWage] = useState("");
+  const { user } = useAuth();
+  const [employees, setEmployees] = useState([]);
+  const [selectedEmployee, setSelectedEmployee] = useState("");
+  const [role, setRole] = useState("");
+  const [userRole, setUserRole] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Fetch employees on component mount
+  useEffect(() => {
+    const fetchUserRole = async () => {
+      if (!user?.email) return;
+
+      try {
+        console.log(`Fetching role for: ${user.email}`);
+        const response = await axios.get(`/api/users/${user.email}`);
+        setUserRole(response.data.role);
+        console.log(`Fetched role: ${response.data.role}`);
+      } catch (error) {
+        console.error("Error fetching user role:", error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUserRole();
+  }, [user]);
+
+  // Fetch all employees
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
@@ -20,54 +39,40 @@ const PayrollAdmin = () => {
         console.error("Error fetching employees:", error.message);
       }
     };
-
     fetchEmployees();
   }, []);
 
-  const handleCalculatePayroll = async () => {
+  const assignRole = async () => {
     try {
-      if (!selectedEmployee || !startDate || !endDate) {
-        alert("Please select an employee and specify the date range.");
+      if (!selectedEmployee || !role) {
+        alert("Please select an employee and a role.");
         return;
       }
 
-      const response = await axios.post("/api/timecards/process-payroll", {
-        employeeId: selectedEmployee,
-        startDate,
-        endDate,
-      });
-
-      if (response.status === 200) {
-        setPayrollData(response.data);
-      } else {
-        console.error("Error processing payroll:", response.data.error);
-        alert("Failed to calculate payroll. Please try again.");
-      }
+      await axios.put(
+        "/api/roles/assign-role",
+        { email: selectedEmployee, role },
+        {
+          headers: {
+            Authorization: `Bearer ${user?.accessToken}`,
+          },
+        }
+      );
+      alert("Role assigned successfully.");
     } catch (error) {
-      console.error("Error calculating payroll:", error.message);
-      alert("An error occurred while calculating payroll.");
+      console.error("Error assigning role:", error.message);
+      alert("An error occurred while assigning the role.");
     }
   };
 
-  const handleUpdateWage = async () => {
-    try {
-      await axios.put(`/api/timecards/employees/${selectedEmployee}`, {
-        wage: newWage,
-      });
-      alert("Wage updated successfully");
-
-      // Refresh the employee list
-      const updatedEmployees = await axios.get("/api/timecards/employees");
-      setEmployees(updatedEmployees.data);
-      setNewWage(""); // Reset the input field
-    } catch (error) {
-      console.error("Error updating wage:", error.message);
-    }
-  };
+  if (loading) return <p>Loading...</p>;
+  if (userRole !== "god") {
+    return <p>Access denied. You do not have the required permissions.</p>;
+  }
 
   return (
     <div className="payroll-admin-container">
-      <h2>Payroll Management</h2>
+      <h2>God-Tier Payroll Admin</h2>
       <div className="payroll-form">
         <label>
           Select Employee:
@@ -77,62 +82,24 @@ const PayrollAdmin = () => {
           >
             <option value="">-- Select an Employee --</option>
             {employees.map((employee) => (
-              <option key={employee._id} value={employee._id}>
-                {employee.name} ({employee.email}) - ${employee.wage}/hr
+              <option key={employee.email} value={employee.email}>
+                {employee.name} ({employee.email})
               </option>
             ))}
           </select>
         </label>
         <label>
-          Start Date:
-          <input
-            type="date"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-          />
+          Assign Role:
+          <select value={role} onChange={(e) => setRole(e.target.value)}>
+            <option value="">-- Select a Role --</option>
+            <option value="employee">Employee</option>
+            <option value="manager">Manager</option>
+            <option value="hr">HR</option>
+            <option value="admin">Admin</option>
+          </select>
         </label>
-        <label>
-          End Date:
-          <input
-            type="date"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-          />
-        </label>
-        <button className="calculate-button" onClick={handleCalculatePayroll}>Calculate Payroll</button>
+        <button onClick={assignRole}>Assign Role</button>
       </div>
-
-      {selectedEmployee && (
-        <div className="update-wage">
-          <label>
-            Update Wage:
-            <input
-              type="number"
-              value={newWage}
-              placeholder="Enter new wage"
-              onChange={(e) => setNewWage(e.target.value)}
-            />
-          </label>
-          <button onClick={handleUpdateWage} disabled={!newWage}>
-            Update Wage
-          </button>
-        </div>
-      )}
-
-      {payrollData && (
-        <div className="payroll-summary">
-          <h3>Payroll Summary</h3>
-          <p>Total Hours: {payrollData.totalHours.toFixed(2)} hrs</p>
-          <p>Regular Hours: {payrollData.regularHours.toFixed(2)} hrs</p>
-          <p>Overtime Hours: {payrollData.overtimeHours.toFixed(2)} hrs</p>
-          <p>Regular Pay: ${payrollData.regularPay.toFixed(2)}</p>
-          <p>Overtime Pay: ${payrollData.overtimePay.toFixed(2)}</p>
-          <p>Federal Tax: ${payrollData.federalTax.toFixed(2)}</p>
-          <p>State Tax: ${payrollData.stateTax.toFixed(2)}</p>
-          <p>Local Tax: ${payrollData.localTax.toFixed(2)}</p>
-          <p>Net Pay: ${payrollData.netPay.toFixed(2)}</p>
-        </div>
-      )}
     </div>
   );
 };

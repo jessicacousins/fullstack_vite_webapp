@@ -6,6 +6,7 @@ const Cart = require("../models/Cart");
 const bcrypt = require("bcryptjs");
 const requestIp = require("request-ip"); // For collecting IP address
 const useragent = require("useragent"); // For capturing user agent info
+const Employee = require("../models/Employee");
 
 // @route POST /api/users/login
 // @desc Log last login info in MongoDB (not for re-authentication)
@@ -128,7 +129,7 @@ router.post("/update", async (req, res) => {
   }
 });
 
-// @route GET /api/users/:email
+// ! regular user route not god tier access
 router.get("/:email", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.params.email });
@@ -140,6 +141,20 @@ router.get("/:email", async (req, res) => {
     res.status(500).send("Server error");
   }
 });
+
+// ! god tier payroll - not running at all times 
+// router.get("/:email", async (req, res) => {
+//   try {
+//     const user = await Employee.findOne({ email: req.params.email });
+//     if (!user) {
+//       return res.status(404).json({ error: "User not found" });
+//     }
+//     res.json({ role: user.role });
+//   } catch (error) {
+//     console.error("Error fetching user role:", error.message);
+//     res.status(500).json({ error: "Server error" });
+//   }
+// });
 
 // Add a comment to a blog post
 router.post("/:id/comments", async (req, res) => {
