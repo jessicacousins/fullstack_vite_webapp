@@ -142,7 +142,7 @@ router.get("/:email", async (req, res) => {
   }
 });
 
-// ! god tier payroll - not running at all times 
+// ! god tier payroll - not running at all times
 // router.get("/:email", async (req, res) => {
 //   try {
 //     const user = await Employee.findOne({ email: req.params.email });

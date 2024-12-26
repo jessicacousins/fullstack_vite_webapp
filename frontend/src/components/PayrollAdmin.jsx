@@ -72,7 +72,7 @@ const PayrollAdmin = () => {
 
   return (
     <div className="payroll-admin-container">
-      <h2>God-Tier Payroll Admin</h2>
+      <h2 className="god-title">God-Tier Payroll Admin</h2>
       <div className="payroll-form">
         <label>
           Select Employee:
