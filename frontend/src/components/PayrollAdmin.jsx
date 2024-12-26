@@ -36,7 +36,10 @@ const PayrollAdmin = () => {
       if (!user?.email) return;
 
       try {
-        const response = await axios.get(`/api/users/${user.email}`);
+        const token = await user.getIdToken();
+        const response = await axios.get(`/api/users/${user.email}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         setUserRole(response.data.role);
       } catch (error) {
         console.error("Error fetching user role:", error.message);
@@ -51,9 +54,12 @@ const PayrollAdmin = () => {
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
-        const response = await axios.get("/api/timecards/employees");
-        const employeeData = response.data;
+        const token = await user.getIdToken();
+        const response = await axios.get("/api/timecards/employees", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
 
+        const employeeData = response.data;
         setEmployees(employeeData);
 
         const newLayout = employeeData.map((employee, index) => ({
@@ -70,7 +76,7 @@ const PayrollAdmin = () => {
     };
 
     fetchEmployees();
-  }, []);
+  }, [user]);
 
   const assignRole = async () => {
     if (!selectedEmployee || !role) {
@@ -79,15 +85,17 @@ const PayrollAdmin = () => {
     }
 
     try {
-      const response = await axios.put("/api/roles/assign-role", {
-        email: selectedEmployee,
-        role,
-      });
+      const token = await user.getIdToken();
+      const response = await axios.put(
+        "/api/roles/assign-role",
+        { email: selectedEmployee, role },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
       alert("Role assigned successfully.");
       setEmployees(
         employees.map((employee) =>
           employee.email === selectedEmployee
-            ? { ...employee, role: response.data.employee.role }
+            ? { ...employee, role: response.data.updatedRole }
             : employee
         )
       );
