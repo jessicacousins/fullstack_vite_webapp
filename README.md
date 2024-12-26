@@ -52,6 +52,7 @@ This project demonstrates the power of combining machine learning, real-time AI-
 - [OpenAI Integration](#openai-integration)
 - [Machine Learning with TensorFlow.js](#machine-learning-with-tensorflow-js)
 - [Blog Feature](#blog-feature)
+- [Payroll System](#payroll-system)
 - [Games Feature](#games-feature)
   - [Blackjack](#blackjack)
   - [Memory Matching Game](#memory-matching-game)
@@ -142,6 +143,71 @@ All user interactions with the blog posts are tracked in the backend, and the da
 - The **creation time and date** of the blog post.
 - The **author’s details** (linked to their user account).
 - Any **updates made** to the blog posts.
+
+## Payroll System
+
+The Payroll Management System is a comprehensive solution designed to streamline employee payroll operations. It incorporates features for managing employee roles, approving timecards, and calculating wages with precision. The system includes both regular user functionality and god-tier administration tools for advanced operations.
+
+### Key Features
+
+1. Employee Management: View and manage employee details (name, email, role, wage, etc.). Assign and update employee roles dynamically, including special "god-tier" privileges.
+2. Timecard Management: Employees can clock in and out, specifying whether work time is during holidays. Admins can filter, sort, and bulk approve/reject timecards. Tracks total hours, overtime hours, and payment processing status.
+3. Role-Based Access: Standard users have access to basic features. "God-tier" users have exclusive administrative capabilities, such as modifying other user roles.
+4. Integration with Backend: Uses MongoDB to store and manage employee and timecard data. Role assignment and approval functionalities are protected with authentication middleware.
+5. Dynamic Achievements and Stats: Tracks employee performance, game stats, and blog contributions, fostering a competitive and engaged environment.
+
+### How to Add a "God-Tier" Account
+
+To grant god-tier access to a specific user, follow these steps:
+
+1. Create a Script for Updating Roles: In the backend folder, next to index.js, create a file named updateRole.js with the following code.
+
+```
+db.collection("employees")
+      .updateOne(
+        { email: "YOURemailHERE@email.com" }, // Replace
+        { $set: { role: "god" } }
+      )
+```
+
+2. Run the Script: Open a terminal, navigate to the backend directory, and execute the script using:
+
+```
+node updateRole.js
+
+```
+
+3. Activate God-Tier API Route: In your ruserRoutes.js backend file, update the route to enable god-tier access by commenting out the standard route and uncommenting the god-tier route.
+   - Note: Only one of these routes can be active at a time to avoid conflicts.
+
+```
+// ! regular user route not god tier access
+// router.get("/:email", async (req, res) => {
+//   try {
+//     const user = await User.findOne({ email: req.params.email });
+//     if (!user) {
+//       return res.status(404).json({ msg: "User not found" });
+//     }
+//     res.json(user);
+//   } catch (err) {
+//     res.status(500).send("Server error");
+//   }
+// });
+
+// ! god tier payroll - not running at all times
+router.get("/:email", async (req, res) => {
+  try {
+    const user = await Employee.findOne({ email: req.params.email });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    res.json({ role: user.role });
+  } catch (error) {
+    console.error("Error fetching user role:", error.message);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+```
 
 ## Games Feature
 
