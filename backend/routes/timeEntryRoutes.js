@@ -103,7 +103,7 @@ const handleUpdateWage = async () => {
 // Fetch all employees -  name email wage
 router.get("/employees", async (req, res) => {
   try {
-    const employees = await Employee.find({}, "name email wage");
+    const employees = await Employee.find({}, "name email wage role");
     res.json(employees);
   } catch (error) {
     console.error("Error fetching employees:", error.message);

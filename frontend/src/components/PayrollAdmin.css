@@ -1,5 +1,87 @@
+.payroll-admin-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+}
+
 .god-title {
   color: #4af3eb;
   text-align: center;
-  font-size: 2.6rem;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 5px #4af3eb, 0 0 10px #4af3eb;
+}
+
+.payroll-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  background-color: #2e2e2e;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.payroll-form label {
+  font-weight: bold;
+  color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.employee-select,
+.role-select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #4af3eb;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+.payroll-form button {
+  background-color: #4af3eb;
+  color: #000;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.payroll-form button:hover {
+  background-color: #3dd1c9;
+  transform: scale(1.05);
+}
+
+.employee-card {
+  background-color: #292929;
+  border: 1px solid #4af3eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.employee-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+.employee-card strong {
+  color: #4af3eb;
+}
+
+.layout {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.react-grid-item {
+  overflow: hidden;
 }
