@@ -1,0 +1,27 @@
+.selfie-camera {
+  text-align: center;
+}
+
+.camera-container {
+  position: relative;
+}
+
+.video {
+  width: 640px;
+  height: 480px;
+  border: 2px solid #ccc;
+}
+
+.controls {
+  margin: 20px 0;
+}
+
+.filters button {
+  margin: 5px;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

@@ -119,6 +119,9 @@ const UserSchema = new mongoose.Schema({
   photoURL: {
     type: String,
   },
+  selfies: {
+    type: String,
+  },
   ip: {
     type: String, // IP address
   },

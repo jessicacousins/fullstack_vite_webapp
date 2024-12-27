@@ -9,6 +9,7 @@ const snapquestRoutes = require("./routes/snapquestRoutes");
 const soundboardRoutes = require("./routes/soundboard");
 const timeEntryRoutes = require("./routes/timeEntryRoutes");
 const roleRoutes = require("./routes/roles");
+const selfieRoutes = require("./routes/selfieRoutes");
 
 // ! Billing system
 const customerRoutes = require("./routes/customerRoutes");
@@ -72,6 +73,9 @@ app.use("/api/roles", require("./routes/roles"));
 app.use("/api/timecards", timeEntryRoutes);
 
 app.use("/api/soundboard", soundboardRoutes);
+
+// ! selfie  routes
+app.use("/api/selfies", selfieRoutes);
 
 const PORT = process.env.PORT || 5000;
 
