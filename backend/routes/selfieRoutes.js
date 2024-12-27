@@ -4,7 +4,6 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const dir = path.join(__dirname, "../uploads/selfies");
@@ -32,7 +31,7 @@ router.post("/upload", upload.single("image"), (req, res) => {
 
 router.post("/upload-base64", (req, res) => {
   try {
-    const { image } = req.body; 
+    const { image } = req.body;
     if (!image) throw new Error("No image provided");
 
     // Validate and extract base64 data

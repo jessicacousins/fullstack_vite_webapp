@@ -25,7 +25,9 @@ const SelfieCamera = () => {
 
   const capturePhoto = () => {
     const context = canvasRef.current.getContext("2d");
-    context.filter = filter;
+
+    // Apply filter directly to canvas
+    context.filter = getCanvasFilter(filter);
     context.drawImage(
       videoRef.current,
       0,
@@ -33,18 +35,42 @@ const SelfieCamera = () => {
       canvasRef.current.width,
       canvasRef.current.height
     );
+
     const dataUrl = canvasRef.current.toDataURL("image/png");
-    setCapturedImage(dataUrl); // save captured image download
-    savePhoto(dataUrl); // send image to backend
+    setCapturedImage(dataUrl);
+    savePhoto(dataUrl);
+  };
+
+  const getCanvasFilter = (filterClass) => {
+    switch (filterClass) {
+      case "grayscale":
+        return "grayscale(100%)";
+      case "sepia":
+        return "sepia(100%)";
+      case "invert":
+        return "invert(100%)";
+      case "blur":
+        return "blur(5px)";
+      case "brightness":
+        return "brightness(150%)";
+      case "contrast":
+        return "contrast(200%)";
+      case "hue-rotate":
+        return "hue-rotate(90deg)";
+      case "saturate":
+        return "saturate(200%)";
+      default:
+        return "none";
+    }
   };
 
   const savePhoto = async (image) => {
     try {
-      console.log("Sending image:", image.substring(0, 50)); 
+      console.log("Sending image:", image.substring(0, 50));
       const response = await axios.post("/api/selfies/upload-base64", {
         image, // Send base64 string
       });
-      console.log("Backend response:", response.data); 
+      console.log("Backend response:", response.data);
       alert("Selfie saved successfully!");
     } catch (error) {
       console.error("Error uploading selfie:", error.response || error.message);
@@ -80,10 +106,15 @@ const SelfieCamera = () => {
         )}
       </div>
       <div className="filters">
-        <button onClick={() => setFilter("")}>No Filter</button>
-        <button onClick={() => setFilter("grayscale(100%)")}>Grayscale</button>
-        <button onClick={() => setFilter("sepia(100%)")}>Sepia</button>
-        <button onClick={() => setFilter("invert(100%)")}>Invert</button>
+        <button onClick={() => setFilter("none")}>No Filter</button>
+        <button onClick={() => setFilter("grayscale")}>Grayscale</button>
+        <button onClick={() => setFilter("sepia")}>Sepia</button>
+        <button onClick={() => setFilter("invert")}>Invert</button>
+        <button onClick={() => setFilter("blur")}>Blur</button>
+        <button onClick={() => setFilter("brightness")}>Brightness</button>
+        <button onClick={() => setFilter("contrast")}>Contrast</button>
+        <button onClick={() => setFilter("hue-rotate")}>Hue Rotate</button>
+        <button onClick={() => setFilter("saturate")}>Saturate</button>
       </div>
     </div>
   );

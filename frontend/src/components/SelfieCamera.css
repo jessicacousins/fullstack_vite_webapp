@@ -25,3 +25,39 @@
   justify-content: center;
   margin-top: 20px;
 }
+
+.grayscale {
+  filter: grayscale(100%);
+}
+
+.sepia {
+  filter: sepia(100%);
+}
+
+.invert {
+  filter: invert(100%);
+}
+
+.blur {
+  filter: blur(5px);
+}
+
+.brightness {
+  filter: brightness(150%);
+}
+
+.contrast {
+  filter: contrast(200%);
+}
+
+.hue-rotate {
+  filter: hue-rotate(90deg);
+}
+
+.saturate {
+  filter: saturate(200%);
+}
+
+.none {
+  filter: none;
+}
