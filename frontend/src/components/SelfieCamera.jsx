@@ -80,7 +80,7 @@ const SelfieCamera = () => {
 
   return (
     <div className="selfie-camera">
-      <h2>Selfie Camera</h2>
+      <h2 className="selfie-camera-title">Selfie Camera</h2>
       <div className="camera-container">
         <video ref={videoRef} className={`video ${filter}`} />
         <canvas
@@ -92,29 +92,70 @@ const SelfieCamera = () => {
       </div>
       <div className="controls">
         {!isCameraOn ? (
-          <button onClick={startCamera}>Start Camera</button>
+          <button className="start-stop-buttons" onClick={startCamera}>
+            Start Camera
+          </button>
         ) : (
-          <button onClick={stopCamera}>Stop Camera</button>
+          <button className="start-stop-buttons" onClick={stopCamera}>
+            Stop Camera
+          </button>
         )}
-        <button onClick={capturePhoto} disabled={!isCameraOn}>
+        <button
+          className="capture-button"
+          onClick={capturePhoto}
+          disabled={!isCameraOn}
+        >
           Capture Photo
         </button>
         {capturedImage && (
           <a href={capturedImage} download="selfie.png">
-            <button>Download Image</button>
+            <button className="download-images-button">Download Image</button>
           </a>
         )}
       </div>
       <div className="filters">
-        <button onClick={() => setFilter("none")}>No Filter</button>
-        <button onClick={() => setFilter("grayscale")}>Grayscale</button>
-        <button onClick={() => setFilter("sepia")}>Sepia</button>
-        <button onClick={() => setFilter("invert")}>Invert</button>
-        <button onClick={() => setFilter("blur")}>Blur</button>
-        <button onClick={() => setFilter("brightness")}>Brightness</button>
-        <button onClick={() => setFilter("contrast")}>Contrast</button>
-        <button onClick={() => setFilter("hue-rotate")}>Hue Rotate</button>
-        <button onClick={() => setFilter("saturate")}>Saturate</button>
+        <button className="filter-buttons" onClick={() => setFilter("none")}>
+          No Filter
+        </button>
+        <button
+          className="filter-buttons"
+          onClick={() => setFilter("grayscale")}
+        >
+          Grayscale
+        </button>
+        <button className="filter-buttons" onClick={() => setFilter("sepia")}>
+          Sepia
+        </button>
+        <button className="filter-buttons" onClick={() => setFilter("invert")}>
+          Invert
+        </button>
+        <button className="filter-buttons" onClick={() => setFilter("blur")}>
+          Blur
+        </button>
+        <button
+          className="filter-buttons"
+          onClick={() => setFilter("brightness")}
+        >
+          Brightness
+        </button>
+        <button
+          className="filter-buttons"
+          onClick={() => setFilter("contrast")}
+        >
+          Contrast
+        </button>
+        <button
+          className="filter-buttons"
+          onClick={() => setFilter("hue-rotate")}
+        >
+          Hue Rotate
+        </button>
+        <button
+          className="filter-buttons"
+          onClick={() => setFilter("saturate")}
+        >
+          Saturate
+        </button>
       </div>
     </div>
   );

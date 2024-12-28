@@ -2,6 +2,14 @@
   text-align: center;
 }
 
+.selfie-camera-title {
+  font-size: 2.3rem;
+  letter-spacing: 2px;
+  color: #4af3eb;
+  text-shadow: 2px 2px 5px #000, -2px -2px 5px #000, 2px -2px 5px #000,
+    -2px 2px 5px #000;
+}
+
 .camera-container {
   position: relative;
 }
@@ -9,11 +17,59 @@
 .video {
   width: 640px;
   height: 480px;
-  border: 2px solid #ccc;
+  border: 2px solid #023333;
+  box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.5), 5px 5px 10px rgba(0, 0, 0, 0.5),
+    -5px 5px 10px rgba(0, 0, 0, 0.5), 5px -5px 10px rgba(0, 0, 0, 0.5);
 }
 
 .controls {
   margin: 20px 0;
+}
+
+.start-stop-buttons {
+  background-color: #4af3eb;
+  color: #000;
+  font-size: 1.2rem;
+  margin-right: 20px;
+  border: 2px solid #023333;
+  box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.5), 5px 5px 10px rgba(0, 0, 0, 0.5),
+    -5px 5px 10px rgba(0, 0, 0, 0.5), 5px -5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.start-stop-buttons:hover {
+  background-color: #4af3eb65;
+  border: 2px solid #c2fcfc;
+  color: #fff;
+}
+
+.capture-button {
+  background-color: #4af3eb;
+  color: #000;
+  font-size: 1.2rem;
+  margin-right: 20px;
+  border: 2px solid #023333;
+  box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.5), 5px 5px 10px rgba(0, 0, 0, 0.5),
+    -5px 5px 10px rgba(0, 0, 0, 0.5), 5px -5px 10px rgba(0, 0, 0, 0.5);
+}
+.capture-button:hover {
+  background-color: #4af3eb65;
+  border: 2px solid #c2fcfc;
+  color: #fff;
+}
+
+.download-images-button {
+  background-color: #4af3eb;
+  font-size: 1.2rem;
+  color: #000;
+  border: 2px solid #023333;
+  box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.5), 5px 5px 10px rgba(0, 0, 0, 0.5),
+    -5px 5px 10px rgba(0, 0, 0, 0.5), 5px -5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.download-images-button:hover {
+  background-color: #4af3eb65;
+  border: 2px solid #c2fcfc;
+  color: #fff;
 }
 
 .filters button {
@@ -24,6 +80,22 @@
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.filter-buttons {
+  background-color: #4af3eb;
+  color: #000;
+  font-size: 1.2rem;
+  border: 2px solid #023333;
+  box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.5), 5px 5px 10px rgba(0, 0, 0, 0.5),
+    -5px 5px 10px rgba(0, 0, 0, 0.5), 5px -5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.filter-buttons:hover {
+  background-color: #4af3eb65;
+  border: 2px solid #c2fcfc;
+  color: #fff;
 }
 
 .grayscale {
