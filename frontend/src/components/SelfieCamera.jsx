@@ -8,6 +8,7 @@ const SelfieCamera = () => {
   const [filter, setFilter] = useState("");
   const [isCameraOn, setIsCameraOn] = useState(false);
   const [capturedImage, setCapturedImage] = useState(null);
+  const [imageGallery, setImageGallery] = useState([]); 
 
   const startCamera = async () => {
     setIsCameraOn(true);
@@ -26,7 +27,7 @@ const SelfieCamera = () => {
   const capturePhoto = () => {
     const context = canvasRef.current.getContext("2d");
 
-    // Apply filter directly to canvas
+
     context.filter = getCanvasFilter(filter);
     context.drawImage(
       videoRef.current,
@@ -38,6 +39,7 @@ const SelfieCamera = () => {
 
     const dataUrl = canvasRef.current.toDataURL("image/png");
     setCapturedImage(dataUrl);
+    setImageGallery((prev) => [dataUrl, ...prev]); 
     savePhoto(dataUrl);
   };
 
@@ -156,6 +158,16 @@ const SelfieCamera = () => {
         >
           Saturate
         </button>
+      </div>
+      <div className="image-gallery">
+        <h3>Captured Images</h3>
+        <div className="gallery-grid">
+          {imageGallery.map((image, index) => (
+            <div key={index} className="gallery-item">
+              <img src={image} alt={`Captured ${index}`} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
