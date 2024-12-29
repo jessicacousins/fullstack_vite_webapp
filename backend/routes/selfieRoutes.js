@@ -3,7 +3,9 @@ const router = express.Router();
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+const User = require("../models/User");
 
+// multer storage for image uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const dir = path.join(__dirname, "../uploads/selfies");
@@ -18,6 +20,36 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
+
+// POST route to store labels in the user's profile
+router.post("/upload-selfie", async (req, res) => {
+  try {
+    const { email, labels } = req.body;
+
+    if (!email || !labels) {
+      return res.status(400).json({ error: "Email and labels are required." });
+    }
+
+    // Find user and update their profile with detected labels
+    const user = await User.findOneAndUpdate(
+      { email },
+      { $push: { selfies: { labels, date: new Date() } } },
+      { new: true }
+    );
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found." });
+    }
+
+    res.status(200).json({
+      message: "Labels stored successfully!",
+      updatedSelfies: user.selfies,
+    });
+  } catch (error) {
+    console.error("Error storing labels:", error.message);
+    res.status(500).json({ error: "Failed to store labels." });
+  }
+});
 
 // POST route to upload image
 router.post("/upload", upload.single("image"), (req, res) => {
@@ -40,39 +72,20 @@ router.post("/upload-base64", (req, res) => {
 
     const extension = matches[1]; // "png" or "jpeg"
     const data = matches[2]; // Base64-encoded data
-    const buffer = Buffer.from(data, "base64"); // Convert to buffer
+    const buffer = Buffer.from(data, "base64");
 
-    // Ensure the directory exists
     const dir = path.join(__dirname, "../uploads/selfies");
     if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true }); // Create the directory
+      fs.mkdirSync(dir, { recursive: true });
     }
 
-    const filePath = path.join(dir, `${Date.now()}.${extension}`); // Save with a timestamped filename
-    fs.writeFileSync(filePath, buffer); // Write the image to disk
+    const filePath = path.join(dir, `${Date.now()}.${extension}`);
+    fs.writeFileSync(filePath, buffer);
 
     res.status(200).json({ message: "Image uploaded successfully!", filePath });
   } catch (error) {
     console.error("Error uploading base64 image:", error.message);
     res.status(500).json({ error: error.message || "Failed to upload image" });
-  }
-});
-
-router.post("/add-selfie", async (req, res) => {
-  try {
-    const { email, selfiePath } = req.body;
-    if (!email || !selfiePath)
-      throw new Error("Email and selfie path required");
-
-    const user = await User.findOneAndUpdate(
-      { email },
-      { $push: { selfies: selfiePath } },
-      { new: true }
-    );
-    res.status(200).json(user);
-  } catch (error) {
-    console.error("Error updating user profile with selfie:", error.message);
-    res.status(500).json({ error: "Failed to update profile with selfie" });
   }
 });
 

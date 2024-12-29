@@ -1,14 +1,30 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import { useAuth } from "../context/AuthContext";
 import axios from "axios";
+import * as mobilenet from "@tensorflow-models/mobilenet";
+import "@tensorflow/tfjs";
 import "./SelfieCamera.css";
 
 const SelfieCamera = () => {
+  const { user } = useAuth();
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
-  const [filter, setFilter] = useState("");
+  const overlayCanvasRef = useRef(null);
   const [isCameraOn, setIsCameraOn] = useState(false);
+  const [detectedLabels, setDetectedLabels] = useState([]);
   const [capturedImage, setCapturedImage] = useState(null);
-  const [imageGallery, setImageGallery] = useState([]); 
+  const [imageGallery, setImageGallery] = useState([]);
+  const [filter, setFilter] = useState("");
+  const [model, setModel] = useState(null);
+
+  // Load TensorFlow.js model
+  useEffect(() => {
+    const loadModel = async () => {
+      const mobilenetModel = await mobilenet.load();
+      setModel(mobilenetModel);
+    };
+    loadModel();
+  }, []);
 
   const startCamera = async () => {
     setIsCameraOn(true);
@@ -24,10 +40,41 @@ const SelfieCamera = () => {
     setIsCameraOn(false);
   };
 
+  const detectLabels = async () => {
+    if (!model || !videoRef.current) return;
+
+    const predictions = await model.classify(videoRef.current);
+    const labels = predictions.map((pred) => pred.className);
+    setDetectedLabels(labels);
+
+    // Draw labels on the overlay canvas
+    const overlayCtx = overlayCanvasRef.current.getContext("2d");
+    overlayCtx.clearRect(
+      0,
+      0,
+      overlayCanvasRef.current.width,
+      overlayCanvasRef.current.height
+    );
+    labels.forEach((label, index) => {
+      overlayCtx.fillStyle = "red";
+      overlayCtx.font = "20px Arial";
+      overlayCtx.fillText(label, 10, 30 + index * 30);
+    });
+
+    // Send labels to the backend
+    try {
+      const response = await axios.post("/api/selfies/upload-selfie", {
+        email: user.email,
+        labels,
+      });
+      console.log("Labels stored:", response.data);
+    } catch (error) {
+      console.error("Error storing labels:", error);
+    }
+  };
+
   const capturePhoto = () => {
     const context = canvasRef.current.getContext("2d");
-
-
     context.filter = getCanvasFilter(filter);
     context.drawImage(
       videoRef.current,
@@ -39,7 +86,7 @@ const SelfieCamera = () => {
 
     const dataUrl = canvasRef.current.toDataURL("image/png");
     setCapturedImage(dataUrl);
-    setImageGallery((prev) => [dataUrl, ...prev]); 
+    setImageGallery((prev) => [dataUrl, ...prev]);
     savePhoto(dataUrl);
   };
 
@@ -68,15 +115,13 @@ const SelfieCamera = () => {
 
   const savePhoto = async (image) => {
     try {
-      console.log("Sending image:", image.substring(0, 50));
       const response = await axios.post("/api/selfies/upload-base64", {
-        image, // Send base64 string
+        email: user.email,
+        image,
       });
-      console.log("Backend response:", response.data);
-      alert("Selfie saved successfully!");
+      console.log("Image uploaded:", response.data);
     } catch (error) {
-      console.error("Error uploading selfie:", error.response || error.message);
-      alert("Failed to save selfie.");
+      console.error("Error uploading image:", error);
     }
   };
 
@@ -85,6 +130,12 @@ const SelfieCamera = () => {
       <h2 className="selfie-camera-title">Selfie Camera</h2>
       <div className="camera-container">
         <video ref={videoRef} className={`video ${filter}`} />
+        <canvas
+          ref={overlayCanvasRef}
+          width={640}
+          height={480}
+          className="label-canvas"
+        />
         <canvas
           ref={canvasRef}
           width={640}
@@ -109,14 +160,16 @@ const SelfieCamera = () => {
         >
           Capture Photo
         </button>
-        {capturedImage && (
-          <a href={capturedImage} download="selfie.png">
-            <button className="download-images-button">Download Image</button>
-          </a>
-        )}
+        <button
+          className="capture-button"
+          onClick={detectLabels}
+          disabled={!isCameraOn}
+        >
+          Detect Labels
+        </button>
       </div>
       <div className="filters">
-        <button className="filter-buttons" onClick={() => setFilter("none")}>
+        <button className="filter-buttons" onClick={() => setFilter("")}>
           No Filter
         </button>
         <button
