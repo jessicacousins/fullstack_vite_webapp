@@ -73,7 +73,7 @@ const SelfieCamera = () => {
     }
   };
 
-  const capturePhoto = () => {
+  const capturePhoto = async () => {
     const context = canvasRef.current.getContext("2d");
     context.filter = getCanvasFilter(filter);
     context.drawImage(
@@ -86,8 +86,26 @@ const SelfieCamera = () => {
 
     const dataUrl = canvasRef.current.toDataURL("image/png");
     setCapturedImage(dataUrl);
-    setImageGallery((prev) => [dataUrl, ...prev]);
-    savePhoto(dataUrl);
+
+    try {
+      const predictions = await model.classify(videoRef.current);
+      const labels = predictions.map((pred) => pred.className);
+
+      const response = await axios.post("/api/selfies/analyze-image", {
+        email: user.email,
+        labels,
+        image: dataUrl, // Send the base64 image
+      });
+
+      const { description, imagePath } = response.data;
+      setImageGallery((prev) => [
+        { image: dataUrl, description, filePath: imagePath },
+        ...prev,
+      ]);
+      console.log("Image analyzed and saved:", response.data);
+    } catch (error) {
+      console.error("Error analyzing and saving image:", error);
+    }
   };
 
   const getCanvasFilter = (filterClass) => {
@@ -110,18 +128,6 @@ const SelfieCamera = () => {
         return "saturate(200%)";
       default:
         return "none";
-    }
-  };
-
-  const savePhoto = async (image) => {
-    try {
-      const response = await axios.post("/api/selfies/upload-base64", {
-        email: user.email,
-        image,
-      });
-      console.log("Image uploaded:", response.data);
-    } catch (error) {
-      console.error("Error uploading image:", error);
     }
   };
 
@@ -215,9 +221,10 @@ const SelfieCamera = () => {
       <div className="image-gallery">
         <h3>Captured Images</h3>
         <div className="gallery-grid">
-          {imageGallery.map((image, index) => (
+          {imageGallery.map((entry, index) => (
             <div key={index} className="gallery-item">
-              <img src={image} alt={`Captured ${index}`} />
+              <img src={entry.image} alt={`Captured ${index}`} />
+              <p>{entry.description}</p>
             </div>
           ))}
         </div>

@@ -121,8 +121,9 @@ const UserSchema = new mongoose.Schema({
   },
   selfies: [
     {
-      labels: [String], // Array of detected labels
-      date: { type: Date, default: Date.now }, // Timestamp
+      labels: [String],
+      description: { type: String, default: "" },
+      date: { type: Date, default: Date.now },
     },
   ],
   ip: {

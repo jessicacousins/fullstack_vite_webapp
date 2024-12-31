@@ -4,6 +4,10 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 const User = require("../models/User");
+const {
+  analyzeLabelsWithOpenAI,
+  saveImage,
+} = require("../services/selfieService");
 
 // multer storage for image uploads
 const storage = multer.diskStorage({
@@ -20,6 +24,55 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
+
+
+router.post("/analyze-image", async (req, res) => {
+  const { email, labels, image } = req.body; // Expecting labels, email, and base64 image.
+
+  if (!email || !labels || !image || !Array.isArray(labels)) {
+    return res
+      .status(400)
+      .json({ error: "Email, valid labels, and image are required." });
+  }
+
+  try {
+    // Save the image file
+    const filePath = saveImage(image);
+
+    // Generate a description using OpenAI
+    const description = await analyzeLabelsWithOpenAI(labels);
+
+    // Save the labels, description, and image file path in the user's profile
+    const user = await User.findOneAndUpdate(
+      { email },
+      {
+        $push: {
+          selfies: {
+            labels, // Save the detected labels
+            description, // Save the generated description
+            imagePath: filePath, // Save the file path
+            date: new Date(), // Save the timestamp
+          },
+        },
+      },
+      { new: true } // Return the updated document
+    );
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found." });
+    }
+
+    res.status(200).json({
+      message: "Image analyzed and saved successfully!",
+      description,
+      imagePath: filePath,
+      updatedSelfies: user.selfies,
+    });
+  } catch (error) {
+    console.error("Error analyzing and saving image:", error);
+    res.status(500).json({ error: "Failed to analyze and save image." });
+  }
+});
 
 // POST route to store labels in the user's profile
 router.post("/upload-selfie", async (req, res) => {
