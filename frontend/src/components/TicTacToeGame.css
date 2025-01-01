@@ -5,11 +5,12 @@
   margin-bottom: 100px;
 }
 
-h1 {
+.tictactoeTitle {
   font-size: 2.5rem;
   margin-bottom: 20px;
   color: #4af3eb;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
 }
 
 .board {
@@ -25,7 +26,7 @@ h1 {
   width: 100px;
   height: 100px;
   background-color: #f1f1f1;
-  border: 2px solid #ccc;
+  border: 2px solid #155158;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,7 +80,7 @@ h1 {
   background-color: #161616;
   color: #4af3eb;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #4af3eb;
   border-radius: 8px;
   width: 80%;
   max-width: 400px;
@@ -89,14 +90,13 @@ h1 {
 }
 
 .stats h3 {
-  margin-bottom: 10px;
-  color: #f8b6e2;
+  margin-bottom: 40px;
+  color: #fff;
   letter-spacing: 2px;
   font-size: 2rem;
 }
 
 .stats p {
-  margin: 5px 0;
   font-size: 1.2rem;
 }
 
