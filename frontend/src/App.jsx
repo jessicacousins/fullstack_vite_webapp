@@ -52,6 +52,7 @@ import PomodoroTimer from "./components/PomodoroTimer";
 import PayrollDateRangeCalculate from "./components/PayrollDateRangeCalculate";
 import PayrollAdmin from "./components/PayrollAdmin";
 import SelfieCamera from "./components/SelfieCamera";
+import TicTacToeGame from "./components/TicTacToeGame";
 
 import "./App.css";
 
@@ -175,6 +176,7 @@ function App() {
         <Route path="/payroll-date" element={<PayrollDateRangeCalculate />} />
         <Route path="/payroll-admin" element={<PayrollAdmin />} />
         <Route path="/selfie-camera" element={<SelfieCamera />} />
+        <Route path="/tic-tac-toe" element={<TicTacToeGame />} />
       </Routes>
       <Chatbot />
     </AuthProvider>

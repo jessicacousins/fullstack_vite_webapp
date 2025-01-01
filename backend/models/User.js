@@ -202,6 +202,9 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  ticTacToeGamesPlayed: { type: Number, default: 0 }, // tic tac toe game
+  ticTacToeGamesWon: { type: Number, default: 0 },
+  ticTacToeGamesLost: { type: Number, default: 0 },
   viewedProducts: [ProductViewSchema],
   achievements: [AchievementSchema],
   wordCount: { type: Number, default: 0 },

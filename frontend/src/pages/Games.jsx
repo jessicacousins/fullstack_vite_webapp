@@ -151,6 +151,12 @@ const Games = () => {
         </p>
         <Link to="/snapquest">Play SnapQuest</Link>
       </section>
+
+      <section className="game-section">
+        <h2>Tic Tac Toe</h2>
+        <p>A fun twist on the classic Tic Tac Toe game.</p>
+        <Link to="/tic-tac-toe">Play Now</Link>
+      </section>
     </div>
   );
 };

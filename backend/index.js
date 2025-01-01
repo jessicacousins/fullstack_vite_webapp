@@ -10,6 +10,7 @@ const soundboardRoutes = require("./routes/soundboard");
 const timeEntryRoutes = require("./routes/timeEntryRoutes");
 const roleRoutes = require("./routes/roles");
 const selfieRoutes = require("./routes/selfieRoutes");
+const tictactoeRoutes = require("./routes/tictactoeRoutes");
 
 // ! Billing system
 const customerRoutes = require("./routes/customerRoutes");
@@ -76,6 +77,9 @@ app.use("/api/soundboard", soundboardRoutes);
 
 // ! selfie  routes
 app.use("/api/selfies", selfieRoutes);
+
+// ! tic tac toe route
+app.use("/api/tictactoe", tictactoeRoutes);
 
 const PORT = process.env.PORT || 5000;
 
