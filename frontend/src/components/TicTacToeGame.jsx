@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import Confetti from "react-confetti";
 import "./TicTacToeGame.css";
 
 const TicTacToeGame = () => {
@@ -8,6 +9,7 @@ const TicTacToeGame = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [currentPlayer, setCurrentPlayer] = useState("X");
   const [winner, setWinner] = useState(null);
+  const [winningCombo, setWinningCombo] = useState([]); 
   const [turnHistory, setTurnHistory] = useState([]);
   const [stats, setStats] = useState({
     gamesPlayed: 0,
@@ -25,7 +27,7 @@ const TicTacToeGame = () => {
     if (turnHistory.length > 0 && !winner) {
       const timer = setInterval(() => {
         removeOldestMark();
-      }, 5000); // remove mark after 5 seconds
+      }, 5000);
       return () => clearInterval(timer);
     }
   }, [turnHistory, winner]);
@@ -55,7 +57,7 @@ const TicTacToeGame = () => {
     for (let combo of winningCombinations) {
       const [a, b, c] = combo;
       if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-        return board[a];
+        return { winner: board[a], combo };
       }
     }
     return null;
@@ -87,16 +89,18 @@ const TicTacToeGame = () => {
 
     setBoard(newBoard);
 
-    const gameWinner = checkWinner(newBoard);
-    if (gameWinner) {
-      setWinner(gameWinner);
-      await updateStats(gameWinner === "X");
+    const result = checkWinner(newBoard);
+    if (result) {
+      const { winner, combo } = result;
+      setWinner(winner);
+      setWinningCombo(combo); 
+      await updateStats(winner === "X");
       return;
     }
 
     if (isBoardFull(newBoard)) {
       setWinner("Tie");
-      await updateStats(false); // No winner for ties
+      await updateStats(false); 
       return;
     }
 
@@ -116,14 +120,15 @@ const TicTacToeGame = () => {
         setBoard(updatedBoard);
         setTurnHistory(updatedTurnHistory);
 
-        const computerWinner = checkWinner(updatedBoard);
-        if (computerWinner) {
-          setWinner(computerWinner);
-          updateStats(computerWinner === "X");
+        const computerResult = checkWinner(updatedBoard);
+        if (computerResult) {
+          const { winner, combo } = computerResult;
+          setWinner(winner);
+          setWinningCombo(combo);
+          updateStats(winner === "X");
         } else if (isBoardFull(updatedBoard)) {
-         
           setWinner("Tie");
-          updateStats(false); 
+          updateStats(false);
         } else {
           setCurrentPlayer("X");
         }
@@ -137,7 +142,6 @@ const TicTacToeGame = () => {
     const newBoard = [...board];
     const newTurnHistory = [...turnHistory];
 
-    // remove the oldest mark
     const oldestMove = newTurnHistory.shift();
     if (oldestMove) {
       newBoard[oldestMove.index] = null;
@@ -164,17 +168,21 @@ const TicTacToeGame = () => {
     setBoard(Array(9).fill(null));
     setCurrentPlayer("X");
     setWinner(null);
+    setWinningCombo([]);
     setTurnHistory([]);
   };
 
   return (
     <div className="tic-tac-toe-container">
+      {winner === "X" && <Confetti />}
       <h1 className="tictactoeTitle">Tic Tac Toe</h1>
       <div className="board">
         {board.map((cell, index) => (
           <div
             key={index}
-            className={`cell ${cell ? "filled" : ""}`}
+            className={`cell ${cell ? "filled" : ""} ${
+              winningCombo.includes(index) ? "winning-cell" : ""
+            }`}
             onClick={() => handleCellClick(index)}
           >
             {cell}

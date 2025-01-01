@@ -117,3 +117,37 @@
     font-size: 0.9rem;
   }
 }
+
+.winning-cell {
+  background-color: #f5ec99; 
+  animation: pulse 1s infinite;
+  color: #000;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    background-color: #ffe600;
+  }
+  50% {
+    transform: scale(1.1);
+    background-color: #ffcc00;
+  }
+  100% {
+    transform: scale(1);
+    background-color: #ffe600;
+  }
+}
+
+.winner-message.animated {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
