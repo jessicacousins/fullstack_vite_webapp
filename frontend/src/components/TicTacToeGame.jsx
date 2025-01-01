@@ -8,6 +8,7 @@ const TicTacToeGame = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [currentPlayer, setCurrentPlayer] = useState("X");
   const [winner, setWinner] = useState(null);
+  const [turnHistory, setTurnHistory] = useState([]);
   const [stats, setStats] = useState({
     gamesPlayed: 0,
     gamesWon: 0,
@@ -20,9 +21,18 @@ const TicTacToeGame = () => {
     }
   }, [user]);
 
+  useEffect(() => {
+    if (turnHistory.length > 0 && !winner) {
+      const timer = setInterval(() => {
+        removeOldestMark();
+      }, 5000); // remove mark after 5 seconds
+      return () => clearInterval(timer);
+    }
+  }, [turnHistory, winner]);
+
   const fetchStats = async () => {
     try {
-      if (!user?.email) return; 
+      if (!user?.email) return;
       const response = await axios.get(`/api/tictactoe/stats/${user.email}`);
       setStats(response.data);
     } catch (error) {
@@ -51,15 +61,19 @@ const TicTacToeGame = () => {
     return null;
   };
 
+  const isBoardFull = (board) => {
+    return board.every((cell) => cell !== null);
+  };
+
   const computerMove = (board) => {
     const emptyCells = board
       .map((cell, index) => (cell === null ? index : null))
       .filter((cell) => cell !== null);
     if (emptyCells.length > 0) {
       const randomIndex = Math.floor(Math.random() * emptyCells.length);
-      board[emptyCells[randomIndex]] = "O";
+      return emptyCells[randomIndex];
     }
-    return board;
+    return null;
   };
 
   const handleCellClick = async (index) => {
@@ -67,6 +81,10 @@ const TicTacToeGame = () => {
 
     const newBoard = [...board];
     newBoard[index] = currentPlayer;
+
+    const newTurnHistory = [...turnHistory, { player: currentPlayer, index }];
+    setTurnHistory(newTurnHistory);
+
     setBoard(newBoard);
 
     const gameWinner = checkWinner(newBoard);
@@ -76,26 +94,62 @@ const TicTacToeGame = () => {
       return;
     }
 
+    if (isBoardFull(newBoard)) {
+      setWinner("Tie");
+      await updateStats(false); // No winner for ties
+      return;
+    }
 
     setCurrentPlayer("O");
 
     setTimeout(() => {
-      const updatedBoard = computerMove(newBoard);
-      setBoard(updatedBoard);
+      const updatedBoard = [...newBoard];
+      const computerIndex = computerMove(updatedBoard);
 
-      const computerWinner = checkWinner(updatedBoard);
-      if (computerWinner) {
-        setWinner(computerWinner);
-        updateStats(computerWinner === "X");
-      } else {
-        setCurrentPlayer("X");
+      if (computerIndex !== null) {
+        updatedBoard[computerIndex] = "O";
+        const updatedTurnHistory = [
+          ...newTurnHistory,
+          { player: "O", index: computerIndex },
+        ];
+
+        setBoard(updatedBoard);
+        setTurnHistory(updatedTurnHistory);
+
+        const computerWinner = checkWinner(updatedBoard);
+        if (computerWinner) {
+          setWinner(computerWinner);
+          updateStats(computerWinner === "X");
+        } else if (isBoardFull(updatedBoard)) {
+         
+          setWinner("Tie");
+          updateStats(false); 
+        } else {
+          setCurrentPlayer("X");
+        }
       }
     }, 1000);
   };
 
+  const removeOldestMark = () => {
+    if (winner) return;
+
+    const newBoard = [...board];
+    const newTurnHistory = [...turnHistory];
+
+    // remove the oldest mark
+    const oldestMove = newTurnHistory.shift();
+    if (oldestMove) {
+      newBoard[oldestMove.index] = null;
+    }
+
+    setBoard(newBoard);
+    setTurnHistory(newTurnHistory);
+  };
+
   const updateStats = async (didWin) => {
     try {
-      if (!user?.email) return; 
+      if (!user?.email) return;
       await axios.post("/api/tictactoe/update-stats", {
         email: user.email,
         didWin,
@@ -110,6 +164,7 @@ const TicTacToeGame = () => {
     setBoard(Array(9).fill(null));
     setCurrentPlayer("X");
     setWinner(null);
+    setTurnHistory([]);
   };
 
   return (
@@ -128,7 +183,11 @@ const TicTacToeGame = () => {
       </div>
       {winner ? (
         <div className="winner-message">
-          {winner === "X" ? "You win!" : "Computer wins!"}
+          {winner === "X"
+            ? "You win!"
+            : winner === "O"
+            ? "Computer wins!"
+            : "It's a tie!"}
           <button onClick={resetGame}>Play Again</button>
         </div>
       ) : (
