@@ -501,6 +501,20 @@ router.post("/view-product", async (req, res) => {
   }
 });
 
+//  Fetch leaderboard for Tic Tac Toe
+router.get("/leaderboard/tic-tac-toe", async (req, res) => {
+  try {
+    const leaderboard = await User.find()
+      .select("email ticTacToeGamesWon")
+      .sort({ ticTacToeGamesWon: -1 }) // Sort by most games won
+      .limit(10); // Top 10 players
+    res.json(leaderboard);
+  } catch (error) {
+    console.error("Error fetching Tic Tac Toe leaderboard:", error.message);
+    res.status(500).send("Server error");
+  }
+});
+
 // Fetch Top 10 Blackjack Scores
 router.get("/leaderboard/blackjack", async (req, res) => {
   try {

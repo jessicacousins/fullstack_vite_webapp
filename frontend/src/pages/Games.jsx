@@ -8,6 +8,7 @@ const Games = () => {
   const [memoryGameLeaderboard, setMemoryGameLeaderboard] = useState([]);
   const [simonSaysLeaderboard, setSimonSaysLeaderboard] = useState([]);
   const [snapQuestLeaderboard, setSnapQuestLeaderboard] = useState([]);
+  const [ticTacToeLeaderboard, setTicTacToeLeaderboard] = useState([]);
 
   useEffect(() => {
     const fetchLeaderboard = async (url, setState) => {
@@ -35,6 +36,10 @@ const Games = () => {
       "/api/users/leaderboard/snapquest",
       setSnapQuestLeaderboard
     );
+    fetchLeaderboard(
+      "/api/users/leaderboard/tic-tac-toe",
+      setTicTacToeLeaderboard
+    );
   }, []);
 
   return (
@@ -42,6 +47,26 @@ const Games = () => {
       <h1>Games</h1>
 
       <section className="leaderboard-section">
+        {/* Tic Tac Toe Leaderboard */}
+        <div className="leaderboard-card">
+          <h3>Tic Tac Toe Leaderboard</h3>
+          <ul>
+            {ticTacToeLeaderboard.map((player, index) => (
+              <li key={index}>
+                <span
+                  className={`rank ${
+                    index === 0 ? "gold" : index === 1 ? "blue" : ""
+                  }`}
+                >
+                  #{index + 1}
+                </span>
+                <span>{player.email}</span>
+                <span>{player.ticTacToeGamesWon} wins</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
         {/* Blackjack Leaderboard */}
         <div className="leaderboard-card">
           <h3>Blackjack Leaderboard</h3>
