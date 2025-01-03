@@ -9,7 +9,7 @@ const TicTacToeGame = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [currentPlayer, setCurrentPlayer] = useState("X");
   const [winner, setWinner] = useState(null);
-  const [winningCombo, setWinningCombo] = useState([]); 
+  const [winningCombo, setWinningCombo] = useState([]);
   const [turnHistory, setTurnHistory] = useState([]);
   const [stats, setStats] = useState({
     gamesPlayed: 0,
@@ -93,14 +93,14 @@ const TicTacToeGame = () => {
     if (result) {
       const { winner, combo } = result;
       setWinner(winner);
-      setWinningCombo(combo); 
+      setWinningCombo(combo);
       await updateStats(winner === "X");
       return;
     }
 
     if (isBoardFull(newBoard)) {
       setWinner("Tie");
-      await updateStats(false); 
+      await updateStats(false);
       return;
     }
 
@@ -174,7 +174,11 @@ const TicTacToeGame = () => {
 
   return (
     <div className="tic-tac-toe-container">
-      {winner === "X" && <Confetti />}
+      {winner && (
+        <div className="confetti-wrapper">
+          <Confetti width={window.innerWidth} height={window.innerHeight} />
+        </div>
+      )}
       <h1 className="tictactoeTitle">Tic Tac Toe</h1>
       <div className="board">
         {board.map((cell, index) => (
@@ -185,7 +189,7 @@ const TicTacToeGame = () => {
             }`}
             onClick={() => handleCellClick(index)}
           >
-            {cell}
+            <span className={cell === "X" ? "black-x" : "red-o"}>{cell}</span>
           </div>
         ))}
       </div>

@@ -119,7 +119,7 @@
 }
 
 .winning-cell {
-  background-color: #f5ec99; 
+  background-color: #f5ec99;
   animation: pulse 1s infinite;
   color: #000;
 }
@@ -151,3 +151,14 @@
     transform: rotate(360deg);
   }
 }
+
+.black-x {
+  color: black;
+  font-weight: bold;
+}
+
+.red-o {
+  color: red;
+  font-weight: bold;
+}
+
