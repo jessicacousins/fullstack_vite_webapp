@@ -39,7 +39,7 @@
 
 .cell:hover {
   border: 2px solid #000000;
-  background-color: #b0fcf8;
+  background-color: #8ed1cd;
 }
 
 .cell.filled {
@@ -70,8 +70,14 @@
   margin-top: 15px;
 }
 
-.winner-message button:hover {
-  background-color: #45a049;
+.winner-message .playAgain {
+  background-color: #4af3eb;
+  color: #000;
+  font-size: 1.2rem;
+}
+.winner-message .playAgain:hover {
+  background-color: #155158;
+  color: #fff;
 }
 
 .stats {
@@ -119,7 +125,7 @@
 }
 
 .winning-cell {
-  background-color: #f5ec99;
+  background-color: #4af3eb;
   animation: pulse 1s infinite;
   color: #000;
 }
@@ -127,15 +133,15 @@
 @keyframes pulse {
   0% {
     transform: scale(1);
-    background-color: #ffe600;
+    background-color: #4af3eb;
   }
   50% {
     transform: scale(1.1);
-    background-color: #ffcc00;
+    background-color: #4af3eb;
   }
   100% {
     transform: scale(1);
-    background-color: #ffe600;
+    background-color: #4af3eb;
   }
 }
 
@@ -161,4 +167,3 @@
   color: red;
   font-weight: bold;
 }
-

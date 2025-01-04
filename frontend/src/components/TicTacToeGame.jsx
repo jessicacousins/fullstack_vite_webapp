@@ -196,11 +196,13 @@ const TicTacToeGame = () => {
       {winner ? (
         <div className="winner-message">
           {winner === "X"
-            ? "You win!"
+            ? "You win! "
             : winner === "O"
             ? "Computer wins!"
             : "It's a tie!"}
-          <button onClick={resetGame}>Play Again</button>
+          <button className="playAgain" onClick={resetGame}>
+            Play Again
+          </button>
         </div>
       ) : (
         <div className="current-player">Your Turn</div>
