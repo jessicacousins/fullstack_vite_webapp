@@ -629,7 +629,7 @@ This work is licensed under the [Creative Commons Attribution-NonCommercial-Shar
 
 For more details, refer to the full legal code of the license [here](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
 
-_Copyright (c) 2024 Jessica Cousins_
+_Copyright (c) 2025 Jessica Cousins_
 
 ## Contributing
 
