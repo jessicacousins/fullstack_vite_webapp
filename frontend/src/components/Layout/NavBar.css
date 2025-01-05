@@ -87,7 +87,7 @@
   position: sticky;
   top: 80px;
   z-index: 9;
-  background-color: #0a0a0a;
+  background-color: #000;
   padding: 5px 15px;
   border-top: 1px solid #4d4d4d;
   border-bottom: 1px solid #4d4d4d;
@@ -103,7 +103,7 @@
   font-size: 14px;
   border: none;
   border-radius: 4px;
-  background-color: #1b1b1b;
+  background-color: #2f2f2f;
   color: #93f7f2;
   width: 100%;
   letter-spacing: 1px;
@@ -129,7 +129,7 @@
   .navbar-list {
     display: none;
     flex-direction: column;
-    background-color: #2b2b2b;
+    background-color: #000000;
     position: fixed;
     top: 80px;
     left: 0;
@@ -193,7 +193,7 @@
   /* For a slight shadow effect in dark mode */
   .navbar-list li a:hover,
   .search-input:focus {
-    background-color: #444;
+    background-color: #000;
   }
 
   /* Styling the hamburger menu button */
@@ -201,7 +201,7 @@
     display: block;
     font-size: 24px;
     color: #ffffff;
-    background: none;
+    background-color: #000;
     border: none;
     cursor: pointer;
   }
