@@ -44,77 +44,183 @@ const NavBar = ({ onSearch, cartItemCount }) => {
           </button>
         </div>
         <ul className={`navbar-list ${isMobileMenuOpen ? "open" : ""}`}>
-          {user && (
-            <>
-              {[
-                { path: "/home", label: "Home" },
-                { path: "/about", label: "News" },
-                { path: "/profile", label: "Profile" },
-                { path: "/blog", label: "Blog" },
-                { path: "/games", label: "Games" },
-                { path: "/checkout", label: "Checkout" },
-                { path: "/shopping", label: "Shopping" },
-                { path: "/admin-dashboard", label: "Blog_Admin" },
-                { path: "/achievements", label: "Achievements" },
-                { path: "/soundboard", label: "Soundboard" },
-                { path: "/customers", label: "Customers" },
-                { path: "/invoices", label: "Invoices" },
-                { path: "/billing-dashboard", label: "Financial_Admin" },
-                { path: "/fileconverter", label: "File_Convert" },
-                { path: "/passwordgenerator", label: "Password Generator" },
-                { path: "/imageeditor", label: "Image Editor" },
-                { path: "/unitconverter", label: "Unit Converter" },
-                { path: "/colorpicker", label: "Color Picker" },
-                { path: "/mood-tracker", label: "Mood Tracker" },
-                { path: "/timecard", label: "Timecard" },
-                { path: "/admin-timecards", label: "Admin Timecards" },
-                { path: "/pomodoro-timer", label: "Pomodoro Timer" },
-                { path: "/payroll-date", label: "PayrollDate" },
-                { path: "/payroll-admin", label: "PayrollAdmin" },
-                { path: "/selfie-camera", label: "Camera" },
-              ].map((link) => (
-                <li key={link.path} onClick={closeMobileMenu}>
-                  <NavLink
-                    to={link.path}
-                    className={({ isActive }) =>
-                      isActive ? "active-link" : ""
-                    }
-                  >
-                    {link.label}
-                  </NavLink>
-                </li>
-              ))}
-              {user?.role === "god" && (
-                <li onClick={closeMobileMenu}>
-                  <NavLink
-                    to="/payroll-admin"
-                    className={({ isActive }) =>
-                      isActive ? "active-link" : ""
-                    }
-                  >
-                    Payroll Admin
-                  </NavLink>
-                </li>
-              )}
-              <li className="cart-link" onClick={closeMobileMenu}>
-                <NavLink
-                  title="Cart"
-                  to="/cart"
-                  className={({ isActive }) => (isActive ? "active-link" : "")}
-                >
-                  <FaShoppingCart />
-                  {cartItemCount > 0 && (
-                    <span className="cart-count">{cartItemCount}</span>
-                  )}
+          {/* Main Pages */}
+          <li>
+            <NavLink to="/home" onClick={closeMobileMenu}>
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/about" onClick={closeMobileMenu}>
+              News
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/profile" onClick={closeMobileMenu}>
+              Profile
+            </NavLink>
+          </li>
+
+          {/* Categories Dropdown */}
+          <li>
+            <span className="dropdown-title">Categories</span>
+            <ul className="dropdown">
+              <li>
+                <NavLink to="/blog" onClick={closeMobileMenu}>
+                  Blog
                 </NavLink>
               </li>
               <li>
-                <button onClick={handleLogout} className="logout-button">
-                  Logout
-                </button>
+                <NavLink to="/admin-dashboard" onClick={closeMobileMenu}>
+                  Blog Admin
+                </NavLink>
               </li>
-            </>
+              <li>
+                <NavLink to="/games" onClick={closeMobileMenu}>
+                  Games
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/achievements" onClick={closeMobileMenu}>
+                  Achievements
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/soundboard" onClick={closeMobileMenu}>
+                  Soundboard
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/customers" onClick={closeMobileMenu}>
+                  Customers
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/invoices" onClick={closeMobileMenu}>
+                  Invoices
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/billing-dashboard" onClick={closeMobileMenu}>
+                  Financial Admin
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+
+          {/* Tools Dropdown */}
+          <li>
+            <span className="dropdown-title">Tools</span>
+            <ul className="dropdown">
+              <li>
+                <NavLink to="/fileconverter" onClick={closeMobileMenu}>
+                  File Converter
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/passwordgenerator" onClick={closeMobileMenu}>
+                  Password Generator
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/imageeditor" onClick={closeMobileMenu}>
+                  Image Editor
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/unitconverter" onClick={closeMobileMenu}>
+                  Unit Converter
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/colorpicker" onClick={closeMobileMenu}>
+                  Color Picker
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+
+          {/* Productivity Tools */}
+          <li>
+            <span className="dropdown-title">Productivity</span>
+            <ul className="dropdown">
+              <li>
+                <NavLink to="/mood-tracker" onClick={closeMobileMenu}>
+                  Mood Tracker
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/timecard" onClick={closeMobileMenu}>
+                  Timecard
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/admin-timecards" onClick={closeMobileMenu}>
+                  Admin Timecards
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/pomodoro-timer" onClick={closeMobileMenu}>
+                  Pomodoro Timer
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/payroll-date" onClick={closeMobileMenu}>
+                  Payroll Date
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/payroll-admin" onClick={closeMobileMenu}>
+                  God Tier Payroll Admin
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+
+          {/* Admin Links */}
+          {user?.role === "god" && (
+            <li>
+              <NavLink to="/payroll-admin" onClick={closeMobileMenu}>
+                Payroll Admin
+              </NavLink>
+            </li>
           )}
+
+          {/* Shopping */}
+          <li>
+            <NavLink to="/checkout" onClick={closeMobileMenu}>
+              Checkout
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/shopping" onClick={closeMobileMenu}>
+              Shopping
+            </NavLink>
+          </li>
+
+          {/* Cart Icon */}
+          <li className="cart-link" onClick={closeMobileMenu}>
+            <NavLink to="/cart">
+              <FaShoppingCart />
+              {cartItemCount > 0 && (
+                <span className="cart-count">{cartItemCount}</span>
+              )}
+            </NavLink>
+          </li>
+
+          {/* Camera Feature */}
+          <li>
+            <NavLink to="/selfie-camera" onClick={closeMobileMenu}>
+              Camera
+            </NavLink>
+          </li>
+
+          {/* Logout */}
+          <li>
+            <button onClick={handleLogout} className="logout-button">
+              Logout
+            </button>
+          </li>
         </ul>
       </nav>
 
