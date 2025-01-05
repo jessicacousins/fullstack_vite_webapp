@@ -17,10 +17,11 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 2rem;
+  letter-spacing: 2px;
 }
 
 .achievement-card {
-  background-color: rgba(40, 40, 40, 1);
+  background-color: #000;
   padding: 1.5rem;
   border-radius: 12px;
   text-align: left;
@@ -32,11 +33,11 @@
 
 .achievement-card:hover {
   transform: scale(1.05);
-  background-color: rgba(55, 55, 55, 1);
+  box-shadow: 0px 10px 40px rgba(0, 255, 255, 0.3), 0px 0px 25px #4af3eb;
 }
 
 .achievement-card h3 {
-  color: rgba(140, 180, 210, 1);
+  color: #ff77ff;
   margin: 0 0 0.5rem;
   font-size: 1.25rem;
 }
