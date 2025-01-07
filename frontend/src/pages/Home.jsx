@@ -239,6 +239,57 @@ const Home = () => {
           </p>
         </div>
 
+        {/* Cart Section */}
+        <div className="feature-section">
+          <Link to="/cart" className="feature-link">
+            <h3 className="feature-heading">🛒 Shopping Cart</h3>
+          </Link>
+          <p className="feature-text">
+            View and manage the items in your cart before heading to checkout.
+          </p>
+        </div>
+
+        {/* Pomodoro Timer Section */}
+        <div className="feature-section">
+          <Link to="/pomodoro-timer" className="feature-link">
+            <h3 className="feature-heading">⏲️ Pomodoro Timer</h3>
+          </Link>
+          <p className="feature-text">
+            Boost your productivity with the Pomodoro Timer. Focus on tasks and
+            take scheduled breaks.
+          </p>
+        </div>
+
+        {/* Payroll Date Section */}
+        <div className="feature-section">
+          <Link to="/payroll-date" className="feature-link">
+            <h3 className="feature-heading">🗓️ Payroll Date</h3>
+          </Link>
+          <p className="feature-text">
+            Stay informed about upcoming payroll dates and schedules.
+          </p>
+        </div>
+
+        {/* God-Tier Payroll Admin Section */}
+        <div className="feature-section">
+          <Link to="/payroll-admin" className="feature-link">
+            <h3 className="feature-heading">💼 God Tier Payroll Admin</h3>
+          </Link>
+          <p className="feature-text">
+            Administer payroll details and ensure everything runs smoothly.
+          </p>
+        </div>
+
+        {/* Selfie Camera Section */}
+        <div className="feature-section">
+          <Link to="/selfie-camera" className="feature-link">
+            <h3 className="feature-heading">📷 Selfie Camera</h3>
+          </Link>
+          <p className="feature-text">
+            Capture moments with our fun and interactive selfie camera feature.
+          </p>
+        </div>
+
         {/* Final Section */}
         <div className="home-button-container">
           <Link to="/profile" className="button-home">
