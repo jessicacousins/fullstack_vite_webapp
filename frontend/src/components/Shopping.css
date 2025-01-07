@@ -31,7 +31,6 @@
 }
 
 .product-card {
-  /* background-color: #fff; */
   position: relative;
   background-color: #424242;
   padding: 20px;
@@ -43,7 +42,7 @@
 
 .product-card:hover {
   transform: translateY(-5px);
-  border: 1px solid #000;
+  border: solid 2px #4af3eb;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 .added-to-cart-overlay {
@@ -52,7 +51,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(14, 146, 39, 0.8); /* Semi-transparent green */
+  background-color: rgba(14, 146, 39, 0.8);
   color: #fff;
   display: flex;
   align-items: center;
@@ -93,7 +92,7 @@
 
 .product-card h2 {
   font-size: 1.5rem;
-  color: #00d4ff;
+  color: #dc9cf5;
   margin: 10px 0;
 }
 
@@ -173,6 +172,7 @@ button:hover {
   flex-direction: column;
   align-items: center;
   letter-spacing: 1px;
+  border: solid 2px #4af3eb;
 }
 
 .modal-image {
@@ -199,47 +199,6 @@ button:hover {
 .close-modal:hover {
   background-color: #e64444;
 }
-
-/* .learning-modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #2e2d2d;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-  width: 80%;
-  max-width: 600px;
-  overflow-y: auto;
-  animation: fadeInModal 0.5s forwards;
-}
-.learning-modal.closing {
-  animation: fadeOutModal 0.5s forwards;
-}
-
-@keyframes fadeInModal {
-  0% {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes fadeOutModal {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-} */
 
 .learning-modal {
   position: fixed;
@@ -296,7 +255,7 @@ button:hover {
 .learning-modal h2,
 .learning-modal h3 {
   margin: 0 0 10px;
-  color: #00d4ff;
+  color: #4af3eb;
 }
 
 .learning-modal p {
