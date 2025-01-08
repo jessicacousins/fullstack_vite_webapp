@@ -3,195 +3,279 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
-  padding: 20px;
-  color: #d3d3d3;
-  background-color: #1e1e1e;
-  font-family: "Arial", sans-serif;
+  padding: 40px 20px;
+  background-color: #000;
   min-height: 100vh;
+  font-family: "Poppins", sans-serif;
 }
 
 .main-title {
-  font-size: 3.5rem;
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
   color: #4af3eb;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(25, 25, 25, 0.85);
+  border: 1px solid rgba(74, 243, 235, 0.2);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.5);
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 900px;
 }
 
 .profile-pic {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  margin-right: 20px;
   object-fit: cover;
+  margin-right: 30px;
+  border: 2px solid #4af3eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
 }
 
-.profile-welcome {
-  text-align: center;
-  margin-bottom: 30px;
+.profile-pic:hover {
+  transform: scale(1.1);
+}
+
+.profile-info h2 {
+  font-size: 2rem;
+  color: #f9fd1a;
+  margin-bottom: 10px;
 }
 
 .profile-welcome-title {
   font-size: 2.5rem;
-  color: #66c0f4;
-  letter-spacing: 1.2px;
+  font-weight: bold;
+  color: #4af3eb;
+  margin-bottom: 15px;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
 }
 
 .profile-welcome-message {
   font-size: 1.2rem;
-  color: #d3d3d3;
-  letter-spacing: 1.2px;
+  color: #e0e0e0;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.profile-form {
+  background: rgba(40, 40, 40, 0.9);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 40px;
 }
 
 .edit-title {
   text-align: center;
+  font-size: 2rem;
   color: #4caf50;
-  font-size: 2.2rem;
-  letter-spacing: 1.2px;
-}
-
-.game-stats-title {
-  color: #c4a1e0;
-  font-size: 2.2rem;
-  text-align: center;
-  letter-spacing: 1.2px;
-}
-
-.edit-info-input {
-  color: #66c0f4;
-}
-
-.profile-section-description {
-  font-size: 1.2rem;
-  color: #d3d3d3;
   margin-bottom: 20px;
-  text-align: center;
-  letter-spacing: 1.2px;
-}
-
-.profile-header,
-.profile-form,
-.game-stats-container,
-.user-comments-section,
-.user-posts-section,
-.account-deletion-section {
-  width: 100%;
-  max-width: 800px;
-  background-color: #2a2a2a;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
-  margin-top: 20px;
-}
-
-.profile-info h2 {
-  font-size: 1.8rem;
-  color: #f9fd1adc;
-  text-align: center;
-}
-
-.email {
-  color: #66c0f4;
-  letter-spacing: 1.2px;
-}
-
-.bio,
-.game-section p,
-.game-section ul,
-.sentiment-analysis p {
-  color: #bbbbbb;
-  letter-spacing: 1.2px;
-}
-
-.game-section h4 {
-  color: #6fb3d2;
-  font-size: 1.2rem;
-  letter-spacing: 2px;
-  text-align: center;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .profile-form input,
 .profile-form textarea {
-  background-color: #333;
+  background-color: #222;
   color: #d3d3d3;
   border: 1px solid #444;
-  border-radius: 4px;
-  padding: 10px;
+  border-radius: 8px;
+  padding: 12px;
   font-size: 1rem;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
+  width: 100%;
+  outline: none;
 }
 
-.profile-form button,
-.confirm-delete-button,
-.cancel-button,
-.delete-button {
-  padding: 10px;
-  border-radius: 4px;
-  cursor: pointer;
+.profile-form input:focus,
+.profile-form textarea:focus {
+  border-color: #4af3eb;
+  box-shadow: 0 0 8px rgba(74, 243, 235, 0.5);
 }
 
 .profile-form button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
   background-color: #4caf50;
   color: #fff;
   border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.profile-form button:hover {
+  background-color: #42a148;
+  transform: scale(1.05);
+}
+
+.game-stats-container {
+  background: rgba(25, 25, 25, 0.9);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 40px;
+}
+
+.game-section {
+  background: rgba(30, 30, 30, 0.95);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #4af3eb;
+}
+
+.game-section h4 {
+  font-size: 1.5rem;
+  color: #6fb3d2;
+  margin-bottom: 10px;
+}
+
+.comment-card,
+.post-card {
+  background: rgba(35, 35, 35, 0.95);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+  margin-bottom: 15px;
+}
+
+.user-comments-section,
+.user-posts-section {
+  background: rgba(40, 40, 40, 0.9);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 40px;
+}
+
+.expandable-heading {
+  font-size: 1.8rem;
+  color: #66c0f4;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.expandable-heading:hover {
+  color: #4af3eb;
+}
+
+.error {
+  color: #e0245e;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.success {
+  color: #4caf50;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.account-deletion-section {
+  background: rgba(30, 0, 0, 0.9);
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid #e0245e;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 .delete-button {
   background-color: #e0245e;
   color: #fff;
-  border: 1px solid #fd8db0;
-}
-
-.delete-user-info {
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
   font-size: 1.2rem;
-  text-align: center;
-  letter-spacing: 1.2px;
-}
-
-.profile-warning-title {
-  font-size: 1.3rem;
-  font-weight: 900;
-  text-align: center;
-  color: #ffa5c2;
-  letter-spacing: 2.3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .delete-button:hover {
   background-color: #f05c5c;
+  transform: scale(1.05);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal-content {
-  background-color: #2a2a2a;
-  color: #d3d3d3;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 400px;
+  background-color: #1e1e1e;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.5);
   width: 100%;
-  margin: 0 auto;
+  max-width: 500px;
 }
 
 .confirm-delete-button {
   background-color: #e0245e;
   color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .cancel-button {
   background-color: #444;
   color: #d3d3d3;
   border: 1px solid #676;
-}
-
-.expandable-heading {
-  color: #66c0f4;
+  padding: 12px;
+  border-radius: 8px;
   cursor: pointer;
-  margin-top: 20px;
+  margin-left: 10px;
 }
 
-.comment-card,
-.post-card {
-  background-color: #2a2a2a;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+.confirm-delete-button:hover,
+.cancel-button:hover {
+  transform: scale(1.05);
+}
+
+.file-profile-pic {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #333;
   color: #d3d3d3;
-  margin-top: 10px;
+  border: 1px solid #4af3eb;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.file-profile-pic:hover {
+  background-color: #444;
 }
