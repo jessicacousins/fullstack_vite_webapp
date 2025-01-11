@@ -1,18 +1,19 @@
 .soundboard-container {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  background: #121212;
-  color: #4af3eb;
+  font-family: "Poppins", sans-serif;
+  background: #0f0f0f;
+  color: #d3d3d3;
   min-height: 100vh;
-  padding: 20px;
+  padding: 40px 20px;
   text-align: center;
 }
 
 .soundboard-title {
-  font-size: 3rem;
+  font-size: 3.5rem;
   text-transform: uppercase;
-  color: #f7fcfb;
-  margin-bottom: 20px;
-  text-shadow: 0 0 10px #0d0e0d, 0 0 20px #cdfcf9;
+  color: #4af3eb;
+  margin-bottom: 40px;
+  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
+  letter-spacing: 2px;
 }
 
 .add-button-container {
@@ -23,86 +24,70 @@
   background: #4af3eb;
   border: none;
   color: #121212;
-  font-size: 1rem;
-  padding: 12px 20px;
+  font-size: 1.1rem;
+  padding: 15px 25px;
   border-radius: 12px;
   cursor: pointer;
-  box-shadow: 0px 5px 10px rgba(74, 243, 235, 0.3);
-  transition: background 0.3s ease;
+  box-shadow: 0px 5px 15px rgba(74, 243, 235, 0.3);
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .add-sound-button:hover {
-  background: #e0eeed;
+  background: #3bc9c0;
+  transform: scale(1.05);
 }
 
 .soundboard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
 }
 
 .sound-item {
-  background: #1c1c1c;
+  background: rgba(30, 30, 30, 0.9);
   border: 1px solid #4af3eb;
-  border-radius: 10px;
-  padding: 15px;
+  border-radius: 15px;
+  padding: 20px;
   text-align: center;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .sound-item:hover {
   transform: scale(1.05);
-  box-shadow: 0px 8px 16px rgba(74, 243, 235, 0.3);
+  box-shadow: 0px 10px 20px rgba(74, 243, 235, 0.4);
 }
 
 .play-sound-button {
   background: #4af3eb;
   border: none;
   color: #121212;
-  font-size: 1rem;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  font-size: 1.2rem;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 15px;
   width: 100%;
-  box-shadow: 0px 3px 6px rgba(74, 243, 235, 0.2);
-  transition: background 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(74, 243, 235, 0.4);
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .play-sound-button:hover {
   background: #3bc9c0;
-}
-
-.replace-audio-label {
-  display: block;
-  background: #4af3eb;
-  color: #121212;
-  padding: 8px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  margin-top: 10px;
-  transition: background 0.3s ease;
-}
-
-.replace-audio-input {
-  display: none;
-}
-
-.replace-audio-label:hover {
-  background: #3bc9c0;
+  transform: scale(1.03);
 }
 
 .pause-sound-button,
 .stop-sound-button,
 .replay-sound-button {
-  background: #1c1c1c;
+  background: transparent;
   color: #4af3eb;
   border: 1px solid #4af3eb;
-  padding: 8px 15px;
+  padding: 8px 20px;
   border-radius: 8px;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  margin: 5px;
   cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease;
 }
@@ -114,69 +99,82 @@
   color: #121212;
 }
 
-button:hover {
-  opacity: 0.9;
+.replace-audio-label {
+  display: block;
+  background: #4af3eb;
+  color: #121212;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 15px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.replace-audio-input {
+  display: none;
+}
+
+.replace-audio-label:hover {
+  background: #3bc9c0;
+  transform: scale(1.03);
 }
 
 .playlist-controls {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .playlist-input {
-  padding: 8px;
-  margin-bottom: 10px;
+  padding: 12px;
+  margin-bottom: 15px;
   border: 1px solid #4af3eb;
   border-radius: 8px;
   background: #1c1c1c;
   color: #4af3eb;
-  width: 250px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
 }
 
 .saved-playlists {
-  margin-top: 20px;
-  padding: 20px 20px;
-  background: #1c1c1c;
+  margin-top: 40px;
+  padding: 30px;
+  background: rgba(30, 30, 30, 0.9);
   border: 1px solid #4af3eb;
-  border-radius: 10px;
-  max-width: 700px;
+  border-radius: 15px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
 }
 
 .saved-playlists h3 {
-  font-size: 3.5rem;
-  margin-bottom: 15px;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
   color: #4af3eb;
-}
-
-.saved-titled {
-  font-size: 2rem;
-  color: aliceblue;
+  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7);
 }
 
 .playlist-item {
-  background: #1c1c1c;
+  background: rgba(40, 40, 40, 0.9);
   border: 1px solid #4af3eb;
   padding: 15px;
-  border-radius: 8px;
-  margin: 10px 0;
+  border-radius: 12px;
+  margin-bottom: 15px;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
-  list-style: none;
+  transition: transform 0.2s ease, background 0.3s ease;
 }
 
 .playlist-item:hover {
-  transform: scale(1.03);
-  background: rgba(74, 243, 235, 0.1);
+  transform: scale(1.05);
+  background: rgba(74, 243, 235, 0.2);
 }
 
 .playlist-item.active {
-  background: rgba(74, 243, 235, 0.2);
+  background: rgba(74, 243, 235, 0.3);
   color: #4af3eb;
   font-weight: bold;
 }
@@ -187,17 +185,58 @@ button:hover {
 }
 
 .playlist-sound-item {
-  background: #1c1c1c;
+  background: rgba(30, 30, 30, 0.9);
   color: #4af3eb;
-  padding: 8px;
-  border-radius: 5px;
-  margin: 5px 0;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 8px 0;
   cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease;
-  list-style: none;
 }
 
 .playlist-sound-item:hover {
-  background: rgba(74, 243, 235, 0.2);
+  background: rgba(74, 243, 235, 0.3);
   color: #121212;
+}
+
+button:disabled {
+  background: rgba(74, 243, 235, 0.1);
+  color: rgba(18, 18, 18, 0.5);
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .soundboard-title {
+    font-size: 2.8rem;
+  }
+
+  .play-sound-button,
+  .pause-sound-button,
+  .stop-sound-button,
+  .replay-sound-button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+
+  .sound-item {
+    padding: 12px;
+  }
+
+  .playlist-item {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .soundboard-title {
+    font-size: 2.4rem;
+  }
+
+  .sound-item {
+    padding: 10px;
+  }
+
+  .playlist-input {
+    width: 90%;
+  }
 }
