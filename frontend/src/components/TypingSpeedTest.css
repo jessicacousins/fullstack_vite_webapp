@@ -1,0 +1,131 @@
+.typing-test-container {
+  background-color: #1e1e1e;
+  color: #d3d3d3;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.7);
+  max-width: 700px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.typing-test-title {
+  font-size: 3rem;
+  color: #4af3eb;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 20px #4af3eb;
+  margin-bottom: 20px;
+}
+
+.instructions {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #9ef3ef;
+}
+
+.phrase-display {
+  font-size: 1.8rem;
+  color: #ffffff;
+  margin: 20px 0;
+  letter-spacing: 1.5px;
+}
+
+.countdown {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #4caf50;
+}
+
+.user-input {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: 2px solid #4af3eb;
+  background-color: #2a2a2a;
+  color: #d3d3d3;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+.result-message {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.result-message.success {
+  color: #4caf50;
+}
+
+.result-message.fail {
+  color: #e0245e;
+}
+
+.score {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: #ffd700;
+}
+
+.start-button {
+  background-color: #4af3eb;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  color: #121212;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 20px;
+  box-shadow: 0px 5px 15px rgba(74, 243, 235, 0.3);
+}
+
+.start-button:hover {
+  background-color: #3bc9c0;
+  transform: scale(1.05);
+}
+
+.start-button:disabled {
+  background-color: rgba(74, 243, 235, 0.2);
+  color: rgba(18, 18, 18, 0.5);
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .typing-test-container {
+    padding: 20px;
+  }
+
+  .typing-test-title {
+    font-size: 2.5rem;
+  }
+
+  .phrase-display {
+    font-size: 1.5rem;
+  }
+
+  .start-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .typing-test-title {
+    font-size: 2rem;
+  }
+
+  .phrase-display {
+    font-size: 1.2rem;
+  }
+
+  .user-input {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .start-button {
+    padding: 8px 15px;
+  }
+}

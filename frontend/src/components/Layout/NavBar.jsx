@@ -118,6 +118,11 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                 </NavLink>
               </li>
               <li>
+                <NavLink to="/typing-speed-test" onClick={closeMobileMenu}>
+                  Typing Speed Test
+                </NavLink>
+              </li>
+              <li>
                 <NavLink to="/passwordgenerator" onClick={closeMobileMenu}>
                   Password Generator
                 </NavLink>
