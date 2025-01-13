@@ -497,6 +497,7 @@ This web application focuses on:
 - npm install react-loading
 - npm install moment
 - npm install react-color
+- npm install @tensorflow-models/sketch-rnn
 
 ## Privacy Policy and Data Collection
 

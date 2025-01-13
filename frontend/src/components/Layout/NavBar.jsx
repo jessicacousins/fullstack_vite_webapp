@@ -123,6 +123,12 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                 </NavLink>
               </li>
               <li>
+                <NavLink to="/doodle-classifier" onClick={closeMobileMenu}>
+                  Doodle Classifier
+                </NavLink>
+              </li>
+
+              <li>
                 <NavLink to="/passwordgenerator" onClick={closeMobileMenu}>
                   Password Generator
                 </NavLink>

@@ -54,6 +54,7 @@ import PayrollAdmin from "./components/PayrollAdmin";
 import SelfieCamera from "./components/SelfieCamera";
 import TicTacToeGame from "./components/TicTacToeGame";
 import TypingSpeedTest from "./components/TypingSpeedTest";
+import DoodleClassifier from "./components/DoodleClassifier";
 
 import "./App.css";
 
@@ -179,6 +180,7 @@ function App() {
         <Route path="/selfie-camera" element={<SelfieCamera />} />
         <Route path="/tic-tac-toe" element={<TicTacToeGame />} />
         <Route path="/typing-speed-test" element={<TypingSpeedTest />} />
+        <Route path="/doodle-classifier" element={<DoodleClassifier />} />
       </Routes>
       <Chatbot />
     </AuthProvider>
