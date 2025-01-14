@@ -148,6 +148,11 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                   Color Picker
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/reaction-speed-test" onClick={closeMobileMenu}>
+                  Reaction Speed Test
+                </NavLink>
+              </li>
             </ul>
           </li>
 
