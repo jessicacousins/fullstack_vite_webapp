@@ -1,0 +1,113 @@
+.flashcard-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #1e1e1e;
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  margin-top: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: #4af3eb;
+  margin-bottom: 20px;
+}
+
+.deck-creation {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.deck-creation input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #4af3eb;
+  background-color: #333;
+  color: white;
+  width: 60%;
+}
+
+.deck-creation button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4af3eb;
+  color: #121212;
+  cursor: pointer;
+}
+
+.deck-creation button:hover {
+  background-color: #3bc9c0;
+}
+
+.deck-list {
+  margin-top: 20px;
+}
+
+.deck-card {
+  padding: 15px;
+  border: 1px solid #4af3eb;
+  background-color: #2a2a2a;
+  margin: 10px 0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.deck-card h4 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.flashcard-review {
+  margin-top: 20px;
+}
+
+.flashcard {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.card-content {
+  font-size: 1.8rem;
+  color: #fff;
+  padding: 20px;
+}
+
+.card-content p {
+  color: #4af3eb;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 10px 5px;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #4af3eb;
+  background-color: #121212;
+  color: white;
+  margin-bottom: 10px;
+}
+
+textarea::placeholder {
+  color: #bbbbbb;
+}

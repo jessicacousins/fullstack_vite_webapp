@@ -158,6 +158,11 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                   Reaction Speed Test
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/flashcard-study-game" onClick={closeMobileMenu}>
+                  Flashcard Study Game
+                </NavLink>
+              </li>
             </ul>
           </li>
 
