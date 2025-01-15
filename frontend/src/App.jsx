@@ -56,6 +56,7 @@ import TicTacToeGame from "./components/TicTacToeGame";
 import TypingSpeedTest from "./components/TypingSpeedTest";
 import DoodleClassifier from "./components/DoodleClassifier";
 import ReactionSpeedTest from "./components/ReactionSpeedTest";
+import PixelArtMaker from "./components/PixelArtMaker";
 
 import "./App.css";
 
@@ -183,6 +184,7 @@ function App() {
         <Route path="/typing-speed-test" element={<TypingSpeedTest />} />
         <Route path="/doodle-classifier" element={<DoodleClassifier />} />
         <Route path="/reaction-speed-test" element={<ReactionSpeedTest />} />
+        <Route path="/pixel-art-maker" element={<PixelArtMaker />} />
       </Routes>
       <Chatbot />
     </AuthProvider>

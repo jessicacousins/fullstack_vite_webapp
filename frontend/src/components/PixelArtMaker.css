@@ -1,0 +1,89 @@
+.pixel-art-container {
+  text-align: center;
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #1e1e1e;
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  margin-top: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #4af3eb;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.color-picker,
+.grid-size-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+input[type="color"] {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+}
+
+select {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #4af3eb;
+  background-color: #121212;
+  color: white;
+}
+
+.clear-button {
+  background-color: #d32f2f;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.clear-button:hover {
+  background-color: #ff4f4f;
+}
+
+.pixel-grid {
+  display: grid;
+  gap: 2px;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.pixel-cell {
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: #fff;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.pixel-cell:hover {
+  opacity: 0.8;
+}

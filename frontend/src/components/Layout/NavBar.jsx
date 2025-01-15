@@ -105,6 +105,11 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                   Financial Admin
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/pixel-art-maker" onClick={closeMobileMenu}>
+                  Pixel Art Maker
+                </NavLink>
+              </li>
             </ul>
           </li>
 
