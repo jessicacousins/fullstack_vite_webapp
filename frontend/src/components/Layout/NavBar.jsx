@@ -163,6 +163,11 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                   Flashcard Study Game
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/resume-builder" onClick={closeMobileMenu}>
+                  Resume Builder
+                </NavLink>
+              </li>
             </ul>
           </li>
 
