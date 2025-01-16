@@ -498,6 +498,7 @@ This web application focuses on:
 - npm install moment
 - npm install react-color
 - npm install @tensorflow-models/sketch-rnn
+- npm install react-to-print
 
 ## Privacy Policy and Data Collection
 

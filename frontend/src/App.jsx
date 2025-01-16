@@ -58,6 +58,7 @@ import DoodleClassifier from "./components/DoodleClassifier";
 import ReactionSpeedTest from "./components/ReactionSpeedTest";
 import PixelArtMaker from "./components/PixelArtMaker";
 import FlashcardStudyGame from "./components/FlashcardStudyGame";
+import ResumeBuilder from "./components/ResumeBuilder";
 
 import "./App.css";
 
@@ -187,6 +188,7 @@ function App() {
         <Route path="/reaction-speed-test" element={<ReactionSpeedTest />} />
         <Route path="/pixel-art-maker" element={<PixelArtMaker />} />
         <Route path="/flashcard-study-game" element={<FlashcardStudyGame />} />
+        <Route path="/resume-builder" element={<ResumeBuilder />} />
       </Routes>
       <Chatbot />
     </AuthProvider>
