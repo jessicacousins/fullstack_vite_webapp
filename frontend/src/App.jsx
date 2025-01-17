@@ -59,6 +59,7 @@ import ReactionSpeedTest from "./components/ReactionSpeedTest";
 import PixelArtMaker from "./components/PixelArtMaker";
 import FlashcardStudyGame from "./components/FlashcardStudyGame";
 import ResumeBuilder from "./components/ResumeBuilder";
+import TimeZoneConverter from "./components/TimeZoneConverter";
 
 import "./App.css";
 
@@ -189,6 +190,7 @@ function App() {
         <Route path="/pixel-art-maker" element={<PixelArtMaker />} />
         <Route path="/flashcard-study-game" element={<FlashcardStudyGame />} />
         <Route path="/resume-builder" element={<ResumeBuilder />} />
+        <Route path="/time-zone-converter" element={<TimeZoneConverter />} />
       </Routes>
       <Chatbot />
     </AuthProvider>

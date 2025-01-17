@@ -1,0 +1,64 @@
+.time-zone-converter {
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #333;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #4af3eb;
+  margin-bottom: 20px;
+}
+
+.converter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.field label {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.field select,
+.field input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.field select:focus,
+.field input:focus {
+  border-color: #0078d4;
+  box-shadow: 0 0 5px rgba(0, 120, 212, 0.5);
+}
+
+.result {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #4af3eb;
+}
+
+.result strong {
+  color: #4af3eb;
+}

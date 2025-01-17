@@ -168,6 +168,11 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                   Resume Builder
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/time-zone-converter" onClick={closeMobileMenu}>
+                  Time Zone Converter
+                </NavLink>
+              </li>
             </ul>
           </li>
 
