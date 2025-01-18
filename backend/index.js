@@ -11,6 +11,7 @@ const timeEntryRoutes = require("./routes/timeEntryRoutes");
 const roleRoutes = require("./routes/roles");
 const selfieRoutes = require("./routes/selfieRoutes");
 const tictactoeRoutes = require("./routes/tictactoeRoutes");
+const pollRoutes = require("./routes/pollRoutes");
 
 // ! Billing system
 const customerRoutes = require("./routes/customerRoutes");
@@ -75,11 +76,14 @@ app.use("/api/timecards", timeEntryRoutes);
 
 app.use("/api/soundboard", soundboardRoutes);
 
-// ! selfie  routes
+//  selfie  routes
 app.use("/api/selfies", selfieRoutes);
 
-// ! tic tac toe route
+//  tic tac toe route
 app.use("/api/tictactoe", tictactoeRoutes);
+
+// ! poll
+app.use("/api/polls", pollRoutes);
 
 const PORT = process.env.PORT || 5000;
 

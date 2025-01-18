@@ -60,6 +60,7 @@ import PixelArtMaker from "./components/PixelArtMaker";
 import FlashcardStudyGame from "./components/FlashcardStudyGame";
 import ResumeBuilder from "./components/ResumeBuilder";
 import TimeZoneConverter from "./components/TimeZoneConverter";
+import PollCreator from "./components/PollCreator";
 
 import "./App.css";
 
@@ -191,6 +192,7 @@ function App() {
         <Route path="/flashcard-study-game" element={<FlashcardStudyGame />} />
         <Route path="/resume-builder" element={<ResumeBuilder />} />
         <Route path="/time-zone-converter" element={<TimeZoneConverter />} />
+        <Route path="/poll-creator" element={<PollCreator />} />
       </Routes>
       <Chatbot />
     </AuthProvider>

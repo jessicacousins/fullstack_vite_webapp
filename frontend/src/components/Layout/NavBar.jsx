@@ -173,6 +173,11 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                   Time Zone Converter
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/poll-creator" onClick={closeMobileMenu}>
+                  Poll Creator
+                </NavLink>
+              </li>
             </ul>
           </li>
 
