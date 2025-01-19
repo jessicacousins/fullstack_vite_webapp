@@ -62,6 +62,7 @@ import ResumeBuilder from "./components/ResumeBuilder";
 import TimeZoneConverter from "./components/TimeZoneConverter";
 import PollCreator from "./components/PollCreator";
 import ZenBreathing from "./components/ZenBreathing";
+import MedTracking from "./components/MedTracking";
 
 import "./App.css";
 
@@ -195,6 +196,7 @@ function App() {
         <Route path="/time-zone-converter" element={<TimeZoneConverter />} />
         <Route path="/poll-creator" element={<PollCreator />} />
         <Route path="/zen-breathing" element={<ZenBreathing />} />
+        <Route path="/med-tracking" element={<MedTracking />} />
       </Routes>
       <Chatbot />
     </AuthProvider>

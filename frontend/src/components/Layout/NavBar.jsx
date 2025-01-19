@@ -115,6 +115,11 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                   Zen Breathing
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/med-tracking" onClick={closeMobileMenu}>
+                  Med Tracking
+                </NavLink>
+              </li>
             </ul>
           </li>
 

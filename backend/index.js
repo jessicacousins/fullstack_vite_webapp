@@ -12,6 +12,7 @@ const roleRoutes = require("./routes/roles");
 const selfieRoutes = require("./routes/selfieRoutes");
 const tictactoeRoutes = require("./routes/tictactoeRoutes");
 const pollRoutes = require("./routes/pollRoutes");
+const medicationRoutes = require("./routes/medicationRoutes");
 
 // ! Billing system
 const customerRoutes = require("./routes/customerRoutes");
@@ -84,6 +85,8 @@ app.use("/api/tictactoe", tictactoeRoutes);
 
 // ! poll
 app.use("/api/polls", pollRoutes);
+
+app.use("/api/medications", medicationRoutes);
 
 const PORT = process.env.PORT || 5000;
 
