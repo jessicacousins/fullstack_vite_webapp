@@ -110,6 +110,11 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                   Pixel Art Maker
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/zen-breathing" onClick={closeMobileMenu}>
+                  Zen Breathing
+                </NavLink>
+              </li>
             </ul>
           </li>
 

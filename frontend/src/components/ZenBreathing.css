@@ -1,0 +1,91 @@
+.zen-breathing-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.zen-breathing-container h2 {
+  font-size: 24px;
+  color: #4af3eb;
+}
+
+.zen-breathing-container p {
+  font-size: 16px;
+  color: #fff;
+}
+
+.breathing-display {
+  margin: 20px 0;
+  margin-top: 3rem;
+}
+
+.breathing-circle {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: #4af3eb;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.breathing-circle.inhale {
+  animation-name: inhale-animation;
+  animation-duration: 4s;
+}
+
+.breathing-circle.hold {
+  animation-name: hold-animation;
+  animation-duration: 7s;
+}
+
+.breathing-circle.exhale {
+  animation-name: exhale-animation;
+  animation-duration: 8s;
+}
+
+.breathing-timer {
+  font-size: 1rem;
+  margin-top: 10px;
+  color: #333;
+}
+
+.instruction p {
+  font-size: 1rem;
+  color: #faf4f4;
+  margin: 5px 0;
+}
+
+/* inhale (circle expands) */
+@keyframes inhale-animation {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
+
+/* hold (circle stays static) */
+@keyframes hold-animation {
+  0% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
+
+/* exhale (circle shrinks) */
+@keyframes exhale-animation {
+  0% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

@@ -61,6 +61,7 @@ import FlashcardStudyGame from "./components/FlashcardStudyGame";
 import ResumeBuilder from "./components/ResumeBuilder";
 import TimeZoneConverter from "./components/TimeZoneConverter";
 import PollCreator from "./components/PollCreator";
+import ZenBreathing from "./components/ZenBreathing";
 
 import "./App.css";
 
@@ -193,6 +194,7 @@ function App() {
         <Route path="/resume-builder" element={<ResumeBuilder />} />
         <Route path="/time-zone-converter" element={<TimeZoneConverter />} />
         <Route path="/poll-creator" element={<PollCreator />} />
+        <Route path="/zen-breathing" element={<ZenBreathing />} />
       </Routes>
       <Chatbot />
     </AuthProvider>
