@@ -16,6 +16,8 @@ const MedTracking = () => {
     acknowledgedByName: "",
   });
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
+  const [selectedMonth, setSelectedMonth] = useState(new Date());
+  const [calendarData, setCalendarData] = useState([]);
   const [agreement, setAgreement] = useState(false);
 
   useEffect(() => {
@@ -23,6 +25,10 @@ const MedTracking = () => {
     const interval = setInterval(() => setCurrentDateTime(new Date()), 1000);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    generateCalendar();
+  }, [selectedMonth, medications]);
 
   const fetchMedications = async () => {
     try {
@@ -80,9 +86,44 @@ const MedTracking = () => {
     }
   };
 
+  const generateCalendar = () => {
+    const daysInMonth = new Date(
+      selectedMonth.getFullYear(),
+      selectedMonth.getMonth() + 1,
+      0
+    ).getDate();
+
+    const calendar = Array.from({ length: daysInMonth }, (_, dayIndex) => ({
+      day: dayIndex + 1,
+      meds: medications.filter((med) => {
+        const medDate = new Date(med.submitTime);
+        return (
+          medDate.getMonth() === selectedMonth.getMonth() &&
+          medDate.getFullYear() === selectedMonth.getFullYear() &&
+          medDate.getDate() === dayIndex + 1
+        );
+      }),
+    }));
+
+    setCalendarData(calendar);
+  };
+
+  const handleMonthChange = (direction) => {
+    setSelectedMonth(
+      new Date(selectedMonth.setMonth(selectedMonth.getMonth() + direction))
+    );
+  };
+
   return (
     <div className="med-tracking-container">
       <h1>Medication Tracking System</h1>
+      <p className="map-directions">
+        <strong>Massachusetts MAP Directions:</strong> Ensure the "5 Rights" are
+        met for every medication administered: Right Person, Right Dose, Right
+        Route, Right Time, and Right Medication. Document accurately and report
+        any issues immediately to the supervisor.
+      </p>
+
       <p className="current-date-time">
         Current Date/Time: {currentDateTime.toLocaleString()}
       </p>
@@ -150,6 +191,36 @@ const MedTracking = () => {
         </div>
         <button type="submit">Add Medication</button>
       </form>
+
+      <div className="date-selector">
+        <button onClick={() => handleMonthChange(-1)}>Previous Month</button>
+        <span>
+          {selectedMonth.toLocaleDateString("en-US", {
+            month: "long",
+            year: "numeric",
+          })}
+        </span>
+        <button onClick={() => handleMonthChange(1)}>Next Month</button>
+      </div>
+
+      <div className="calendar-grid">
+        {calendarData.map((day) => (
+          <div key={day.day} className="calendar-day">
+            <h3>Day {day.day}</h3>
+            {day.meds.length > 0 ? (
+              day.meds.map((med, index) => (
+                <p key={index} className="med-entry">
+                  {med.name}: <span className="med-status">X</span>
+                </p>
+              ))
+            ) : (
+              <p className="med-entry">
+                No Medications: <span className="med-status">O</span>
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
 
       <div className="med-list">
         {medications.map((med, index) => (
