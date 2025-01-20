@@ -22,7 +22,16 @@ router.post(
   upload.fields([{ name: "labelImage" }, { name: "medOrder" }]),
   async (req, res) => {
     try {
-      const { name, dose, route, time, person } = req.body;
+      const {
+        name,
+        dose,
+        route,
+        time,
+        person,
+        submittedBy,
+        acknowledgedByName,
+        acknowledgedCheckbox,
+      } = req.body;
 
       const labelImagePath = req.files?.labelImage?.[0]?.path || null;
       const medOrderPath = req.files?.medOrder?.[0]?.path || null;
@@ -35,6 +44,13 @@ router.post(
         person,
         image: labelImagePath,
         orders: medOrderPath,
+        submittedBy,
+        submitTime: new Date(), //  submission time
+        acknowledgedBy: {
+          name: acknowledgedByName,
+          timestamp: new Date(), // acknowledgment timestamp
+        },
+        acknowledgedCheckbox: acknowledgedCheckbox === "true", // checkbox is tracked
       });
 
       await medication.save();
