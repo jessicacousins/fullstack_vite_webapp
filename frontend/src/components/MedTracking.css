@@ -172,3 +172,10 @@
   font-size: 14px;
   color: #e0e0e0;
 }
+
+.error-text {
+  color: #ff4d4d;
+  font-size: 12px;
+  margin-top: -8px;
+  margin-bottom: 10px;
+}

@@ -15,6 +15,7 @@ const MedTracking = () => {
     submittedBy: "",
     acknowledgedByName: "",
   });
+  const [errors, setErrors] = useState({});
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
   const [selectedMonth, setSelectedMonth] = useState(new Date());
   const [calendarData, setCalendarData] = useState([]);
@@ -42,6 +43,7 @@ const MedTracking = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewMed((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
   const handleFileChange = (e) => {
@@ -49,12 +51,29 @@ const MedTracking = () => {
     setNewMed((prev) => ({ ...prev, [name]: files[0] }));
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!newMed.name) newErrors.name = "Medication Name is required.";
+    if (!newMed.dose) newErrors.dose = "Dose is required.";
+    if (!newMed.route) newErrors.route = "Route is required.";
+    if (!newMed.time) newErrors.time = "Time is required.";
+    if (!newMed.person) newErrors.person = "Person is required.";
+    if (!newMed.submittedBy)
+      newErrors.submittedBy = "Your Username is required.";
+    if (!newMed.acknowledgedByName)
+      newErrors.acknowledgedByName = "Acknowledgment Name is required.";
+    if (!agreement)
+      newErrors.agreement = "You must agree and acknowledge to proceed.";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!agreement) {
-      alert("You must agree and sign to proceed.");
-      return;
-    }
+
+    if (!validateForm()) return;
 
     const formData = new FormData();
     Object.entries({ ...newMed, acknowledgedCheckbox: agreement }).forEach(
@@ -123,7 +142,6 @@ const MedTracking = () => {
         Route, Right Time, and Right Medication. Document accurately and report
         any issues immediately to the supervisor.
       </p>
-
       <p className="current-date-time">
         Current Date/Time: {currentDateTime.toLocaleString()}
       </p>
@@ -133,43 +151,45 @@ const MedTracking = () => {
           placeholder="Medication Name"
           value={newMed.name}
           onChange={handleInputChange}
-          required
         />
+        {errors.name && <p className="error-text">{errors.name}</p>}
         <input
           name="dose"
           placeholder="Dose"
           value={newMed.dose}
           onChange={handleInputChange}
-          required
         />
+        {errors.dose && <p className="error-text">{errors.dose}</p>}
         <input
           name="route"
           placeholder="Route"
           value={newMed.route}
           onChange={handleInputChange}
-          required
         />
+        {errors.route && <p className="error-text">{errors.route}</p>}
         <input
           name="time"
           placeholder="Time"
           value={newMed.time}
           onChange={handleInputChange}
-          required
         />
+        {errors.time && <p className="error-text">{errors.time}</p>}
         <input
           name="person"
           placeholder="Person"
           value={newMed.person}
           onChange={handleInputChange}
-          required
         />
+        {errors.person && <p className="error-text">{errors.person}</p>}
         <input
           name="submittedBy"
           placeholder="Your Username"
           value={newMed.submittedBy}
           onChange={handleInputChange}
-          required
         />
+        {errors.submittedBy && (
+          <p className="error-text">{errors.submittedBy}</p>
+        )}
         <input type="file" name="labelImage" onChange={handleFileChange} />
         <input type="file" name="medOrder" onChange={handleFileChange} />
         <div className="agreement-section">
@@ -181,27 +201,19 @@ const MedTracking = () => {
           <label>
             I agree and acknowledge this submission. Enter your name below:
           </label>
+          {errors.agreement && <p className="error-text">{errors.agreement}</p>}
           <input
             name="acknowledgedByName"
             placeholder="Your Full Name"
             value={newMed.acknowledgedByName}
             onChange={handleInputChange}
-            required
           />
+          {errors.acknowledgedByName && (
+            <p className="error-text">{errors.acknowledgedByName}</p>
+          )}
         </div>
         <button type="submit">Add Medication</button>
       </form>
-
-      <div className="date-selector">
-        <button onClick={() => handleMonthChange(-1)}>Previous Month</button>
-        <span>
-          {selectedMonth.toLocaleDateString("en-US", {
-            month: "long",
-            year: "numeric",
-          })}
-        </span>
-        <button onClick={() => handleMonthChange(1)}>Next Month</button>
-      </div>
 
       <div className="calendar-grid">
         {calendarData.map((day) => (
@@ -218,25 +230,6 @@ const MedTracking = () => {
                 No Medications: <span className="med-status">O</span>
               </p>
             )}
-          </div>
-        ))}
-      </div>
-
-      <div className="med-list">
-        {medications.map((med, index) => (
-          <div key={index} className="med-item">
-            <p>Name: {med.name}</p>
-            <p>Dose: {med.dose}</p>
-            <p>Route: {med.route}</p>
-            <p>Time: {med.time}</p>
-            <p>Person: {med.person}</p>
-            <p>Submitted By: {med.submittedBy}</p>
-            <p>Submit Time: {new Date(med.submitTime).toLocaleString()}</p>
-            <p>Acknowledged By: {med.acknowledgedBy.name}</p>
-            <p>
-              Acknowledgment Time:{" "}
-              {new Date(med.acknowledgedBy.timestamp).toLocaleString()}
-            </p>
           </div>
         ))}
       </div>
