@@ -31,6 +31,8 @@ router.post(
         submittedBy,
         acknowledgedByName,
         acknowledgedCheckbox,
+        comments,
+        refused,
       } = req.body;
 
       const labelImagePath = req.files?.labelImage?.[0]?.path || null;
@@ -51,6 +53,8 @@ router.post(
           timestamp: new Date(), // acknowledgment timestamp
         },
         acknowledgedCheckbox: acknowledgedCheckbox === "true", // checkbox is tracked
+        comments: comments || "",
+        refused: refused === "true",
       });
 
       await medication.save();

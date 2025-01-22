@@ -14,6 +14,8 @@ const MedTracking = () => {
     medOrder: null,
     submittedBy: "",
     acknowledgedByName: "",
+    comments: "",
+    refused: false,
   });
   const [errors, setErrors] = useState({});
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
@@ -65,6 +67,8 @@ const MedTracking = () => {
       newErrors.acknowledgedByName = "Acknowledgment Name is required.";
     if (!agreement)
       newErrors.agreement = "You must agree and acknowledge to proceed.";
+    if (!agreement)
+      newErrors.agreement = "You must agree and acknowledge to proceed.";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -97,6 +101,8 @@ const MedTracking = () => {
         medOrder: null,
         submittedBy: "",
         acknowledgedByName: "",
+        comments: "",
+        refused: false,
       });
       setAgreement(false);
     } catch (err) {
@@ -187,6 +193,24 @@ const MedTracking = () => {
           value={newMed.submittedBy}
           onChange={handleInputChange}
         />
+        <textarea
+          name="comments"
+          placeholder="Additional Comments"
+          value={newMed.comments}
+          onChange={handleInputChange}
+        ></textarea>
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              checked={newMed.refused}
+              onChange={(e) =>
+                setNewMed((prev) => ({ ...prev, refused: e.target.checked }))
+              }
+            />
+            Medication Refused
+          </label>
+        </div>
         {errors.submittedBy && (
           <p className="error-text">{errors.submittedBy}</p>
         )}
@@ -230,6 +254,56 @@ const MedTracking = () => {
                 No Medications: <span className="med-status">O</span>
               </p>
             )}
+          </div>
+        ))}
+      </div>
+      <div className="med-list">
+        <h2>Submitted Medications</h2>
+        {medications.map((med, index) => (
+          <div key={index} className="med-item">
+            <p>
+              <strong>Name:</strong> {med.name}
+            </p>
+            <p>
+              <strong>Dose:</strong> {med.dose}
+            </p>
+            <p>
+              <strong>Route:</strong> {med.route}
+            </p>
+            <p>
+              <strong>Time:</strong> {med.time}
+            </p>
+            <p>
+              <strong>Person:</strong> {med.person}
+            </p>
+            <p>
+              <strong>Submitted By:</strong> {med.submittedBy}
+            </p>
+            <p>
+              <strong>Submit Time:</strong>{" "}
+              {new Date(med.submitTime).toLocaleString()}
+            </p>
+            <p>
+              <strong>Acknowledged By:</strong>{" "}
+              {med.acknowledgedBy?.name || "N/A"}
+            </p>
+            <p>
+              <strong>Acknowledgment Time:</strong>{" "}
+              {med.acknowledgedBy?.timestamp
+                ? new Date(med.acknowledgedBy.timestamp).toLocaleString()
+                : "N/A"}
+            </p>
+            <p>
+              <strong>Comments:</strong> {med.comments || "None"}
+            </p>
+            <p>
+              <strong>Refused:</strong>{" "}
+              {med.refused ? (
+                <span style={{ color: "red" }}>Yes</span>
+              ) : (
+                <span style={{ color: "green" }}>No</span>
+              )}
+            </p>
           </div>
         ))}
       </div>

@@ -1,3 +1,5 @@
+const mongoose = require("mongoose");
+
 const MedicationSchema = new mongoose.Schema({
   name: { type: String, required: true },
   dose: { type: String, required: true },
@@ -14,6 +16,8 @@ const MedicationSchema = new mongoose.Schema({
     timestamp: { type: Date, default: Date.now }, // time  acknowledgment happened
   },
   acknowledgedCheckbox: { type: Boolean, required: true }, // checked the agreement box
+  comments: { type: String }, // optional comments
+  refused: { type: Boolean, default: false }, // if medication was refused
 });
 
 module.exports = mongoose.model("Medication", MedicationSchema);
