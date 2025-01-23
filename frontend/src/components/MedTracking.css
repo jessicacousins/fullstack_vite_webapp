@@ -41,7 +41,7 @@
 
 .med-form input:focus {
   outline: none;
-  border-color: #4caf50;
+  border-color: #cff4f2;
   box-shadow: 0 0 5px #4caf50;
 }
 
