@@ -18,6 +18,11 @@ const MedicationSchema = new mongoose.Schema({
   acknowledgedCheckbox: { type: Boolean, required: true }, // checked the agreement box
   comments: { type: String }, // optional comments
   refused: { type: Boolean, default: false }, // if medication was refused
+  missedDoseReason: { type: String, default: "" }, // reason for missed dose
+  supervisorReview: {
+    reviewed: { type: Boolean, default: false }, // reviewed by supervisor
+    comments: { type: String, default: "" }, // supervisor's comments
+  },
 });
 
 module.exports = mongoose.model("Medication", MedicationSchema);

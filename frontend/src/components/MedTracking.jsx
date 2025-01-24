@@ -211,6 +211,35 @@ const MedTracking = () => {
             Medication Refused
           </label>
         </div>
+
+        <textarea
+          name="missedDoseReason"
+          placeholder="Reason for missed dose (if applicable)"
+          value={newMed.missedDoseReason}
+          onChange={handleInputChange}
+        ></textarea>
+
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              checked={newMed.supervisorReviewed}
+              onChange={(e) =>
+                setNewMed((prev) => ({
+                  ...prev,
+                  supervisorReviewed: e.target.checked,
+                }))
+              }
+            />
+            Supervisor Reviewed
+          </label>
+          <textarea
+            name="supervisorComments"
+            placeholder="Supervisor Comments"
+            value={newMed.supervisorComments}
+            onChange={handleInputChange}
+          ></textarea>
+        </div>
         {errors.submittedBy && (
           <p className="error-text">{errors.submittedBy}</p>
         )}
@@ -303,6 +332,14 @@ const MedTracking = () => {
               ) : (
                 <span style={{ color: "green" }}>No</span>
               )}
+            </p>
+            <p>
+              <strong>Supervisor Reviewed:</strong>{" "}
+              {med.supervisorReview.reviewed ? "Yes" : "No"}
+            </p>
+            <p>
+              <strong>Supervisor Comments:</strong>{" "}
+              {med.supervisorReview.comments || "None"}
             </p>
           </div>
         ))}

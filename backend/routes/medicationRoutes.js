@@ -33,6 +33,9 @@ router.post(
         acknowledgedCheckbox,
         comments,
         refused,
+        missedDoseReason, 
+        supervisorReviewed,
+        supervisorComments,
       } = req.body;
 
       const labelImagePath = req.files?.labelImage?.[0]?.path || null;
@@ -55,6 +58,11 @@ router.post(
         acknowledgedCheckbox: acknowledgedCheckbox === "true", // checkbox is tracked
         comments: comments || "",
         refused: refused === "true",
+        missedDoseReason: missedDoseReason || "",
+        supervisorReview: {
+          reviewed: supervisorReviewed === "true",
+          comments: supervisorComments || "",
+        },
       });
 
       await medication.save();

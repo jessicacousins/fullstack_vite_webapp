@@ -121,8 +121,10 @@
   background-color: #1e1e1e;
   padding: 10px;
   border-radius: 4px;
-  color: #4af3eb;
+  color: #ffffff;
   font-size: 14px;
+  text-align: center;
+  font-size: 1.2rem;
 }
 
 .calendar-grid {
