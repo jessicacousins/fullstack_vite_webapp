@@ -1,0 +1,101 @@
+.calendar-container {
+  max-width: 900px;
+  margin: 20px auto;
+  background: #1e1e1e;
+  color: #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.calendar-header h2 {
+  color: #4af3eb;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.calendar-day {
+  background: #2a2a2a;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.event {
+  margin: 5px 0;
+  background: #4af3eb;
+  color: #121212;
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-event-form {
+  margin-top: 20px;
+}
+
+.add-event-form input,
+.add-event-form textarea,
+.add-event-form button {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: #2a2a2a;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 6px;
+}
+
+.add-event-form button {
+  background: #4af3eb;
+  color: #121212;
+  font-weight: bold;
+}
+
+.event-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #2a2a2a;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  color: #e0e0e0;
+}
+
+.modal-content h3 {
+  color: #4af3eb;
+}
+
+.modal-content button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #4af3eb;
+  color: #121212;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

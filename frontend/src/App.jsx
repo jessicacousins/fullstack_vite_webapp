@@ -63,6 +63,7 @@ import TimeZoneConverter from "./components/TimeZoneConverter";
 import PollCreator from "./components/PollCreator";
 import ZenBreathing from "./components/ZenBreathing";
 import MedTracking from "./components/MedTracking";
+import MonthlyCalendar from "./components/MonthlyCalendar";
 
 import "./App.css";
 
@@ -197,6 +198,10 @@ function App() {
         <Route path="/poll-creator" element={<PollCreator />} />
         <Route path="/zen-breathing" element={<ZenBreathing />} />
         <Route path="/med-tracking" element={<MedTracking />} />
+        <Route
+          path="/healthcare-calendar"
+          element={<MonthlyCalendar isAdmin={true} />}
+        />
       </Routes>
       <Chatbot />
     </AuthProvider>
