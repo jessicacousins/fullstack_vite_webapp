@@ -11,7 +11,8 @@ const MonthlyCalendar = ({ isAdmin }) => {
     description: "",
     time: "",
   });
-  const [selectedEvent, setSelectedEvent] = useState(null); // For displaying the description
+  const [errors, setErrors] = useState({});
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   useEffect(() => {
     fetchEvents();
@@ -31,11 +32,25 @@ const MonthlyCalendar = ({ isAdmin }) => {
     }
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+    if (!newEvent.date) newErrors.date = "Date is required.";
+    if (!newEvent.title) newErrors.title = "Title is required.";
+    if (!newEvent.description)
+      newErrors.description = "Description is required.";
+    if (!newEvent.time) newErrors.time = "Time is required.";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleAddEvent = async () => {
+    if (!validateForm()) return;
+
     try {
       await axios.post("/api/calendar", newEvent);
       fetchEvents();
       setNewEvent({ date: "", title: "", description: "", time: "" });
+      setErrors({});
     } catch (err) {
       console.error("Error adding event:", err);
     }
@@ -123,6 +138,7 @@ const MonthlyCalendar = ({ isAdmin }) => {
             value={newEvent.date}
             onChange={(e) => setNewEvent({ ...newEvent, date: e.target.value })}
           />
+          {errors.date && <p className="error-text">{errors.date}</p>}
           <input
             type="text"
             placeholder="Title"
@@ -131,11 +147,13 @@ const MonthlyCalendar = ({ isAdmin }) => {
               setNewEvent({ ...newEvent, title: e.target.value })
             }
           />
+          {errors.title && <p className="error-text">{errors.title}</p>}
           <input
             type="time"
             value={newEvent.time}
             onChange={(e) => setNewEvent({ ...newEvent, time: e.target.value })}
           />
+          {errors.time && <p className="error-text">{errors.time}</p>}
           <textarea
             placeholder="Description"
             value={newEvent.description}
@@ -143,6 +161,9 @@ const MonthlyCalendar = ({ isAdmin }) => {
               setNewEvent({ ...newEvent, description: e.target.value })
             }
           ></textarea>
+          {errors.description && (
+            <p className="error-text">{errors.description}</p>
+          )}
           <button onClick={handleAddEvent}>Add Event</button>
         </div>
       )}

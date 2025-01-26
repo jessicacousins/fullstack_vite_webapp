@@ -99,3 +99,9 @@
   border-radius: 6px;
   cursor: pointer;
 }
+
+.error-text {
+  color: #ff4d4d;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
