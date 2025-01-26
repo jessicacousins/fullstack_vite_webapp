@@ -120,6 +120,11 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                   Med Tracking
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/healthcare-calendar" onClick={closeMobileMenu}>
+                  Healthcare Activity Calendar
+                </NavLink>
+              </li>
             </ul>
           </li>
 
