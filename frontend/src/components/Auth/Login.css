@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #15202b;
@@ -60,4 +60,101 @@ p.error {
 
 .google-button:hover {
   background-color: #e0e0e0;
+} */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #161718;
+  color: #ffffff;
+}
+
+.container-login {
+  width: 100%;
+  max-width: 400px;
+  background-color: #192734;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  margin-top: 100px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  background-color: #22303c;
+  color: #ffffff;
+  border: 1px solid #4af3eb;
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4af3eb;
+  box-shadow: 0 0 5px #4af3eb;
+}
+
+button {
+  background-color: #4af3eb;
+  color: #121212;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+button:hover {
+  background-color: #3ac1d4;
+  color: #ffffff;
+}
+
+p.error {
+  color: #e0245e;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.reset-password-button {
+  background-color: transparent;
+  color: #4af3eb;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 12px;
+  transition: color 0.2s ease;
+}
+
+.reset-password-button:hover {
+  color: #3ac1d4;
+}
+
+.google-button {
+  background-color: #ffffff;
+  color: #000000;
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.google-button:hover {
+  background-color: #e0e0e0;
+}
+
+.reset-message {
+  color: #4af3eb;
+  font-size: 14px;
+  margin-top: 16px;
 }
