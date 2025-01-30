@@ -1,29 +1,29 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #121212;
-  color: #ffffff;
-}
-
-.container-login {
+.login-form-container {
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
-  padding: 25px;
+  padding: 30px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
   margin: auto;
   margin-top: 80px;
   text-align: center;
-}
-
-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.login-form-container form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 16px;
 }
 
-input {
+.login-form-container input {
+  width: 100%;
+  max-width: 400px;
   background-color: #1e1e1e;
   color: #ffffff;
   border: 1px solid #4af3eb;
@@ -34,12 +34,14 @@ input {
   outline: none;
 }
 
-input:focus {
+.login-form-container input:focus {
   border-color: #4af3eb;
   box-shadow: 0 0 8px #4af3eb;
 }
 
-button {
+.login-form-container button {
+  width: 100%;
+  max-width: 400px;
   background-color: #4af3eb;
   color: #121212;
   padding: 14px;
@@ -51,18 +53,18 @@ button {
   transition: all 0.3s ease;
 }
 
-button:hover {
+.login-form-container button:hover {
   background: linear-gradient(145deg, #3ac1d4, #2aaac3);
   color: #ffffff;
 }
 
-p.error {
+.login-form-container p.error {
   color: #e0245e;
   font-size: 14px;
   margin-top: -10px;
 }
 
-.reset-password-button {
+.login-form-container .reset-password-button {
   background: transparent;
   color: #4af3eb;
   border: none;
@@ -72,11 +74,13 @@ p.error {
   margin-top: 16px;
 }
 
-.reset-password-button:hover {
+.login-form-container .reset-password-button:hover {
   color: #3ac1d4;
 }
 
-.google-button {
+.login-form-container .google-button {
+  width: 100%;
+  max-width: 400px;
   background: linear-gradient(145deg, #ffffff, #f0f0f0);
   color: #000000;
   padding: 14px;
@@ -86,11 +90,11 @@ p.error {
   transition: all 0.3s ease;
 }
 
-.google-button:hover {
+.login-form-container .google-button:hover {
   background: linear-gradient(145deg, #e0e0e0, #d8d8d8);
 }
 
-.reset-message {
+.login-form-container .reset-message {
   color: #4af3eb;
   font-size: 14px;
   margin-top: 16px;

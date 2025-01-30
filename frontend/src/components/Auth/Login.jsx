@@ -90,8 +90,8 @@ const Login = () => {
   };
 
   return (
-    <div className="container-login">
-      {/* <ColorfulParticleBackground /> */}
+    <div className="login-form-container">
+      {/* <ColorfulParticleBackground />  */}
       <form onSubmit={handleEmailLogin}>
         <input
           type="email"
@@ -108,12 +108,9 @@ const Login = () => {
         {error && <p className="error">{error}</p>}
         <button type="submit">Login with Email</button>
       </form>
-
       <button className="google-button" onClick={handleGoogleLogin}>
         Login with Google
       </button>
-
-      {/* Add a button for password reset */}
       <button
         type="button"
         className="reset-password-button"
@@ -121,7 +118,6 @@ const Login = () => {
       >
         Forgot Password?
       </button>
-
       {resetMessage && <p className="reset-message">{resetMessage}</p>}
     </div>
   );
