@@ -1,30 +1,30 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #121212;
-  color: #ffffff;
-}
-
-.container-signup {
+.signup-form-container {
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
-  padding: 25px;
+  padding: 30px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
   margin: auto;
   margin-top: 80px;
   text-align: center;
-}
-
-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.signup-form-container form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 16px;
 }
 
-input,
-textarea {
+.signup-form-container input,
+.signup-form-container textarea {
+  width: 100%;
+  max-width: 400px;
   background-color: #1e1e1e;
   color: #ffffff;
   border: 1px solid #4af3eb;
@@ -35,13 +35,15 @@ textarea {
   outline: none;
 }
 
-input:focus,
-textarea:focus {
+.signup-form-container input:focus,
+.signup-form-container textarea:focus {
   border-color: #4af3eb;
   box-shadow: 0 0 8px #4af3eb;
 }
 
-button {
+.signup-form-container button {
+  width: 100%;
+  max-width: 400px;
   background-color: #4af3eb;
   color: #121212;
   padding: 14px;
@@ -53,18 +55,14 @@ button {
   transition: all 0.3s ease;
 }
 
-button:hover {
+.signup-form-container button:hover {
   background: linear-gradient(145deg, #3ac1d4, #2aaac3);
   color: #ffffff;
 }
 
-p.error {
-  color: #e0245e;
-  font-size: 14px;
-  margin-top: -10px;
-}
-
-.google-button {
+.signup-form-container .google-button {
+  width: 100%;
+  max-width: 400px;
   background: linear-gradient(145deg, #ffffff, #f0f0f0);
   color: #000000;
   padding: 14px;
@@ -72,20 +70,26 @@ p.error {
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 16px;
 }
 
-.google-button:hover {
+.signup-form-container .google-button:hover {
   background: linear-gradient(145deg, #e0e0e0, #d8d8d8);
 }
 
-label span {
+.signup-form-container p.error {
+  color: #e0245e;
+  font-size: 14px;
+  margin-top: -10px;
+  text-align: center;
+}
+
+.signup-form-container label span {
   color: #4af3eb;
   cursor: pointer;
   text-decoration: underline;
 }
 
-textarea {
+.signup-form-container textarea {
   resize: none;
   height: 80px;
 }

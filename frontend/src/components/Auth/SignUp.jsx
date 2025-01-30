@@ -168,7 +168,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="container-signup">
+    <div className="signup-form-container">
       {/* <ColorfulParticleBackground /> */}
       <form onSubmit={handleEmailSignup}>
         <input
@@ -213,7 +213,6 @@ const SignUp = () => {
           onChange={(e) => setDob(e.target.value)}
           required
         />
-
         <div>
           <input
             type="checkbox"
@@ -221,18 +220,12 @@ const SignUp = () => {
             onChange={handlePolicyAcceptance}
           />
           <label>
-            I have read and agree to the{" "}
-            <span style={{ color: "blue", cursor: "pointer" }}>
-              Privacy Policy
-            </span>
+            I have read and agree to the <span>Privacy Policy</span>
           </label>
         </div>
-
         {error && <p className="error">{error}</p>}
         <button type="submit">Sign Up with Email</button>
       </form>
-
-      {/* Add Google Signup button */}
       <button className="google-button" onClick={handleGoogleSignup}>
         Sign Up with Google
       </button>
