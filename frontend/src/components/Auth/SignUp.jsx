@@ -16,7 +16,10 @@ const SignUp = () => {
   const [dob, setDob] = useState("");
   const [policyAccepted, setPolicyAccepted] = useState(false);
   const [error, setError] = useState(null);
+  const [welcomeVisible, setWelcomeVisible] = useState(true);
   const navigate = useNavigate();
+
+  const toggleWelcome = () => setWelcomeVisible(!welcomeVisible);
 
   const validateInputs = () => {
     if (!firstName || !lastName || !email || !password || !dob) {
@@ -169,6 +172,32 @@ const SignUp = () => {
 
   return (
     <div className="signup-form-container">
+      {/* Welcome Popout */}
+      {welcomeVisible && (
+        <div className="welcome-popout">
+          <div className="welcome-content">
+            <h1 className="welcome-header">Welcome to Our App!</h1>
+            <p className="welcome-description">
+              Explore a platform built to enhance your experience, combining
+              engaging games with advanced AI features.
+            </p>
+            <ul className="welcome-features">
+              <li>🎮 Play fun mini-games like Simon Says and Blackjack.</li>
+              <li>🛍️ Shop securely using Stripe payment integration.</li>
+              <li>
+                📖 Share and explore blogs enhanced by AI-generated content.
+              </li>
+              <li>🤖 Chat with an AI assistant for help and insights.</li>
+              <li>
+                💡 Organize your business with professional tools and resources
+              </li>
+            </ul>
+            <button className="welcome-close-btn" onClick={toggleWelcome}>
+              Close Welcome
+            </button>
+          </div>
+        </div>
+      )}
       {/* <ColorfulParticleBackground /> */}
       <form onSubmit={handleEmailSignup}>
         <input

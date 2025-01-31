@@ -1,3 +1,71 @@
+.welcome-popout {
+  position: fixed;
+  margin-top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(145deg, #383838, #4a4a4a);
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  width: 80%;
+  max-width: 500px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.welcome-header {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  color: #4af3eb;
+}
+
+.welcome-description {
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.welcome-features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.welcome-features li {
+  background: #1e1e1e;
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.welcome-close-btn {
+  background: #e0245e;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.welcome-close-btn:hover {
+  background: #c41c50;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .signup-form-container {
   width: 100%;
   max-width: 450px;
