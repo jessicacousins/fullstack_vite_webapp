@@ -3,7 +3,7 @@
   margin-top: 10%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: linear-gradient(145deg, #383838, #4a4a4a);
+  background: linear-gradient(145deg, #4af3eb, #4a4a4a);
   color: white;
   padding: 20px;
   border-radius: 12px;
@@ -17,7 +17,7 @@
 .welcome-header {
   font-size: 1.8rem;
   margin-bottom: 12px;
-  color: #4af3eb;
+  color: #000000;
 }
 
 .welcome-description {
