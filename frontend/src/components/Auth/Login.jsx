@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, googleProvider } from "../../../firebase";
 import {
@@ -14,7 +14,16 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [resetMessage, setResetMessage] = useState("");
+  const [welcomeBackVisible, setWelcomeBackVisible] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setWelcomeBackVisible(true);
+    const timer = setTimeout(() => {
+      setWelcomeBackVisible(false);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleEmailLogin = async (e) => {
     e.preventDefault();
@@ -92,6 +101,14 @@ const Login = () => {
   return (
     <div className="login-form-container">
       {/* <ColorfulParticleBackground />  */}
+
+      {welcomeBackVisible && (
+        <div className="welcome-back-message">
+          <h1>Welcome Back!</h1>
+          <p>Log in to continue creating and exploring!</p>
+        </div>
+      )}
+
       <form onSubmit={handleEmailLogin}>
         <input
           type="email"

@@ -1,3 +1,43 @@
+.welcome-back-message {
+  background: linear-gradient(145deg, #282828, #383838);
+  color: #4af3eb;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  margin-bottom: 20px;
+  animation: fadeInOut 5s ease-in-out;
+}
+
+.welcome-back-message h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.welcome-back-message p {
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
 .login-form-container {
   width: 100%;
   max-width: 450px;
