@@ -38,7 +38,7 @@ const NavBar = ({ onSearch, cartItemCount }) => {
     <>
       <nav className="navbar dark-mode" ref={navRef}>
         <div className="navbar-header">
-          <h1 className="navbar-brand">Logo Name</h1>
+          <h1 className="navbar-brand">JMC App</h1>
           <button className="hamburger-menu" onClick={toggleMobileMenu}>
             {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
