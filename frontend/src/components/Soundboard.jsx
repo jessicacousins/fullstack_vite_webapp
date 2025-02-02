@@ -394,7 +394,7 @@ function Soundboard() {
           </div>
         ))}
       </div> */}
-
+      <h2 className="addToPlaylistTitle">Add To Playlist</h2>
       <div className="soundboard-grid">
         {sounds.map((sound) => (
           <div className="sound-item" key={sound.id}>
@@ -418,6 +418,7 @@ function Soundboard() {
         ))}
       </div>
 
+      <h2 className="musicControlSolo">Solo Track Vibes</h2>
       <div className="soundboard-grid">
         {sounds.map((sound) => (
           <div className="sound-item" key={sound.id}>
