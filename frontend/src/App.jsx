@@ -64,6 +64,7 @@ import PollCreator from "./components/PollCreator";
 import ZenBreathing from "./components/ZenBreathing";
 import MedTracking from "./components/MedTracking";
 import MonthlyCalendar from "./components/MonthlyCalendar";
+import GradientGenerator from "./components/GradientGenerator";
 
 import "./App.css";
 
@@ -202,6 +203,7 @@ function App() {
           path="/healthcare-calendar"
           element={<MonthlyCalendar isAdmin={true} />}
         />
+        <Route path="/gradient-generator" element={<GradientGenerator />} />
       </Routes>
       <Chatbot />
     </AuthProvider>

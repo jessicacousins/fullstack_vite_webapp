@@ -1,0 +1,71 @@
+.gradient-generator {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #282c34;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.gradient-generator h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.preview {
+  height: 200px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.color-picker,
+.direction-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.color-picker input {
+  margin-top: 10px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.direction-picker select {
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.copy-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #282c34;
+  background: #4af3eb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.copy-button:hover {
+  background: #36c1b2;
+}
+
+.copy-button:active {
+  transform: scale(0.95);
+}
