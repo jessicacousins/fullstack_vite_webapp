@@ -125,6 +125,11 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                   Healthcare Activity Calendar
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/chatrooms" onClick={closeMobileMenu}>
+                  NPC Chatrooms
+                </NavLink>
+              </li>
             </ul>
           </li>
 
