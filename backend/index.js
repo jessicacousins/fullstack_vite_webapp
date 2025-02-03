@@ -18,10 +18,12 @@ const calendarRoutes = require("./routes/calendarRoutes");
 // ! Billing system
 const customerRoutes = require("./routes/customerRoutes");
 const invoiceRoutes = require("./routes/invoiceRoutes");
+const chatbotRoutes = require("./routes/chatbot");
+const newsRoutes = require("./routes/newsRoutes");
+
+const chatroomsRoutes = require("./routes/chatrooms");
 
 const app = express();
-
-const newsRoutes = require("./routes/newsRoutes");
 
 // connect to MongoDB here
 connectDB();
@@ -52,7 +54,6 @@ app.use("/api/blogs", require("./routes/blog"));
 app.use("/api", newsRoutes);
 
 // openAI chatbot routes
-const chatbotRoutes = require("./routes/chatbot");
 app.use("/api/chatbot", chatbotRoutes);
 
 // openAI learning more feature
@@ -91,6 +92,109 @@ app.use("/api/medications", medicationRoutes);
 
 app.use("/api/calendar", calendarRoutes);
 
-const PORT = process.env.PORT || 5000;
+// Set additional security headers
+app.use((req, res, next) => {
+  res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+  res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+  next();
+});
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.use("/api/chatrooms", chatroomsRoutes);
+
+// ------------------------------
+// !  Socket.io for Multiplayer Quest Game
+// ------------------------------
+const http = require("http");
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const ChatRoom = require("./models/ChatRoom");
+
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
+
+const OpenAI = require("openai");
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
+// NPC response (murder mystery theme)
+async function generateNPCResponse(prompt) {
+  try {
+    const response = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "user",
+          content: `You are a mysterious NPC in a murder mystery game. Respond in character to this message: "${prompt}". Your reply should include hints and intrigue that encourage players to work together to solve the mystery.`,
+        },
+      ],
+      max_tokens: 150,
+    });
+    return response.choices[0].message.content.trim();
+  } catch (error) {
+    console.error("Error generating NPC response:", error);
+    return "I am unable to respond at this moment.";
+  }
+}
+
+io.on("connection", (socket) => {
+  console.log("New client connected:", socket.id);
+
+  socket.on("join_room", async (room) => {
+    let chatRoom = await ChatRoom.findOne({ roomName: room });
+    if (!chatRoom) {
+      chatRoom = new ChatRoom({
+        roomName: room,
+        isPrivate: false,
+        members: [],
+      });
+      await chatRoom.save();
+
+      const welcomeMessage = `Welcome to "${room}"—a murder mystery awaits! Gather clues, question suspects, and work together to solve the crime.`;
+
+      io.to(room).emit("message", { user: "NPC", text: welcomeMessage });
+
+      chatRoom.messages.push({ sender: "NPC", content: welcomeMessage });
+      await chatRoom.save();
+    }
+    socket.join(room);
+    io.to(room).emit("message", {
+      user: "System",
+      text: `A new player (${socket.id}) has joined room: ${room}`,
+    });
+  });
+
+  socket.on("send_message", async (data) => {
+    io.to(data.room).emit("message", { user: data.user, text: data.message });
+    let chatRoom = await ChatRoom.findOne({ roomName: data.room });
+    if (chatRoom) {
+      chatRoom.messages.push({ sender: data.user, content: data.message });
+      await chatRoom.save();
+    }
+
+    if (data.message.startsWith("/npc")) {
+      const playerPrompt = data.message.replace("/npc", "").trim();
+      const npcReply = await generateNPCResponse(playerPrompt);
+      io.to(data.room).emit("message", { user: "NPC", text: npcReply });
+      if (chatRoom) {
+        chatRoom.messages.push({ sender: "NPC", content: npcReply });
+        await chatRoom.save();
+      }
+    }
+  });
+
+  socket.on("disconnect", () => {
+    console.log("Client disconnected:", socket.id);
+  });
+});
+// ------------------------------
+// !  End Socket.io
+// ------------------------------
+
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));

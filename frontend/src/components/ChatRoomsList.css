@@ -1,0 +1,33 @@
+.crl-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.crl-roomList {
+  list-style: none;
+  padding: 0;
+}
+
+.crl-roomItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+}
+
+.crl-button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  border: none;
+  color: rgb(20, 20, 20);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.crl-button:hover {
+  background-color: #0069d9;
+}

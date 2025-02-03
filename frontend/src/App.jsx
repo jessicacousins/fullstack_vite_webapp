@@ -65,6 +65,8 @@ import ZenBreathing from "./components/ZenBreathing";
 import MedTracking from "./components/MedTracking";
 import MonthlyCalendar from "./components/MonthlyCalendar";
 import GradientGenerator from "./components/GradientGenerator";
+import MultiplayerQuestGame from "./components/MultiplayerQuestGame";
+import ChatRoomsList from "./components/ChatRoomsList";
 
 import "./App.css";
 
@@ -204,6 +206,8 @@ function App() {
           element={<MonthlyCalendar isAdmin={true} />}
         />
         <Route path="/gradient-generator" element={<GradientGenerator />} />
+        <Route path="/multiplayer-quest" element={<MultiplayerQuestGame />} />
+        <Route path="/chatrooms" element={<ChatRoomsList />} />
       </Routes>
       <Chatbot />
     </AuthProvider>

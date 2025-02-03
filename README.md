@@ -480,6 +480,8 @@ This web application focuses on:
 - npm install multer
 - npm install @tensorflow/tfjs-node
 - npm install pdfkit moment
+- npm install socket.io
+
 
 ## Frontend
 
@@ -499,6 +501,8 @@ This web application focuses on:
 - npm install react-color
 - npm install @tensorflow-models/sketch-rnn
 - npm install react-to-print
+- npm install socket.io-client
+
 
 ## Privacy Policy and Data Collection
 
