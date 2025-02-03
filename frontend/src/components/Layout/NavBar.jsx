@@ -126,7 +126,7 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/chatrooms" onClick={closeMobileMenu}>
+                <NavLink to="/multiplayer-quest" onClick={closeMobileMenu}>
                   NPC Chatrooms
                 </NavLink>
               </li>
