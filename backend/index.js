@@ -142,7 +142,8 @@ async function generateNPCResponse(prompt) {
 io.on("connection", (socket) => {
   console.log("New client connected:", socket.id);
 
-  socket.on("join_room", async (room) => {
+  // Handle user joining a room
+  socket.on("join_room", async ({ room, username }) => {
     let chatRoom = await ChatRoom.findOne({ roomName: room });
     if (!chatRoom) {
       chatRoom = new ChatRoom({
@@ -151,36 +152,67 @@ io.on("connection", (socket) => {
         members: [],
       });
       await chatRoom.save();
+    }
 
-      const welcomeMessage = `Welcome to "${room}"—a murder mystery awaits! Gather clues, question suspects, and work together to solve the crime.`;
-
-      io.to(room).emit("message", { user: "NPC", text: welcomeMessage });
-
-      chatRoom.messages.push({ sender: "NPC", content: welcomeMessage });
+    if (!chatRoom.members.includes(username)) {
+      chatRoom.members.push(username);
       await chatRoom.save();
     }
+
     socket.join(room);
+
+    const activeUsers = Array.from(
+      io.sockets.adapter.rooms.get(room) || []
+    ).length;
+
     io.to(room).emit("message", {
       user: "System",
-      text: `A new player (${socket.id}) has joined room: ${room}`,
+      text: `${username} has joined the room.`,
     });
+    io.to(room).emit("update_active_users", activeUsers);
+
+    console.log(`User ${username} joined room: ${room}`);
   });
 
+  // Handle sending a message
   socket.on("send_message", async (data) => {
-    io.to(data.room).emit("message", { user: data.user, text: data.message });
-    let chatRoom = await ChatRoom.findOne({ roomName: data.room });
+    const { room, user, message } = data;
+
+    const chatRoom = await ChatRoom.findOne({ roomName: room });
     if (chatRoom) {
-      chatRoom.messages.push({ sender: data.user, content: data.message });
+      chatRoom.messages.push({ sender: user, content: message });
       await chatRoom.save();
     }
 
-    if (data.message.startsWith("/npc")) {
-      const playerPrompt = data.message.replace("/npc", "").trim();
-      const npcReply = await generateNPCResponse(playerPrompt);
-      io.to(data.room).emit("message", { user: "NPC", text: npcReply });
+    io.to(room).emit("message", { user, text: message });
+
+    // NPC response logic
+    if (message.startsWith("/npc")) {
+      const npcPrompt = message.replace("/npc", "").trim();
+      const npcReply = await generateNPCResponse(npcPrompt);
+      io.to(room).emit("message", { user: "NPC", text: npcReply });
+
       if (chatRoom) {
         chatRoom.messages.push({ sender: "NPC", content: npcReply });
         await chatRoom.save();
+      }
+    }
+  });
+
+  // Handle user leaving/disconnecting
+  socket.on("disconnecting", () => {
+    for (const room of socket.rooms) {
+      if (room !== socket.id) {
+        socket
+          .to(room)
+          .emit("message", {
+            user: "System",
+            text: "A user has left the room.",
+          });
+
+        const activeUsers =
+          Array.from(io.sockets.adapter.rooms.get(room) || []).length - 1;
+        io.to(room).emit("update_active_users", activeUsers);
       }
     }
   });
@@ -189,6 +221,7 @@ io.on("connection", (socket) => {
     console.log("Client disconnected:", socket.id);
   });
 });
+
 // ------------------------------
 // !  End Socket.io
 // ------------------------------

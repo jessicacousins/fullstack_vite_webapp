@@ -10,10 +10,11 @@ const MessageSchema = new mongoose.Schema({
 const ChatRoomSchema = new mongoose.Schema({
   roomName: { type: String, required: true },
   isPrivate: { type: Boolean, default: false },
-
   members: [{ type: String }],
   messages: [MessageSchema],
   createdAt: { type: Date, default: Date.now },
+  totalMessages: { type: Number, default: 0 },
+  npcInteractions: { type: Number, default: 0 },
 });
 
 module.exports = mongoose.model("ChatRoom", ChatRoomSchema);

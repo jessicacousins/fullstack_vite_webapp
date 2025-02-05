@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { io } from "socket.io-client";
 import {
   BrowserRouter as Router,
   Route,
@@ -70,12 +71,29 @@ import ChatRoomsList from "./components/ChatRoomsList";
 
 import "./App.css";
 
+const SOCKET_SERVER_URL =
+  import.meta.env.VITE_SOCKET_SERVER_URL || "http://localhost:5000";
+
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResultsFound, setSearchResultsFound] = useState(true);
   const [cartItems, setCartItems] = useState([]);
+  const [messages, setMessages] = useState([]);
+  const [socket, setSocket] = useState(null);
+
+  useEffect(() => {
+    const newSocket = io(SOCKET_SERVER_URL);
+    setSocket(newSocket);
+
+    newSocket.on("message", (data) => {
+      console.log("Live Message Received:", data);
+      setMessages((prevMessages) => [...prevMessages, data]);
+    });
+
+    return () => newSocket.disconnect();
+  }, []);
 
   const addToCart = (product) => {
     setCartItems((prevItems) => [...prevItems, { ...product, quantity: 1 }]);
@@ -206,7 +224,16 @@ function App() {
           element={<MonthlyCalendar isAdmin={true} />}
         />
         <Route path="/gradient-generator" element={<GradientGenerator />} />
-        <Route path="/multiplayer-quest" element={<MultiplayerQuestGame />} />
+        <Route
+          path="/multiplayer-quest"
+          element={
+            <MultiplayerQuestGame
+              socket={socket}
+              messages={messages}
+              setMessages={setMessages}
+            />
+          }
+        />
         <Route path="/chatrooms" element={<ChatRoomsList />} />
       </Routes>
       <Chatbot />
