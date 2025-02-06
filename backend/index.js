@@ -203,12 +203,10 @@ io.on("connection", (socket) => {
   socket.on("disconnecting", () => {
     for (const room of socket.rooms) {
       if (room !== socket.id) {
-        socket
-          .to(room)
-          .emit("message", {
-            user: "System",
-            text: "A user has left the room.",
-          });
+        socket.to(room).emit("message", {
+          user: "System",
+          text: "A user has left the room.",
+        });
 
         const activeUsers =
           Array.from(io.sockets.adapter.rooms.get(room) || []).length - 1;
