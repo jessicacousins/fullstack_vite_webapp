@@ -68,6 +68,7 @@ import MonthlyCalendar from "./components/MonthlyCalendar";
 import GradientGenerator from "./components/GradientGenerator";
 import MultiplayerQuestGame from "./components/MultiplayerQuestGame";
 import ChatRoomsList from "./components/ChatRoomsList";
+import Calculator from "./components/Calculator";
 
 import "./App.css";
 
@@ -235,6 +236,7 @@ function App() {
           }
         />
         <Route path="/chatrooms" element={<ChatRoomsList />} />
+        <Route path="/calculator" element={<Calculator />} />
       </Routes>
       <Chatbot />
     </AuthProvider>
