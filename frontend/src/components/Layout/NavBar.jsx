@@ -91,6 +91,40 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                 </NavLink>
               </li>
               <li>
+                <NavLink to="/pixel-art-maker" onClick={closeMobileMenu}>
+                  Pixel Art Maker
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/zen-breathing" onClick={closeMobileMenu}>
+                  Zen Breathing
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/med-tracking" onClick={closeMobileMenu}>
+                  Med Tracking
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/multiplayer-quest" onClick={closeMobileMenu}>
+                  NPC Chatrooms
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+
+          {/* Professional Tools */}
+
+          <li>
+            <span className="dropdown-title">Professional</span>
+            <ul className="dropdown">
+              <li>
+                <NavLink to="/resume-builder" onClick={closeMobileMenu}>
+                  Resume Builder
+                </NavLink>
+              </li>
+              <li>
                 <NavLink to="/customers" onClick={closeMobileMenu}>
                   Customers
                 </NavLink>
@@ -106,28 +140,18 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/pixel-art-maker" onClick={closeMobileMenu}>
-                  Pixel Art Maker
+                <NavLink to="/timecard" onClick={closeMobileMenu}>
+                  Timecard
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/zen-breathing" onClick={closeMobileMenu}>
-                  Zen Breathing
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/med-tracking" onClick={closeMobileMenu}>
-                  Med Tracking
+                <NavLink to="/admin-timecards" onClick={closeMobileMenu}>
+                  Admin Timecards
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/healthcare-calendar" onClick={closeMobileMenu}>
                   Healthcare Activity Calendar
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/multiplayer-quest" onClick={closeMobileMenu}>
-                  NPC Chatrooms
                 </NavLink>
               </li>
             </ul>
@@ -179,16 +203,6 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/flashcard-study-game" onClick={closeMobileMenu}>
-                  Flashcard Study Game
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/resume-builder" onClick={closeMobileMenu}>
-                  Resume Builder
-                </NavLink>
-              </li>
-              <li>
                 <NavLink to="/time-zone-converter" onClick={closeMobileMenu}>
                   Time Zone Converter
                 </NavLink>
@@ -211,18 +225,14 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                 </NavLink>
               </li>
               <li>
+                <NavLink to="/flashcard-study-game" onClick={closeMobileMenu}>
+                  Flashcard Study Game
+                </NavLink>
+              </li>
+
+              <li>
                 <NavLink to="/calculator" onClick={closeMobileMenu}>
                   Calculator
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/timecard" onClick={closeMobileMenu}>
-                  Timecard
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/admin-timecards" onClick={closeMobileMenu}>
-                  Admin Timecards
                 </NavLink>
               </li>
               <li>
