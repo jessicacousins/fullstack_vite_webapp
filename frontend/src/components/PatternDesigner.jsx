@@ -7,11 +7,10 @@ const PatternDesigner = () => {
   const [currentShape, setCurrentShape] = useState("circle");
   const [color, setColor] = useState("#ff0000");
   const [background, setBackground] = useState("#ffffff");
-  const [draggingShapeId, setDraggingShapeId] = useState(null); 
-  const canvasRef = useRef(); 
+  const [draggingShapeId, setDraggingShapeId] = useState(null);
+  const canvasRef = useRef();
   const contextRef = useRef(null);
 
- 
   React.useEffect(() => {
     const fetchShapes = async () => {
       try {
@@ -27,7 +26,6 @@ const PatternDesigner = () => {
 
     fetchShapes();
   }, []);
-
 
   React.useEffect(() => {
     if (canvasRef.current) {
@@ -58,7 +56,6 @@ const PatternDesigner = () => {
   const savePattern = async () => {
     const canvas = canvasRef.current;
 
-
     const context = contextRef.current;
     context.fillStyle = background;
     context.fillRect(0, 0, canvas.width, canvas.height);
@@ -87,7 +84,6 @@ const PatternDesigner = () => {
       }
     });
 
-    
     const dataUrl = canvas.toDataURL("image/png");
 
     try {
@@ -129,11 +125,11 @@ const PatternDesigner = () => {
           if (shape.id === draggingShapeId) {
             const updatedShape = {
               ...shape,
-              x: mouseX - shape.size / 2,
-              y: mouseY - shape.size / 2,
+              x: mouseX - shape.size / -2,
+              y: mouseY - shape.size / -40,
             };
 
-            updateShapePosition(updatedShape); 
+            updateShapePosition(updatedShape);
             return updatedShape;
           }
           return shape;
