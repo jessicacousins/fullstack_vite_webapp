@@ -24,11 +24,23 @@ label {
   border: 1px solid #ccc;
   margin: 0 auto;
   overflow: hidden;
+  cursor: grab;
+}
+
+.canvas-container:active {
+  cursor: grabbing;
 }
 
 .shape {
   position: absolute;
   border-radius: 50%;
+  cursor: grab;
+  user-select: none;
+  transition: transform 0.1s ease-in-out;
+}
+
+.shape:active {
+  cursor: grabbing;
 }
 
 .shape.square {
@@ -41,4 +53,5 @@ label {
   border-left: 25px solid transparent;
   border-right: 25px solid transparent;
   border-bottom: 50px solid currentColor;
+  background-color: transparent;
 }
