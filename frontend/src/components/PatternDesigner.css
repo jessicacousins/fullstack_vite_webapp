@@ -1,0 +1,44 @@
+.pattern-designer {
+  max-width: 700px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.canvas-container {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.shape.square {
+  border-radius: 0;
+}
+
+.shape.triangle {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid currentColor;
+}

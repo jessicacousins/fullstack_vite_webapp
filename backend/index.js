@@ -20,6 +20,7 @@ const customerRoutes = require("./routes/customerRoutes");
 const invoiceRoutes = require("./routes/invoiceRoutes");
 const chatbotRoutes = require("./routes/chatbot");
 const newsRoutes = require("./routes/newsRoutes");
+const patternRoutes = require("./routes/patternRoutes");
 
 const chatroomsRoutes = require("./routes/chatrooms");
 
@@ -100,6 +101,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/chatrooms", chatroomsRoutes);
+app.use("/api/patterns", patternRoutes);
 
 // ------------------------------
 // !  Socket.io for Multiplayer Quest Game

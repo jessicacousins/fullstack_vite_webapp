@@ -69,6 +69,7 @@ import GradientGenerator from "./components/GradientGenerator";
 import MultiplayerQuestGame from "./components/MultiplayerQuestGame";
 import ChatRoomsList from "./components/ChatRoomsList";
 import Calculator from "./components/Calculator";
+import PatternDesigner from "./components/PatternDesigner";
 
 import "./App.css";
 
@@ -237,6 +238,7 @@ function App() {
         />
         <Route path="/chatrooms" element={<ChatRoomsList />} />
         <Route path="/calculator" element={<Calculator />} />
+        <Route path="/pattern-designer" element={<PatternDesigner />} />
       </Routes>
       <Chatbot />
     </AuthProvider>
