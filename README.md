@@ -174,6 +174,21 @@ This project includes several advanced AI features powered by OpenAI, with prope
 - **Real-Time Suggestions and Interest Tracking**: The system provides real-time feedback on product categories and suggests similar items, enriching user experience with AI-driven recommendations. Additionally, viewed product data is logged in the backend, allowing tailored suggestions based on user interests.
 - **Learn More Details**: When users click on the "Learn More" button for a product, they receive a detailed, AI-generated post about the item, including relevant information and insights. This provides users with an enriched, informative view of the product they are currently exploring
 
+### AI-Powered Invoice Summaries
+
+- **AI-Generated Invoice Descriptions**: Uses OpenAI to generate professional invoice summaries for users who make purchases, helping them understand key transaction details in plain language.
+- **Personalized Financial Insights**: OpenAI automatically provides a breakdown of recent transactions, suggesting potential cost-saving measures based on purchase history.
+
+### AI-Powered Blog Enhancements
+
+- **AI-Generated Blog Post Summaries**: Users can auto-generate concise blog summaries for better engagement.
+- **AI-Based Formatting Assistance**: OpenAI improves blog readability by structuring paragraphs, headings, and suggesting alternative phrasing for clarity.
+
+### AI-Powered Product Search & Categorization
+
+- **AI-Powered Product Descriptions**: OpenAI dynamically generates detailed descriptions for store items, reducing manual input.
+- **AI Search Assistant**: Users can type natural-language queries (e.g., "Find me a waterproof jacket under $50"), and OpenAI enhances search relevance with **intelligent product matching**.
+
 ### Legal Attribution for OpenAI
 
 This project utilizes OpenAI services for AI-driven chatbot interactions and comment sentiment analysis. OpenAI’s API powers both of these features, and proper credit is given for their services in accordance with OpenAI’s usage guidelines. For more details on OpenAI’s terms, please refer to their [API Terms of Use](https://openai.com/policies/terms-of-use/).
@@ -191,6 +206,14 @@ TensorFlow is an open-source machine learning library developed by Google, enabl
 ### TensorFlow.js and MobileNet Integration
 
 Using TensorFlow.js, this project includes the MobileNet model for on-device image recognition. MobileNet is a lightweight, efficient neural network model designed for mobile and embedded applications, optimized to handle real-world images and general object classification. Integrated within the shopping cart, this feature allows users to identify categories of merchandise through direct interaction, enhancing the overall shopping experience with intelligent AI-driven insights.
+
+### TensorFlow.js Features
+
+- **Selfie Camera with AI Filters**: The app includes a **selfie camera** feature that applies fun filters in real-time using **TensorFlow.js** to collect data from the images. Users can take snapshots with dynamic effects applied through pre-trained AI models.
+- **Hand Gesture Recognition**: A new **hand gesture detection** feature allows users to interact with the application using recognized hand gestures, improving accessibility and engagement.
+- **Real-Time Object Detection**: TensorFlow.js has been integrated to support **real-time object detection**, allowing users to scan items using their device camera and receive instant categorization feedback.
+
+### Legal Attribution for TensorFlow.js and MobileNet
 
 ### Legal Attribution for TensorFlow.js and MobileNet
 
@@ -293,11 +316,28 @@ This web application includes interactive mini-games to enhance user engagement:
 - **Performance Tracking**: The number of turns taken and other statistics are recorded and stored in the backend.
 - **Personal Stats**: Users can view their personal best scores and game history.
 
-## Simon Says Game
+### Simon Says Game
 
 - **Play Simon Says**: Users can test their memory and reaction skills by following an increasingly complex sequence of colors.
 - **Progress Tracking:** The highest level reached and other statistics are recorded and stored in the backend.
 - **Personal Stats**: Users can view their Simon Says game statistics, including highest level achieved, games played, and game history.
+
+### SnapQuest
+
+- **Real-World Scavenger Hunt**: Users receive a challenge to find and take a photo of a specific object (e.g., "hat," "phone," "book").
+- **AI-Powered Image Recognition**: The app uses **TensorFlow.js MobileNet** to classify the submitted image and verify whether it matches the assigned challenge.
+- **Leaderboard System**: Scores are tracked, and a leaderboard displays the top players based on their highest SnapQuest scores.
+- **Time-Based Gameplay**: Users have 30 seconds per round to find the object and submit a photo.
+- **User Profile Integration**: Scores are linked to user accounts, and performance history is stored in the backend.
+
+### Tic-Tac-Toe
+
+- **Classic Tic-Tac-Toe**: Users play against an AI opponent.
+- **AI-Powered Opponent**: The AI dynamically chooses moves, creating a challenging experience.
+- **Real-Time Turn History**: The game keeps track of all moves and removes older marks over time if the game remains incomplete.
+- **Win Tracking & Statistics**: Games played, wins, and losses are stored and displayed on the user’s profile.
+- **Confetti Celebration**: A confetti effect appears when the player wins.
+- **Mobile & Desktop Compatibility**: Fully responsive gameplay on both mobile and desktop screens.
 
 _Note_: All user interactions with the games are tracked in the backend, and the data is stored securely in the MongoDB database. This includes:
 
@@ -438,6 +478,17 @@ This web application focuses on:
 19. **Product Recommendations**: Based on the products users views, the system provides AI-driven recommendations for similar items. This feature uses OpenAI to generate recommendations tailored to user preferences. Product views are logged in the backend, allowing the application to suggest relevant items based on users' browsing patterns.
 20. **Soundboard**: The backend stores user-created playlists, including the track information, user clicks, and playback history.
 21. **Achievement Tracking:**: Tracks user actions in blogs, games, and shopping. Includes APIs for fetching user achievements, adding new ones, and displaying progress.
+22. **SnapQuest Game**: A real-world scavenger hunt game where users receive a random challenge to find and take a photo of an object. The system uses **TensorFlow.js MobileNet** to classify the image and verify if it matches the challenge. Scores are tracked in the backend, and a leaderboard displays top players.
+
+23. **Tic-Tac-Toe Game**: A turn-based game where users play against an AI opponent. The AI dynamically chooses moves, and the game tracks turn history, ensuring an engaging experience. Wins, losses, and total games played are stored in the backend and displayed in the user’s profile.
+
+24. **Real-Time Turn History Removal** (Tic-Tac-Toe): If the game remains unfinished for a prolonged period, older moves disappear from the board over time to keep gameplay dynamic.
+
+25. **SnapQuest Leaderboard**: Tracks the highest scores of users who have successfully completed challenges. The leaderboard updates dynamically and ranks players based on their performance.
+
+26. **AI-Based Image Verification (SnapQuest)**: Uses **TensorFlow.js MobileNet** to analyze user-submitted images and determine if they match the assigned challenge object.
+
+27. **Expanded User Statistics for Games**: Users can now view their **detailed performance statistics** across all integrated games (SnapQuest, Tic-Tac-Toe, Blackjack, Memory Matching, and Simon Says). These statistics include highest scores, win/loss ratios, and leaderboard positions.
 
 ## Packages and Technologies Used
 
@@ -461,6 +512,11 @@ This web application focuses on:
 - **TensorFlow.js**: A JavaScript library that allows machine learning to be run directly in the browser. TensorFlow.js powers the machine learning capabilities for real-time image classification on the frontend.
 - **MobileNet Classifier**: A pre-trained model integrated with TensorFlow.js to classify merchandise images within the shopping component. When users click on an item, the MobileNet model predicts its category, providing immediate AI-driven insights into the type of product.
 - **Product Recommendations**: When users click the “Learn More” button on an item in the shopping cart, OpenAI generates personalized product recommendations based on the selected item. This feature provides real-time feedback on similar items and displays AI-generated insights about the product being viewed.
+- **@tensorflow-models/mobilenet**: Used for real-time image classification in the **SnapQuest Game**. This model allows the application to verify user-submitted images against a given challenge.
+- **Confetti Effect for Wins**: **React-Confetti** is used to display celebratory effects when users win in **Tic-Tac-Toe**.
+- **socket.io-client**: Added for potential **real-time communication** and **game updates**, enabling future multiplayer expansion.
+
+### Backend
 
 ### Backend
 
@@ -479,6 +535,7 @@ This web application focuses on:
 - **AI-Generated Content**: OpenAI’s GPT model is used to generate blog post content based on user prompts. The content is processed and delivered through the backend to the frontend blog editor.
 - **AI Moderation**: The backend integrates OpenAI’s moderation API to automatically flag inappropriate content in blog posts and comments. Flagged content, including the reason for flagging, is stored in MongoDB and displayed in the Admin Dashboard for moderator review.
 - **Product View Logging**: Each time a user views a product, relevant data (such as product ID, category, and timestamp) is logged in MongoDB. This stored view history helps generate personalized product recommendations and tracks user interests for tailored suggestions.
+- **Multer**: Used for handling image uploads in the **SnapQuest Game**, ensuring smooth and efficient storage.
 
 ## Features
 
