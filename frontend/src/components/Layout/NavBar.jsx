@@ -66,6 +66,11 @@ const NavBar = ({ onSearch, cartItemCount }) => {
             <span className="dropdown-title">Categories</span>
             <ul className="dropdown">
               <li>
+                <NavLink to="/us-history-facts" onClick={closeMobileMenu}>
+                  United States History Facts
+                </NavLink>
+              </li>
+              <li>
                 <NavLink to="/blog" onClick={closeMobileMenu}>
                   Blog
                 </NavLink>
