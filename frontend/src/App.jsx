@@ -70,6 +70,7 @@ import MultiplayerQuestGame from "./components/MultiplayerQuestGame";
 import ChatRoomsList from "./components/ChatRoomsList";
 import Calculator from "./components/Calculator";
 import PatternDesigner from "./components/PatternDesigner";
+import USHistoryFactsPage from "./components/USHistoryFactsPage";
 
 import "./App.css";
 
@@ -239,6 +240,7 @@ function App() {
         <Route path="/chatrooms" element={<ChatRoomsList />} />
         <Route path="/calculator" element={<Calculator />} />
         <Route path="/pattern-designer" element={<PatternDesigner />} />
+        <Route path="/us-history-facts" element={<USHistoryFactsPage />} />
       </Routes>
       <Chatbot />
     </AuthProvider>
