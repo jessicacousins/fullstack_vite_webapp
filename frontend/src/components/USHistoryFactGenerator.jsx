@@ -15,11 +15,21 @@ const USHistoryFactGenerator = () => {
         "http://localhost:5000/api/us-history-fact"
       );
       setFact(response.data.fact);
+      speakFact(response.data.fact);
     } catch (error) {
       console.error("Error fetching fact:", error);
       setFact("Oops! Something went wrong. Try again.");
     }
     setLoading(false);
+  };
+
+  const speakFact = (text) => {
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "en-US";
+    speech.rate = 1;
+    speech.pitch = 1;
+    speech.volume = 1;
+    window.speechSynthesis.speak(speech);
   };
 
   const copyToClipboard = () => {
@@ -36,6 +46,7 @@ const USHistoryFactGenerator = () => {
           {loading ? "⏳ Generating..." : "🎲 Generate Fact"}
         </button>
         <button onClick={copyToClipboard}>📋 Copy Fact</button>
+        <button onClick={() => speakFact(fact)}>🔊 Read Fact</button>
       </div>
     </div>
   );
