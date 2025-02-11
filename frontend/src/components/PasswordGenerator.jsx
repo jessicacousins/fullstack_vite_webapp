@@ -23,6 +23,15 @@ const PasswordGenerator = () => {
     setPassword(generatedPassword);
   };
 
+  const speakPassword = (text) => {
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "en-US";
+    speech.rate = 0.2;
+    speech.pitch = 1;
+    speech.volume = 1;
+    window.speechSynthesis.speak(speech);
+  };
+
   return (
     <div className="password-generator-container">
       <h2 className="password-generator-header">Password Generator Tool</h2>
@@ -69,6 +78,9 @@ const PasswordGenerator = () => {
       {password && (
         <div className="password-display">
           <strong>Generated Password:</strong> {password}
+          <button onClick={() => speakPassword(password)}>
+            🔊 Read Password
+          </button>
         </div>
       )}
     </div>
