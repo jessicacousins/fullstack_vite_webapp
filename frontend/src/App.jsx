@@ -71,6 +71,7 @@ import ChatRoomsList from "./components/ChatRoomsList";
 import Calculator from "./components/Calculator";
 import PatternDesigner from "./components/PatternDesigner";
 import USHistoryFactsPage from "./components/USHistoryFactsPage";
+import FoodRecipeGenerator from "./components/FoodRecipeGenerator";
 
 import "./App.css";
 
@@ -241,6 +242,7 @@ function App() {
         <Route path="/calculator" element={<Calculator />} />
         <Route path="/pattern-designer" element={<PatternDesigner />} />
         <Route path="/us-history-facts" element={<USHistoryFactsPage />} />
+        <Route path="/food-recipe" element={<FoodRecipeGenerator />} />
       </Routes>
       <Chatbot />
     </AuthProvider>
