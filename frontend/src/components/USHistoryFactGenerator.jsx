@@ -7,6 +7,7 @@ const USHistoryFactGenerator = () => {
     "Click the button to get a unique U.S. history fact!"
   );
   const [loading, setLoading] = useState(false);
+  const [speechInstance, setSpeechInstance] = useState(null);
 
   const generateFact = async () => {
     setLoading(true);
@@ -24,12 +25,23 @@ const USHistoryFactGenerator = () => {
   };
 
   const speakFact = (text) => {
+    stopSpeech();
+
     const speech = new SpeechSynthesisUtterance(text);
     speech.lang = "en-US";
     speech.rate = 1;
     speech.pitch = 1;
     speech.volume = 1;
+
+    setSpeechInstance(speech);
     window.speechSynthesis.speak(speech);
+  };
+
+  const stopSpeech = () => {
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+      setSpeechInstance(null);
+    }
   };
 
   const copyToClipboard = () => {
@@ -47,6 +59,7 @@ const USHistoryFactGenerator = () => {
         </button>
         <button onClick={copyToClipboard}>📋 Copy Fact</button>
         <button onClick={() => speakFact(fact)}>🔊 Read Fact</button>
+        <button onClick={stopSpeech}>🛑 Stop</button>
       </div>
     </div>
   );
