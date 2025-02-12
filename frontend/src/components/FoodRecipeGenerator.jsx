@@ -7,6 +7,7 @@ const FoodRecipeGenerator = () => {
     "Click the button to get a unique food recipe and educational insight!"
   );
   const [loading, setLoading] = useState(false);
+  const [speechInstance, setSpeechInstance] = useState(null);
 
   const generateRecipe = async () => {
     setLoading(true);
@@ -22,12 +23,23 @@ const FoodRecipeGenerator = () => {
   };
 
   const speakRecipe = (text) => {
+    stopSpeech();
+
     const speech = new SpeechSynthesisUtterance(text);
     speech.lang = "en-US";
     speech.rate = 0.9;
     speech.pitch = 1;
     speech.volume = 1;
+
+    setSpeechInstance(speech);
     window.speechSynthesis.speak(speech);
+  };
+
+  const stopSpeech = () => {
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+      setSpeechInstance(null);
+    }
   };
 
   const copyToClipboard = () => {
@@ -45,6 +57,7 @@ const FoodRecipeGenerator = () => {
         </button>
         <button onClick={copyToClipboard}>📋 Copy Recipe</button>
         <button onClick={() => speakRecipe(recipe)}>🔊 Read Recipe</button>
+        <button onClick={stopSpeech}>🛑 Stop</button>
       </div>
     </div>
   );
