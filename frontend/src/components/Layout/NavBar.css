@@ -58,7 +58,7 @@
 .navbar-list li a:hover,
 .navbar-list li a.active-link {
   color: #4af3eb;
-  border-bottom: 3px solid #4af3eb;
+  border-bottom: 3px solid #e0245e;
 }
 
 .navbar-list .dropdown-title {
