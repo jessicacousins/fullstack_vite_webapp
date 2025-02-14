@@ -72,6 +72,7 @@ import Calculator from "./components/Calculator";
 import PatternDesigner from "./components/PatternDesigner";
 import USHistoryFactsPage from "./components/USHistoryFactsPage";
 import FoodRecipeGenerator from "./components/FoodRecipeGenerator";
+import WorldCultureGenerator from "./components/WorldCultureGenerator";
 
 import "./App.css";
 
@@ -243,6 +244,7 @@ function App() {
         <Route path="/pattern-designer" element={<PatternDesigner />} />
         <Route path="/us-history-facts" element={<USHistoryFactsPage />} />
         <Route path="/food-recipe" element={<FoodRecipeGenerator />} />
+        <Route path="/world-culture" element={<WorldCultureGenerator />} />
       </Routes>
       <Chatbot />
     </AuthProvider>
