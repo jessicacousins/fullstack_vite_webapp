@@ -72,7 +72,12 @@ const NavBar = ({ onSearch, cartItemCount }) => {
               </li>
               <li>
                 <NavLink to="/food-recipe" onClick={closeMobileMenu}>
-                  United States History Facts
+                  USA Facts Generator
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/world-culture" onClick={closeMobileMenu}>
+                  World Culture Generator
                 </NavLink>
               </li>
               <li>
