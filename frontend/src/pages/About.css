@@ -53,7 +53,7 @@ body {
 }
 
 .news-title {
-  color: #4af3eb;
+  color: #e0245e;
   font-size: 3.5rem;
   letter-spacing: 3px;
   font-family: "Times New Roman", Times, serif;
@@ -65,6 +65,7 @@ body {
 }
 
 .trending-topics {
+  color: #e0245e;
   font-size: 1.6rem;
   margin-bottom: 1rem;
 }
