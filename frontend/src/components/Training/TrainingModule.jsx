@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import { useAuth } from "../../context/AuthContext";
 import "./TrainingModule.css";
 
 const TrainingModule = () => {
   const { trainingId } = useParams();
-  const { user } = useAuth();
   const [training, setTraining] = useState(null);
   const [sectionIndex, setSectionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
@@ -21,17 +19,7 @@ const TrainingModule = () => {
   if (!training) return <p>Loading...</p>;
 
   const handleAnswer = (answer) => {
-    const updatedAnswers = { ...answers, [sectionIndex]: answer };
-    setAnswers(updatedAnswers);
-
-    if (user) {
-      axios
-        .post(`/api/test-trainings/${trainingId}/progress`, {
-          userId: user.uid,
-          answers: updatedAnswers,
-        })
-        .catch((error) => console.error("Error saving progress:", error));
-    }
+    setAnswers({ ...answers, [sectionIndex]: answer });
   };
 
   return (
