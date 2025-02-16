@@ -140,6 +140,11 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                 </NavLink>
               </li>
               <li>
+                <NavLink to="/test-trainings" onClick={closeMobileMenu}>
+                  Trainings
+                </NavLink>
+              </li>
+              <li>
                 <NavLink to="/customers" onClick={closeMobileMenu}>
                   Customers
                 </NavLink>
