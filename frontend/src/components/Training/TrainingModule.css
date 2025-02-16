@@ -1,0 +1,36 @@
+.training-module {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+
+.question-box {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f4f4f4;
+  border-radius: 8px;
+}
+
+button {
+  margin: 5px;
+  padding: 10px;
+  background: #4caf50;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: #388e3c;
+}
+
+.final-test-button {
+  display: block;
+  margin-top: 20px;
+  padding: 10px;
+  background: #ff5722;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}

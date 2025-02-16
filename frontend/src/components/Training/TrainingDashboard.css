@@ -1,0 +1,28 @@
+.training-dashboard {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+
+.training-dashboard ul {
+  list-style: none;
+  padding: 0;
+}
+
+.training-dashboard li {
+  background: #4caf50;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.training-dashboard li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.training-dashboard li:hover {
+  background: #388e3c;
+}

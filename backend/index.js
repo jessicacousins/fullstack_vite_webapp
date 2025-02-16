@@ -26,6 +26,7 @@ const chatroomsRoutes = require("./routes/chatrooms");
 const usHistoryFactRoutes = require("./routes/usHistoryFactRoutes");
 const foodRecipeRoutes = require("./routes/foodRecipeRoutes");
 const worldCultureRoutes = require("./routes/worldCultureRoutes");
+const testTrainingRoutes = require("./routes/testTrainingRoutes");
 
 const app = express();
 
@@ -108,6 +109,8 @@ app.use("/api/patterns", patternRoutes);
 app.use("/api/us-history-fact", usHistoryFactRoutes);
 app.use("/api/food-recipe", foodRecipeRoutes);
 app.use("/api/world-culture", worldCultureRoutes);
+
+app.use("/api/test-trainings", testTrainingRoutes);
 
 // ------------------------------
 // !  Socket.io for Multiplayer Quest Game
