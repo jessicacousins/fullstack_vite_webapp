@@ -28,6 +28,8 @@ const foodRecipeRoutes = require("./routes/foodRecipeRoutes");
 const worldCultureRoutes = require("./routes/worldCultureRoutes");
 const testTrainingRoutes = require("./routes/testTrainingRoutes");
 
+const wowRoutes = require("./routes/wowRoutes");
+
 const app = express();
 
 // connect to MongoDB here
@@ -111,6 +113,9 @@ app.use("/api/food-recipe", foodRecipeRoutes);
 app.use("/api/world-culture", worldCultureRoutes);
 
 app.use("/api/test-trainings", testTrainingRoutes);
+
+// ! World of Warcraft API
+app.use("/api/wow", wowRoutes);
 
 // ------------------------------
 // !  Socket.io for Multiplayer Quest Game

@@ -76,6 +76,7 @@ import WorldCultureGenerator from "./components/WorldCultureGenerator";
 import TrainingDashboard from "./components/Training/TrainingDashboard";
 import TrainingModule from "./components/Training/TrainingModule";
 import FinalTest from "./components/Training/FinalTest";
+import CharacterLookup from "./components/CharacterLookup";
 
 import "./App.css";
 
@@ -251,6 +252,7 @@ function App() {
         <Route path="/test-trainings" element={<TrainingDashboard />} />
         <Route path="/training/:trainingId" element={<TrainingModule />} />
         <Route path="/final-test/:trainingId" element={<FinalTest />} />
+        <Route path="/wow-character" element={<CharacterLookup />} />
       </Routes>
       <Chatbot />
     </AuthProvider>
