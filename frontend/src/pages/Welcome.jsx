@@ -2,41 +2,38 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Welcome.css";
 
+const CTAButton = ({ to, text }) => (
+  <Link to={to} className="cta-button primary pulse">
+    {text}
+  </Link>
+);
+
 const Welcome = ({ userName }) => {
   return (
     <div className="welcome-container">
-      <div className="welcome-content">
+      <section className="welcome-content">
         <h1 className="welcome-heading">
-          Welcome, {userName ? userName : "Friend"}!
+          Welcome, {userName ? userName : "Traveler"}!
         </h1>
         <p className="welcome-text">
-          This space is yours to explore, create, and be inspired. Whether
-          you're discovering something new or returning to dive deeper, our
-          community is here to spark your imagination.
-        </p>
-        <p className="welcome-text">
-          Explore the world of creativity, inspiration, and community. Sign up
-          to unlock exclusive features or log in if you're already part of the
-          journey.
+          Step into a realm of creativity, adventure, and innovation. Whether
+          you are exploring new possibilities or fine-tuning your journey, we
+          are here to support your vision.
         </p>
 
         <div className="cta-container">
-          <Link to="/login" className="cta-button primary pulse">
-            Login
-          </Link>
-          <Link to="/signup" className="cta-button primary pulse">
-            Sign Up
-          </Link>
+          <CTAButton to="/login" text="Login" />
+          <CTAButton to="/signup" text="Sign Up" />
         </div>
-      </div>
+      </section>
 
-      {/* Image sections with placeholder images */}
-      <div className="image-container-left">
-        <img src="/placeHolder.png" alt="Ad placeholder" />
-      </div>
-      <div className="image-container-right">
-        <img src="/placeholder2.png" alt="Ad placeholder" />
-      </div>
+      {/* Image Elements */}
+      <aside className="image-container-left">
+        <img src="/placeHolder.png" alt="Futuristic concept art" />
+      </aside>
+      <aside className="image-container-right">
+        <img src="/placeholder2.png" alt="Futuristic cityscape" />
+      </aside>
     </div>
   );
 };
