@@ -66,11 +66,6 @@ const NavBar = ({ onSearch, cartItemCount }) => {
             <span className="dropdown-title">Categories</span>
             <ul className="dropdown">
               <li>
-                <NavLink to="/wow-character" onClick={closeMobileMenu}>
-                  World of Warcraft Character
-                </NavLink>
-              </li>
-              <li>
                 <NavLink to="/us-history-facts" onClick={closeMobileMenu}>
                   Food Recipe Generator
                 </NavLink>
@@ -142,6 +137,11 @@ const NavBar = ({ onSearch, cartItemCount }) => {
               <li>
                 <NavLink to="/resume-builder" onClick={closeMobileMenu}>
                   Resume Builder
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/wow-character" onClick={closeMobileMenu}>
+                  World of Warcraft Character
                 </NavLink>
               </li>
               <li>
