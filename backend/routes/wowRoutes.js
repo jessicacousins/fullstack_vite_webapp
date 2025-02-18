@@ -41,7 +41,7 @@ router.get("/character/:realm/:name", async (req, res) => {
 
   try {
     if (!accessToken) {
-      await getBlizzardToken(); //  token 
+      await getBlizzardToken(); //  token
     }
 
     const response = await axios.get(
@@ -56,7 +56,6 @@ router.get("/character/:realm/:name", async (req, res) => {
 
     const data = response.data;
 
-   
     res.json({
       name: data.name,
       realm: data.realm?.name || realm,
@@ -73,6 +72,5 @@ router.get("/character/:realm/:name", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch character data." });
   }
 });
-
 
 module.exports = router;

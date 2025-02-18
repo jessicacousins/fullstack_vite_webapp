@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./CharacterLookup.css"; 
+import "./CharacterLookup.css";
 
 const CharacterLookup = () => {
   const [realm, setRealm] = useState("");
@@ -44,7 +44,9 @@ const CharacterLookup = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <button onClick={fetchCharacterData}>Search</button>
+        <button className="searchButton" onClick={fetchCharacterData}>
+          Search
+        </button>
       </div>
 
       {error && <p className="error">{error}</p>}
