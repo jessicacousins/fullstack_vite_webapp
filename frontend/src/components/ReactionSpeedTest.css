@@ -48,8 +48,8 @@ h2 {
   color: #00d4ff;
 }
 
-.start-button {
-  background-color: #4af3eb;
+.start-button1 {
+  background-color: #4af3eb !important;
   border: none;
   padding: 12px 20px;
   border-radius: 8px;
@@ -60,5 +60,5 @@ h2 {
 }
 
 .start-button:hover {
-  background-color: #3bc9c0;
+  background-color: #3bc9c0 !important;
 }

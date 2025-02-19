@@ -71,7 +71,7 @@ const ReactionSpeedTest = () => {
           </p>
         )}
       </div>
-      <button className="start-button" onClick={startTest}>
+      <button className="start-button1" onClick={startTest}>
         Start Test
       </button>
     </div>
