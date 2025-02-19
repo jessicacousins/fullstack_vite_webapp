@@ -1,7 +1,7 @@
 .calculator-container {
-  width: 300px;
+  width: 500px;
   margin: 50px auto;
-  padding: 20px;
+  padding: 20px 20px;
   border: 1px solid #ccc;
   border-radius: 18px;
   background-color: #1a1919;
@@ -12,7 +12,7 @@
   width: 100%;
   height: 50px;
   margin-bottom: 20px;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   text-align: right;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -27,7 +27,7 @@
 
 .calculator-buttons button {
   padding: 15px;
-  font-size: 1rem;
+  font-size: 1.4rem;
   color: #4af3eb;
   border: 1px solid #ccc;
   border-radius: 11px;
