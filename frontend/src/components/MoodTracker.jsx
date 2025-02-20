@@ -52,8 +52,23 @@ const MoodTracker = () => {
           <option value="Stressed">Stressed</option>
           <option value="Excited">Excited</option>
           <option value="Calm">Calm</option>
+          <option value="Anxious">Anxious</option>
+          <option value="Motivated">Motivated</option>
+          <option value="Tired">Tired</option>
+          <option value="Grateful">Grateful</option>
+          <option value="Confident">Confident</option>
+          <option value="Lonely">Lonely</option>
+          <option value="Relaxed">Relaxed</option>
+          <option value="Frustrated">Frustrated</option>
+          <option value="Hopeful">Hopeful</option>
+          <option value="Bored">Bored</option>
+          <option value="Productive">Productive</option>
+          <option value="Angry">Angry</option>
+          <option value="Overwhelmed">Overwhelmed</option>
+          <option value="Content">Content</option>
         </select>
       </div>
+
       <div className="journal-input">
         <label>Journal Entry:</label>
         <textarea
