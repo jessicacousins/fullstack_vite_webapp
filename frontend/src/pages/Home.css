@@ -7,6 +7,7 @@
   padding: 20px;
   overflow-x: hidden;
   background-color: #101522;
+  letter-spacing:.8px;
 }
 
 .home-content {
@@ -72,6 +73,7 @@
 .feature-section:hover {
   transform: scale(1.02);
   background: rgba(30, 30, 30, 0.9);
+  border: 1px solid #ffffff;
 }
 
 .feature-link {
