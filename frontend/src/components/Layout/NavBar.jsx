@@ -141,6 +141,11 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                   Pixel Art Maker
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/doodle-classifier" onClick={closeMobileMenu}>
+                  Doodle Classifier
+                </NavLink>
+              </li>
             </ul>
           </li>
 
@@ -204,11 +209,6 @@ const NavBar = ({ onSearch, cartItemCount }) => {
               <li>
                 <NavLink to="/typing-speed-test" onClick={closeMobileMenu}>
                   Typing Speed Test
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/doodle-classifier" onClick={closeMobileMenu}>
-                  Doodle Classifier
                 </NavLink>
               </li>
               <li>
