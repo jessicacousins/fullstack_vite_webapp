@@ -91,11 +91,6 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/games" onClick={closeMobileMenu}>
-                  Games
-                </NavLink>
-              </li>
-              <li>
                 <NavLink to="/achievements" onClick={closeMobileMenu}>
                   Achievements
                 </NavLink>
@@ -103,11 +98,6 @@ const NavBar = ({ onSearch, cartItemCount }) => {
               <li>
                 <NavLink to="/soundboard" onClick={closeMobileMenu}>
                   Soundboard
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/pixel-art-maker" onClick={closeMobileMenu}>
-                  Pixel Art Maker
                 </NavLink>
               </li>
               <li>
@@ -120,10 +110,35 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                   Med Tracking
                 </NavLink>
               </li>
+            </ul>
+          </li>
 
+          <li>
+            <span className="dropdown-title">Games</span>
+            <ul className="dropdown">
               <li>
                 <NavLink to="/multiplayer-quest" onClick={closeMobileMenu}>
                   NPC Chatrooms
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/games" onClick={closeMobileMenu}>
+                  Games
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/wow-character" onClick={closeMobileMenu}>
+                  World of Warcraft Character
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/reaction-speed-test" onClick={closeMobileMenu}>
+                  Reaction Speed Test
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/pixel-art-maker" onClick={closeMobileMenu}>
+                  Pixel Art Maker
                 </NavLink>
               </li>
             </ul>
@@ -137,11 +152,6 @@ const NavBar = ({ onSearch, cartItemCount }) => {
               <li>
                 <NavLink to="/resume-builder" onClick={closeMobileMenu}>
                   Resume Builder
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/wow-character" onClick={closeMobileMenu}>
-                  World of Warcraft Character
                 </NavLink>
               </li>
               <li>
@@ -201,7 +211,6 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                   Doodle Classifier
                 </NavLink>
               </li>
-
               <li>
                 <NavLink to="/passwordgenerator" onClick={closeMobileMenu}>
                   Password Generator
@@ -220,11 +229,6 @@ const NavBar = ({ onSearch, cartItemCount }) => {
               <li>
                 <NavLink to="/colorpicker" onClick={closeMobileMenu}>
                   Color Picker
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/reaction-speed-test" onClick={closeMobileMenu}>
-                  Reaction Speed Test
                 </NavLink>
               </li>
               <li>
