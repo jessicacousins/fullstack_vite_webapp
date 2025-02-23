@@ -98,8 +98,8 @@ const MultiplayerQuestGame = ({ socket }) => {
         </div>
       ) : (
         <div className="mqt-chatContainer">
-          <h2>Room: {room}</h2>
-          <h3>Active Users: {activeUsers}</h3>
+          <h2 className="roomTitle1">Room: {room}</h2>
+          <h3 className="usersTitle1">Active Users: {activeUsers}</h3>
           <div className="mqt-chatWindow">
             {messages.map((msg, index) => (
               <div key={index} className="mqt-message">

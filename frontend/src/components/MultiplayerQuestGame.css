@@ -15,6 +15,17 @@
   margin: 0 auto;
 }
 
+.roomTitle1 {
+  color: #e0245e;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.usersTitle1 {
+  color: #c94971f5;
+  letter-spacing: 1px;
+}
+
 .mqt-inputField {
   width: 100%;
   padding: 10px;
