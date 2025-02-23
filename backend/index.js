@@ -119,6 +119,12 @@ app.use("/api/wow", wowRoutes);
 
 // ------------------------------
 // !  Socket.io for Multiplayer Quest Game
+// Trigger the npm to interact with the chatroom users.
+//   /npc mystery
+//   /npc guess 1
+//   /npc guess 2
+//   /npc guess 3
+//   /npc answer
 // ------------------------------
 const http = require("http");
 const server = http.createServer(app);
