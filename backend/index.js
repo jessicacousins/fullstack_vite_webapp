@@ -135,30 +135,67 @@ const io = new Server(server, {
 const OpenAI = require("openai");
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-// NPC response (murder mystery theme)
-async function generateNPCResponse(prompt) {
+let activeMysteries = {}; // Store ongoing mysteries per room
+
+// Generate randomized AI-generated mystery
+async function generateAIStory() {
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4",
       messages: [
         {
-          role: "user",
-          content: `You are a mysterious NPC in a murder mystery game. Respond in character to this message: "${prompt}". Your reply should include hints and intrigue that encourage players to work together to solve the mystery.`,
+          role: "system",
+          content: `You are a funny NPC in a family-friendly murder mystery chat game.
+          Your task is to generate a **completely random** and **unique** mystery every time a user requests one.
+          The mystery should **never repeat** and should be **comical** (e.g., stolen socks, missing pizza, pranked boss, etc.).
+          Choose **three totally random suspects** with unique personalities.
+          Pick **one suspect as the culprit (randomly choose index 0, 1, or 2)** and provide a **hilarious reason** why they did it.
+
+          **Format the response like this (DO NOT BREAK FORMAT):**
+          Mystery: [Funny setup]
+          Suspects: ["Suspect 1 - description", "Suspect 2 - description", "Suspect 3 - description"]
+          Culprit: [0, 1, or 2]
+          Answer: [Funny explanation of the culprit’s motive]`,
         },
       ],
-      max_tokens: 150,
+      max_tokens: 300,
     });
-    return response.choices[0].message.content.trim();
+
+    const aiResponse = response.choices[0].message.content.trim();
+    const match = aiResponse.match(
+      /Mystery: (.*?)\nSuspects: \["(.*?)", "(.*?)", "(.*?)"\]\nCulprit: (\d)\nAnswer: (.*)/
+    );
+
+    if (!match) {
+      throw new Error("Failed to parse OpenAI response.");
+    }
+
+    return {
+      mystery: match[1],
+      suspects: [match[2], match[3], match[4]],
+      culprit: parseInt(match[5], 10),
+      answer: match[6],
+    };
   } catch (error) {
-    console.error("Error generating NPC response:", error);
-    return "I am unable to respond at this moment.";
+    console.error("Error generating AI story:", error);
+    return {
+      mystery: "The AI took a nap and forgot to write a mystery! Try again.",
+      suspects: [
+        "A confused toaster - always getting into trouble",
+        "A sneaky raccoon - known for stealing shiny objects",
+        "A banana in disguise - nobody suspects the fruit",
+      ],
+      culprit: 0,
+      answer:
+        "It was the confused toaster! It mistook the missing item for bread.",
+    };
   }
 }
 
 io.on("connection", (socket) => {
   console.log("New client connected:", socket.id);
 
-  // Handle user joining a room
+  // User joins a room
   socket.on("join_room", async ({ room, username }) => {
     let chatRoom = await ChatRoom.findOne({ roomName: room });
     if (!chatRoom) {
@@ -176,21 +213,17 @@ io.on("connection", (socket) => {
     }
 
     socket.join(room);
-
-    const activeUsers = Array.from(
-      io.sockets.adapter.rooms.get(room) || []
-    ).length;
+    const activeUsers = io.sockets.adapter.rooms.get(room)?.size || 0;
 
     io.to(room).emit("message", {
       user: "System",
       text: `${username} has joined the room.`,
     });
     io.to(room).emit("update_active_users", activeUsers);
-
     console.log(`User ${username} joined room: ${room}`);
   });
 
-  // Handle sending a message
+  // Handling user messages
   socket.on("send_message", async (data) => {
     const { room, user, message } = data;
 
@@ -202,20 +235,72 @@ io.on("connection", (socket) => {
 
     io.to(room).emit("message", { user, text: message });
 
-    // NPC response logic
-    if (message.startsWith("/npc")) {
-      const npcPrompt = message.replace("/npc", "").trim();
-      const npcReply = await generateNPCResponse(npcPrompt);
-      io.to(room).emit("message", { user: "NPC", text: npcReply });
+    // Start a new mystery
+    if (message.startsWith("/npc mystery")) {
+      const mystery = await generateAIStory();
+      activeMysteries[room] = mystery;
+
+      io.to(room).emit("message", {
+        user: "NPC",
+        text: `🕵️‍♂️ Mystery: ${mystery.mystery}`,
+      });
+      io.to(room).emit("message", {
+        user: "NPC",
+        text: `🔎 Suspects:\n 1️⃣ ${mystery.suspects[0]}\n 2️⃣ ${mystery.suspects[1]}\n 3️⃣ ${mystery.suspects[2]}`,
+      });
 
       if (chatRoom) {
-        chatRoom.messages.push({ sender: "NPC", content: npcReply });
+        chatRoom.messages.push({ sender: "NPC", content: mystery.mystery });
+        chatRoom.messages.push({
+          sender: "NPC",
+          content: `🔎 Suspects: 1️⃣ ${mystery.suspects[0]}, 2️⃣ ${mystery.suspects[1]}, 3️⃣ ${mystery.suspects[2]}`,
+        });
         await chatRoom.save();
+      }
+    }
+
+    // User makes a guess
+    if (message.startsWith("/npc guess")) {
+      const guess = parseInt(message.split(" ")[2]) - 1;
+      if (activeMysteries[room]) {
+        if (guess === activeMysteries[room].culprit) {
+          io.to(room).emit("message", {
+            user: "NPC",
+            text: `🎉 Correct! ${activeMysteries[room].answer}`,
+          });
+          delete activeMysteries[room]; // Reset the mystery
+        } else {
+          io.to(room).emit("message", {
+            user: "NPC",
+            text: "❌ Wrong guess! Try again!",
+          });
+        }
+      } else {
+        io.to(room).emit("message", {
+          user: "NPC",
+          text: "There's no active mystery! Start one with /npc mystery.",
+        });
+      }
+    }
+
+    // Reveal the answer
+    if (message.startsWith("/npc answer")) {
+      if (activeMysteries[room]) {
+        io.to(room).emit("message", {
+          user: "NPC",
+          text: `📢 The answer is: ${activeMysteries[room].answer}`,
+        });
+        delete activeMysteries[room]; // Reset mystery after revealing answer
+      } else {
+        io.to(room).emit("message", {
+          user: "NPC",
+          text: "There's no active mystery! Start one with /npc mystery.",
+        });
       }
     }
   });
 
-  // Handle user leaving/disconnecting
+  // Handle user leaving
   socket.on("disconnecting", () => {
     for (const room of socket.rooms) {
       if (room !== socket.id) {
@@ -224,8 +309,7 @@ io.on("connection", (socket) => {
           text: "A user has left the room.",
         });
 
-        const activeUsers =
-          Array.from(io.sockets.adapter.rooms.get(room) || []).length - 1;
+        const activeUsers = (io.sockets.adapter.rooms.get(room)?.size || 1) - 1;
         io.to(room).emit("update_active_users", activeUsers);
       }
     }
