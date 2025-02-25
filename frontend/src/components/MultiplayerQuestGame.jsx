@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
 import ChatRoomsList from "./ChatRoomsList";
@@ -12,6 +12,7 @@ const MultiplayerQuestGame = ({ socket }) => {
   const [messages, setMessages] = useState([]);
   const [activeUsers, setActiveUsers] = useState(0);
   const [searchParams] = useSearchParams();
+  const chatEndRef = useRef(null);
 
   useEffect(() => {
     const roomName = searchParams.get("roomName");
@@ -41,6 +42,10 @@ const MultiplayerQuestGame = ({ socket }) => {
       }
     };
   }, [socket]);
+
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   const fetchRoomMessages = async (roomId) => {
     try {
@@ -100,6 +105,16 @@ const MultiplayerQuestGame = ({ socket }) => {
         <div className="mqt-chatContainer">
           <h2 className="roomTitle1">Room: {room}</h2>
           <h3 className="usersTitle1">Active Users: {activeUsers}</h3>
+          <h4>
+            Trigger the NPC character to interact with the chatroom users.
+          </h4>
+          <ul>
+            <li>/npc mystery</li>
+            <li>/npc guess 1</li>
+            <li>/npc guess 2</li>
+            <li>/npc guess 3</li>
+            <li>/npc answer</li>
+          </ul>
           <div className="mqt-chatWindow">
             {messages.map((msg, index) => (
               <div key={index} className="mqt-message">
@@ -107,6 +122,7 @@ const MultiplayerQuestGame = ({ socket }) => {
                 <span className="mqt-content">{msg.text}</span>
               </div>
             ))}
+            <div ref={chatEndRef}></div>{" "}
           </div>
           <div className="mqt-inputContainer">
             <input
