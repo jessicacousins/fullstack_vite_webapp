@@ -106,15 +106,28 @@ const MultiplayerQuestGame = ({ socket }) => {
           <h2 className="roomTitle1">Room: {room}</h2>
           <h3 className="usersTitle1">Active Users: {activeUsers}</h3>
           <h4>
-            Trigger the NPC character to interact with the chatroom users.
+            Interact with the NPC to solve a fun, one-of-a-kind mystery! Every
+            case is fresh, unpredictable, and never repeats.
           </h4>
+          <p>Use these commands to investigate and uncover the truth:</p>
           <ul>
-            <li>/npc mystery</li>
-            <li>/npc guess 1</li>
-            <li>/npc guess 2</li>
-            <li>/npc guess 3</li>
-            <li>/npc answer</li>
+            <li>
+              <strong>/npc mystery</strong> – Start a brand new mystery
+            </li>
+            <li>
+              <strong>/npc guess 1</strong> – Accuse suspect #1
+            </li>
+            <li>
+              <strong>/npc guess 2</strong> – Accuse suspect #2
+            </li>
+            <li>
+              <strong>/npc guess 3</strong> – Accuse suspect #3
+            </li>
+            <li>
+              <strong>/npc answer</strong> – Reveal the true culprit
+            </li>
           </ul>
+
           <div className="mqt-chatWindow">
             {messages.map((msg, index) => (
               <div key={index} className="mqt-message">
