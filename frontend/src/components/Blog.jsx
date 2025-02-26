@@ -226,7 +226,9 @@ const Blog = ({ searchQuery, onSearchResults }) => {
           )}
         </div>
       )}
-      <div className="styled-divider">________________________________________________________________________</div>
+      <div className="styled-divider">
+        ________________________________________________________________________
+      </div>
 
       <h3 className="blog-intro-title">Explore Community Posts</h3>
       <div className="posts-grid">
