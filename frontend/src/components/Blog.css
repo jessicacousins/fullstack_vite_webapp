@@ -5,22 +5,20 @@
   background-color: #121212;
   font-family: "Roboto", sans-serif;
   min-height: 100vh;
-
   width: 100%;
 }
 
 .layout-container {
   display: grid;
   grid-template-areas: "left main right";
-  grid-template-columns: minmax(250px, 1fr) minmax(400px, 3fr) minmax(
-      250px,
+  grid-template-columns: minmax(150px, 1fr) minmax(300px, 3fr) minmax(
+      150px,
       1fr
     );
   width: 100%;
   max-width: 1800px;
-  gap: 30px;
+  gap: 20px;
   margin: 20px auto;
-  padding: 0 20px;
 }
 
 .left-sidebar {
@@ -215,4 +213,8 @@
   .hero-section {
     font-size: 1.8rem;
   }
+}
+
+.info-blog-title {
+  color: #ff007f;
 }
