@@ -172,190 +172,201 @@ const Blog = ({ searchQuery, onSearchResults }) => {
 
   return (
     <div className="blog-container">
-      {/* Hero Section */}
-      <div className="hero-section">Blog – Discover, Engage, and Connect</div>
+      {/* Header */}
+      <header className="hero-section">
+        Blog – Discover, Engage, and Connect
+      </header>
 
-      {/* Globe NASA here */}
-      <GlobeCanvas />
+      <div className="layout-container">
+        {/* Left Sidebar */}
+        <aside className="left-sidebar">
+          <div className="info-blog-card">
+            <h1 className="info-blog-title">Community Blog Posts</h1>
+            <p className="info-blog-intro">
+              Welcome to the Community Blog Posts section! Here, users share
+              their thoughts, ideas, and experiences through engaging blog
+              posts. Dive into the rich content created by our community, and
+              don't hesitate to join the conversation.
+            </p>
+            <p className="info-blog-interactions">
+              You can <strong>like</strong> and <strong>dislike</strong> blog
+              posts and comments to express your opinions, or leave a thoughtful
+              comment to contribute to the discussion. Your feedback and
+              participation help make this space more vibrant and interactive.
+              Share the love or spark a debate, it's all part of building our
+              community!
+            </p>
+          </div>
+        </aside>
 
-      {/* <h1 className="blog-heading">Blog Posts</h1> */}
-
-      {/* <h1 className="blog-heading glitch-heading">Blog Posts</h1> */}
-      <div className="info-blog-card">
-        <h1 className="info-blog-title">Community Blog Posts</h1>
-        <p className="info-blog-intro">
-          Welcome to the Community Blog Posts section! Here, users share their
-          thoughts, ideas, and experiences through engaging blog posts. Dive
-          into the rich content created by our community, and don't hesitate to
-          join the conversation.
-        </p>
-        <p className="info-blog-interactions">
-          You can <strong>like</strong> and <strong>dislike</strong> blog posts
-          and comments to express your opinions, or leave a thoughtful comment
-          to contribute to the discussion. Your feedback and participation help
-          make this space more vibrant and interactive. Share the love or spark
-          a debate, it's all part of building our community!
-        </p>
-      </div>
-
-      {user && (
-        // <Link to="/create-blog" className="create-blog-button">
-        //   Create New Blog Post
-        // </Link>
-        <div className="info-blog-ai-card">
-          <h1 className="info-blog-ai-title">
-            Create a Blog with AI Assistance
-          </h1>
-          <p className="info-blog-ai-intro">
-            Ready to share your story but need a little help getting started?
-            The blog creation tool offers{" "}
-            <strong>OpenAI-powered assistance</strong> to help you craft
-            engaging posts. Whether you want to write from scratch or refine
-            your thoughts, the AI editor is here to guide you every step of the
-            way.
-          </p>
-          <p className="info-blog-ai-usage">
-            Tap into the power of AI to generate ideas, improve your drafts, or
-            explore creative writing styles. Start expressing yourself
-            effortlessly and make your mark in the community!
-          </p>
+        {/* Main Content */}
+        <main className="main-content">
           {user && (
-            <Link to="/create-blog" className="create-blog-button">
-              Start Your Blog Now
-            </Link>
+            <div className="info-blog-ai-card">
+              <h1 className="info-blog-ai-title">
+                Create a Blog with AI Assistance
+              </h1>
+              <p className="info-blog-ai-intro">
+                Ready to share your story but need a little help getting
+                started? The blog creation tool offers{" "}
+                <strong>OpenAI-powered assistance</strong> to help you craft
+                engaging posts. Whether you want to write from scratch or refine
+                your thoughts, the AI editor is here to guide you every step of
+                the way.
+              </p>
+              <p className="info-blog-ai-usage">
+                Tap into the power of AI to generate ideas, improve your drafts,
+                or explore creative writing styles. Start expressing yourself
+                effortlessly and make your mark in the community!
+              </p>
+              <Link to="/create-blog" className="create-blog-button">
+                Start Your Blog Now
+              </Link>
+            </div>
           )}
-        </div>
-      )}
-      <div className="styled-divider">
-        ________________________________________________________________________
-      </div>
 
-      <h3 className="blog-intro-title">Explore Community Posts</h3>
-      <div className="posts-grid">
-        {filteredPosts.length > 0 ? (
-          filteredPosts.map((post) => {
-            const isExpanded = expandedPosts.includes(post._id);
-            const areCommentsVisible = showComments[post._id];
-            return (
-              <div key={post._id} className="post-card1">
-                <h2 className="post-title">{post.title}</h2>
-                <p className={`post-content ${isExpanded ? "" : "truncated"}`}>
-                  {post.content}
-                </p>
-                {post.content.length > 200 && (
-                  <span
-                    className="read-more"
-                    onClick={() => toggleReadMore(post._id)}
-                  >
-                    {isExpanded ? " Show Less" : " Read More"}
-                  </span>
-                )}
-                <p className="post-author">
-                  By <span className="author-name">{post.author}</span>
-                </p>
-                <p className="post-date">
-                  {new Date(post.createdAt).toLocaleString()}
-                </p>
+          <div className="styled-divider"></div>
 
-                {/* Like and Dislike buttons for the post */}
-                <div className="like-dislike-buttons">
-                  <button
-                    onClick={() => handleLikePost(post._id)}
-                    className="like-button"
-                    title="Like"
-                  >
-                    <FaHeart /> {post.likes}
-                  </button>
-                  <button
-                    onClick={() => handleDislikePost(post._id)}
-                    className="dislike-button"
-                    title="Dislike"
-                  >
-                    <FaThumbsDown /> {post.dislikes}
-                  </button>
-                </div>
+          <h3 className="blog-intro-title">Explore Community Posts</h3>
+          <div className="posts-grid">
+            {filteredPosts.length > 0 ? (
+              filteredPosts.map((post) => {
+                const isExpanded = expandedPosts.includes(post._id);
+                const areCommentsVisible = showComments[post._id];
+                return (
+                  <div key={post._id} className="post-card1">
+                    <h2 className="post-title">{post.title}</h2>
+                    <p
+                      className={`post-content ${
+                        isExpanded ? "" : "truncated"
+                      }`}
+                    >
+                      {post.content}
+                    </p>
+                    {post.content.length > 200 && (
+                      <span
+                        className="read-more"
+                        onClick={() => toggleReadMore(post._id)}
+                      >
+                        {isExpanded ? " Show Less" : " Read More"}
+                      </span>
+                    )}
+                    <p className="post-author">
+                      By <span className="author-name">{post.author}</span>
+                    </p>
+                    <p className="post-date">
+                      {new Date(post.createdAt).toLocaleString()}
+                    </p>
 
-                <div className="post-actions">
-                  <FaComment
-                    className="icon-button"
-                    onClick={() => toggleComments(post._id)}
-                    title="View Comments"
-                  />
-                  <FaExpand
-                    className="icon-button"
-                    onClick={() => toggleReadMore(post._id)}
-                    title="Expand Post"
-                  />
-                </div>
+                    {/* Like and Dislike buttons for the post */}
+                    <div className="like-dislike-buttons">
+                      <button
+                        onClick={() => handleLikePost(post._id)}
+                        className="like-button"
+                        title="Like"
+                      >
+                        <FaHeart /> {post.likes}
+                      </button>
+                      <button
+                        onClick={() => handleDislikePost(post._id)}
+                        className="dislike-button"
+                        title="Dislike"
+                      >
+                        <FaThumbsDown /> {post.dislikes}
+                      </button>
+                    </div>
 
-                {areCommentsVisible && (
-                  <div className="comments-section">
-                    <h3 className="comments-heading">Comments</h3>
-                    {post.comments.length > 0 ? (
-                      post.comments.map((comment) => (
-                        <div key={comment._id} className="comment">
-                          <p className="comment-body">{comment.body}</p>
-                          <p className="comment-user">
-                            By{" "}
-                            <span className="comment-author">
-                              {comment.user}
-                            </span>{" "}
-                            on {new Date(comment.date).toLocaleString()}
-                          </p>
-                          <div className="like-dislike-buttons">
-                            <button
-                              onClick={() =>
-                                handleLikeComment(post._id, comment._id)
+                    <div className="post-actions">
+                      <FaComment
+                        className="icon-button"
+                        onClick={() => toggleComments(post._id)}
+                        title="View Comments"
+                      />
+                      <FaExpand
+                        className="icon-button"
+                        onClick={() => toggleReadMore(post._id)}
+                        title="Expand Post"
+                      />
+                    </div>
+
+                    {areCommentsVisible && (
+                      <div className="comments-section">
+                        <h3 className="comments-heading">Comments</h3>
+                        {post.comments.length > 0 ? (
+                          post.comments.map((comment) => (
+                            <div key={comment._id} className="comment">
+                              <p className="comment-body">{comment.body}</p>
+                              <p className="comment-user">
+                                By{" "}
+                                <span className="comment-author">
+                                  {comment.user}
+                                </span>{" "}
+                                on {new Date(comment.date).toLocaleString()}
+                              </p>
+                              <div className="like-dislike-buttons">
+                                <button
+                                  onClick={() =>
+                                    handleLikeComment(post._id, comment._id)
+                                  }
+                                  className="like-button"
+                                >
+                                  <FaHeart /> {comment.likes}
+                                </button>
+                                <button
+                                  onClick={() =>
+                                    handleDislikeComment(post._id, comment._id)
+                                  }
+                                  className="dislike-button"
+                                >
+                                  <FaThumbsDown /> {comment.dislikes}
+                                </button>
+                              </div>
+                            </div>
+                          ))
+                        ) : (
+                          <p className="no-comments">No comments yet.</p>
+                        )}
+                        {user && (
+                          <div className="comment-form">
+                            <textarea
+                              value={comments[post._id] || ""}
+                              onChange={(e) =>
+                                setComments({
+                                  ...comments,
+                                  [post._id]: e.target.value,
+                                })
                               }
-                              className="like-button"
-                            >
-                              <FaHeart /> {comment.likes}
-                            </button>
+                              placeholder="Write a comment..."
+                              className="comment-textarea"
+                              required
+                            />
                             <button
-                              onClick={() =>
-                                handleDislikeComment(post._id, comment._id)
-                              }
-                              className="dislike-button"
+                              onClick={() => handleCommentSubmit(post._id)}
+                              className="submit-comment-button"
                             >
-                              <FaThumbsDown /> {comment.dislikes}
+                              Submit Comment
                             </button>
                           </div>
-                        </div>
-                      ))
-                    ) : (
-                      <p className="no-comments">No comments yet.</p>
-                    )}
-                    {user && (
-                      <div className="comment-form">
-                        <textarea
-                          value={comments[post._id] || ""}
-                          onChange={(e) =>
-                            setComments({
-                              ...comments,
-                              [post._id]: e.target.value,
-                            })
-                          }
-                          placeholder="Write a comment..."
-                          className="comment-textarea"
-                          required
-                        />
-                        <button
-                          onClick={() => handleCommentSubmit(post._id)}
-                          className="submit-comment-button"
-                        >
-                          Submit Comment
-                        </button>
+                        )}
                       </div>
                     )}
                   </div>
-                )}
-              </div>
-            );
-          })
-        ) : (
-          <p className="no-posts">No posts match your search criteria.</p>
-        )}
+                );
+              })
+            ) : (
+              <p className="no-posts">No posts match your search criteria.</p>
+            )}
+          </div>
+        </main>
+
+        {/* Right Sidebar */}
+        <aside className="right-sidebar">
+          <GlobeCanvas />
+        </aside>
       </div>
+
+      {/* Footer */}
+      <footer className="footer">© 2025 JMC App. All rights reserved.</footer>
     </div>
   );
 };
