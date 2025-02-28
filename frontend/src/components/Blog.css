@@ -218,3 +218,21 @@
 .info-blog-title {
   color: #ff007f;
 }
+
+.info-blog-intro,
+.info-blog-interactions {
+  color: #e0e0e0;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.info-blog-ai-intro,
+.info-blog-ai-usage {
+  line-height: 1.2;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+}
+
+.info-blog-ai-usage {
+  margin-bottom: 2rem;
+}
