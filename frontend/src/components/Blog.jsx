@@ -219,7 +219,7 @@ const Blog = ({ searchQuery, onSearchResults }) => {
                 or explore creative writing styles. Start expressing yourself
                 effortlessly and make your mark in the community!
               </p>
-              <Link to="/create-blog" className="create-blog-button">
+              <Link to="/create-blog" className="create-blog-button1">
                 Start Your Blog Now
               </Link>
             </div>

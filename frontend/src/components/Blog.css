@@ -236,3 +236,57 @@
 .info-blog-ai-usage {
   margin-bottom: 2rem;
 }
+
+.create-blog-button1 {
+  background: linear-gradient(135deg, #ff007f, #4af3eb);
+  color: #121212;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(255, 0, 127, 0.5),
+    0 4px 10px rgba(74, 243, 235, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.create-blog-button1::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 127, 0.4) 10%,
+    rgba(74, 243, 235, 0.4) 50%
+  );
+  transition: all 0.5s ease-in-out;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.create-blog-button1:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.create-blog-button1:hover {
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 0, 127, 0.6),
+    0 6px 20px rgba(74, 243, 235, 0.5);
+}
+
+.create-blog-button1:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 5px rgba(255, 0, 127, 0.5),
+    0 2px 5px rgba(74, 243, 235, 0.4);
+}
