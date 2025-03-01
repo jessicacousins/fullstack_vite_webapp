@@ -1,64 +1,112 @@
 .reaction-speed-test {
   text-align: center;
   padding: 40px;
-  max-width: 500px;
-  margin: 0 auto;
-  background-color: #121212;
+  max-width: 550px;
+  margin: 50px auto;
+  background: linear-gradient(135deg, #1b1b1b, #292929);
   color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  margin-top: 3rem;
+  border-radius: 15px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(74, 243, 235, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.reaction-speed-test:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 12px 25px rgba(74, 243, 235, 0.4);
 }
 
 h2 {
   font-size: 2rem;
   color: #4af3eb;
+  text-shadow: 0px 2px 8px rgba(74, 243, 235, 0.6);
+  letter-spacing: 1px;
 }
 
 .cue-box {
   margin: 30px auto;
   width: 100%;
   max-width: 500px;
-  height: 100px;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #333;
-  border-radius: 10px;
-  cursor: pointer;
   font-size: 1.5rem;
-  transition: background-color 0.3s;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.1);
+  user-select: none;
+  text-transform: uppercase;
 }
 
 .cue-box-waiting {
-  background-color: #666;
+  background: linear-gradient(135deg, #555, #666);
+  color: #ddd;
+}
+
+.cue-box-waiting:hover {
+  transform: scale(1.02);
 }
 
 .cue-box-active {
-  background-color: #ff4a4a;
+  background: linear-gradient(135deg, #ff4a4a, #ff007f);
+  color: #fff;
+  box-shadow: 0px 8px 20px rgba(255, 74, 74, 0.6);
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0px 8px 20px rgba(255, 74, 74, 0.6);
+  }
+  to {
+    box-shadow: 0px 12px 25px rgba(255, 74, 74, 0.9);
+  }
 }
 
 .reaction-result {
   margin-top: 20px;
   font-size: 1.2rem;
+  font-weight: bold;
+  color: #00eaff;
+  text-shadow: 0px 2px 8px rgba(0, 234, 255, 0.8);
 }
 
 .best-time {
   margin-top: 10px;
-  color: #00d4ff;
+  color: #ffde59;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 0px 2px 8px rgba(255, 222, 89, 0.8);
 }
 
 .start-button1 {
-  background-color: #4af3eb !important;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
+  position: relative;
+  background: linear-gradient(135deg, #4af3eb, #ff007f);
   color: #121212;
   font-size: 1.1rem;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 6px 15px rgba(74, 243, 235, 0.3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 20px;
 }
 
-.start-button:hover {
-  background-color: #3bc9c0 !important;
+.start-button1:hover {
+  background: linear-gradient(135deg, #ff007f, #4af3eb);
+  color: #fff;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0px 10px 25px rgba(255, 0, 127, 0.5);
+}
+
+.start-button1:active {
+  transform: scale(0.95);
+  box-shadow: none;
 }
