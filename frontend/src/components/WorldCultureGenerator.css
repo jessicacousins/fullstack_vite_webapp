@@ -17,40 +17,77 @@
   animation: fadeIn 0.5s ease-in-out;
 }
 
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
 .buttons button {
-  margin: 10px;
-  padding: 10px 15px;
+  position: relative;
+  background: linear-gradient(135deg, #4af3eb, #ff007f);
+  color: #121212;
   font-size: 16px;
-  cursor: pointer;
+  font-weight: bold;
+  padding: 12px 18px;
   border: none;
-  border-radius: 5px;
-  transition: 0.3s ease;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  overflow: hidden;
 }
 
 .buttons button:hover {
-  transform: scale(1.05);
-  background-color: #fff;
-  color: #000;
-}
-
-button:first-child {
-  background-color: #4af3eb;
-  color: #000;
-}
-
-button:nth-child(2) {
-  background-color: #4af3eb;
-  color: #000;
-}
-
-button:nth-child(3) {
-  background-color: #4af3eb;
-  color: #000;
-}
-
-button:last-child {
-  background-color: #f44336;
+  background: linear-gradient(135deg, #ff007f, #4af3eb);
   color: #fff;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0px 6px 15px rgba(255, 0, 127, 0.4);
+}
+
+.buttons button:active {
+  transform: scale(0.95);
+  box-shadow: none;
+}
+
+.buttons button:first-child {
+  background: linear-gradient(135deg, #ff944d, #ff007f);
+}
+
+.buttons button:first-child:hover {
+  background: linear-gradient(135deg, #ff007f, #ff944d);
+  box-shadow: 0px 6px 15px rgba(255, 148, 77, 0.5);
+}
+
+.buttons button:nth-child(2) {
+  background: linear-gradient(135deg, #4af3eb, #2c9fa6);
+}
+
+.buttons button:nth-child(2):hover {
+  background: linear-gradient(135deg, #2c9fa6, #4af3eb);
+  box-shadow: 0px 6px 15px rgba(74, 243, 235, 0.5);
+}
+
+.buttons button:nth-child(3) {
+  background: linear-gradient(135deg, #ffde59, #ff944d);
+}
+
+.buttons button:nth-child(3):hover {
+  background: linear-gradient(135deg, #ff944d, #ffde59);
+  box-shadow: 0px 6px 15px rgba(255, 222, 89, 0.5);
+}
+
+.buttons button:last-child {
+  background: linear-gradient(135deg, #f44336, #ff007f);
+}
+
+.buttons button:last-child:hover {
+  background: linear-gradient(135deg, #ff007f, #f44336);
+  box-shadow: 0px 6px 15px rgba(244, 67, 54, 0.5);
 }
 
 @keyframes fadeIn {
