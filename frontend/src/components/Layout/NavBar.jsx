@@ -123,7 +123,12 @@ const NavBar = ({ onSearch, cartItemCount }) => {
               </li>
               <li>
                 <NavLink to="/Tesseract" onClick={closeMobileMenu}>
-                  Tesseract
+                  Tesseract Model
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dna" onClick={closeMobileMenu}>
+                  DNA Double Helix Model
                 </NavLink>
               </li>
               <li>
