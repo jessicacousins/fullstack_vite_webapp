@@ -1,91 +1,167 @@
 .zen-breathing-container {
   max-width: 500px;
-  margin: 20px auto;
-  padding: 20px;
+  margin: 50px auto;
+  padding: 30px;
   text-align: center;
-  background-color: #1e1e1e;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #1b1b1b, #292929);
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(74, 243, 235, 0.2);
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  transition: all 0.3s ease-in-out;
 }
 
 .zen-breathing-container h2 {
-  font-size: 24px;
+  font-size: 1.8rem;
   color: #4af3eb;
+  text-shadow: 0px 2px 6px rgba(74, 243, 235, 0.5);
+  letter-spacing: 1px;
 }
 
 .zen-breathing-container p {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: #e7bff1;
+}
+
+.relaxWords {
+  margin-bottom: 70px;
 }
 
 .breathing-display {
   margin: 20px 0;
   margin-top: 3rem;
+  position: relative;
 }
 
+/* Breathing Circle */
 .breathing-circle {
   width: 120px;
   height: 120px;
   margin: 0 auto;
   border-radius: 50%;
-  background-color: #4af3eb;
-  animation-timing-function: linear;
+  background: radial-gradient(
+    circle,
+    rgba(74, 243, 235, 0.6) 10%,
+    rgba(74, 243, 235, 0.3) 80%
+  );
+  box-shadow: 0 8px 25px rgba(74, 243, 235, 0.3);
+  animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+  transition: transform 0.3s ease-in-out;
 }
 
 .breathing-circle.inhale {
-  animation-name: inhale-animation;
-  animation-duration: 4s;
+  animation: inhale-animation 4s ease-in-out forwards;
 }
 
 .breathing-circle.hold {
-  animation-name: hold-animation;
-  animation-duration: 7s;
+  animation: hold-animation 7s ease-in-out forwards;
 }
 
 .breathing-circle.exhale {
-  animation-name: exhale-animation;
-  animation-duration: 8s;
+  animation: exhale-animation 8s ease-in-out forwards;
 }
 
+.directionsLive {
+  margin-top: 80px;
+}
+
+/* Timer */
 .breathing-timer {
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
   margin-top: 10px;
-  color: #333;
+  color: #00eaff;
+  text-shadow: 0px 1px 5px rgba(0, 234, 255, 0.5);
 }
 
+/* Instructions */
 .instruction p {
   font-size: 1rem;
   color: #faf4f4;
   margin: 5px 0;
 }
 
-/* inhale (circle expands) */
+/* Animations */
 @keyframes inhale-animation {
   0% {
     transform: scale(1);
   }
   100% {
-    transform: scale(1.5);
+    transform: scale(1.7);
   }
 }
 
-/* hold (circle stays static) */
 @keyframes hold-animation {
   0% {
-    transform: scale(1.5);
+    transform: scale(1.7);
   }
   100% {
-    transform: scale(1.5);
+    transform: scale(1.7);
   }
 }
 
-/* exhale (circle shrinks) */
 @keyframes exhale-animation {
   0% {
-    transform: scale(1.5);
+    transform: scale(1.7);
   }
   100% {
     transform: scale(1);
   }
+}
+
+/* Start Button */
+.start-breathing-button {
+  position: relative;
+  background: linear-gradient(135deg, #4af3eb, #ff007f);
+  color: #121212;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(255, 0, 127, 0.4),
+    0 4px 10px rgba(74, 243, 235, 0.3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.start-breathing-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 127, 0.3) 10%,
+    rgba(74, 243, 235, 0.3) 50%
+  );
+  transition: all 0.5s ease-in-out;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.start-breathing-button:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.start-breathing-button:hover {
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 0, 127, 0.6),
+    0 6px 20px rgba(74, 243, 235, 0.5);
+}
+
+.start-breathing-button:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 5px rgba(255, 0, 127, 0.5),
+    0 2px 5px rgba(74, 243, 235, 0.4);
 }

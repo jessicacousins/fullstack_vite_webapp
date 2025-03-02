@@ -48,7 +48,7 @@ const ZenBreathing = () => {
   return (
     <div className="zen-breathing-container">
       <h2>Zen Breathing: 4-7-8 Technique</h2>
-      <p>Relax and follow the breathing cycle below.</p>
+      <p className="relaxWords">Relax and follow the breathing cycle below.</p>
 
       <div className="breathing-display">
         <div
@@ -59,7 +59,7 @@ const ZenBreathing = () => {
             }s`,
           }}
         ></div>
-        <h3>
+        <h3 className="directionsLive">
           {step === "inhale" ? "Inhale" : step === "hold" ? "Hold" : "Exhale"}
         </h3>
         <p className="breathing-timer">{seconds}s</p>
