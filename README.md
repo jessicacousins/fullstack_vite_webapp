@@ -626,6 +626,7 @@ This web application focuses on:
 - npm install @tensorflow-models/sketch-rnn
 - npm install react-to-print
 - npm install socket.io-client
+- npm install lil-gui
 
 ## Privacy Policy and Data Collection
 
