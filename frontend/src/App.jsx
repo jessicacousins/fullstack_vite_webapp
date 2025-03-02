@@ -77,6 +77,7 @@ import TrainingDashboard from "./components/Training/TrainingDashboard";
 import TrainingModule from "./components/Training/TrainingModule";
 import FinalTest from "./components/Training/FinalTest";
 import CharacterLookup from "./components/CharacterLookup";
+import Tesseract from "./components/Tesseract";
 
 import "./App.css";
 
@@ -253,6 +254,7 @@ function App() {
         <Route path="/training/:trainingId" element={<TrainingModule />} />
         <Route path="/final-test/:trainingId" element={<FinalTest />} />
         <Route path="/wow-character" element={<CharacterLookup />} />
+        <Route path="/tesseract" element={<Tesseract />} />
       </Routes>
       <Chatbot />
     </AuthProvider>

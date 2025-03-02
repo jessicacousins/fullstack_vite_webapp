@@ -1,0 +1,12 @@
+.tesseract-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  background-color: #121212;
+}
+
+.tesseract-canvas {
+  width: 100%;
+  height: 100%;
+}
