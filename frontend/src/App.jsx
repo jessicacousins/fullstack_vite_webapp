@@ -79,6 +79,7 @@ import FinalTest from "./components/Training/FinalTest";
 import CharacterLookup from "./components/CharacterLookup";
 import Tesseract from "./components/Tesseract";
 import Wormhole from "./components/Wormhole";
+import DNA from "./components/DNA";
 
 import "./App.css";
 
@@ -257,6 +258,7 @@ function App() {
         <Route path="/wow-character" element={<CharacterLookup />} />
         <Route path="/tesseract" element={<Tesseract />} />
         <Route path="/wormhole" element={<Wormhole />} />
+        <Route path="/dna" element={<DNA />} />
       </Routes>
       <Chatbot />
     </AuthProvider>
