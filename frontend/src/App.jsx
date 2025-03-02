@@ -78,6 +78,7 @@ import TrainingModule from "./components/Training/TrainingModule";
 import FinalTest from "./components/Training/FinalTest";
 import CharacterLookup from "./components/CharacterLookup";
 import Tesseract from "./components/Tesseract";
+import Wormhole from "./components/Wormhole";
 
 import "./App.css";
 
@@ -255,6 +256,7 @@ function App() {
         <Route path="/final-test/:trainingId" element={<FinalTest />} />
         <Route path="/wow-character" element={<CharacterLookup />} />
         <Route path="/tesseract" element={<Tesseract />} />
+        <Route path="/wormhole" element={<Wormhole />} />
       </Routes>
       <Chatbot />
     </AuthProvider>
