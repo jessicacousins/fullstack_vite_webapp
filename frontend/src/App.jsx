@@ -80,6 +80,7 @@ import CharacterLookup from "./components/CharacterLookup";
 import Tesseract from "./components/Tesseract";
 import Wormhole from "./components/Wormhole";
 import DNA from "./components/DNA";
+import PotatoExperiment from "./components/PotatoExperiment";
 
 import "./App.css";
 
@@ -259,6 +260,7 @@ function App() {
         <Route path="/tesseract" element={<Tesseract />} />
         <Route path="/wormhole" element={<Wormhole />} />
         <Route path="/dna" element={<DNA />} />
+        <Route path="/potatoexperiment" element={<PotatoExperiment />} />
       </Routes>
       <Chatbot />
     </AuthProvider>

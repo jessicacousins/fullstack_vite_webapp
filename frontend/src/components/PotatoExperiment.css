@@ -1,0 +1,79 @@
+.experiment-container {
+  text-align: center;
+  padding: 20px;
+  background: #111;
+  color: white;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+.experiment-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 80px;
+}
+
+.potato {
+  width: 80px;
+  height: 50px;
+  background: #d4a373;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.electrode {
+  width: 20px;
+  height: 30px;
+  background: gray;
+  margin: 5px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.copper {
+  background: orange;
+}
+
+.zinc {
+  background: silver;
+}
+
+.wire-section {
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wire-svg {
+  width: 300px;
+  height: 50px;
+}
+
+.bulb-container {
+  text-align: center;
+}
+
+.bulb {
+  width: 40px;
+  height: 40px;
+  background: gray;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+  margin: 10px auto;
+}
+
+.bulb.on {
+  background: yellow;
+  box-shadow: 0 0 15px yellow;
+}
