@@ -81,6 +81,7 @@ import Tesseract from "./components/Tesseract";
 import Wormhole from "./components/Wormhole";
 import DNA from "./components/DNA";
 import PotatoExperiment from "./components/PotatoExperiment";
+import LavaLamp from "./components/LavaLamp";
 
 import "./App.css";
 
@@ -261,6 +262,7 @@ function App() {
         <Route path="/wormhole" element={<Wormhole />} />
         <Route path="/dna" element={<DNA />} />
         <Route path="/potatoexperiment" element={<PotatoExperiment />} />
+        <Route path="/lavalamp" element={<LavaLamp />} />
       </Routes>
       <Chatbot />
     </AuthProvider>
