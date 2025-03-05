@@ -147,6 +147,11 @@ const NavBar = ({ onSearch, cartItemCount }) => {
                 </NavLink>
               </li>
               <li>
+                <NavLink to="/lavalamp" onClick={closeMobileMenu}>
+                  Lava Lamp
+                </NavLink>
+              </li>
+              <li>
                 <NavLink to="/reaction-speed-test" onClick={closeMobileMenu}>
                   Reaction Speed Test
                 </NavLink>
