@@ -1,36 +1,102 @@
 .training-module {
-  max-width: 600px;
+  max-width: 700px;
   margin: auto;
   text-align: center;
+  background: #1e1e1e;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+}
+
+.training-module h1 {
+  font-size: 26px;
+  font-weight: bold;
+  color: #ffcc00;
+  margin-bottom: 15px;
+}
+
+.training-module h2 {
+  font-size: 22px;
+  color: #f5f5f5;
+  margin-bottom: 10px;
+}
+
+.training-module p {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #cccccc;
 }
 
 .question-box {
-  margin: 20px 0;
-  padding: 15px;
+  margin: 20px auto;
+  padding: 20px;
   background: #2b2a2a;
-  border-radius: 8px;
+  border-radius: 10px;
+  border-left: 5px solid #ffcc00;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
 }
 
 button {
-  margin: 5px;
-  padding: 10px;
-  background: #4caf50;
-  border: none;
+  display: inline-block;
+  margin: 8px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
   color: white;
+  border: none;
+  border-radius: 25px;
   cursor: pointer;
-  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-button:hover {
-  background: #388e3c;
+.question-box button {
+  background: linear-gradient(45deg, #2196f3, #03a9f4);
+  box-shadow: 0 4px 10px rgba(3, 169, 244, 0.3);
+}
+
+.question-box button:hover {
+  background: linear-gradient(45deg, #1976d2, #0288d1);
+  transform: scale(1.05);
+}
+
+.question-box button:active {
+  transform: scale(0.95);
+}
+
+button:disabled {
+  background: #444;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+button:not(:disabled) {
+  background: linear-gradient(45deg, #4caf50, #388e3c);
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+}
+
+button:not(:disabled):hover {
+  background: linear-gradient(45deg, #388e3c, #2e7d32);
+  transform: scale(1.05);
 }
 
 .final-test-button {
-  display: block;
+  display: inline-block;
   margin-top: 20px;
-  padding: 10px;
-  background: #ff5722;
+  padding: 12px 20px;
+  font-size: 18px;
+  font-weight: bold;
   color: white;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 25px;
+  transition: all 0.3s ease-in-out;
+  background: linear-gradient(45deg, #ff5722, #e64a19);
+  box-shadow: 0 4px 10px rgba(255, 87, 34, 0.3);
+}
+
+.final-test-button:hover {
+  background: linear-gradient(45deg, #d84315, #bf360c);
+  transform: scale(1.05);
 }
