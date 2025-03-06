@@ -46,7 +46,11 @@ const FinalTest = () => {
         <div key={i}>
           <p>{q.question}</p>
           {q.options.map((opt, j) => (
-            <button key={j} onClick={() => handleAnswer(i, opt)}>
+            <button
+              key={j}
+              className={answers[i] === opt ? "selected" : ""}
+              onClick={() => handleAnswer(i, opt)}
+            >
               {opt}
             </button>
           ))}

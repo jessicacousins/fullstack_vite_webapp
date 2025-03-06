@@ -2,17 +2,74 @@
   max-width: 600px;
   margin: auto;
   text-align: center;
+  background: #121212;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.final-test h1 {
+  font-size: 24px;
+  color: #ffcc00;
+  margin-bottom: 20px;
+}
+
+.final-test p {
+  font-size: 18px;
+  margin: 10px 0;
 }
 
 .final-test button {
-  background: #f44336;
+  background: linear-gradient(45deg, #ff5722, #ff9800);
   color: white;
-  padding: 10px;
+  padding: 12px 20px;
   border: none;
-  margin-top: 10px;
-  border-radius: 5px;
+  margin: 10px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
 }
 
 .final-test button:hover {
-  background: #d32f2f;
+  background: linear-gradient(45deg, #e64a19, #f57c00);
+  transform: scale(1.05);
+}
+
+.final-test button:active {
+  transform: scale(0.95);
+}
+
+.final-test button:disabled {
+  background: #444;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.final-test button.selected {
+  background: linear-gradient(45deg, #00c853, #64dd17);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+  border: 2px solid #76ff03;
+  transform: scale(1.05);
+}
+
+.final-test .submit-button {
+  background: linear-gradient(45deg, #0077ff, #03a9f4);
+  box-shadow: 0 4px 10px rgba(3, 169, 244, 0.3);
+}
+
+.final-test .submit-button:hover {
+  background: linear-gradient(45deg, #005ecb, #0288d1);
+}
+
+.final-test .retry-button {
+  background: linear-gradient(45deg, #4caf50, #388e3c);
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+}
+
+.final-test .retry-button:hover {
+  background: linear-gradient(45deg, #388e3c, #2e7d32);
 }
