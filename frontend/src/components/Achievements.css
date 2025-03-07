@@ -1,66 +1,84 @@
 .achievements-container {
   text-align: center;
-  color: rgba(220, 220, 220, 1);
+  color: #e0e0e0;
   padding: 2rem;
-  background-color: rgba(20, 20, 20, 1);
-}
-
-.achievement-list {
+  background: #121212;
+  min-height: 100vh;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 1.5rem;
 }
 
 .achievements-title {
-  color: #4af3eb;
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: bold;
   margin-bottom: 2rem;
   letter-spacing: 2px;
+  color: #4af3eb;
+  text-shadow: 0 0 10px rgba(74, 243, 235, 0.6), 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.achievement-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 0 5%;
+  max-width: 1200px;
+  width: 100%;
+  justify-content: center;
+  align-items: start;
 }
 
 .achievement-card {
-  background-color: #000;
-  padding: 1.5rem;
-  border-radius: 12px;
-  text-align: left;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  width: 300px;
-  color: rgba(220, 220, 220, 1);
+  background: #1a1a1a;
+  padding: 0.5rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(74, 243, 235, 0.4);
+  min-height: 160px;
 }
 
 .achievement-card:hover {
   transform: scale(1.05);
-  box-shadow: 0px 10px 40px rgba(0, 255, 255, 0.3), 0px 0px 25px #4af3eb;
+  box-shadow: 0px 0px 20px rgba(74, 243, 235, 0.6),
+    0px 0px 30px rgba(0, 255, 255, 0.4);
   background-color: #011311;
 }
 
 .achievement-card h3 {
   color: #ff77ff;
-  margin: 0 0 0.5rem;
-  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(255, 119, 255, 0.5);
 }
 
 .achievement-card p {
-  color: rgba(180, 180, 180, 1);
+  color: rgba(200, 200, 200, 1);
   margin: 0.5rem 0;
   font-size: 1rem;
 }
 
-.achievement-card small {
-  color: rgba(140, 160, 100, 1);
-  font-size: 0.875rem;
-}
-
 .error-message {
-  color: rgba(190, 90, 90, 1);
+  color: rgba(255, 85, 85, 1);
+  background: rgba(255, 0, 0, 0.2);
+  padding: 10px 15px;
+  border-radius: 8px;
   margin-top: 1rem;
+  font-weight: bold;
 }
 
 .achievements-container p {
   color: rgba(170, 140, 190, 1);
   font-size: 1.2rem;
   margin-top: 1rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(170, 140, 190, 0.5);
 }
