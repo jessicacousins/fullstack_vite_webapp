@@ -1,7 +1,6 @@
 .achievements-container {
   text-align: center;
   color: #e0e0e0;
-  padding: 2rem;
   background: #121212;
   min-height: 100vh;
   display: flex;
@@ -22,7 +21,7 @@
 .achievement-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+  gap: 3rem;
   padding: 0 5%;
   max-width: 1200px;
   width: 100%;
