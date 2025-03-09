@@ -1,281 +1,276 @@
-.profile-page {
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap");
+
+body {
+  background: #0a0d14;
+  font-family: "Inter", sans-serif;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
-  background-color: #000;
-  min-height: 100vh;
-  font-family: "Poppins", sans-serif;
 }
 
-.main-title {
-  font-size: 3rem;
-  font-weight: 700;
-  text-align: center;
-  color: #4af3eb;
-  letter-spacing: 3px;
-  margin-bottom: 20px;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+.profile-page {
+  width: 95%;
+  max-width: 1500px;
+  min-height: 100vh;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
 }
 
 .profile-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(25, 25, 25, 0.85);
-  border: 1px solid rgba(74, 243, 235, 0.2);
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.5);
-  margin-bottom: 40px;
   width: 100%;
-  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(
+    145deg,
+    rgba(15, 15, 30, 0.9),
+    rgba(20, 20, 50, 0.85)
+  );
+  border-radius: 18px;
+  padding: 50px 40px;
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  transition: all 0.3s ease-in-out;
 }
 
 .profile-pic {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 30px;
-  border: 2px solid #4af3eb;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-  transition: transform 0.3s ease;
+  border: 4px solid #00c8ff;
+  box-shadow: 0px 10px 30px rgba(0, 200, 255, 0.4);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .profile-pic:hover {
   transform: scale(1.1);
+  box-shadow: 0px 15px 40px rgba(0, 200, 255, 0.6);
+}
+
+.profile-info {
+  margin-top: 20px;
 }
 
 .profile-info h2 {
-  font-size: 2rem;
-  color: #f9fd1a;
-  margin-bottom: 10px;
-}
-
-.profile-welcome-title {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
+  color: #ffffff;
   font-weight: bold;
-  color: #4af3eb;
-  margin-bottom: 15px;
-  letter-spacing: 1.5px;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
 .profile-welcome-message {
   font-size: 1.2rem;
-  color: #e0e0e0;
-  text-align: center;
+  color: #d0d0d0;
   line-height: 1.6;
+  max-width: 700px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #00c8ff;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+  text-shadow: 0px 4px 12px rgba(0, 200, 255, 0.6);
 }
 
 .profile-form {
-  background: rgba(40, 40, 40, 0.9);
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+  background: rgba(20, 20, 40, 0.95);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.5);
   width: 100%;
-  max-width: 900px;
-  margin-bottom: 40px;
-}
-
-.edit-title {
-  text-align: center;
-  font-size: 2rem;
-  color: #4caf50;
-  margin-bottom: 20px;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 .profile-form input,
 .profile-form textarea {
-  background-color: #222;
-  color: #d3d3d3;
-  border: 1px solid #444;
-  border-radius: 8px;
-  padding: 12px;
-  font-size: 1rem;
-  margin-bottom: 20px;
-  width: 100%;
+  background: rgba(30, 30, 50, 0.9);
+  color: #ffffff;
+  border: 1px solid rgba(0, 200, 255, 0.4);
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 1.1rem;
+  width: 90%;
+  max-width: 600px;
   outline: none;
+  transition: all 0.3s ease-in-out;
 }
 
 .profile-form input:focus,
 .profile-form textarea:focus {
-  border-color: #4af3eb;
-  box-shadow: 0 0 8px rgba(74, 243, 235, 0.5);
+  border-color: #00c8ff;
+  box-shadow: 0px 0px 14px rgba(0, 200, 255, 0.5);
 }
 
 .profile-form button {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  background-color: #4caf50;
-  color: #fff;
+  width: 90%;
+  max-width: 300px;
+  padding: 14px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #00c8ff, #ff007f);
+  color: white;
   border: none;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
   text-transform: uppercase;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease-in-out;
 }
 
 .profile-form button:hover {
-  background-color: #42a148;
+  background: linear-gradient(135deg, #ff007f, #00c8ff);
+  box-shadow: 0px 6px 20px rgba(0, 200, 255, 0.5);
   transform: scale(1.05);
 }
 
 .game-stats-container {
-  background: rgba(25, 25, 25, 0.9);
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.6);
-  width: 100%;
-  max-width: 900px;
-  margin-bottom: 40px;
-}
-
-.game-section {
-  background: rgba(30, 30, 30, 0.95);
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #4af3eb;
-}
-
-.game-section h4 {
-  font-size: 1.5rem;
-  color: #6fb3d2;
-  margin-bottom: 10px;
-}
-
-.comment-card,
-.post-card {
-  background: rgba(35, 35, 35, 0.95);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
-  margin-bottom: 15px;
-}
-
-.user-comments-section,
-.user-posts-section {
-  background: rgba(40, 40, 40, 0.9);
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
-  width: 100%;
-  max-width: 900px;
-  margin-bottom: 40px;
-}
-
-.expandable-heading {
-  font-size: 1.8rem;
-  color: #66c0f4;
-  cursor: pointer;
-  margin-bottom: 15px;
-  transition: color 0.3s ease;
-}
-
-.expandable-heading:hover {
-  color: #4af3eb;
-}
-
-.error {
-  color: #e0245e;
-  text-align: center;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-.success {
-  color: #4caf50;
-  text-align: center;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-.account-deletion-section {
-  background: rgba(30, 0, 0, 0.9);
-  padding: 30px;
-  border-radius: 10px;
-  border: 1px solid #e0245e;
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
-}
-
-.delete-button {
-  background-color: #e0245e;
-  color: #fff;
-  border: none;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.delete-button:hover {
-  background-color: #f05c5c;
-  transform: scale(1.05);
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  padding: 80px 5%;
+  background: linear-gradient(135deg, #0d1117, #161b22);
+  border-radius: 20px;
+  box-shadow: 0px 12px 45px rgba(0, 0, 0, 0.3);
+  max-width: 1600px;
+  margin: auto;
+}
+
+.game-stats-title {
+  font-size: 2.8rem;
+  color: #00c8ff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 40px;
+  text-align: center;
+  border-bottom: 3px solid rgba(0, 200, 255, 0.5);
+  padding-bottom: 10px;
+}
+
+.game-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.game-card {
+  background: rgba(20, 24, 35, 0.98);
+  padding: 35px;
+  border-radius: 18px;
+  text-align: center;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
-.modal-content {
-  background-color: #1e1e1e;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.5);
+.game-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 12px 40px rgba(0, 200, 255, 0.3);
+  border-color: rgba(0, 200, 255, 0.5);
+}
+
+.game-card h4 {
+  font-size: 1.8rem;
+  color: #00c8ff;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.game-stats {
+  font-size: 1.3rem;
+  color: #e0e0e0;
+  font-weight: 500;
+  line-height: 1.6;
+  text-align: left;
+  margin-top: 15px;
+}
+
+@media (max-width: 1024px) {
+  .game-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.user-comments-section {
+  background: rgba(20, 20, 40, 0.9);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.5);
   width: 100%;
-  max-width: 500px;
+  max-width: 1000px;
 }
 
-.confirm-delete-button {
-  background-color: #e0245e;
+.comment-card {
+  background: rgba(30, 35, 50, 0.95);
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid #00c8ff;
+  transition: all 0.3s ease-in-out;
+}
+
+.comment-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 4px 12px rgba(0, 200, 255, 0.5);
+}
+
+.account-deletion-section {
+  background: rgba(50, 10, 10, 0.9);
+  padding: 40px;
+  border-radius: 15px;
+  border: 1px solid #e0245e;
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.delete-button {
+  background: #e0245e;
   color: #fff;
-  border: none;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 1.2rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease-in-out;
 }
 
-.cancel-button {
-  background-color: #444;
-  color: #d3d3d3;
-  border: 1px solid #676;
-  padding: 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-.confirm-delete-button:hover,
-.cancel-button:hover {
+.delete-button:hover {
+  background: #f05c5c;
   transform: scale(1.05);
 }
 
-.file-profile-pic {
-  margin-top: 15px;
-  padding: 10px;
-  background-color: #333;
-  color: #d3d3d3;
-  border: 1px solid #4af3eb;
-  border-radius: 5px;
-  cursor: pointer;
+@media (max-width: 1024px) {
+  .game-stats-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
 }
 
-.file-profile-pic:hover {
-  background-color: #444;
+@media (max-width: 600px) {
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+  }
 }
