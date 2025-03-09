@@ -28,11 +28,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(
-    145deg,
-    rgba(15, 15, 30, 0.9),
-    rgba(20, 20, 50, 0.85)
-  );
+  background: linear-gradient(145deg, #1b1e28, #15171f);
   border-radius: 18px;
   padding: 50px 40px;
   box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.5);
@@ -45,18 +41,14 @@ body {
   height: 140px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #00c8ff;
-  box-shadow: 0px 10px 30px rgba(0, 200, 255, 0.4);
+  border: 4px solid #ff007f;
+  box-shadow: 0px 10px 30px rgba(255, 0, 127, 0.4);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .profile-pic:hover {
   transform: scale(1.1);
-  box-shadow: 0px 15px 40px rgba(0, 200, 255, 0.6);
-}
-
-.profile-info {
-  margin-top: 20px;
+  box-shadow: 0px 15px 40px rgba(255, 0, 127, 0.6);
 }
 
 .profile-info h2 {
@@ -67,26 +59,8 @@ body {
   margin-bottom: 10px;
 }
 
-.profile-welcome-message {
-  font-size: 1.2rem;
-  color: #d0d0d0;
-  line-height: 1.6;
-  max-width: 700px;
-  text-align: center;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-align: center;
-  color: #00c8ff;
-  letter-spacing: 1px;
-  margin-bottom: 40px;
-  text-shadow: 0px 4px 12px rgba(0, 200, 255, 0.6);
-}
-
 .profile-form {
-  background: rgba(20, 20, 40, 0.95);
+  background: rgba(25, 25, 35, 0.95);
   padding: 40px;
   border-radius: 16px;
   box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.5);
@@ -100,9 +74,9 @@ body {
 
 .profile-form input,
 .profile-form textarea {
-  background: rgba(30, 30, 50, 0.9);
+  background: rgba(40, 40, 55, 0.9);
   color: #ffffff;
-  border: 1px solid rgba(0, 200, 255, 0.4);
+  border: 1px solid rgba(255, 0, 127, 0.5);
   border-radius: 10px;
   padding: 16px;
   font-size: 1.1rem;
@@ -114,8 +88,8 @@ body {
 
 .profile-form input:focus,
 .profile-form textarea:focus {
-  border-color: #00c8ff;
-  box-shadow: 0px 0px 14px rgba(0, 200, 255, 0.5);
+  border-color: #ff007f;
+  box-shadow: 0px 0px 14px rgba(255, 0, 127, 0.5);
 }
 
 .profile-form button {
@@ -123,7 +97,7 @@ body {
   max-width: 300px;
   padding: 14px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #00c8ff, #ff007f);
+  background: linear-gradient(135deg, #ff007f, #ffae00);
   color: white;
   border: none;
   font-size: 1.2rem;
@@ -134,8 +108,8 @@ body {
 }
 
 .profile-form button:hover {
-  background: linear-gradient(135deg, #ff007f, #00c8ff);
-  box-shadow: 0px 6px 20px rgba(0, 200, 255, 0.5);
+  background: linear-gradient(135deg, #ffae00, #ff007f);
+  box-shadow: 0px 6px 20px rgba(255, 0, 127, 0.5);
   transform: scale(1.05);
 }
 
@@ -145,7 +119,7 @@ body {
   align-items: center;
   text-align: center;
   padding: 80px 5%;
-  background: linear-gradient(135deg, #0d1117, #161b22);
+  background: linear-gradient(135deg, #141821, #1a1f2c);
   border-radius: 20px;
   box-shadow: 0px 12px 45px rgba(0, 0, 0, 0.3);
   max-width: 1600px;
@@ -154,27 +128,27 @@ body {
 
 .game-stats-title {
   font-size: 2.8rem;
-  color: #00c8ff;
+  color: #ffae00;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   margin-bottom: 40px;
   text-align: center;
-  border-bottom: 3px solid rgba(0, 200, 255, 0.5);
+  border-bottom: 3px solid rgba(255, 174, 0, 0.5);
   padding-bottom: 10px;
 }
 
 .game-stats-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(320px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(2, minmax(350px, 1fr));
+  gap: 50px;
   width: 100%;
   max-width: 1200px;
 }
 
 .game-card {
-  background: rgba(20, 24, 35, 0.98);
-  padding: 35px;
+  background: rgba(35, 40, 55, 0.98);
+  padding: 40px;
   border-radius: 18px;
   text-align: center;
   border: 2px solid rgba(255, 255, 255, 0.08);
@@ -188,36 +162,21 @@ body {
 
 .game-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0px 12px 40px rgba(0, 200, 255, 0.3);
-  border-color: rgba(0, 200, 255, 0.5);
+  box-shadow: 0px 12px 40px rgba(255, 174, 0, 0.3);
+  border-color: rgba(255, 174, 0, 0.5);
 }
 
 .game-card h4 {
   font-size: 1.8rem;
-  color: #00c8ff;
+  color: #ffae00;
   font-weight: 700;
   margin-bottom: 15px;
   text-transform: uppercase;
   letter-spacing: 1.2px;
 }
 
-.game-stats {
-  font-size: 1.3rem;
-  color: #e0e0e0;
-  font-weight: 500;
-  line-height: 1.6;
-  text-align: left;
-  margin-top: 15px;
-}
-
-@media (max-width: 1024px) {
-  .game-stats-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .user-comments-section {
-  background: rgba(20, 20, 40, 0.9);
+  background: rgba(35, 35, 50, 0.95);
   padding: 40px;
   border-radius: 16px;
   box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.5);
@@ -226,16 +185,16 @@ body {
 }
 
 .comment-card {
-  background: rgba(30, 35, 50, 0.95);
-  padding: 20px;
+  background: rgba(40, 45, 60, 0.95);
+  padding: 25px;
   border-radius: 12px;
-  border-left: 4px solid #00c8ff;
+  border-left: 4px solid #ffae00;
   transition: all 0.3s ease-in-out;
 }
 
 .comment-card:hover {
   transform: scale(1.02);
-  box-shadow: 0px 4px 12px rgba(0, 200, 255, 0.5);
+  box-shadow: 0px 4px 12px rgba(255, 174, 0, 0.5);
 }
 
 .account-deletion-section {
@@ -260,17 +219,4 @@ body {
 .delete-button:hover {
   background: #f05c5c;
   transform: scale(1.05);
-}
-
-@media (max-width: 1024px) {
-  .game-stats-container {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
-}
-
-@media (max-width: 600px) {
-  .profile-pic {
-    width: 100px;
-    height: 100px;
-  }
 }
