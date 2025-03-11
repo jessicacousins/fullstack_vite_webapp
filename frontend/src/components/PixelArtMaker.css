@@ -10,10 +10,10 @@
   margin-top: 3rem;
 }
 
-h2 {
+.pixelArtTitle {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #4af3eb;
+  color: #ff007f;
 }
 
 .controls {

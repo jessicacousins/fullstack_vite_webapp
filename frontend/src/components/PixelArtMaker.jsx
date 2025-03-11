@@ -25,7 +25,7 @@ const PixelArtMaker = () => {
 
   return (
     <div className="pixel-art-container">
-      <h2>Pixel Art Maker</h2>
+      <h2 className="pixelArtTitle">Pixel Art Maker</h2>
 
       <div className="controls">
         <div className="color-picker">
