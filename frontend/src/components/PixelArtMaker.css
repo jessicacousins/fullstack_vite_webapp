@@ -11,7 +11,7 @@
 }
 
 .pixelArtTitle {
-  font-size: 2rem;
+  font-size: 3rem;
   margin-bottom: 20px;
   color: #ff007f;
 }
@@ -29,6 +29,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.selectBrushColor {
+  font-size: 2rem;
 }
 
 label {

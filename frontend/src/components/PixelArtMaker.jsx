@@ -29,7 +29,7 @@ const PixelArtMaker = () => {
 
       <div className="controls">
         <div className="color-picker">
-          <label>Select Brush Color:</label>
+          <label className="selectBrushColor">Select Brush Color</label>
           <input
             type="color"
             value={selectedColor}
