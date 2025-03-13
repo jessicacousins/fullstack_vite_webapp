@@ -1,35 +1,70 @@
 .crl-container {
   padding: 20px;
-  font-family: Arial, sans-serif;
-  color: #333;
+  font-family: "Inter", sans-serif;
+  color: #e0e0e0;
+  background-color: #121212;
+  max-width: 600px;
+  margin: auto;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.crl-container h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+  border-bottom: 2px solid #4af3eb;
+  padding-bottom: 8px;
 }
 
 .crl-roomList {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .crl-roomItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
-  padding: 10px;
-  background-color: #1b1b1b;
-  border-radius: 4px;
-  border: 1px solid #4af3eb;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  background: #1e1e1e;
+  border-radius: 6px;
+  border-left: 4px solid #4af3eb;
+  transition: transform 0.2s ease-in-out, background 0.3s ease-in-out;
+}
+
+.crl-roomItem:hover {
+  background: #292929;
+  transform: scale(1.02);
+}
+
+.crl-roomItem strong {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
 }
 
 .crl-button {
-  padding: 8px 16px;
-  background-color: #4af3eb;
+  padding: 10px 18px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #111;
+  background: linear-gradient(135deg, #4af3eb 0%, #35c2b5 100%);
   border: none;
-  color: rgb(20, 20, 20);
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .crl-button:hover {
-  background-color: #4af3eb6e;
+  background: linear-gradient(135deg, #35c2b5 0%, #4af3eb 100%);
   color: #fff;
+  transform: translateY(-2px);
+}
+
+.crl-button:active {
+  transform: scale(0.95);
 }
