@@ -1,51 +1,115 @@
+/* General container styles */
 .character-lookup {
   max-width: 600px;
-  margin: 30px auto;
+  margin: 40px auto;
   padding: 20px;
-  background: #222;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-  color: #fff;
-  font-family: Arial, sans-serif;
-}
-
-.character-lookup h2 {
+  background: #1a1a1a;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  color: #ddd;
+  font-family: "Arial", sans-serif;
   text-align: center;
 }
 
+/* Heading */
+.character-lookup h2 {
+  font-size: 24px;
+  color: #f0b90b; /* Gold - Alliance & Horde Neutral Accent */
+  text-shadow: 0px 0px 8px rgba(240, 185, 11, 0.8);
+  margin-bottom: 20px;
+}
+
+/* Input Container */
 .input-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
-input {
-  padding: 10px;
+.input-container input {
+  padding: 12px;
+  font-size: 16px;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
+  background: #2c2c2c;
+  color: #ddd;
+  outline: none;
+  transition: all 0.3s ease-in-out;
 }
 
+.input-container input:focus {
+  background: #3b3b3b;
+  box-shadow: 0 0 8px rgba(74, 243, 235, 0.7); /* Cyan Glow */
+}
+
+/* Search Button */
 .searchButton {
-  background-color: #4af3eb !important;
-  color: #000 !important;
+  padding: 12px;
+  font-size: 16px;
   font-weight: bold;
+  background: linear-gradient(90deg, #0070dd, #ff4040);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
+.searchButton:hover {
+  background: linear-gradient(90deg, #005bb5, #cc0000);
+  box-shadow: 0 0 12px rgba(255, 64, 64, 0.8);
+}
+
+/* Error message */
+.error {
+  color: #ff4040;
+  background: rgba(255, 64, 64, 0.1);
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Character Info Section */
 .character-info {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 15px;
-  border-radius: 10px;
   margin-top: 20px;
+  padding: 15px;
+  background: #222;
+  border-radius: 6px;
+  box-shadow: 0px 0px 10px rgba(255, 64, 64, 0.5);
+  border: 1px solid rgba(255, 64, 64, 0.3);
+}
+
+.character-info h3 {
+  color: #0070dd; /* Alliance Blue */
+  text-shadow: 0 0 8px rgba(0, 112, 221, 0.8);
+  margin-bottom: 8px;
 }
 
 .character-info p {
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.6;
+  color: #ccc;
 }
 
-.error {
-  color: red;
-  text-align: center;
-  margin-top: 10px;
+.character-info p:nth-child(even) {
+  color: #ff4040; /* Horde Red */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .character-lookup {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .input-container input,
+  .searchButton {
+    font-size: 14px;
+  }
+
+  .character-info p {
+    font-size: 14px;
+  }
 }
