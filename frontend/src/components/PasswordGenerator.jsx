@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./passwordgenerator.css";
+import "./Passwordgenerator.css";
 
 const PasswordGenerator = () => {
   const [length, setLength] = useState(12);
@@ -33,10 +33,21 @@ const PasswordGenerator = () => {
   };
 
   return (
-    <div className="password-generator-container">
-      <h2 className="password-generator-header">Password Generator Tool</h2>
-      <div className="password-options">
-        <label>
+    <div className="passwordGeneratorContainer">
+      <h2 className="passwordGeneratorHeader">🔐 Secure Password Generator</h2>
+
+      <p className="passwordGeneratorDescription">
+        Generate strong, unique passwords to protect your accounts. Select the
+        desired length and options to include numbers, uppercase letters, and
+        special characters.
+        <strong>
+          {" "}
+          Remember to store your password securely, as it will not be saved.
+        </strong>
+      </p>
+
+      <div className="passwordOptions">
+        <label className="passwordLabel">
           Password Length:
           <input
             type="number"
@@ -44,10 +55,11 @@ const PasswordGenerator = () => {
             max="32"
             value={length}
             onChange={(e) => setLength(Number(e.target.value))}
-            className="password-length-input"
+            className="passwordLengthInput"
           />
         </label>
-        <label>
+
+        <label className="passwordCheckboxLabel">
           <input
             type="checkbox"
             checked={includeNumbers}
@@ -55,7 +67,8 @@ const PasswordGenerator = () => {
           />
           Include Numbers
         </label>
-        <label>
+
+        <label className="passwordCheckboxLabel">
           <input
             type="checkbox"
             checked={includeUppercase}
@@ -63,7 +76,8 @@ const PasswordGenerator = () => {
           />
           Include Uppercase Letters
         </label>
-        <label>
+
+        <label className="passwordCheckboxLabel">
           <input
             type="checkbox"
             checked={includeSpecial}
@@ -72,13 +86,20 @@ const PasswordGenerator = () => {
           Include Special Characters
         </label>
       </div>
-      <button onClick={generatePassword} className="generate-password-button">
-        Generate Password
+
+      <button onClick={generatePassword} className="generatePasswordButton">
+        🚀 Generate Secure Password
       </button>
+
       {password && (
-        <div className="password-display">
-          <strong>Generated Password:</strong> {password}
-          <button onClick={() => speakPassword(password)}>
+        <div className="passwordDisplay">
+          <p className="passwordResult">
+            <strong>Generated Password:</strong> {password}
+          </p>
+          <button
+            onClick={() => speakPassword(password)}
+            className="readPasswordButton"
+          >
             🔊 Read Password
           </button>
         </div>
