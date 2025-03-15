@@ -40,6 +40,85 @@
   box-shadow: 0 0 8px rgba(74, 243, 235, 0.7);
 }
 
+.directionsContainer {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: radial-gradient(
+    circle,
+    rgba(10, 10, 10, 0.9) 40%,
+    rgba(30, 30, 30, 0.9) 100%
+  );
+  border: 2px solid rgba(240, 185, 11, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(240, 185, 11, 0.5);
+  color: #ddd;
+  font-family: "Merriweather", serif;
+  text-align: left;
+  padding-bottom: 25px;
+  position: relative;
+}
+
+.directionsContainer::before {
+  content: "🛡️ WoW API Guide 📜";
+  font-size: 20px;
+  color: #f0b90b;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  margin-bottom: 15px;
+  text-shadow: 0px 0px 8px rgba(240, 185, 11, 0.8);
+}
+
+.directionsText {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #bbb;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 6px;
+  background: rgba(20, 20, 20, 0.8);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-left: 4px solid #0070dd;
+  border-right: 4px solid #c41e3a;
+}
+
+.directionsList {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.directionsList li {
+  font-size: 14px;
+  padding: 10px;
+  background: #222;
+  border-left: 3px solid #f0b90b;
+  margin: 5px 0;
+  border-radius: 5px;
+  transition: 0.3s ease-in-out;
+}
+
+.directionsList li:hover {
+  background: rgba(74, 243, 235, 0.1);
+  border-left: 3px solid #74f3eb;
+}
+
+.directionsList li:nth-child(even) {
+  background: rgba(74, 243, 235, 0.05);
+  border-left: 3px solid rgba(255, 64, 64, 0.7);
+}
+
+@media (max-width: 768px) {
+  .directionsContainer {
+    width: 90%;
+  }
+
+  .directionsText {
+    font-size: 14px;
+  }
+}
+
 .searchButton {
   padding: 12px;
   font-size: 16px;

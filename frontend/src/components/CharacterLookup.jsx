@@ -31,11 +31,11 @@ const CharacterLookup = () => {
   return (
     <div className="character-lookup">
       <h2>🔍 WoW Character Lookup</h2>
-      <p>
-        The purpose of using the World of Warcraft API is to access real-time
-        game data and provide users with dynamic insights. By integrating this
-        API, developers can:
-        <ul>
+      <p className="directionsContainer">
+        The purpose of using the <strong>World of Warcraft API</strong> is to
+        access real-time game data and provide users with dynamic insights. By
+        integrating this API, developers can:
+        <ul className="directionsList">
           <li>
             Retrieve character statistics, achievements, and gear information.
           </li>
