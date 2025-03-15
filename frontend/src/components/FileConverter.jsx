@@ -9,7 +9,7 @@ const FileConverter = () => {
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
-    setDownloadLink(""); // Clear previous download link
+    setDownloadLink("");
   };
 
   const handleConvert = () => {
@@ -88,27 +88,35 @@ const FileConverter = () => {
   };
 
   return (
-    <div className="file-converter-container">
-      <h2 className="file-converter-header">File Converter Tool</h2>
-      <form className="file-converter-form">
-        <label htmlFor="file-upload" className="file-label">
-          Upload File:
+    <div className="fileConverterContainer">
+      <h2 className="fileConverterHeader">📂 File Converter Tool</h2>
+
+      <p className="fileConverterDescription">
+        Easily convert files between different formats with our fast and
+        efficient conversion tool. Supported formats include{" "}
+        <strong>TXT, PDF, CSV, PNG, JPG, and WebP</strong>. Simply upload your
+        file, choose a format, and download your converted file instantly.
+      </p>
+
+      <form className="fileConverterForm">
+        <label htmlFor="fileUpload" className="fileUploadLabel">
+          📁 Upload File:
         </label>
         <input
-          id="file-upload"
+          id="fileUpload"
           type="file"
           onChange={handleFileChange}
-          className="file-input"
+          className="fileInput"
         />
 
-        <label htmlFor="output-format" className="file-label">
-          Convert To:
+        <label htmlFor="outputFormat" className="formatLabel">
+          🔄 Convert To:
         </label>
         <select
-          id="output-format"
+          id="outputFormat"
           value={outputFormat}
           onChange={(e) => setOutputFormat(e.target.value)}
-          className="file-select"
+          className="formatSelect"
         >
           <option value="txt">TXT</option>
           <option value="pdf">PDF (Simulated)</option>
@@ -119,26 +127,22 @@ const FileConverter = () => {
           <option value="webp">WebP</option>
         </select>
 
-        <button
-          type="button"
-          onClick={handleConvert}
-          className="convert-button"
-        >
-          Convert
+        <button type="button" onClick={handleConvert} className="convertButton">
+          🚀 Convert
         </button>
       </form>
 
       {conversionResult && (
-        <p className="conversion-result">{conversionResult}</p>
+        <p className="conversionResult">{conversionResult}</p>
       )}
 
       {downloadLink && (
         <a
           href={downloadLink}
           download={`converted.${outputFormat}`}
-          className="download-link"
+          className="downloadLink"
         >
-          Click here to download your converted file
+          ⬇️ Download Converted File
         </a>
       )}
     </div>

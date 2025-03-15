@@ -1,83 +1,129 @@
-.file-converter-container {
-  background: #1e1e1e;
-  color: #d3d3d3;
-  max-width: 600px;
+.fileConverterContainer {
+  max-width: 650px;
   margin: 50px auto;
-  padding: 40px;
+  padding: 30px;
+  background: #1c1c1c;
   border-radius: 12px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 15px rgba(74, 243, 235, 0.3);
   text-align: center;
+  color: #d3d3d3;
+  font-family: "Arial", sans-serif;
 }
 
-.file-converter-header {
+.fileConverterHeader {
   font-size: 2rem;
   color: #4af3eb;
-  margin-bottom: 30px;
+  text-shadow: 0px 0px 10px rgba(74, 243, 235, 0.7);
+  margin-bottom: 15px;
 }
 
-.file-converter-form {
+.fileConverterDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  border-radius: 6px;
+  border-left: 4px solid #fbc16f;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.fileConverterForm {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-}
-
-.file-upload-label,
-.format-label {
-  font-size: 1.2rem;
-  color: #fbc16f;
+  gap: 18px;
   text-align: left;
 }
 
-.file-input,
-.format-select {
-  padding: 12px 15px;
-  font-size: 1rem;
-  color: #ffffff;
-  background: #2a2a2a;
-  border: 2px solid #4af3eb;
-  transition: border-color 0.3s ease;
+.fileUploadLabel,
+.formatLabel {
+  font-size: 1.1rem;
+  color: #fbc16f;
+  font-weight: bold;
 }
 
-.file-input:focus,
-.format-select:focus {
+.fileInput,
+.formatSelect {
+  padding: 12px;
+  font-size: 1rem;
+  background: #2a2a2a;
+  color: #ffffff;
+  border: 2px solid #4af3eb;
+  border-radius: 6px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fileInput:focus,
+.formatSelect:focus {
   outline: none;
   border-color: #4caf50;
+  box-shadow: 0px 0px 10px rgba(76, 175, 80, 0.7);
 }
 
-.convert-button {
-  padding: 15px 25px;
+.convertButton {
+  padding: 14px;
   font-size: 1.2rem;
-  background-color: #4af3eb;
+  background: linear-gradient(90deg, #0070dd, #ff4040);
   color: #ffffff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.convert-button:hover {
-  background-color: #4caf50;
+.convertButton:hover {
+  background: linear-gradient(90deg, #005bb5, #cc0000);
   transform: scale(1.05);
+  box-shadow: 0px 0px 12px rgba(255, 64, 64, 0.8);
 }
 
-.conversion-result {
-  font-size: 1.5rem;
-  color: #43ff04cd;
+.conversionResult {
+  font-size: 1.4rem;
+  color: #43ff04;
   margin-top: 20px;
+  font-weight: bold;
 }
 
-.download-link {
+.downloadLink {
   display: inline-block;
   margin-top: 20px;
-  padding: 10px 20px;
+  padding: 10px 18px;
   font-size: 1.2rem;
-  color: #ffffff;
-  background-color: #4caf50;
+  background: #4caf50;
+  color: white;
   text-decoration: none;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
+  border-radius: 6px;
+  transition: background 0.3s ease;
 }
 
-.download-link:hover {
-  background-color: #357a38;
+.downloadLink:hover {
+  background: #357a38;
+  box-shadow: 0px 0px 10px rgba(76, 175, 80, 0.7);
+}
+
+@media (max-width: 768px) {
+  .fileConverterContainer {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .fileConverterHeader {
+    font-size: 1.8rem;
+  }
+
+  .fileConverterDescription {
+    font-size: 0.9rem;
+  }
+
+  .convertButton {
+    font-size: 1rem;
+  }
+
+  .conversionResult {
+    font-size: 1.2rem;
+  }
+
+  .downloadLink {
+    font-size: 1rem;
+  }
 }
