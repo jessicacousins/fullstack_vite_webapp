@@ -14,12 +14,37 @@ const TrainingDashboard = () => {
   }, []);
 
   return (
-    <div className="training-dashboard">
-      <h1>📚 Available Trainings</h1>
-      <ul>
+    <div className="trainingDashboard">
+      <h1>📚 Employee Training Hub</h1>
+
+      <p className="trainingDescription">
+        This training module provides essential **workplace compliance** and
+        **skill enhancement** sessions. Employees will gain **industry-standard
+        knowledge** and best practices across various categories, including:
+      </p>
+
+      <ul className="trainingDirections">
+        <li>✅ Compliance & Workplace Safety Regulations</li>
+        <li>✅ Cybersecurity Awareness & Data Protection</li>
+        <li>✅ Diversity, Equity, and Inclusion (DEI) Training</li>
+        <li>✅ Leadership & Professional Development</li>
+        <li>✅ Technical Skill Training for Digital Tools & Software</li>
+      </ul>
+
+      <p className="trainingNote">
+        <strong>💡 Select a training session below to begin!</strong>
+        These courses are designed to help employees **improve workplace
+        knowledge, ensure safety, and maintain compliance** with industry
+        regulations.
+      </p>
+
+      <ul className="trainingList">
         {trainings.map((training) => (
-          <li key={training.trainingId}>
-            <Link to={`/training/${training.trainingId}`}>
+          <li key={training.trainingId} className="trainingItem">
+            <Link
+              to={`/training/${training.trainingId}`}
+              className="trainingLink"
+            >
               {training.title}
             </Link>
           </li>

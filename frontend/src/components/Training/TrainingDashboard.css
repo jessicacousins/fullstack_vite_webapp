@@ -1,28 +1,109 @@
-.training-dashboard {
-  max-width: 600px;
-  margin: auto;
+.trainingDashboard {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 25px;
+  background: #1b1b1b;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
   text-align: center;
+  color: #ddd;
+  font-family: "Arial", sans-serif;
 }
 
-.training-dashboard ul {
-  list-style: none;
-  padding: 0;
+.trainingDashboard h1 {
+  font-size: 28px;
+  color: #4af3eb;
+  text-shadow: 0px 0px 8px rgba(74, 243, 235, 0.8);
+  margin-bottom: 20px;
 }
 
-.training-dashboard li {
-  background: #4caf50;
+.trainingDescription {
+  font-size: 16px;
+  line-height: 1.6;
+  background: rgba(255, 255, 255, 0.05);
   padding: 15px;
-  margin: 10px;
   border-radius: 8px;
+  border-left: 4px solid #4af3eb;
+  text-align: left;
+}
+
+.trainingDirections {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.trainingDirections li {
+  font-size: 15px;
+  padding: 10px;
+  background: #222;
+  border-left: 3px solid #4af3eb;
+  margin: 5px 0;
+  border-radius: 6px;
   transition: 0.3s;
 }
 
-.training-dashboard li a {
+.trainingDirections li:hover {
+  background: rgba(74, 243, 235, 0.15);
+  border-left: 3px solid rgba(74, 243, 235, 0.7);
+}
+
+.trainingNote {
+  font-size: 14px;
+  margin-top: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 6px;
+  border-left: 4px solid #ffca28;
+  text-align: left;
+  font-style: italic;
+}
+
+.trainingList {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.trainingItem {
+  background: linear-gradient(90deg, #0070dd, #ff4040);
+  padding: 15px;
+  margin: 10px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.trainingLink {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  font-size: 16px;
 }
 
-.training-dashboard li:hover {
-  background: #388e3c;
+.trainingItem:hover {
+  background: linear-gradient(90deg, #005bb5, #cc0000);
+  box-shadow: 0 0 12px rgba(255, 64, 64, 0.8);
+}
+
+@media (max-width: 768px) {
+  .trainingDashboard {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .trainingDescription {
+    font-size: 14px;
+  }
+
+  .trainingDirections li {
+    font-size: 13px;
+  }
+
+  .trainingNote {
+    font-size: 13px;
+  }
+
+  .trainingItem {
+    font-size: 14px;
+  }
 }
