@@ -44,6 +44,7 @@
   z-index: 1000;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   transition: transform 0.3s ease, opacity 0.3s ease;
+  border: 1px solid rgba(100, 100, 100, 0.2);
 }
 
 .chatbot-chatbox {
@@ -75,14 +76,14 @@
 }
 
 .chatbot-user-message {
-  background-color: #4af3eb;
-  color: #000;
+  background: linear-gradient(135deg, #0077b6, #023e8a);
+  color: white;
   align-self: flex-end;
   border-top-right-radius: 0;
 }
 
 .chatbot-bot-message {
-  background-color: #ebebeb;
+  background: rgba(87, 96, 226, 0.1);
   color: #000;
   align-self: flex-start;
   border-top-left-radius: 0;
