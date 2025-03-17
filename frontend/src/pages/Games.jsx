@@ -151,13 +151,23 @@ const Games = () => {
       {/* Game Links */}
       <section className="game-section">
         <h2>Blackjack</h2>
-        <p>A classic game.</p>
+        <p>
+          Test your luck and strategy in Blackjack! Aim to get a hand as close
+          to 21 as possible without going over. Play against the dealer and see
+          if you can beat the house. To review your performance and track your
+          wins and highest scores, visit the Blackjack Stats page.
+        </p>
         <Link to="/blackjack">Blackjack</Link>
         <Link to="/blackjack-stats">Blackjack Stats</Link>
       </section>
       <section className="game-section">
         <h2>Memory Game</h2>
-        <p>Test your memory skills by matching cards as fast as you can!</p>
+        <p>
+          Sharpen your cognitive skills with the Memory Game. Flip cards to find
+          matching pairs and clear the board in the fewest turns possible.
+          Challenge yourself to improve your memory and speed. Check your Memory
+          Game Stats to see your best scores and track your progress over time.
+        </p>
         <Link to="/memory-game">Memory Game</Link>
         <Link to="/memory-game-stats">Memory Game Stats</Link>
       </section>
