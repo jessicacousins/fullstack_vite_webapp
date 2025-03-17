@@ -173,7 +173,13 @@ const Games = () => {
       </section>
       <section className="game-section">
         <h2>Simon Says</h2>
-        <p>Challenge your memory with Simon Says!</p>
+        <p>
+          Put your memory to the ultimate test with Simon Says! Follow the
+          sequence of lights and sounds, and try to repeat the pattern as it
+          grows longer and more complex. See how far you can go and challenge
+          your friends. Review your highest level achieved and track your
+          progress on the Simon Says Stats page.
+        </p>
         <Link to="/simon-says">Play Now</Link>
         <Link to="/simon-says-stats">Simon Says Stats</Link>
       </section>
@@ -181,15 +187,23 @@ const Games = () => {
       <section className="game-section">
         <h2>SnapQuest</h2>
         <p>
-          Find and upload an image of a given item within 30 seconds to score
-          points!
+          Embark on a real-world scavenger hunt with SnapQuest! You'll be given
+          an item to find, and you'll have 30 seconds to snap a photo and upload
+          it. Score points for each successful find and compete for the highest
+          score. Challenge your speed and observation skills with this exciting
+          game!
         </p>
         <Link to="/snapquest">Play SnapQuest</Link>
       </section>
 
       <section className="game-section">
         <h2>Tic Tac Toe</h2>
-        <p>A fun twist on the classic Tic Tac Toe game.</p>
+        <p>
+          Enjoy a classic game with a twist in Tic Tac Toe! Strategically place
+          your marks to get three in a row, either horizontally, vertically, or
+          diagonally. Challenge friends or play against the computer. It's a fun
+          and quick way to test your strategic thinking.
+        </p>
         <Link to="/tic-tac-toe">Play Now</Link>
       </section>
     </div>
