@@ -26,6 +26,31 @@ const PixelArtMaker = () => {
   return (
     <div className="pixel-art-container">
       <h2 className="pixelArtTitle">Pixel Art Maker</h2>
+      <div className="pixelArtDirections">
+        <h3>📌 How to Use the Pixel Art Maker:</h3>
+        <ol>
+          <li>
+            <strong>Select a Brush Color:</strong> Click the color picker to
+            choose your desired color.
+          </li>
+          <li>
+            <strong>Choose a Grid Size:</strong> Pick between 8x8, 16x16, or
+            32x32 for different levels of detail.
+          </li>
+          <li>
+            <strong>Start Painting:</strong> Click on any square in the grid to
+            color it.
+          </li>
+          <li>
+            <strong>Clear Grid:</strong> Press the "Clear Grid" button to reset
+            your artwork.
+          </li>
+          <li>
+            <strong>Experiment & Have Fun!</strong> Try different colors and
+            grid sizes to create unique pixel art designs.
+          </li>
+        </ol>
+      </div>
 
       <div className="controls">
         <div className="color-picker">
