@@ -42,15 +42,22 @@ const ReactionSpeedTest = () => {
   return (
     <div className="reaction-speed-test">
       <h2>Reaction Speed Test</h2>
-      <div>This test measures your reaction time. Here's how it works:</div>
-      <ol>
+      <h4 className="reactionInstructions">
+        This test measures your reaction time. Here's how it works:
+      </h4>
+
+      <ol className="reactionList">
         <li>Click the "Start Test" button.</li>
         <li>Wait for the box to turn red.</li>
         <li>As soon as the box turns red, click it as quickly as possible.</li>
         <li>Your reaction time will be displayed in milliseconds.</li>
       </ol>
-      <p>Here are some average reaction time levels:</p>
-      <ul>
+
+      <p className="reactionInstructions">
+        Here are some average reaction time levels:
+      </p>
+
+      <ul className="reactionLevels">
         <li>
           <strong>Fast (Around 200ms):</strong> This is considered a very fast
           reaction time, similar to that of a professional athlete reacting to a
@@ -66,6 +73,7 @@ const ReactionSpeedTest = () => {
           distracted.
         </li>
       </ul>
+
       <div
         className={`cue-box ${
           gameState === "ready" ? "cue-box-active" : "cue-box-waiting"
@@ -95,10 +103,10 @@ const ReactionSpeedTest = () => {
           </p>
         )}
       </div>
-      <button className="start-button1" onClick={startTest}>
+      <button className="start1" onClick={startTest}>
         Start Test
       </button>
-      <div>
+      <div class="noteSection">
         Note: It's important to remember that reaction time is highly variable.
         Reaction time generally slows down with age. Fatigue, illness, and
         certain medical conditions can affect reaction time. Reaction time to

@@ -11,6 +11,37 @@
   transition: all 0.3s ease-in-out;
 }
 
+.reactionInstructions {
+  font-size: 1rem;
+  margin: 20px auto;
+  color: #bbbbbb;
+  text-align: left;
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+.reactionList {
+  text-align: left;
+  margin: 20px auto;
+  max-width: 500px;
+  padding: 0;
+}
+
+.reactionList li {
+  margin-bottom: 10px;
+}
+
+.reactionLevels {
+  text-align: left;
+  margin: 20px auto;
+  max-width: 500px;
+  padding: 0;
+}
+
+.reactionLevels li strong {
+  color: #4af3eb;
+}
+
 h2 {
   font-size: 2rem;
   color: #4af3eb;
@@ -45,7 +76,7 @@ h2 {
 }
 
 .cue-box-active {
-  background: linear-gradient(135deg, #ff4a4a, #ff007f);
+  background: linear-gradient(135deg, #ff4a4a, #ff007f) !important;
   color: #fff;
   box-shadow: 0px 4px 10px rgba(255, 74, 74, 0.4);
 }
@@ -117,4 +148,12 @@ h2 {
   transform: scale(0.98);
   box-shadow: 0 2px 5px rgba(255, 0, 127, 0.5),
     0 2px 5px rgba(74, 243, 235, 0.4);
+}
+
+.noteSection {
+  font-size: 0.9rem;
+  color: #999;
+  margin-top: 20px;
+  max-width: 500px;
+  text-align: center;
 }
