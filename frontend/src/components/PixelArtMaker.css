@@ -16,6 +16,38 @@
   color: #ff007f;
 }
 
+.pixelArtDirections {
+  background: rgba(34, 34, 34, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-align: left;
+}
+
+.pixelArtDirections h3 {
+  font-size: 1.8rem;
+  color: #4af3eb;
+  text-shadow: 0px 1px 5px rgba(74, 243, 235, 0.5);
+  margin-bottom: 12px;
+}
+
+.pixelArtDirections ol {
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+
+.pixelArtDirections li {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  line-height: 1.5;
+  color: #ddd;
+}
+
+.pixelArtDirections li strong {
+  color: #ff007f;
+}
+
 .controls {
   display: flex;
   justify-content: center;
