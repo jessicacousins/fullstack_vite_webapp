@@ -40,6 +40,39 @@ const ResumeBuilder = () => {
   return (
     <div className="resume-builder-container">
       <h2>Create Your Resume</h2>
+      <div className="resume-instructions">
+        <h3>How to Use the Resume Maker</h3>
+        <p>
+          This tool allows you to build a professional resume quickly. Follow
+          these steps:
+        </p>
+        <ol>
+          <li>
+            Enter your name, email, and phone number in the provided fields.
+          </li>
+          <li>
+            Write a brief professional summary or generate one using AI by
+            entering relevant keywords.
+          </li>
+          <li>
+            Add your skills individually by typing them and pressing enter or
+            clicking "Add Skill".
+          </li>
+          <li>
+            Once all information is filled in, your formatted resume will appear
+            in the preview section.
+          </li>
+          <li>
+            Ensure all details are correct, then copy or export your resume as
+            needed.
+          </li>
+        </ol>
+        <p>
+          <strong>Tip:</strong> Use relevant industry keywords for the
+          AI-generated summary to improve resume visibility.
+        </p>
+      </div>
+
       <div className="resume-form">
         <div className="form-group">
           <label>Name:</label>
