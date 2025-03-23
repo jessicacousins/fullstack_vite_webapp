@@ -346,22 +346,22 @@ const TypingSpeedTest = () => {
         </p>
         <ul className="typing-tools-list">
           <li>
-            🦯 <strong>Braille Keyboards</strong> – for users who are blind or
+            ✅ <strong>Braille Keyboards</strong> – for users who are blind or
             visually impaired
           </li>
           <li>
-            💡 <strong>Soft Touch Keyboards</strong> – for reduced finger strain
+            ✅ <strong>Soft Touch Keyboards</strong> – for reduced finger strain
           </li>
           <li>
-            ⌨️ <strong>Mechanical Keyboards</strong> – for tactile feedback and
+            ✅ <strong>Mechanical Keyboards</strong> – for tactile feedback and
             responsiveness
           </li>
           <li>
-            🖐️ <strong>Wrist Support Pads</strong> – for ergonomic comfort and
+            ✅ <strong>Wrist Support Pads</strong> – for ergonomic comfort and
             injury prevention
           </li>
           <li>
-            🧠 <strong>Speech-to-Text Tools</strong> – as alternative input for
+            ✅ <strong>Speech-to-Text Tools</strong> – as alternative input for
             accessibility
           </li>
         </ul>
