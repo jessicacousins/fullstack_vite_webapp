@@ -305,6 +305,68 @@ const TypingSpeedTest = () => {
   return (
     <div className="typing-test-container">
       <h1 className="typing-test-title">Typing Speed Test</h1>
+
+      <div className="typing-directions-box">
+        <h3 className="typing-directions-title">📘 How This Works</h3>
+        <p>
+          This typing speed test challenges how quickly and accurately you can
+          type full phrases under a timed setting. Each round gives you 10
+          seconds to type the phrase exactly as shown. Scoring is based on
+          correct entries only.
+        </p>
+
+        <h4 className="typing-guidelines-subtitle">🏁 Common Typing Speeds</h4>
+        <ul className="typing-range-list">
+          <li>
+            <strong>20–40 WPM:</strong> Beginner – typical for casual users.
+          </li>
+          <li>
+            <strong>40–60 WPM:</strong> Average – common speed for most users.
+          </li>
+          <li>
+            <strong>60–80 WPM:</strong> Fast – above-average productivity level.
+          </li>
+          <li>
+            <strong>80+ WPM:</strong> Pro – often seen in professionals and
+            gamers.
+          </li>
+        </ul>
+
+        <h4 className="typing-guidelines-subtitle">🎯 Accuracy Matters</h4>
+        <p>
+          It’s not just about speed — accuracy is key. Most people type with
+          around 92–95% accuracy. Regular practice can improve both speed and
+          precision.
+        </p>
+
+        <h4 className="typing-guidelines-subtitle">🛠️ Adaptive Tools</h4>
+        <p>
+          Everyone types differently. You may benefit from alternate tools to
+          improve performance:
+        </p>
+        <ul className="typing-tools-list">
+          <li>
+            🦯 <strong>Braille Keyboards</strong> – for users who are blind or
+            visually impaired
+          </li>
+          <li>
+            💡 <strong>Soft Touch Keyboards</strong> – for reduced finger strain
+          </li>
+          <li>
+            ⌨️ <strong>Mechanical Keyboards</strong> – for tactile feedback and
+            responsiveness
+          </li>
+          <li>
+            🖐️ <strong>Wrist Support Pads</strong> – for ergonomic comfort and
+            injury prevention
+          </li>
+          <li>
+            🧠 <strong>Speech-to-Text Tools</strong> – as alternative input for
+            accessibility
+          </li>
+        </ul>
+      </div>
+
       <p className="instructions">
         Type the following phrase as fast as you can:
       </p>
