@@ -55,6 +55,30 @@ const Timecard = () => {
   return (
     <div className="timecard-container">
       <h2 className="timecard-header">Your Timecard</h2>
+      <div className="timecard-directions-box">
+        <h3 className="timecard-directions-title">
+          🕒 How to Use This Timecard
+        </h3>
+        <p>
+          Use this tool to track your work hours. When you begin your shift,
+          press the
+          <strong> Clock In</strong> button. Once you're done for the day, press
+          <strong> Clock Out</strong>. The system will record your start and end
+          times.
+        </p>
+        <p>
+          If you're working during a recognized holiday, select{" "}
+          <strong>"Yes"</strong> from the Holiday dropdown before clocking in to
+          ensure correct logging.
+        </p>
+        <p>
+          You can view a history of your previous entries below. Time entries
+          marked with
+          <span className="holiday-label-tag">Holiday</span> indicate hours
+          worked on a holiday.
+        </p>
+      </div>
+
       <div className="timecard-dropdown">
         <label>
           Holiday Time:{" "}
