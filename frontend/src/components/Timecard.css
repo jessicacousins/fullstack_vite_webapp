@@ -16,6 +16,38 @@
   color: #4af3eb;
 }
 
+.timecard-directions-box {
+  background-color: #2a2a2a;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  line-height: 1.6;
+}
+
+.timecard-directions-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+  color: #4af3eb;
+  font-weight: bold;
+}
+
+.timecard-directions-box p {
+  color: #dddddd;
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.holiday-label-tag {
+  background-color: #ffd700;
+  color: #121212;
+  padding: 2px 6px;
+  margin-left: 4px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
 .timecard-dropdown {
   display: flex;
   align-items: center;
@@ -25,7 +57,10 @@
 
 .timecard-dropdown label {
   font-weight: bold;
-  color: #f0f0f0;
+  background-color: #ffd700;
+  color: #121212;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .timecard-dropdown select {
