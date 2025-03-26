@@ -113,6 +113,33 @@ const UnitConverter = () => {
   return (
     <div className="unit-converter-container">
       <h2 className="unit-converter-header">Unit Converter Tool</h2>
+      <div className="unit-directions-box">
+        <h3 className="unit-directions-title">
+          📏 How to Use the Unit Converter
+        </h3>
+        <p>
+          This tool lets you convert between units of <strong>length</strong>,{" "}
+          <strong>weight</strong>, and <strong>temperature</strong>. Follow
+          these steps:
+        </p>
+        <ol className="unit-directions-list">
+          <li>Enter a number into the input field.</li>
+          <li>
+            Select the unit you're converting <strong>from</strong>.
+          </li>
+          <li>
+            Select the unit you're converting <strong>to</strong>.
+          </li>
+          <li>
+            Click the <strong>Convert</strong> button to see the result below.
+          </li>
+        </ol>
+        <p>
+          ✅ Note: You can only convert between units in the{" "}
+          <em>same category</em>. For example, you cannot convert kilometers to
+          kilograms.
+        </p>
+      </div>
 
       <form
         className="unit-converter-form"
