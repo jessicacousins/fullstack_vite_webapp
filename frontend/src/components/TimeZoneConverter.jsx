@@ -44,6 +44,33 @@ const TimeZoneConverter = () => {
   return (
     <div className="time-zone-converter">
       <h2>Time Zone Converter</h2>
+      <div className="tz-directions-box">
+        <h3 className="tz-directions-title">
+          🕓 How to Use the Time Zone Converter
+        </h3>
+        <p>
+          This tool helps you convert a time from one time zone to another.
+          Simply:
+        </p>
+        <ol className="tz-directions-list">
+          <li>
+            Select your <strong>Source Time Zone</strong>.
+          </li>
+          <li>
+            Select the <strong>Target Time Zone</strong> you want to convert to.
+          </li>
+          <li>
+            Enter the time you'd like to convert in <strong>HH:MM</strong>{" "}
+            format (e.g., 14:30).
+          </li>
+          <li>The converted time will display automatically below.</li>
+        </ol>
+        <p>
+          This tool uses the time difference based on standard offsets. It does
+          not adjust for daylight saving time.
+        </p>
+      </div>
+
       <div className="converter-form">
         <div className="field">
           <label>Source Time Zone:</label>
