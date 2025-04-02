@@ -70,3 +70,31 @@
 .image-editor-actions .download-button:hover {
   background-color: #4af3eb98;
 }
+
+.image-editor-directions {
+  background-color: #2a2a2a;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  text-align: left;
+  color: #dddddd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.image-editor-directions-title {
+  color: #4af3eb;
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  font-weight: bold;
+}
+
+.image-editor-directions-list {
+  list-style: decimal;
+  padding-left: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.image-editor-directions-list li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
