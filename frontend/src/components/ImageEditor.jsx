@@ -47,6 +47,38 @@ const ImageEditor = () => {
     <div className="image-editor-container">
       <h2 className="image-editor-header">Image Editor Tool</h2>
 
+      <div className="image-editor-directions">
+        <h3 className="image-editor-directions-title">
+          🖼️ How to Use the Image Editor
+        </h3>
+        <p>
+          This tool allows you to quickly apply simple edits to any image.
+          Follow these steps:
+        </p>
+        <ol className="image-editor-directions-list">
+          <li>Upload an image using the file input at the top.</li>
+          <li>
+            Adjust the <strong>Brightness</strong>, <strong>Contrast</strong>,
+            and <strong>Rotation</strong> sliders as needed.
+          </li>
+          <li>
+            Click <strong>Apply Filters</strong> to generate the preview with
+            your edits.
+          </li>
+          <li>
+            Use <strong>Reset</strong> to return all values to default.
+          </li>
+          <li>
+            If you’re happy with the result, click{" "}
+            <strong>Download Edited Image</strong> to save it locally.
+          </li>
+        </ol>
+        <p>
+          🎨 Perfect for quick adjustments, profile pics, or testing image ideas
+          before further editing elsewhere.
+        </p>
+      </div>
+
       <input
         type="file"
         accept="image/*"
