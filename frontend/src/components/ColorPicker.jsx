@@ -41,7 +41,7 @@ const ColorPicker = ({ initialColor = "#b91356" }) => {
       <h2 className="color-picker-header">Color Picker Tool</h2>
       <div className="color-picker-directions">
         <h3 className="color-picker-directions-title">
-          🎨 How to Use the Color Picker
+          How to Use the Color Picker
         </h3>
         <ul className="color-picker-directions-list">
           <li>
@@ -67,7 +67,7 @@ const ColorPicker = ({ initialColor = "#b91356" }) => {
           </li>
         </ul>
         <p className="color-picker-note">
-          ✅ Great for designers, developers, and branding tasks that require
+          Note: Great for designers, developers, and branding tasks that require
           precise color formats.
         </p>
       </div>
