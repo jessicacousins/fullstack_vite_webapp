@@ -76,6 +76,42 @@ const DoodleClassifier = () => {
   return (
     <div className="doodle-classifier-container">
       <h1 className="doodle-title">Doodle Classifier</h1>
+
+      <div className="doodle-info-box">
+        <h3 className="doodle-info-title">
+          🧠 How the Doodle Classifier Works
+        </h3>
+        <ul className="doodle-info-list">
+          <li>Draw anything you like inside the box using your mouse.</li>
+          <li>
+            When ready, click <strong>"Classify Drawing"</strong> and watch the
+            AI guess what you made!
+          </li>
+          <li>
+            The classifier is powered by <strong>TensorFlow.js</strong> and uses
+            a real <strong>MobileNet</strong> deep learning model trained on
+            thousands of images.
+          </li>
+          <li>
+            Your drawing is converted into a 224x224 pixel image and processed
+            in real-time using your browser — no server or upload needed!
+          </li>
+          <li>
+            The model will predict the object category and display its{" "}
+            <strong>confidence score</strong>.
+          </li>
+          <li>
+            Press <strong>"Clear Canvas"</strong> to try again with a new
+            drawing.
+          </li>
+        </ul>
+        <p className="doodle-info-note">
+          🤯 This tool shows how powerful client-side machine learning can be,
+          enabling live image recognition directly in the browser without any
+          external data sent!
+        </p>
+      </div>
+
       <p className="instructions">
         Draw something, and the AI will try to guess what it is!
       </p>
