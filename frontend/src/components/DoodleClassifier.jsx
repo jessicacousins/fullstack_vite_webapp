@@ -78,9 +78,7 @@ const DoodleClassifier = () => {
       <h1 className="doodle-title">Doodle Classifier</h1>
 
       <div className="doodle-info-box">
-        <h3 className="doodle-info-title">
-          🧠 How the Doodle Classifier Works
-        </h3>
+        <h3 className="doodle-info-title">How the Doodle Classifier Works</h3>
         <ul className="doodle-info-list">
           <li>Draw anything you like inside the box using your mouse.</li>
           <li>
@@ -106,7 +104,7 @@ const DoodleClassifier = () => {
           </li>
         </ul>
         <p className="doodle-info-note">
-          🤯 This tool shows how powerful client-side machine learning can be,
+          This tool shows how powerful client-side machine learning can be,
           enabling live image recognition directly in the browser without any
           external data sent!
         </p>
