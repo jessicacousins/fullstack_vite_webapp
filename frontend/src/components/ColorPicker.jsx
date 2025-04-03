@@ -39,6 +39,38 @@ const ColorPicker = ({ initialColor = "#b91356" }) => {
   return (
     <div className="color-picker-container">
       <h2 className="color-picker-header">Color Picker Tool</h2>
+      <div className="color-picker-directions">
+        <h3 className="color-picker-directions-title">
+          🎨 How to Use the Color Picker
+        </h3>
+        <ul className="color-picker-directions-list">
+          <li>
+            Click <strong>"Pick a Color"</strong> to open the color selection
+            panel.
+          </li>
+          <li>
+            Choose your color using the built-in visual picker or hex/rgb
+            inputs.
+          </li>
+          <li>
+            The preview box updates instantly so you can see your color in
+            real-time.
+          </li>
+          <li>
+            Below the preview, you’ll see that same color formatted in{" "}
+            <strong>Hex</strong>, <strong>RGB</strong>, and{" "}
+            <strong>RGBA</strong>.
+          </li>
+          <li>
+            Click any <strong>Copy</strong> button to copy that color format to
+            your clipboard.
+          </li>
+        </ul>
+        <p className="color-picker-note">
+          ✅ Great for designers, developers, and branding tasks that require
+          precise color formats.
+        </p>
+      </div>
 
       <button
         className="toggle-picker-button"
