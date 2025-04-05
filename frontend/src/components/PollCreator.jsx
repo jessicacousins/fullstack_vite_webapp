@@ -62,6 +62,33 @@ const PollCreator = () => {
   return (
     <div className="poll-creator">
       <h2>Create a Poll</h2>
+
+      <div className="poll-info-box">
+        <h3 className="poll-info-title">How to Use the Poll Creator</h3>
+        <ul className="poll-info-list">
+          <li>Enter a title for your poll question.</li>
+          <li>
+            Fill in at least two answer options (you can add more by clicking{" "}
+            <strong>"Add Option"</strong>).
+          </li>
+          <li>
+            Click <strong>"Create Poll"</strong> to save it and make it
+            available for others to vote.
+          </li>
+          <li>
+            Polls are saved to the backend and votes are stored in real-time.
+          </li>
+          <li>
+            To vote, simply click one of the option buttons below any listed
+            poll.
+          </li>
+        </ul>
+        <p className="poll-info-note">
+          Use this tool to gather quick feedback, run fun community polls, or
+          let your audience decide something important!
+        </p>
+      </div>
+
       <input
         type="text"
         value={pollTitle}
