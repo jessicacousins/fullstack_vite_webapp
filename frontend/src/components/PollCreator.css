@@ -48,3 +48,38 @@
   align-items: center;
   margin: 10px 0;
 }
+
+.poll-info-box {
+  background-color: #1e1e1e;
+  padding: 1.5rem;
+  margin: 1.5rem 0 2.5rem;
+  border-radius: 10px;
+  border: 1px solid #7100b3;
+  box-shadow: 0px 4px 12px rgba(113, 0, 179, 0.3);
+  text-align: left;
+  color: #d3d3d3;
+}
+
+.poll-info-title {
+  font-size: 1.4rem;
+  color: #b478ff;
+  margin-bottom: 1rem;
+}
+
+.poll-info-list {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.poll-info-list li {
+  margin-bottom: 0.5rem;
+}
+
+.poll-info-note {
+  font-size: 1rem;
+  font-style: italic;
+  color: #cfa3ff;
+}
