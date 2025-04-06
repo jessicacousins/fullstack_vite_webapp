@@ -4,6 +4,52 @@
   min-height: 100vh;
 }
 
+.shopping-info-box {
+  background-color: #2a2a2a;
+  color: #d3d3d3;
+  padding: 25px;
+  margin: 30px auto 50px;
+  max-width: 900px;
+  border-radius: 12px;
+  border: 2px solid #4af3eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.shopping-info-title {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #4af3eb;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.shopping-info-text {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.shopping-info-benefits {
+  list-style-type: "✔️ ";
+  margin-left: 20px;
+  padding-left: 10px;
+  line-height: 1.6;
+  color: #9fffea;
+  margin-bottom: 15px;
+}
+
+.shopping-info-benefits li {
+  margin-bottom: 8px;
+}
+
+.shopping-info-note {
+  font-style: italic;
+  font-size: 1rem;
+  color: #fce38a;
+  text-align: center;
+}
+
 .loading-message {
   font-size: 1.4rem;
   color: #b12704;
