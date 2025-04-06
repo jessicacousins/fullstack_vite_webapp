@@ -287,6 +287,39 @@ const Shopping = ({ addToCart }) => {
         <MobileNetClassifier selectedProduct={selectedProduct} />
       </Suspense>
       <h1 className="heading-shop-title">Shop Merchandise</h1>
+      <div className="shopping-info-box">
+        <h2 className="shopping-info-title">🛒 How This Shop Works</h2>
+        <p className="shopping-info-text">
+          This shopping experience is powered by modern web technologies and
+          machine learning. Products are displayed dynamically from a predefined
+          array. Clicking <strong>“Learn More”</strong> triggers insights
+          powered by OpenAI and MobileNet, an on-device image classifier built
+          with TensorFlow.js.
+        </p>
+        <p className="shopping-info-text">
+          When you view or interact with a product, your preferences are
+          recorded anonymously to enhance future recommendations. The AI model
+          intelligently classifies the type of item based on its label and even
+          offers suggestions related to what you're browsing.
+        </p>
+        <p className="shopping-info-text">
+          For businesses, this tool provides:
+        </p>
+        <ul className="shopping-info-benefits">
+          <li> Product analytics for better targeting</li>
+          <li> AI-powered suggestions to boost engagement</li>
+          <li> Learning insights tailored to customer behavior</li>
+          <li>
+            An interactive storefront with smart features like zoom and feedback
+            modals
+          </li>
+        </ul>
+        <p className="shopping-info-note">
+          Whether you're selling merch, services, or software — this setup helps
+          convert browsing into action.
+        </p>
+      </div>
+
       <div className="products-grid">
         {products.map((product) => (
           <div className="product-card" key={product.id}>
