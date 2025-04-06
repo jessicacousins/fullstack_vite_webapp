@@ -50,10 +50,23 @@ const PomodoroTimer = () => {
   return (
     <div className="pomodoro-container">
       <h1 className="pomodoro-heading">Pomodoro Timer</h1>
-      <p>
-        The Pomodoro Technique is a time management method using a timer for
-        25-minute work intervals with short breaks.
-      </p>
+      <div className="pomodoro-info-box">
+        <h2 className="pomodoro-info-title">
+          🧠 What Is the Pomodoro Technique?
+        </h2>
+        <p className="pomodoro-info-text">
+          The Pomodoro Technique is a simple, effective time management method
+          that breaks work into intervals, usually 25 minutes long, followed by
+          a short 5-minute break. After four Pomodoros, a longer break is
+          typically taken.
+        </p>
+        <p className="pomodoro-info-text">
+          This timer helps you stay focused, reduce distractions, and maintain
+          energy throughout the day. Customize your work and break durations
+          below to fit your productivity flow.
+        </p>
+      </div>
+
       <p className="mode-label">{isWorkSession ? "Work Time" : "Break Time"}</p>
       <p className="timer-display">{formatTime(timeLeft)}</p>
       <div className="timer-controls">
