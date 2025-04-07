@@ -135,7 +135,7 @@ const SelfieCamera = () => {
     <div className="selfie-camera">
       <h2 className="selfie-camera-title">Selfie Camera</h2>
       <div className="selfie-camera-info-box">
-        <h3 className="selfie-camera-info-heading">📸 What Can This Do?</h3>
+        <h3 className="selfie-camera-info-heading"> What Can This Do?</h3>
         <p className="selfie-camera-info-text">
           This AI-powered Selfie Camera lets you capture live photos directly in
           your browser with fun filter effects and instant object recognition
