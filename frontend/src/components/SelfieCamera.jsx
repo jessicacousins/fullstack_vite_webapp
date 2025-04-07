@@ -134,6 +134,26 @@ const SelfieCamera = () => {
   return (
     <div className="selfie-camera">
       <h2 className="selfie-camera-title">Selfie Camera</h2>
+      <div className="selfie-camera-info-box">
+        <h3 className="selfie-camera-info-heading">📸 What Can This Do?</h3>
+        <p className="selfie-camera-info-text">
+          This AI-powered Selfie Camera lets you capture live photos directly in
+          your browser with fun filter effects and instant object recognition
+          using machine learning.
+        </p>
+        <p className="selfie-camera-info-text">
+          When you take a photo, it's analyzed by TensorFlow's MobileNet model,
+          which classifies what it sees and sends that info to the server. You
+          can also view predictions drawn in real-time over the video feed,
+          download your captured shots, and explore your own labeled image
+          gallery.
+        </p>
+        <p className="selfie-camera-info-text">
+          It's a powerful way to combine computer vision and creativity, perfect
+          for tech demos, user engagement, or product try-ons.
+        </p>
+      </div>
+
       <div className="camera-container">
         <video ref={videoRef} className={`video ${filter}`} />
         <canvas
