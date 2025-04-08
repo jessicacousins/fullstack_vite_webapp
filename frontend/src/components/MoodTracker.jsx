@@ -43,6 +43,23 @@ const MoodTracker = () => {
   return (
     <div className="mood-tracker-container">
       <h2 className="mood-tracker-title">Mood Tracker</h2>
+      <div className="mood-tracker-info-box">
+        <h3 className="mood-tracker-info-heading">Why Use a Mood Tracker?</h3>
+        <p className="mood-tracker-info-text">
+          This mood tracker helps you reflect on how you're feeling each day and
+          keep a private journal entry alongside your emotions.
+        </p>
+        <p className="mood-tracker-info-text">
+          Simply choose your mood from the dropdown, jot down a few thoughts,
+          and click "Add Mood" to save. You can review your emotional patterns
+          and journal entries below to build self-awareness over time.
+        </p>
+        <p className="mood-tracker-info-text">
+          Everything is securely stored and connected to your account, so you
+          can revisit your journey whenever you need a mental health check-in.
+        </p>
+      </div>
+
       <div className="mood-input">
         <label>Select Mood:</label>
         <select value={mood} onChange={(e) => setMood(e.target.value)}>
