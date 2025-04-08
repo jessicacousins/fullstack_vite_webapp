@@ -10,6 +10,30 @@
   letter-spacing: 1px;
 }
 
+.mood-tracker-info-box {
+  background-color: #2a2a2a;
+  border: 2px solid #4af3eb;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 25px 0;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.mood-tracker-info-heading {
+  font-size: 1.6rem;
+  color: #4af3eb;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.mood-tracker-info-text {
+  color: #d3d3d3;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
 .mood-tracker-title {
   color: #4af3eb;
   font-size: 2.3rem;
