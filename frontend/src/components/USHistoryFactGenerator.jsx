@@ -52,6 +52,20 @@ const USHistoryFactGenerator = () => {
   return (
     <div className="history-fact-container">
       <h1>📜 U.S. History Fun Fact Generator</h1>
+
+      <div className="us-fact-generator-info-box">
+        <h3 className="us-fact-generator-heading">How It Works</h3>
+        <p className="us-fact-generator-text">
+          This tool uses an OpenAI-powered backend to instantly generate random,
+          historically accurate facts about United States history.
+        </p>
+        <p className="us-fact-generator-text">
+          Each time you click “Generate Fact,” a request is sent to an AI model
+          trained on historical data. This allows for endless, non-repeating
+          educational content — ideal for learning or sparking curiosity.
+        </p>
+      </div>
+
       <p className="history-fact">{fact}</p>
       <div className="buttons">
         <button onClick={generateFact} disabled={loading}>
