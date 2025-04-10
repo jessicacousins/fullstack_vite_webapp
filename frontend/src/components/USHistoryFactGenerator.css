@@ -9,6 +9,31 @@
   letter-spacing: 2px;
 }
 
+.us-fact-generator-info-box {
+  background-color: #1e1e1e;
+  border-left: 4px solid #4af3eb;
+  padding: 18px;
+  margin-top: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.us-fact-generator-heading {
+  font-size: 1.3rem;
+  color: #4af3eb;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+.us-fact-generator-text {
+  color: #dddddd;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
 .history-fact {
   font-size: 20px;
   font-weight: bold;
