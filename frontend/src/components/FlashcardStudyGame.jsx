@@ -46,6 +46,26 @@ const FlashcardStudyGame = () => {
   return (
     <div className="flashcard-container">
       <h2>Flashcard Study Game</h2>
+      <div className="flashcard-directions-box">
+        <h3 className="flashcard-directions-heading">
+          How the Flashcard Game Works
+        </h3>
+        <p className="flashcard-directions-text">
+          Create your own flashcard decks by naming a set and adding front/back
+          text for each card. Once a deck is created, select it to begin
+          reviewing.
+        </p>
+        <p className="flashcard-directions-text">
+          During review, you'll see one side of the card at a time—tap "Show
+          Answer" to reveal the back, then move to the next card. Add more cards
+          anytime to strengthen your memory.
+        </p>
+        <p className="flashcard-directions-text">
+          Flashcards are a proven study technique based on active recall and
+          spaced repetition—helping you learn faster and retain information
+          longer.
+        </p>
+      </div>
 
       <div className="deck-creation">
         <input
