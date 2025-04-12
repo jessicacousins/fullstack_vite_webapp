@@ -48,7 +48,7 @@ const FlashcardStudyGame = () => {
       <h2>Flashcard Study Game</h2>
       <div className="flashcard-directions-box">
         <h3 className="flashcard-directions-heading">
-          How the Flashcard Game Works
+          How the Flashcard Study Method Works
         </h3>
         <p className="flashcard-directions-text">
           Create your own flashcard decks by naming a set and adding front/back

@@ -10,6 +10,30 @@
   margin-top: 3rem;
 }
 
+.flashcard-directions-box {
+  background-color: #282828;
+  border-left: 4px solid #cfa3ff;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  text-align: left;
+}
+
+.flashcard-directions-heading {
+  font-size: 1.4rem;
+  color: #cfa3ff;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.flashcard-directions-text {
+  color: #dddddd;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
 h2 {
   font-size: 2.5rem;
   color: #4af3eb;
