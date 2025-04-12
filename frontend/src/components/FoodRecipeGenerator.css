@@ -10,6 +10,31 @@
   font-family: Arial, sans-serif;
 }
 
+.food-ai-info-box {
+  background-color: #1e1e1e;
+  border-left: 4px solid #ffb703;
+  padding: 18px;
+  margin: 30px auto;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  text-align: left;
+}
+
+.food-ai-info-heading {
+  font-size: 1.3rem;
+  color: #ffb703;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.food-ai-info-text {
+  color: #eeeeee;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
 .recipe-text {
   font-size: 18px;
   font-weight: bold;
