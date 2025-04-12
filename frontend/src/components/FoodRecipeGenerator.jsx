@@ -50,6 +50,20 @@ const FoodRecipeGenerator = () => {
   return (
     <div className="recipe-container">
       <h1>🍽️ Food Recipe & Insight Generator</h1>
+      <div className="food-ai-info-box">
+        <h3 className="food-ai-info-heading">How It Works</h3>
+        <p className="food-ai-info-text">
+          This generator uses an AI-powered backend to deliver unique food
+          recipes with educational insights. Each click sends a live request to
+          OpenAI to create a brand new response.
+        </p>
+        <p className="food-ai-info-text">
+          You can listen to the result using text-to-speech or copy it to your
+          clipboard for later. It's ideal for creative cooking ideas and
+          learning something new.
+        </p>
+      </div>
+
       <p className="recipe-text">{recipe}</p>
       <div className="buttons">
         <button onClick={generateRecipe} disabled={loading}>
