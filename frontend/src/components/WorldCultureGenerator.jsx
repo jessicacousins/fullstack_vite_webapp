@@ -52,6 +52,22 @@ const WorldCultureGenerator = () => {
   return (
     <div className="culture-container">
       <h1>🌍 World Culture Insights Generator</h1>
+
+      <div className="culture-info-box">
+        <h3 className="culture-info-title">About This Tool</h3>
+        <p className="culture-info-text">
+          This generator delivers unique, factual insights about global
+          traditions, customs, and everyday cultural practices. Each fact is
+          powered by an AI backend and retrieved in real-time through a
+          dedicated API endpoint.
+        </p>
+        <p className="culture-info-text">
+          You can listen to the facts with text-to-speech, copy them to your
+          clipboard, or simply learn something new every time you click
+          generate.
+        </p>
+      </div>
+
       <p className="culture-fact">{cultureFact}</p>
       <div className="buttons">
         <button onClick={generateFact} disabled={loading}>
