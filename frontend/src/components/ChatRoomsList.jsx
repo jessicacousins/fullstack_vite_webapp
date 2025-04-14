@@ -21,6 +21,25 @@ const ChatRoomsList = () => {
   return (
     <div className="crl-container">
       <h2>Public Chat Rooms</h2>
+      <div className="mqt-directions-box">
+        <h3 className="mqt-directions-title">How Multiplayer Chatrooms Work</h3>
+        <p className="mqt-directions-text">
+          Join a public or private room with your username and collaborate in
+          real time with others. Messages are stored and retrieved from MongoDB,
+          ensuring continuity between sessions.
+        </p>
+        <p className="mqt-directions-text">
+          The chat system is powered by Socket.IO for low-latency communication
+          and synchronized experiences. All users in a room see updates
+          instantly, and room state is tracked live.
+        </p>
+        <p className="mqt-directions-text">
+          Play interactive games with an AI-driven NPC by entering special
+          commands. Each mystery is uniquely generated using OpenAI, meaning no
+          two games are ever the same.
+        </p>
+      </div>
+
       <ul className="crl-roomList">
         {chatRooms.map((room) => (
           <li key={room._id} className="crl-roomItem">
