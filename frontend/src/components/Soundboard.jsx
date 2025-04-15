@@ -302,6 +302,46 @@ function Soundboard() {
   return (
     <div className="soundboard-container">
       <h1 className="soundboard-title">Tropical Vibes Soundboard</h1>
+
+      <div className="ai-soundboard-info">
+        <h2 className="ai-soundboard-heading">How It Works</h2>
+        <p className="ai-soundboard-paragraph">
+          This interactive soundboard blends modern web tech with artificial
+          intelligence and machine learning to deliver a unique listening
+          experience. Many of the tracks—especially in the *Tropical Vibes*
+          set—were composed using AI-powered music tools that leverage deep
+          learning to generate professional-grade compositions.
+        </p>
+        <p className="ai-soundboard-paragraph">
+          When you press a button, your browser plays a locally stored or
+          AI-generated sound. Behind the scenes, every play is logged with your
+          account to track favorites and usage trends. You can also build
+          playlists, remix them live, and even replace individual tracks with
+          your own.
+        </p>
+        <h3 className="ai-soundboard-subheading">How to Use:</h3>
+        <ul className="ai-soundboard-list">
+          <li>
+            🎵 Click <strong>Play</strong> to listen to a sound or song.
+          </li>
+          <li>
+            ➕ Use <strong>Add to Playlist</strong> to build your custom mix.
+          </li>
+          <li>
+            💾 Name & <strong>Save Playlist</strong> to preserve your vibe.
+          </li>
+          <li>
+            🔁 Use <strong>Replay, Pause, or Stop</strong> controls for
+            precision.
+          </li>
+          <li>🎤 Replace any sound with your own uploaded audio (MP3/WAV).</li>
+        </ul>
+        <p className="ai-soundboard-paragraph">
+          This fusion of AI-generated music, user interactivity, and real-time
+          cloud syncing makes this soundboard a creative tool unlike any other.
+        </p>
+      </div>
+
       <div className="add-button-container">
         <button className="add-sound-button" onClick={addNewSoundButton}>
           Add New Sound
