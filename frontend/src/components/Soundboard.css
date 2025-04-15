@@ -43,6 +43,65 @@ body {
   margin-top: 40px;
 }
 
+.ai-soundboard-info {
+  max-width: 1000px;
+  margin-top: 40px;
+  padding: 30px;
+  background: rgba(25, 25, 25, 0.9);
+  border: 1px solid rgba(0, 242, 255, 0.2);
+  border-radius: 15px;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  text-align: left;
+  color: #e0e0e0;
+}
+
+.ai-soundboard-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00f2ff;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ai-soundboard-subheading {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 25px;
+  color: #ff007f;
+}
+
+.ai-soundboard-paragraph {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  color: #cccccc;
+  letter-spacing: 0.4px;
+}
+
+.ai-soundboard-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.ai-soundboard-list li {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: #ffffff;
+  position: relative;
+  padding-left: 24px;
+}
+
+.ai-soundboard-list li::before {
+  content: "🎧";
+  position: absolute;
+  left: 0;
+  color: #00f2ff;
+}
+
 .sound-item {
   background: rgba(18, 18, 18, 0.85) !important;
   border: 2px solid rgba(255, 0, 127, 0.5) !important;
