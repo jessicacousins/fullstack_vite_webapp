@@ -142,6 +142,59 @@ const MedTracking = () => {
   return (
     <div className="med-tracking-container">
       <h1>Medication Tracking System</h1>
+      <div className="map-info-block">
+        <h2 className="map-title">What is MAP?</h2>
+        <p className="map-description">
+          The{" "}
+          <strong>Massachusetts Medication Administration Program (MAP)</strong>{" "}
+          is a statewide system that allows trained and certified staff to
+          administer medications to individuals receiving human services. This
+          ensures medications are administered safely and legally in group home
+          or day program settings.
+        </p>
+
+        <h3 className="map-subheading">The 5 Rights of MAP:</h3>
+        <ul className="map-list">
+          <li>✅ Right Person</li>
+          <li>✅ Right Medication</li>
+          <li>✅ Right Dose</li>
+          <li>✅ Right Route</li>
+          <li>✅ Right Time</li>
+        </ul>
+
+        <p className="map-description">
+          This digital tool helps MAP-certified staff track every dose and
+          ensure compliance. It includes fields to document medication, time,
+          route, the person receiving it, comments, and any refusal or error.
+        </p>
+
+        <h3 className="map-subheading">MAP Certification Info:</h3>
+        <p className="map-description">
+          MAP is a <strong>certificate-based program</strong> with
+          state-mandated training and a strict pass/fail policy. You are allowed{" "}
+          <strong>2 test attempts</strong>. If you do not pass by the second
+          attempt, you must restart the training process from the beginning.
+        </p>
+
+        <h3 className="map-subheading">How to Use This Tool:</h3>
+        <ol className="map-instructions">
+          <li>📝 Fill in all required fields for each medication given.</li>
+          <li>
+            📎 Upload photos of the label and the med order if applicable.
+          </li>
+          <li>❌ Mark refusals and missed doses with detailed comments.</li>
+          <li>👤 Add your name and acknowledge the entry before submitting.</li>
+          <li>
+            📆 View and review calendar logs for daily administration history.
+          </li>
+        </ol>
+
+        <p className="map-footer-note">
+          This system helps ensure MAP compliance, audit readiness, and
+          person-centered medication management.
+        </p>
+      </div>
+
       <p className="map-directions">
         <strong>Massachusetts MAP Directions:</strong> Ensure the "5 Rights" are
         met for every medication administered: Right Person, Right Dose, Right
