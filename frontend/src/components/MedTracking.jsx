@@ -155,11 +155,11 @@ const MedTracking = () => {
 
         <h3 className="map-subheading">The 5 Rights of MAP:</h3>
         <ul className="map-list">
-          <li>✅ Right Person</li>
-          <li>✅ Right Medication</li>
-          <li>✅ Right Dose</li>
-          <li>✅ Right Route</li>
-          <li>✅ Right Time</li>
+          <li> Right Person</li>
+          <li> Right Medication</li>
+          <li> Right Dose</li>
+          <li> Right Route</li>
+          <li> Right Time</li>
         </ul>
 
         <p className="map-description">
@@ -178,14 +178,12 @@ const MedTracking = () => {
 
         <h3 className="map-subheading">How to Use This Tool:</h3>
         <ol className="map-instructions">
-          <li>📝 Fill in all required fields for each medication given.</li>
+          <li>Fill in all required fields for each medication given.</li>
+          <li>Upload photos of the label and the med order if applicable.</li>
+          <li>Mark refusals and missed doses with detailed comments.</li>
+          <li>Add your name and acknowledge the entry before submitting.</li>
           <li>
-            📎 Upload photos of the label and the med order if applicable.
-          </li>
-          <li>❌ Mark refusals and missed doses with detailed comments.</li>
-          <li>👤 Add your name and acknowledge the entry before submitting.</li>
-          <li>
-            📆 View and review calendar logs for daily administration history.
+            View and review calendar logs for daily administration history.
           </li>
         </ol>
 

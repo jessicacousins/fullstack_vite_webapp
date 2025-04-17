@@ -9,6 +9,83 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.map-info-block {
+  background-color: #1a1a1a;
+  border: 2px solid #4af3eb;
+  padding: 25px 30px;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  box-shadow: 0px 6px 18px rgba(0, 242, 255, 0.1);
+  font-family: "Arial", sans-serif;
+}
+
+.map-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4af3eb;
+  margin-bottom: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.map-subheading {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #00f2ff;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.map-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #dddddd;
+  margin-bottom: 18px;
+}
+
+.map-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+.map-list li {
+  font-size: 1rem;
+  color: #ffffff;
+  margin-bottom: 8px;
+  padding-left: 24px;
+  position: relative;
+}
+
+.map-list li::before {
+  content: "✔️";
+  position: absolute;
+  left: 0;
+  color: #4af3eb;
+}
+
+.map-instructions {
+  list-style: decimal;
+  padding-left: 20px;
+  color: #e0e0e0;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.map-footer-note {
+  font-size: 0.95rem;
+  color: #aaaaaa;
+  font-style: italic;
+  border-top: 1px dashed #4af3eb;
+  padding-top: 15px;
+  margin-top: 20px;
+  text-align: center;
+}
+
 .med-form {
   margin-top: 20px;
 }
