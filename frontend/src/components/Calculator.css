@@ -8,6 +8,11 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.calculatorApp {
+  color: #4af3eb;
+  text-align: center;
+}
+
 .calculator-display {
   width: 100%;
   height: 50px;
